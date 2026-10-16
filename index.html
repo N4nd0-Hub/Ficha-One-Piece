@@ -2203,6 +2203,27 @@ body.clear-sheet[data-theme] .mobile-more-panel{background:var(--panel);border-c
 body.clear-sheet[data-theme] [hidden]{display:none!important}
 
 </style>
+<style id="overview-editing-style">
+/* Editing remains directly available on the first page. */
+body.clear-sheet[data-theme] .overview-attribute>label{display:block;font:500 10px/1.4 var(--font-ui);color:var(--muted);margin-bottom:6px;cursor:text}
+body.clear-sheet[data-theme] .overview-attribute .overview-ability-input{display:block;width:74px;max-width:100%;min-height:45px;margin:0 auto;padding:1px 3px;border:1px solid var(--quiet-line);border-radius:4px;background:var(--inset);color:var(--text);font:700 30px/1.2 var(--atlas-display);text-align:center;font-variant-numeric:tabular-nums;outline:none}
+body.clear-sheet[data-theme] .overview-attribute .overview-ability-input:hover,body.clear-sheet[data-theme] .overview-attribute .overview-ability-input:focus{border-color:var(--gold)}
+body.clear-sheet[data-theme] .overview-attribute .overview-ability-input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+body.clear-sheet[data-theme] .overview-attribute em{margin-top:7px}
+body.clear-sheet[data-theme] .overview-skill,body.clear-sheet[data-theme] .overview-save{display:grid;grid-template-columns:17px minmax(0,1fr) auto;gap:8px;align-items:center;min-height:36px;cursor:pointer}
+body.clear-sheet[data-theme] .overview-skill>input,body.clear-sheet[data-theme] .overview-save>input{width:16px;height:16px;min-height:16px;margin:0;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
+body.clear-sheet[data-theme] .overview-skill>input:disabled{opacity:.7;cursor:default}
+body.clear-sheet[data-theme] .overview-skill>span,body.clear-sheet[data-theme] .overview-save>span{min-width:0;overflow-wrap:anywhere}
+body.clear-sheet[data-theme] .overview-skill>input:focus-visible,body.clear-sheet[data-theme] .overview-save>input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:850px){
+  body.clear-sheet.mobile-only-build[data-theme] .overview-attribute>label{font-size:11px;min-height:16px}
+  body.clear-sheet.mobile-only-build[data-theme] .overview-attribute .overview-ability-input{min-height:45px!important;font:700 30px/1.2 var(--atlas-display)!important;width:74px;padding:1px 3px!important}
+  body.clear-sheet.mobile-only-build[data-theme] .overview-skill,body.clear-sheet.mobile-only-build[data-theme] .overview-save{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:8px;min-height:42px}
+  body.clear-sheet.mobile-only-build[data-theme] .overview-skill>input,body.clear-sheet.mobile-only-build[data-theme] .overview-save>input{width:18px;height:18px;min-height:18px!important}
+}
+@media(max-width:540px){body.clear-sheet.mobile-only-build[data-theme] .overview-skill-grid{grid-template-columns:1fr!important}}
+
+</style>
 </head>
 <body data-theme="rosalya" class="clear-sheet nautical-sheet">
 <header class="topbar">
@@ -2319,7 +2340,7 @@ body.clear-sheet[data-theme] [hidden]{display:none!important}
                 <button class="resource-config-link" type="button" data-config-shortcut="resources">Ajustar máximos<span aria-hidden="true">↗</span></button></div>
             </div>
           <div class="panel overview-attributes-panel">
-              <div class="panel-head"><h2>Atributos</h2><span class="eyebrow">Valores finais</span></div>
+              <div class="panel-head"><h2>Atributos</h2><span class="eyebrow">Editar valores finais</span></div>
               <div class="panel-body"><div class="overview-attributes" id="overviewAttributes"></div></div>
             </div>
 
@@ -2331,10 +2352,10 @@ body.clear-sheet[data-theme] [hidden]{display:none!important}
             <div class="overview-two-col">
               <div class="panel">
                 <div class="panel-head"><h2>Perícias</h2><span class="eyebrow" id="overviewSkillsCount"></span></div>
-                <div class="panel-body"><div class="overview-skills-tools"><div class="segmented-control" aria-label="Exibir perícias"><button type="button" data-skill-filter="trained" aria-pressed="true">Treinadas</button><button type="button" data-skill-filter="all" aria-pressed="false">Todas</button></div><input class="input" id="overviewSkillSearch" type="search" placeholder="Buscar perícia" aria-label="Buscar perícia"></div><div class="overview-skill-grid" id="overviewSkills" data-filter="trained"></div></div>
+                <div class="panel-body"><div class="overview-skills-tools"><div class="segmented-control" aria-label="Exibir perícias"><button type="button" data-skill-filter="all" aria-pressed="true">Todas</button><button type="button" data-skill-filter="trained" aria-pressed="false">Treinadas</button></div><input class="input" id="overviewSkillSearch" type="search" placeholder="Buscar perícia" aria-label="Buscar perícia"></div><div class="overview-skill-grid" id="overviewSkills" data-filter="all"></div></div>
               </div>
               <div class="panel">
-                <div class="panel-head"><h2>Salvaguardas</h2><span class="eyebrow">Bônus finais</span></div>
+                <div class="panel-head"><h2>Salvaguardas</h2><span class="eyebrow">Proficiência</span></div>
                 <div class="panel-body"><div class="overview-save-grid" id="overviewSaves"></div></div>
               </div>
             </div>
@@ -3097,10 +3118,10 @@ function renderOverviewSummary(){
     const values=[['Espécie',speciesText],['Estilo',c.style||'—'],['Profissão',c.profession||'—'],['Antecedente',bg]];
     tags.innerHTML=values.map(([i,v])=>`<span class="identity-tag"><b>${esc(i)}</b><span>${esc(v)}</span></span>`).join('');
   }
-  const attrs=document.getElementById('overviewAttributes');if(attrs){attrs.innerHTML=ABILITIES.map(([k,l])=>`<div class="overview-attribute"><span>${esc(l)}</span><b>${num(c.abilities[k])}</b><em>${signed(mod(c.abilities[k]))}</em></div>`).join('')}
+  renderOverviewAttributes(c);
   const core=document.getElementById('overviewCore');if(core){const entries=[['shield','CR',cr(c)],['star','Proficiência',signed(prof(c.level))],['move','Deslocamento',`${fmt(c.movement)} m`],['wave','Nado',`${fmt(c.swim)} m`],['eye','Percepção',10+skillTotal(c,'Percepção')],['dice','Dados de Vida',c.hitDice]];core.innerHTML=entries.map(([i,l,v])=>`<div class="ship-stat"><span class="ship-stat-icon"><span class="ui-icon i-${i}"></span></span><small>${l}</small><b>${v}</b></div>`).join('')}
-  const skills=document.getElementById('overviewSkills');if(skills){const q=(document.getElementById('overviewSkillSearch')?.value||'').trim().toLocaleLowerCase('pt-BR'),trained=n=>(c.skillProficienciesList||[]).includes(n)||c.backgroundSkill===n,rows=SKILLS.filter(([n])=>(skills.dataset.filter==='all'||trained(n))&&(!q||n.toLocaleLowerCase('pt-BR').includes(q)));skills.innerHTML=rows.length?rows.map(([n])=>`<div class="overview-skill ${trained(n)?'proficient':''}"><span>${esc(n)}</span><b>${signed(skillTotal(c,n))}</b></div>`).join(''):'<div class="skills-empty">'+(q?'Nenhuma perícia encontrada.': 'Nenhuma perícia treinada. Use “Todas” para consultar os bônus.')+'</div>';document.getElementById('overviewSkillsCount').textContent=rows.length+' / '+SKILLS.length;document.querySelectorAll('[data-skill-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.skillFilter===skills.dataset.filter)))}
-  const saves=document.getElementById('overviewSaves');if(saves){saves.innerHTML=ABILITIES.map(([k,l])=>{const p=c.saveProficiencies.includes(k),v=mod(c.abilities[k])+(p?prof(c.level):0);return `<div class="overview-save ${p?'proficient':''}"><span>${p?'◆':'◇'} ${esc(l)}</span><b>${signed(v)}</b></div>`}).join('')}
+  renderOverviewSkills(c);
+  renderOverviewSaves(c);
   const powers=document.getElementById('overviewPowers');if(powers){
     const active=(c.conditions||[]).length;
     const fruit=c.fruit?.name||'Nenhuma Akuma no Mi registrada';
@@ -3109,6 +3130,96 @@ function renderOverviewSummary(){
     powers.innerHTML=`<div class="power-summary"><small>Akuma no Mi</small><b>${esc(c.fruit?.name||'Não registrada')}</b>${c.fruit?.type?`<span>${esc(c.fruit.type)}</span>`:''}</div><div class="power-summary"><small>Haki</small><b>${esc(hakiNames.join(' · ')||'Não registrado')}</b></div><div class="power-summary ${active?'danger-summary':''}"><small>Condições</small><b>${active?esc(c.conditions.join(' · ')):'Nenhuma ativa'}</b></div>`;
   }
 }
+// The first page and the creation panel edit the same character values.
+function renderOverviewAttributes(c){
+  const box=document.getElementById('overviewAttributes');if(!box)return;
+  if(box.querySelectorAll('[data-overview-ability]').length!==ABILITIES.length){
+    box.innerHTML=ABILITIES.map(([key,label])=>`<div class="overview-attribute"><label for="overview-ability-${key}">${esc(label)}</label><input class="overview-ability-input" id="overview-ability-${key}" data-overview-ability="${key}" type="number" step="1" inputmode="numeric" aria-label="${esc(label)} — valor final"><em></em></div>`).join('');
+  }
+  ABILITIES.forEach(([key,label])=>{
+    const input=box.querySelector(`[data-overview-ability="${key}"]`);
+    const extra=speciesBonusFor(c,key)+backgroundBonusFor(c,key)+Math.max(0,num(c.avaBonuses[key]));
+    if(document.activeElement!==input)input.value=num(c.abilities[key]);
+    input.min=1+extra;input.max=30+extra;
+    input.title=`Editar ${label}. Os bônus de espécie, antecedente e AVA são mantidos.`;
+    input.parentElement.querySelector('em').textContent=signed(mod(c.abilities[key]));
+  });
+}
+function renderOverviewSkills(c){
+  const box=document.getElementById('overviewSkills');if(!box)return;
+  const query=(document.getElementById('overviewSkillSearch')?.value||'').trim().toLocaleLowerCase('pt-BR');
+  const trained=name=>c.skillProficienciesList.includes(name)||c.backgroundSkill===name;
+  const rows=SKILLS.filter(([name])=>(box.dataset.filter!=='trained'||trained(name))&&(!query||name.toLocaleLowerCase('pt-BR').includes(query)));
+  const signature=JSON.stringify(rows.map(([name])=>name));
+  if(box.dataset.rows!==signature){
+    box.dataset.rows=signature;
+    box.innerHTML=rows.length?rows.map(([name])=>`<label class="overview-skill"><input type="checkbox" data-overview-skill="${esc(name)}" aria-label="Proficiência em ${esc(name)}"><span>${esc(name)}</span><b></b></label>`).join(''):`<div class="skills-empty">${query?'Nenhuma perícia encontrada.':'Nenhuma perícia treinada. Use “Todas” para selecionar as proficiências.'}</div>`;
+  }
+  box.querySelectorAll('[data-overview-skill]').forEach(input=>{
+    const name=input.dataset.overviewSkill,fromBackground=c.backgroundSkill===name;
+    input.checked=trained(name);input.disabled=fromBackground;
+    input.title=fromBackground?'Proficiência recebida pelo antecedente. Altere o antecedente na Configuração.':'Marcar proficiência em '+name;
+    input.parentElement.classList.toggle('proficient',trained(name));
+    input.parentElement.querySelector('b').textContent=signed(skillTotal(c,name));
+  });
+  document.getElementById('overviewSkillsCount').textContent=rows.length+' / '+SKILLS.length;
+  document.querySelectorAll('[data-skill-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.skillFilter===box.dataset.filter)));
+}
+function renderOverviewSaves(c){
+  const box=document.getElementById('overviewSaves');if(!box)return;
+  if(box.querySelectorAll('[data-overview-save]').length!==ABILITIES.length){
+    box.innerHTML=ABILITIES.map(([key,label])=>`<label class="overview-save"><input type="checkbox" data-overview-save="${key}" aria-label="Proficiência na salvaguarda de ${esc(label)}"><span>${esc(label)}</span><b></b></label>`).join('');
+  }
+  box.querySelectorAll('[data-overview-save]').forEach(input=>{
+    const key=input.dataset.overviewSave,trained=c.saveProficiencies.includes(key);
+    input.checked=trained;input.parentElement.classList.toggle('proficient',trained);
+    input.parentElement.querySelector('b').textContent=signed(mod(c.abilities[key])+(trained?prof(c.level):0));
+  });
+}
+function setBaseAbilityValue(key,value){
+  if(!ABILITIES.some(([k])=>k===key))return;
+  const c=current();c.baseAbilities[key]=clamp(num(value,10),1,30);
+  recalcAbilities(c,true);renderAbilities();renderSkills();renderSaves();renderProgression();
+  renderCore();renderCombat();renderAttacks();renderTechniques();renderInventory();
+  renderTrainingHub();renderPageHeroes();renderUpgradeMetrics();renderOverviewSummary();saveState();
+}
+function setSkillProficiency(name,checked){
+  if(!SKILLS.some(([n])=>n===name))return;
+  const c=current();if(c.backgroundSkill===name){renderOverviewSkills(c);return;}
+  if(checked){if(!c.skillProficienciesList.includes(name))c.skillProficienciesList.push(name);}
+  else c.skillProficienciesList=c.skillProficienciesList.filter(n=>n!==name);
+  // Keep the legacy import field consistent when the last skill is unchecked.
+  c.skillProficiencies=c.skillProficienciesList.join(', ');
+  renderSkills();renderCore();renderCombatReference();renderOverviewSummary();saveState();
+}
+function setSaveProficiency(key,checked){
+  if(!ABILITIES.some(([k])=>k===key))return;
+  const c=current();
+  if(checked){if(!c.saveProficiencies.includes(key))c.saveProficiencies.push(key);}
+  else c.saveProficiencies=c.saveProficiencies.filter(k=>k!==key);
+  renderSaves();renderCombatReference();renderOverviewSummary();saveState();
+}
+function bindOverviewEditing(){
+  const attributes=document.getElementById('overviewAttributes');
+  attributes.addEventListener('change',event=>{
+    const input=event.target.closest('[data-overview-ability]');if(!input)return;
+    const c=current(),key=input.dataset.overviewAbility;
+    if(input.value.trim()===''||!Number.isFinite(Number(input.value))){input.value=num(c.abilities[key]);return;}
+    const extra=speciesBonusFor(c,key)+backgroundBonusFor(c,key)+Math.max(0,num(c.avaBonuses[key]));
+    const base=clamp(num(input.value)-extra,1,30);input.value=base+extra;
+    setBaseAbilityValue(key,base);
+  });
+  attributes.addEventListener('keydown',event=>{
+    if(event.key==='Enter'&&event.target.matches('[data-overview-ability]')){event.preventDefault();event.target.blur();}
+  });
+  document.getElementById('overviewSkills').addEventListener('change',event=>{
+    const input=event.target.closest('[data-overview-skill]');if(input)setSkillProficiency(input.dataset.overviewSkill,input.checked);
+  });
+  document.getElementById('overviewSaves').addEventListener('change',event=>{
+    const input=event.target.closest('[data-overview-save]');if(input)setSaveProficiency(input.dataset.overviewSave,input.checked);
+  });
+}
+
 function maxTechniqueGrade(level){level=clamp(Math.floor(num(level,1)),1,20);let grade=1;Object.entries(TECH_GRADE_RULES).forEach(([g,r])=>{if(level>=r.level)grade=Math.max(grade,num(g))});return grade}
 function renderPageHeroes(){const c=current();const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};set('combatHeroName',c.name||'Sem Nome');set('combatHeroStyle',c.style||'Sem estilo');set('combatHeroConditions',(c.conditions||[]).length);set('techHeroCount',(c.techniques||[]).length);set('techHeroPp',`${fmt(c.ppCurrent)} / ${fmt(c.ppMax)}`);set('techHeroGrade',`${maxTechniqueGrade(c.level)}º`);set('powersHeroFruit',c.fruit?.name||'Nenhuma');set('powersHeroStyle',c.style||'Sem estilo');set('powersHeroLevel',num(c.level,1))}
 function useTechniqueFromCombat(t){const c=current(),cost=Math.max(0,num(t.cost));if(c.ppCurrent<cost){toast('PP insuficiente.');return}c.ppCurrent-=cost;renderResources();renderTechniques();renderCombatTechniques();renderOverviewSummary();renderPageHeroes();saveState();addRoll(t.name,`Técnica ativada • custo ${cost} PP • PP restante ${c.ppCurrent}/${c.ppMax}`)}
@@ -3401,13 +3512,13 @@ function renderSpeciesOrigin(){const c=current(),sp=speciesData(c),bg=BACKGROUND
 function avaSpent(c){return ABILITIES.reduce((sum,[k])=>sum+Math.max(0,num(c.avaBonuses?.[k])),0)}
 function avaMaxFor(c,k){const allowed=avaPoints(c.level),current=Math.max(0,num(c.avaBonuses[k])),others=avaSpent(c)-current,base=num(c.baseAbilities[k],10)+speciesBonusFor(c,k)+backgroundBonusFor(c,k),capRoom=Math.max(0,abilityCap(c.level)-base);return Math.max(0,Math.min(capRoom,allowed-others))}
 function setAvaValue(c,k,value){const max=avaMaxFor(c,k);c.avaBonuses[k]=clamp(Math.floor(Math.max(0,num(value))),0,max);recalcAbilities(c,true);renderAbilities();renderSkills();renderCore();renderSaves();renderResources();renderCombat();renderCombatReference();renderAttacks();renderTechniques();renderCombatTechniques();renderInventory();renderAbilityCompendium();renderPageHeroes();renderOverviewSummary();saveState()}
-function renderAbilities(){const c=current();recalcAbilities(c,true);const box=document.getElementById('abilities');box.innerHTML='';const allowed=avaPoints(c.level),spent=avaSpent(c),cap=abilityCap(c.level),remaining=Math.max(0,allowed-spent);let warnings=[];ABILITIES.forEach(([k,label])=>{const total=num(c.abilities[k]),base=num(c.baseAbilities[k],10),sb=speciesBonusFor(c,k),bb=backgroundBonusFor(c,k),ava=Math.max(0,num(c.avaBonuses[k])),maxHere=avaMaxFor(c,k);if(total>cap)warnings.push(`${label} ${total} ultrapassa o limite ${cap} de AVA para este nível.`);const el=document.createElement('div');el.className='attribute-build-card';el.innerHTML=`<div class="attribute-build-head"><b>${label}</b><b class="attribute-build-total">${total} (${signed(mod(total))})</b></div><div class="attribute-components"><span>Valor base</span><input class="input" type="number" min="1" max="30" value="${base}" data-base-ability="${k}"><span>Espécie</span><strong>${signed(sb)}</strong><span>Antecedente</span><strong>${signed(bb)}</strong><span>AVA</span><div class="ava-stepper"><button type="button" data-ava-dec="${k}" ${ava<=0?'disabled':''}>−</button><input class="input" type="number" min="0" max="${maxHere}" value="${ava}" data-ava-ability="${k}"><button type="button" data-ava-inc="${k}" ${(remaining<=0||total>=cap)?'disabled':''}>＋</button></div></div>`;box.appendChild(el)});box.querySelectorAll('[data-base-ability]').forEach(el=>el.addEventListener('change',()=>{c.baseAbilities[el.dataset.baseAbility]=clamp(num(el.value,10),1,30);recalcAbilities(c,true);renderAbilities();renderSkills();renderCore();renderSaves();renderResources();renderCombatReference();renderOverviewSummary();saveState()}));box.querySelectorAll('[data-ava-ability]').forEach(el=>el.addEventListener('change',()=>setAvaValue(c,el.dataset.avaAbility,el.value)));box.querySelectorAll('[data-ava-inc]').forEach(btn=>btn.onclick=()=>setAvaValue(c,btn.dataset.avaInc,num(c.avaBonuses[btn.dataset.avaInc])+1));box.querySelectorAll('[data-ava-dec]').forEach(btn=>btn.onclick=()=>setAvaValue(c,btn.dataset.avaDec,num(c.avaBonuses[btn.dataset.avaDec])-1));const status=document.getElementById('avaStatus');document.getElementById('avaSpentDisplay').textContent=`${spent} / ${allowed} • ${remaining} livre${remaining===1?'':'s'}`;document.getElementById('abilityCapDisplay').textContent=cap;status.classList.toggle('over',spent>allowed);if(spent>allowed)warnings.unshift(`Você distribuiu ${spent} pontos de AVA, mas o nível ${c.level} libera ${allowed}.`);if(!allowed)warnings.push('O primeiro AVA é liberado no nível 4.');const w=document.getElementById('abilityWarning');w.hidden=!warnings.length;w.textContent=warnings.join(' ')}
-function renderSkills(){const c=current(),box=document.getElementById('skillsGrid');if(!box)return;box.innerHTML='';SKILLS.forEach(([name,defaultKey])=>{const explicit=(c.skillProficienciesList||[]).includes(name),fromBg=c.backgroundSkill===name,proficient=explicit||fromBg,key=skillAbilityKey(c,name,defaultKey),baseMod=skillBaseModifier(c,name,defaultKey),total=baseMod+(proficient?prof(c.level):0);const el=document.createElement('div');el.className='skill-card skill-card-v11'+(fromBg?' background-skill':'');const opts=ABILITIES.map(([k,l])=>`<option value="${k}" ${key===k?'selected':''}>${l}</option>`).join('')+`<option value="other" ${key==='other'?'selected':''}>Outros</option>`;el.innerHTML=`<input type="checkbox" data-skill="${esc(name)}" ${proficient?'checked':''} ${fromBg?'disabled':''}><div class="skill-main"><b>${esc(name)}</b><small>${skillAbilityLabel(c,name,defaultKey)} ${signed(baseMod)}${proficient?` • PROF ${signed(prof(c.level))}`:''}${fromBg?' • Antecedente':''}</small><div class="skill-calc-row"><select class="input skill-calc-select" data-skill-ability="${esc(name)}">${opts}</select>${key==='other'?`<label class="skill-other-wrap"><span>Valor</span><input class="input" type="number" data-skill-other="${esc(name)}" value="${num(c.skillOtherBonuses[name])}" step="1"></label>`:''}</div></div><span class="skill-total">${signed(total)}</span>`;box.appendChild(el)});box.querySelectorAll('[data-skill]:not(:disabled)').forEach(el=>el.addEventListener('change',()=>{const n=el.dataset.skill;if(el.checked){if(!c.skillProficienciesList.includes(n))c.skillProficienciesList.push(n)}else c.skillProficienciesList=c.skillProficienciesList.filter(x=>x!==n);renderSkills();renderCore();renderCombatReference();renderOverviewSummary();saveState()}));box.querySelectorAll('[data-skill-ability]').forEach(el=>el.addEventListener('change',()=>{c.skillAbilityOverrides[el.dataset.skillAbility]=el.value;renderSkills();renderCore();renderCombatReference();renderOverviewSummary();saveState()}));box.querySelectorAll('[data-skill-other]').forEach(el=>el.addEventListener('change',()=>{c.skillOtherBonuses[el.dataset.skillOther]=num(el.value);renderSkills();renderCore();renderCombatReference();renderOverviewSummary();saveState()}))}
-function renderSaves(){const c=current(),box=document.getElementById('savesGrid');if(!box)return;box.innerHTML='';ABILITIES.forEach(([k,label])=>{const proficient=c.saveProficiencies.includes(k),total=mod(c.abilities[k])+(proficient?prof(c.level):0);const el=document.createElement('label');el.className='save-card';el.innerHTML=`<input type="checkbox" ${proficient?'checked':''} data-save="${k}"><b>${label}</b><span>${signed(total)}</span>`;box.appendChild(el)});box.querySelectorAll('[data-save]').forEach(el=>el.addEventListener('change',()=>{if(el.checked){if(!c.saveProficiencies.includes(el.dataset.save))c.saveProficiencies.push(el.dataset.save)}else c.saveProficiencies=c.saveProficiencies.filter(x=>x!==el.dataset.save);renderSaves();renderCombatReference();renderOverviewSummary();saveState()}))}
+function renderAbilities(){const c=current();recalcAbilities(c,true);const box=document.getElementById('abilities');box.innerHTML='';const allowed=avaPoints(c.level),spent=avaSpent(c),cap=abilityCap(c.level),remaining=Math.max(0,allowed-spent);let warnings=[];ABILITIES.forEach(([k,label])=>{const total=num(c.abilities[k]),base=num(c.baseAbilities[k],10),sb=speciesBonusFor(c,k),bb=backgroundBonusFor(c,k),ava=Math.max(0,num(c.avaBonuses[k])),maxHere=avaMaxFor(c,k);if(total>cap)warnings.push(`${label} ${total} ultrapassa o limite ${cap} de AVA para este nível.`);const el=document.createElement('div');el.className='attribute-build-card';el.innerHTML=`<div class="attribute-build-head"><b>${label}</b><b class="attribute-build-total">${total} (${signed(mod(total))})</b></div><div class="attribute-components"><span>Valor base</span><input class="input" type="number" min="1" max="30" value="${base}" data-base-ability="${k}"><span>Espécie</span><strong>${signed(sb)}</strong><span>Antecedente</span><strong>${signed(bb)}</strong><span>AVA</span><div class="ava-stepper"><button type="button" data-ava-dec="${k}" ${ava<=0?'disabled':''}>−</button><input class="input" type="number" min="0" max="${maxHere}" value="${ava}" data-ava-ability="${k}"><button type="button" data-ava-inc="${k}" ${(remaining<=0||total>=cap)?'disabled':''}>＋</button></div></div>`;box.appendChild(el)});box.querySelectorAll('[data-base-ability]').forEach(el=>el.addEventListener('change',()=>setBaseAbilityValue(el.dataset.baseAbility,el.value)));box.querySelectorAll('[data-ava-ability]').forEach(el=>el.addEventListener('change',()=>setAvaValue(c,el.dataset.avaAbility,el.value)));box.querySelectorAll('[data-ava-inc]').forEach(btn=>btn.onclick=()=>setAvaValue(c,btn.dataset.avaInc,num(c.avaBonuses[btn.dataset.avaInc])+1));box.querySelectorAll('[data-ava-dec]').forEach(btn=>btn.onclick=()=>setAvaValue(c,btn.dataset.avaDec,num(c.avaBonuses[btn.dataset.avaDec])-1));const status=document.getElementById('avaStatus');document.getElementById('avaSpentDisplay').textContent=`${spent} / ${allowed} • ${remaining} livre${remaining===1?'':'s'}`;document.getElementById('abilityCapDisplay').textContent=cap;status.classList.toggle('over',spent>allowed);if(spent>allowed)warnings.unshift(`Você distribuiu ${spent} pontos de AVA, mas o nível ${c.level} libera ${allowed}.`);if(!allowed)warnings.push('O primeiro AVA é liberado no nível 4.');const w=document.getElementById('abilityWarning');w.hidden=!warnings.length;w.textContent=warnings.join(' ')}
+function renderSkills(){const c=current(),box=document.getElementById('skillsGrid');if(!box)return;box.innerHTML='';SKILLS.forEach(([name,defaultKey])=>{const explicit=(c.skillProficienciesList||[]).includes(name),fromBg=c.backgroundSkill===name,proficient=explicit||fromBg,key=skillAbilityKey(c,name,defaultKey),baseMod=skillBaseModifier(c,name,defaultKey),total=baseMod+(proficient?prof(c.level):0);const el=document.createElement('div');el.className='skill-card skill-card-v11'+(fromBg?' background-skill':'');const opts=ABILITIES.map(([k,l])=>`<option value="${k}" ${key===k?'selected':''}>${l}</option>`).join('')+`<option value="other" ${key==='other'?'selected':''}>Outros</option>`;el.innerHTML=`<input type="checkbox" data-skill="${esc(name)}" ${proficient?'checked':''} ${fromBg?'disabled':''}><div class="skill-main"><b>${esc(name)}</b><small>${skillAbilityLabel(c,name,defaultKey)} ${signed(baseMod)}${proficient?` • PROF ${signed(prof(c.level))}`:''}${fromBg?' • Antecedente':''}</small><div class="skill-calc-row"><select class="input skill-calc-select" data-skill-ability="${esc(name)}">${opts}</select>${key==='other'?`<label class="skill-other-wrap"><span>Valor</span><input class="input" type="number" data-skill-other="${esc(name)}" value="${num(c.skillOtherBonuses[name])}" step="1"></label>`:''}</div></div><span class="skill-total">${signed(total)}</span>`;box.appendChild(el)});box.querySelectorAll('[data-skill]:not(:disabled)').forEach(el=>el.addEventListener('change',()=>setSkillProficiency(el.dataset.skill,el.checked)));box.querySelectorAll('[data-skill-ability]').forEach(el=>el.addEventListener('change',()=>{c.skillAbilityOverrides[el.dataset.skillAbility]=el.value;renderSkills();renderCore();renderCombatReference();renderOverviewSummary();saveState()}));box.querySelectorAll('[data-skill-other]').forEach(el=>el.addEventListener('change',()=>{c.skillOtherBonuses[el.dataset.skillOther]=num(el.value);renderSkills();renderCore();renderCombatReference();renderOverviewSummary();saveState()}))}
+function renderSaves(){const c=current(),box=document.getElementById('savesGrid');if(!box)return;box.innerHTML='';ABILITIES.forEach(([k,label])=>{const proficient=c.saveProficiencies.includes(k),total=mod(c.abilities[k])+(proficient?prof(c.level):0);const el=document.createElement('label');el.className='save-card';el.innerHTML=`<input type="checkbox" ${proficient?'checked':''} data-save="${k}"><b>${label}</b><span>${signed(total)}</span>`;box.appendChild(el)});box.querySelectorAll('[data-save]').forEach(el=>el.addEventListener('change',()=>setSaveProficiency(el.dataset.save,el.checked)))}
 function pulseResourceFill(id){const el=document.getElementById(id);if(!el)return;el.classList.remove('resource-pulse');void el.offsetWidth;el.classList.add('resource-pulse');setTimeout(()=>el.classList.remove('resource-pulse'),380)}
 function renderResources(){const c=current();const prev=c.__resourceView||{};[['hp','hpCurrent','hpMax','hpText','hpFill'],['pp','ppCurrent','ppMax','ppText','ppFill'],['amb','ambCurrent','ambMax','ambText','ambFill']].forEach(([prefix,ck,mk,tx,fl])=>{const cur=Math.max(0,num(c[ck])),max=Math.max(0,num(c[mk]));c[ck]=max?clamp(cur,0,max):cur;document.getElementById(ck).value=c[ck];document.getElementById(mk).value=max;document.getElementById(tx).textContent=`${fmt(c[ck])} / ${fmt(max)}`;document.getElementById(fl).style.width=pct(c[ck],max)+'%';if(prev[ck]!==undefined&&prev[ck]!==c[ck])pulseResourceFill(fl)});document.getElementById('hudHpText').textContent=`${fmt(c.hpCurrent)} / ${fmt(c.hpMax)}`;document.getElementById('hudPpText').textContent=`${fmt(c.ppCurrent)} / ${fmt(c.ppMax)}`;document.getElementById('hudHpFill').style.width=pct(c.hpCurrent,c.hpMax)+'%';document.getElementById('hudPpFill').style.width=pct(c.ppCurrent,c.ppMax)+'%';if(prev.hpCurrent!==undefined&&prev.hpCurrent!==c.hpCurrent)pulseResourceFill('hudHpFill');if(prev.ppCurrent!==undefined&&prev.ppCurrent!==c.ppCurrent)pulseResourceFill('hudPpFill');c.__resourceView={hpCurrent:c.hpCurrent,ppCurrent:c.ppCurrent,ambCurrent:c.ambCurrent};renderPageHeroes();renderCombatTechniques();updateSessionLimits();renderOverviewSummary()}
 function renderCore(){const c=current(),p=prof(c.level),base=10+crBaseModifier(c),capacity=carry(c),sp=speciesData(c),tp=trainingPoints(c);const profEl=document.getElementById('profDisplay');if(profEl)profEl.textContent=signed(p);document.getElementById('techProf').textContent=signed(p);document.getElementById('baseCrDisplay').textContent=base;document.getElementById('crDisplay').textContent=cr(c);document.getElementById('carryDisplay').textContent=`${fmt(capacity)} kg`;document.getElementById('moveDisplay').textContent=`${fmt(c.movement)} m`;document.getElementById('swimDisplay').textContent=`${fmt(c.swim)} m`;document.getElementById('bountyDisplay').textContent=money(c.bounty);document.getElementById('bountyChip').textContent=money(c.bounty);document.getElementById('crBonusText').textContent=signed(c.crBonus);document.getElementById('passivePerceptionDisplay').textContent=10+skillTotal(c,'Percepção');document.getElementById('trainingPointsDisplay').textContent=`${tp} PT livres`;const crOther=document.getElementById('crOtherField');if(crOther)crOther.hidden=c.crAbility!=='other';const formula=document.getElementById('crFormulaText');if(formula)formula.textContent=c.crAbility==='other'?`CR Base = 10 + Outros (${signed(c.crOtherMod)})`:`CR Base = 10 + ${abilityLabel(c.crAbility||'des').toUpperCase()}`;}
-function renderCombatReference(){const c=current(),key=c.combatAbility||'for',m=mod(c.abilities[key]),p=prof(c.level);const hit=m+p,dt=8+m+p;const hitEl=document.getElementById('combatHitCore'),crEl=document.getElementById('combatCrCore'),dtEl=document.getElementById('combatDtCore'),prEl=document.getElementById('combatProfCore');if(hitEl)hitEl.textContent=signed(hit);if(crEl)crEl.textContent=cr(c);if(dtEl)dtEl.textContent=dt;if(prEl)prEl.textContent=signed(p);const saves=document.getElementById('combatSaveList');if(saves)saves.innerHTML=ABILITIES.map(([k,l])=>{const trained=c.saveProficiencies.includes(k),v=mod(c.abilities[k])+(trained?p:0);return `<div class="combat-save-chip ${trained?'trained':''}"><div><span>${esc(l)}</span><small>${trained?'Treinada':'Não treinada'}</small></div><b>${signed(v)}</b></div>`}).join('');const skills=document.getElementById('combatTrainedSkills');if(skills){const trained=SKILLS.filter(([n])=>(c.skillProficienciesList||[]).includes(n)||c.backgroundSkill===n);skills.innerHTML=trained.length?trained.map(([n,k])=>{const fromBg=c.backgroundSkill===n;return `<div class="combat-skill-chip"><div><span>${esc(n)}</span><small>${esc(skillAbilityLabel(c,n,k))}${fromBg?' • Antecedente':''}</small></div><b>${signed(skillTotal(c,n))}</b></div>`}).join(''):'<div class="combat-empty-training">Nenhuma perícia treinada registrada. Marque as perícias na aba Configuração.</div>'}}
+function renderCombatReference(){const c=current(),key=c.combatAbility||'for',m=mod(c.abilities[key]),p=prof(c.level);const hit=m+p,dt=8+m+p;const hitEl=document.getElementById('combatHitCore'),crEl=document.getElementById('combatCrCore'),dtEl=document.getElementById('combatDtCore'),prEl=document.getElementById('combatProfCore');if(hitEl)hitEl.textContent=signed(hit);if(crEl)crEl.textContent=cr(c);if(dtEl)dtEl.textContent=dt;if(prEl)prEl.textContent=signed(p);const saves=document.getElementById('combatSaveList');if(saves)saves.innerHTML=ABILITIES.map(([k,l])=>{const trained=c.saveProficiencies.includes(k),v=mod(c.abilities[k])+(trained?p:0);return `<div class="combat-save-chip ${trained?'trained':''}"><div><span>${esc(l)}</span><small>${trained?'Treinada':'Não treinada'}</small></div><b>${signed(v)}</b></div>`}).join('');const skills=document.getElementById('combatTrainedSkills');if(skills){const trained=SKILLS.filter(([n])=>(c.skillProficienciesList||[]).includes(n)||c.backgroundSkill===n);skills.innerHTML=trained.length?trained.map(([n,k])=>{const fromBg=c.backgroundSkill===n;return `<div class="combat-skill-chip"><div><span>${esc(n)}</span><small>${esc(skillAbilityLabel(c,n,k))}${fromBg?' • Antecedente':''}</small></div><b>${signed(skillTotal(c,n))}</b></div>`}).join(''):'<div class="combat-empty-training">Nenhuma perícia treinada registrada. Marque as proficiências na primeira página da ficha.</div>'}}
 function weaponAttackBonus(item,c){return attackBonus({ability:item.attackAbility||'for',proficient:item.proficient!==false,extraBonus:num(item.extraBonus)},c)}
 function weaponDamageExpression(item,c){return damageExpression({damage:item.damage||'1d6',damageAbility:item.damageAbility||item.attackAbility||'for'},c)}
 function rollWeapon(item){const c=current(),d20=rollDie(20),bonus=weaponAttackBonus(item,c),hit=d20+bonus,dmg=rollExpr(weaponDamageExpression(item,c));addRoll(item.name||'Arma',`Acerto: d20 ${d20} ${bonus>=0?'+':''}${bonus} = ${hit} • Dano: ${dmg.total} (${dmg.parts}) ${item.damageType||''}`)}
@@ -3538,6 +3649,7 @@ function renderActiveConditions(){
   }));
 }
 function bindCleanLayout(){
+  bindOverviewEditing();
   document.querySelectorAll('[data-config-view]').forEach(button=>{
     button.addEventListener('click',()=>selectConfigView(button.dataset.configView));
     button.addEventListener('keydown',event=>{
