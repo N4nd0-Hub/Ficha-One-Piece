@@ -2489,6 +2489,51 @@ body.clear-sheet[data-theme] .overview-skill>input:focus-visible,body.clear-shee
 @media(prefers-reduced-motion:reduce){#page-ship *,#page-ship *::before,#page-ship *::after{transition:none!important;scroll-behavior:auto!important}}
 
 </style>
+<style id="naval-rooms-style">
+/* Salas do navio — custo normal e aprimorado. */
+#page-ship .naval-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+#page-ship .naval-part-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+#page-ship #shipView-rooms,#page-ship #shipRoomDetails{scroll-margin-top:85px}
+#page-ship .naval-room-summary{display:grid;grid-template-columns:minmax(220px,1.5fr) minmax(170px,1fr);border:1px solid var(--line);border-radius:9px;background:var(--panel);margin-bottom:22px;overflow:hidden}
+#page-ship .naval-room-summary .naval-capacity>div:first-child{flex-wrap:wrap}
+#page-ship .naval-room-rule{border-left:1px solid var(--line);padding:20px 22px;display:flex;flex-direction:column;justify-content:center;gap:8px;color:var(--muted);font-size:11px;line-height:1.6}
+#page-ship .naval-room-rule b{color:var(--gold2);font-weight:600}
+#page-ship .naval-room-rule>small{font-size:10px}
+#page-ship .naval-room-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;align-items:stretch}
+#page-ship .naval-room-grid>.naval-empty{grid-column:1/-1}
+#page-ship .naval-room-grid>.naval-empty>.ui-icon{height:40px;width:40px;color:var(--gold)}
+#page-ship .naval-room-card{display:flex;flex-direction:column;padding:20px;border:1px solid var(--line);border-radius:9px;background:var(--panel);min-width:0;gap:17px}
+#page-ship .naval-room-card.upgraded{border-color:var(--naval-border);background:var(--naval-soft)}
+#page-ship .naval-room-card.damaged{border-color:color-mix(in srgb,var(--red) 40%,var(--line))}
+#page-ship .naval-room-card-head{display:flex;align-items:flex-start;gap:10px;min-width:0;flex-wrap:wrap}
+#page-ship .naval-room-card-head>.naval-item-icon .ui-icon{width:18px;height:18px}
+#page-ship .naval-room-card-head>div{flex:1;min-width:100px}
+#page-ship .naval-room-card-head small{display:block;font-size:9px;color:var(--muted);line-height:1.5;margin-bottom:5px;overflow-wrap:anywhere}
+#page-ship .naval-room-card-head h4{margin:0;color:var(--text);font-size:15px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+#page-ship .naval-room-card-head>.naval-stamp{font-size:9px;padding:4px 6px}
+#page-ship .naval-room-effects{flex:1;min-width:0}
+#page-ship .naval-room-effects>.naval-sidebar-label{font-size:8px}
+#page-ship .naval-room-effects>p{font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text);margin:9px 0 0}
+#page-ship .naval-room-effects>p.unfilled{color:var(--muted);font-size:11px;font-style:italic}
+#page-ship .naval-room-cargo{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line);font-size:10px;color:var(--muted)}
+#page-ship .naval-room-cargo b{color:var(--text);font-weight:550}
+#page-ship .naval-room-card-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:13px;border-top:1px solid var(--line)}
+#page-ship .naval-room-upgrade{display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--muted);font-size:10px;line-height:1.5}
+#page-ship .naval-room-upgrade input,#page-ship #shipRoomUpgraded{accent-color:var(--gold);width:15px;height:15px;flex:0 0 15px;margin:0}
+#page-ship .naval-room-card-controls .input{width:110px;min-height:33px;padding:6px;font-size:10px}
+#page-ship .naval-room-card-actions{display:flex;justify-content:space-between;gap:9px;align-items:center}
+#page-ship .naval-room-card-actions>.naval-btn{flex:1}
+#page-ship .naval-room-editor{margin-top:22px!important}
+#page-ship .naval-room-editor>summary{font-family:var(--atlas-display,Georgia,serif);font-size:17px!important}
+#page-ship .naval-upgrade-option{display:flex;align-items:center;gap:12px;border:1px solid var(--naval-border);background:var(--naval-soft);padding:14px;border-radius:7px;cursor:pointer}
+#page-ship .naval-upgrade-option>span:nth-child(2){flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+#page-ship .naval-upgrade-option b{font-size:12px;color:var(--text);font-weight:600}
+#page-ship .naval-upgrade-option small{color:var(--muted);font-size:10px;line-height:1.5}
+#page-ship .naval-room-editor .naval-disclosure-body{padding-top:5px}
+@media(max-width:760px){#page-ship .naval-tabs>button{font-size:11px;gap:8px}#page-ship .naval-tabs>button>.ui-icon{width:19px;height:19px;flex-basis:19px}#page-ship .naval-tabs>button small{font-size:8px}#page-ship .naval-room-grid{grid-template-columns:repeat(auto-fill,minmax(235px,1fr))}#page-ship .naval-room-rule{padding:16px;font-size:10px}}
+@media(max-width:480px){#page-ship .naval-tabs>button{font-size:9px;padding:14px 2px;gap:6px}#page-ship .naval-room-summary{grid-template-columns:1fr}#page-ship .naval-room-rule{border-left:0;border-top:1px solid var(--line);padding:13px 17px;gap:5px}#page-ship .naval-room-grid{grid-template-columns:1fr}#page-ship .naval-room-card{padding:17px;gap:15px}#page-ship .naval-upgrade-option{gap:10px;flex-wrap:wrap;padding:12px}#page-ship .naval-upgrade-option>.naval-stamp{margin-left:25px}#page-ship .naval-room-editor .input{font-size:16px}#page-ship .naval-room-card-controls .input{font-size:11px}#page-ship .naval-room-editor .naval-form-grid>.field:first-child{grid-column:1/-1}#page-ship .naval-room-editor .naval-form-grid>.field:nth-child(2){grid-column:1/-1}}
+
+</style>
 </head>
 <body data-theme="rosalya" class="clear-sheet nautical-sheet">
 <header class="topbar">
@@ -3036,6 +3081,7 @@ body.clear-sheet[data-theme] .overview-skill>input:focus-visible,body.clear-shee
         </header>
         <div class="naval-tabs" role="tablist" aria-label="Áreas do navio">
           <button type="button" role="tab" id="shipTab-storage" aria-controls="shipView-storage" aria-selected="true" data-ship-view="storage"><span class="ui-icon i-bag" aria-hidden="true"></span><span>Armazenamento<small>Carga e provisões</small></span><span class="naval-tab-count" id="shipCargoTabCount">0</span></button>
+          <button type="button" role="tab" id="shipTab-rooms" aria-controls="shipView-rooms" aria-selected="false" tabindex="-1" data-ship-view="rooms"><span class="ui-icon i-room" aria-hidden="true"></span><span>Salas<small>Aposentos e efeitos</small></span><span class="naval-tab-count" id="shipRoomsTabCount">0</span></button>
           <button type="button" role="tab" id="shipTab-structure" aria-controls="shipView-structure" aria-selected="false" tabindex="-1" data-ship-view="structure"><span class="ui-icon i-beam" aria-hidden="true"></span><span>Estrutura<small>Projeto e melhorias</small></span></button>
           <button type="button" role="tab" id="shipTab-combat" aria-controls="shipView-combat" aria-selected="false" tabindex="-1" data-ship-view="combat"><span class="ui-icon i-cannon" aria-hidden="true"></span><span>Combate<small>Manobras e arsenal</small></span></button>
         </div>
@@ -3057,13 +3103,19 @@ body.clear-sheet[data-theme] .overview-skill>input:focus-visible,body.clear-shee
           </div>
         </div>
 
+        <div class="naval-view" id="shipView-rooms" role="tabpanel" aria-labelledby="shipTab-rooms" hidden>
+          <div class="naval-section-heading"><div><span class="naval-eyebrow">A vida a bordo</span><h3>Salas &amp; aposentos</h3><p>Um espaço para descansar, cozinhar, cuidar da tripulação e guardar provisões.</p></div><button class="naval-btn primary" type="button" data-ship-action="new-room"><span aria-hidden="true">+</span> Adicionar sala</button></div>
+          <div class="naval-room-summary"><div class="naval-capacity" id="shipRoomsCapacity"><div><span>Espaços de sala</span><b id="shipRoomsUsage">1 / 3 espaços de sala</b></div><div class="naval-meter" role="meter" id="shipRoomsMeter" aria-label="Ocupação dos espaços de sala" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1"><span id="shipRoomsFill"></span></div><small id="shipRoomsSpaceHint">2 espaços disponíveis</small></div><div class="naval-room-rule"><span>Sala comum: <b>1 espaço</b> · Aprimorada: <b>2 espaços</b></span><small><span id="shipRoomsCount">1 sala construída</span> · <span id="shipRoomsUpgradedCount">0 aprimoradas</span></small></div></div>
+          <div id="shipRoomsBody"></div>
+        </div>
+
         <div class="naval-view" id="shipView-structure" role="tabpanel" aria-labelledby="shipTab-structure" hidden>
-          <div class="naval-section-heading"><div><span class="naval-eyebrow">Estaleiro</span><h3>Da quilha ao mastro</h3><p>Identidade, construção e tudo o que faz seu navio único.</p></div><span class="naval-stamp" id="shipRoomStat">1 / 3 espaços de sala</span></div>
+          <div class="naval-section-heading"><div><span class="naval-eyebrow">Estaleiro</span><h3>Da quilha ao mastro</h3><p>Identidade, construção e tudo o que faz seu navio único.</p></div><button class="naval-btn subtle" type="button" data-ship-action="manage-rooms"><span class="ui-icon i-room" aria-hidden="true"></span><span id="shipRoomStat">1 / 3 espaços de sala</span><span aria-hidden="true">↗</span></button></div>
           <div class="naval-structure-top">
             <section class="naval-art-panel"><div class="naval-art" id="shipCanvas"><div class="naval-art-empty" id="shipArtEmpty"><svg viewBox="0 0 320 220" fill="none" aria-hidden="true"><path d="M45 154h233l-30 29H78zM159 31v123M147 47 89 137h58zM171 52l68 85h-68zM158 31l28 8-28 9M37 195c15-12 26 12 41 0s26 12 41 0 26 12 41 0 26 12 41 0 26 12 41 0 26 12 41 0"/><circle cx="95" cy="166" r="3"/><circle cx="123" cy="166" r="3"/><circle cx="151" cy="166" r="3"/><path d="M30 112h25M42 100v24M268 52h20M278 42v20"/></svg><b>Seu navio, sua bandeira.</b><span>Adicione a arte da embarcação.</span></div><img id="shipArtImage" alt="Arte do navio" hidden></div><details class="naval-disclosure naval-art-controls"><summary>Imagem da embarcação</summary><div class="naval-disclosure-body"><div class="field"><label for="shipImageUrl">URL da imagem</label><input class="input" id="shipImageUrl" type="url" placeholder="https://…"></div><div class="naval-actions"><button class="naval-btn" type="button" id="shipApplyImageUrl">Aplicar URL</button><button class="naval-btn" type="button" id="shipUploadImageBtn">Enviar imagem</button><input type="file" id="shipImageInput" accept="image/*" hidden></div><div class="naval-image-sliders"><label for="shipImageZoom">Zoom<input id="shipImageZoom" type="range" min="0.5" max="3" step="0.01"></label><label for="shipImageX">Horizontal<input id="shipImageX" type="range" min="-65" max="65" step="1"></label><label for="shipImageY">Vertical<input id="shipImageY" type="range" min="-65" max="65" step="1"></label></div><div class="naval-actions"><button class="naval-btn" type="button" id="shipImageFit">Mostrar inteira</button><button class="naval-btn" type="button" id="shipImageCenter">Centralizar</button></div></div></details></section>
             <section class="naval-panel naval-registry"><div class="naval-panel-heading"><div><span class="naval-eyebrow">Registro da embarcação</span><h4>Nome &amp; bandeira</h4></div><span class="ui-icon i-ship" aria-hidden="true"></span></div><div class="naval-form-grid"><div class="field full"><label for="shipNameInput">Nome do navio</label><input class="input ship-bind" data-ship-key="name" id="shipNameInput" placeholder="Nome da embarcação"></div><div class="field"><label for="shipTitleInput">Apelido / título</label><input class="input ship-bind" data-ship-key="title" id="shipTitleInput"></div><div class="field"><label for="shipCaptainInput">Capitão</label><input class="input ship-bind" data-ship-key="captain" id="shipCaptainInput"></div><div class="field"><label for="shipPortInput">Porto de origem</label><input class="input ship-bind" data-ship-key="port" id="shipPortInput"></div><div class="field"><label for="shipBuilderInput">Construtor</label><input class="input ship-bind" data-ship-key="builder" id="shipBuilderInput"></div><div class="field"><label for="shipJollyInput">Jolly Roger / bandeira</label><input class="input ship-bind" data-ship-key="jolly" id="shipJollyInput"></div><div class="field"><label for="shipCrewInput">Tripulação atual</label><input class="input ship-bind" data-ship-key="crewCurrent" id="shipCrewInput" type="number" min="0" step="1"><small id="shipCrewRecommended"></small></div></div><div class="naval-class-section"><span class="naval-sidebar-label">Classe da embarcação</span><div class="naval-class-options" id="shipClassButtons"><button type="button" data-ship-class="Leve"><b>Leve</b><small>Ágil</small></button><button type="button" data-ship-class="Média"><b>Média</b><small>Equilibrada</small></button><button type="button" data-ship-class="Pesada"><b>Pesada</b><small>Colosso</small></button></div><p class="naval-help">A classe define os valores base de integridade, resistência, manobra, salas e carga.</p></div><details class="naval-disclosure" id="shipParameters"><summary>Parâmetros personalizados</summary><div class="naval-disclosure-body naval-form-grid"><div class="field"><label for="shipBaseIntegrity">Integridade base</label><input class="input ship-bind" data-ship-key="baseIntegrity" id="shipBaseIntegrity" type="number" min="1"></div><div class="field"><label for="shipBaseResistance">Resistência base</label><input class="input ship-bind" data-ship-key="baseResistance" id="shipBaseResistance" type="number"></div><div class="field"><label for="shipBaseSpeed">Velocidade base (km/h)</label><input class="input ship-bind" data-ship-key="baseSpeed" id="shipBaseSpeed" type="number" min="0"></div><div class="field"><label for="shipBaseManeuver">Manobrabilidade base</label><input class="input ship-bind" data-ship-key="baseManeuver" id="shipBaseManeuver" type="number"></div><div class="field"><label for="shipBaseCR">CR base</label><input class="input ship-bind" data-ship-key="baseCR" id="shipBaseCR" type="number"></div><div class="field"><label for="shipRoomMax">Espaços de sala base</label><input class="input ship-bind" data-ship-key="roomMax" id="shipRoomMax" type="number" min="0"></div><div class="field"><label for="shipCargoSafe">Carga segura base</label><input class="input ship-bind" data-ship-key="cargoSafe" id="shipCargoSafe" type="number" min="0" step="0.5"></div><div class="field"><label for="shipComfort">Conforto (0 a 5)</label><input class="input ship-bind" data-ship-key="comfort" id="shipComfort" type="number" min="0" max="5"><small id="shipComfortText">Básico</small></div></div></details></section>
           </div>
-          <section class="naval-panel naval-workbench" id="shipWorkbench"><div class="naval-part-tabs" role="group" aria-label="Partes da estrutura"><button type="button" data-ship-part="hull"><span class="ui-icon i-hull" aria-hidden="true"></span>Casco</button><button type="button" data-ship-part="sails"><span class="ui-icon i-sail" aria-hidden="true"></span>Velas</button><button type="button" data-ship-part="structure"><span class="ui-icon i-beam" aria-hidden="true"></span>Componentes</button><button type="button" data-ship-part="rooms"><span class="ui-icon i-room" aria-hidden="true"></span>Salas</button></div><div class="naval-workbench-content"><div class="naval-panel-heading"><div><h4 id="shipWorkbenchTitle">Casco &amp; material</h4><p id="shipWorkbenchSubtitle"></p></div></div><div id="shipWorkbenchBody"></div></div></section>
+          <section class="naval-panel naval-workbench" id="shipWorkbench"><div class="naval-part-tabs" role="group" aria-label="Partes da estrutura"><button type="button" data-ship-part="hull"><span class="ui-icon i-hull" aria-hidden="true"></span>Casco</button><button type="button" data-ship-part="sails"><span class="ui-icon i-sail" aria-hidden="true"></span>Velas</button><button type="button" data-ship-part="structure"><span class="ui-icon i-beam" aria-hidden="true"></span>Componentes</button></div><div class="naval-workbench-content"><div class="naval-panel-heading"><div><h4 id="shipWorkbenchTitle">Casco &amp; material</h4><p id="shipWorkbenchSubtitle"></p></div></div><div id="shipWorkbenchBody"></div></div></section>
           <div class="naval-structure-extras"><details class="naval-disclosure naval-panel"><summary>Características &amp; bônus <span id="shipSpecialCount">0</span></summary><div class="naval-disclosure-body"><div class="naval-effects" id="shipBonusStrip"></div><h4>Características especiais</h4><div id="shipSpecialList" class="naval-record-list"></div><form id="shipSpecialForm" class="naval-inline-form"><div class="naval-form-grid"><div class="field"><label for="shipSpecialName">Nome</label><input class="input" id="shipSpecialName" required></div><div class="field"><label for="shipSpecialOrigin">Origem</label><input class="input" id="shipSpecialOrigin"></div><div class="field full"><label for="shipSpecialEffect">Efeito</label><textarea class="input" id="shipSpecialEffect" rows="2"></textarea></div></div><button class="naval-btn" type="submit" id="shipAddSpecial">Adicionar característica</button></form></div></details><details class="naval-disclosure naval-panel"><summary>Diário da embarcação</summary><div class="naval-disclosure-body"><div class="field"><label for="shipDescription">Descrição</label><textarea class="input ship-bind" data-ship-key="description" id="shipDescription" rows="4" placeholder="Aparência, bandeira, detalhes marcantes…"></textarea></div><div class="field"><label for="shipHistory">História &amp; feitos</label><textarea class="input ship-bind" data-ship-key="history" id="shipHistory" rows="5"></textarea></div></div></details></div>
         </div>
 
@@ -3591,28 +3643,129 @@ const SHIP_CLASSES={
   'Pesada':{integrity:500,resistance:5,rooms:20,cargo:200,speedMin:75,speedMax:100,maneuver:-2,crewMin:50,crewMax:100,trait:'Colosso',wind:'Não recebe penalidade natural contra o vento.'}
 };
 const SHIP_ROOM_PRESETS={
-  'Armazenamento Pequeno':{spaces:1,capacity:15,effect:'Estável: mantém temperatura estável sem equipamento adicional.'},
-  'Armazenamento Médio':{spaces:2,capacity:40,effect:'Armazenamento amplo; alimentos exigem refrigeração.'},
-  'Armazenamento Grande':{spaces:3,capacity:50,effect:'Aceita expansão de capacidade; alimentos exigem refrigeração.'},
-  'Arsenal':{spaces:1,capacity:30,effect:'Armazena munição corretamente. Característica: Inflamável.'},
-  'Sala de Navegação':{spaces:1,capacity:0,effect:'Ajuda testes do Navegador.'},
-  'Oficina':{spaces:1,capacity:0,effect:'Melhora Reparos.'},
-  'Enfermaria':{spaces:1,capacity:0,effect:'Ajuda recuperação de feridos.'},
-  'Cozinha':{spaces:1,capacity:0,effect:'Ajuda alimentação e autonomia.'},
-  'Biblioteca':{spaces:1,capacity:0,effect:'Ajuda pesquisas durante viagens.'},
-  'Aquário':{spaces:1,capacity:0,effect:'Armazena peixes vivos e recursos.'},
-  'Prisão':{spaces:1,capacity:0,effect:'Mantém prisioneiros.'},
-  'Cofre':{spaces:1,capacity:0,effect:'Protege dinheiro e tesouros.'},
-  'Ninho do Corvo':{spaces:1,capacity:0,effect:'Ajuda Vigilância.'},
-  'Sala de Treinamento':{spaces:1,capacity:0,effect:'Permite treinamentos durante viagens.'},
-  'Sala das Máquinas':{spaces:1,capacity:0,effect:'Necessária para certos motores.'},
-  'Dormitórios':{spaces:1,capacity:0,effect:'Aumenta Conforto e capacidade adequada de tripulantes.'},
-  'Banheiros':{spaces:1,capacity:0,effect:'Aumenta Conforto.'},
-  'Refeitório':{spaces:1,capacity:0,effect:'Aumenta Conforto e organização da tripulação.'},
-  'Personalizada':{spaces:1,capacity:0,effect:''}
+  "Quartos": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Sala do Capitão": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Cozinha": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Enfermaria": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Armazenamento de Comida": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Armazenamento de Água": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Armazenamento": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Arsenal": {
+    "spaces": 1,
+    "capacity": 30,
+    "effect": ""
+  },
+  "Sala de Navegação": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Oficina": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Biblioteca": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Aquário": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Prisão": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Cofre": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Ninho do Corvo": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Sala de Treinamento": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Sala das Máquinas": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Dormitórios": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Banheiros": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Refeitório": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  },
+  "Armazenamento Pequeno": {
+    "spaces": 1,
+    "capacity": 15,
+    "effect": ""
+  },
+  "Armazenamento Médio": {
+    "spaces": 1,
+    "capacity": 40,
+    "effect": ""
+  },
+  "Armazenamento Grande": {
+    "spaces": 1,
+    "capacity": 50,
+    "effect": ""
+  },
+  "Personalizada": {
+    "spaces": 1,
+    "capacity": 0,
+    "effect": ""
+  }
 };
-function defaultShip(){return {enabled:true,name:'Meu Navio',title:'',class:'Leve',captain:'',port:'',builder:'',jolly:'',description:'',history:'',imageUrl:'',imageData:'',imageZoom:1,imageX:0,imageY:0,imageFit:'contain',baseIntegrity:100,integrityCurrent:100,baseResistance:0,baseSpeed:100,baseManeuver:2,baseCR:0,roomMax:3,cargoSafe:20,crewCurrent:4,comfort:2,material:{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:''},mods:[],rooms:[{id:uid(),name:'Armazenamento Pequeno',type:'Armazenamento Pequeno',spaces:1,capacity:15,effect:'Estável: mantém temperatura estável sem equipamento adicional.',state:'Intacta'}],weapons:[],cargo:[],specials:[],avaras:[],components:{Casco:'Intacto',Mastro:'Intacto',Velas:'Intacto',Leme:'Intacto','Âncora':'Intacto',Arsenal:'Intacto',Armamentos:'Intacto',Salas:'Intacto',Motor:'Intacto'},position:0,distance:'Médio',momentum:0,disorder:0,commandCurrent:2,commandMax:2,sinking:3,activePart:'sails'} }
-function ensureShip(c){if(!c.ship)c.ship=defaultShip();const s=c.ship,d=defaultShip();Object.keys(d).forEach(k=>{if(s[k]===undefined)s[k]=clone(d[k])});s.material=s.material||clone(d.material);s.mods=Array.isArray(s.mods)?s.mods:[];s.rooms=Array.isArray(s.rooms)?s.rooms:[];s.weapons=Array.isArray(s.weapons)?s.weapons:[];s.cargo=Array.isArray(s.cargo)?s.cargo:[];s.specials=Array.isArray(s.specials)?s.specials:[];s.avaras=Array.isArray(s.avaras)?s.avaras:[];s.components=s.components||clone(d.components);['mods','rooms','weapons','cargo','specials','avaras'].forEach(key=>s[key].forEach(item=>{if(!item.id)item.id=uid()}));s.imageZoom=clamp(num(s.imageZoom,1),.5,3);s.imageX=clamp(num(s.imageX,0),-65,65);s.imageY=clamp(num(s.imageY,0),-65,65);s.position=clamp(num(s.position,0),-3,3);s.momentum=clamp(num(s.momentum,0),0,3);s.disorder=clamp(num(s.disorder,0),0,3);s.commandMax=Math.max(0,num(s.commandMax,2));s.commandCurrent=clamp(num(s.commandCurrent,s.commandMax),0,s.commandMax);s.sinking=clamp(num(s.sinking,3),0,3);return s}
+function defaultShip(){return {enabled:true,name:'Meu Navio',title:'',class:'Leve',captain:'',port:'',builder:'',jolly:'',description:'',history:'',imageUrl:'',imageData:'',imageZoom:1,imageX:0,imageY:0,imageFit:'contain',baseIntegrity:100,integrityCurrent:100,baseResistance:0,baseSpeed:100,baseManeuver:2,baseCR:0,roomMax:3,cargoSafe:20,crewCurrent:4,comfort:2,material:{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:''},mods:[],rooms:[{id:uid(),name:'Armazenamento Pequeno',type:'Armazenamento Pequeno',spaces:1,capacity:15,effect:'',state:'Intacta'}],weapons:[],cargo:[],specials:[],avaras:[],components:{Casco:'Intacto',Mastro:'Intacto',Velas:'Intacto',Leme:'Intacto','Âncora':'Intacto',Arsenal:'Intacto',Armamentos:'Intacto',Salas:'Intacto',Motor:'Intacto'},position:0,distance:'Médio',momentum:0,disorder:0,commandCurrent:2,commandMax:2,sinking:3,activePart:'sails'} }
+function ensureShip(c){if(!c.ship)c.ship=defaultShip();const s=c.ship,d=defaultShip();Object.keys(d).forEach(k=>{if(s[k]===undefined)s[k]=clone(d[k])});s.material=s.material||clone(d.material);s.mods=Array.isArray(s.mods)?s.mods:[];s.rooms=Array.isArray(s.rooms)?s.rooms:[];s.rooms.forEach(r=>{if(r.upgraded===undefined)r.upgraded=num(r.spaces,1)>1;else r.upgraded=r.upgraded===true||r.upgraded===1||r.upgraded==='true';r.spaces=r.upgraded?2:1});s.weapons=Array.isArray(s.weapons)?s.weapons:[];s.cargo=Array.isArray(s.cargo)?s.cargo:[];s.specials=Array.isArray(s.specials)?s.specials:[];s.avaras=Array.isArray(s.avaras)?s.avaras:[];s.components=s.components||clone(d.components);['mods','rooms','weapons','cargo','specials','avaras'].forEach(key=>s[key].forEach(item=>{if(!item.id)item.id=uid()}));s.imageZoom=clamp(num(s.imageZoom,1),.5,3);s.imageX=clamp(num(s.imageX,0),-65,65);s.imageY=clamp(num(s.imageY,0),-65,65);s.position=clamp(num(s.position,0),-3,3);s.momentum=clamp(num(s.momentum,0),0,3);s.disorder=clamp(num(s.disorder,0),0,3);s.commandMax=Math.max(0,num(s.commandMax,2));s.commandCurrent=clamp(num(s.commandCurrent,s.commandMax),0,s.commandMax);s.sinking=clamp(num(s.sinking,3),0,3);return s}
 function ship(){return ensureShip(current())}
 function shipMods(part=null){const s=ship();return s.mods.filter(m=>m.active!==false&&(!part||m.part===part))}
 function shipModSum(key){return shipMods().reduce((a,m)=>a+num(m[key]),0)}
@@ -3632,6 +3785,7 @@ function shipAutonomy(){const f=shipProvisionDays('Comida'),w=shipProvisionDays(
 function shipComfortText(v){return ['Insalubre','Precário','Básico','Confortável','Luxuoso','Extravagante'][clamp(Math.round(num(v)),0,5)]}
 function shipBonusTexts(){const s=ship(),arr=[];if(s.material.effect)arr.push({name:s.material.name||'Material',text:s.material.effect});shipMods().forEach(m=>{if(m.effect)arr.push({name:m.name||'Melhoria',text:m.effect})});s.specials.forEach(x=>arr.push({name:x.name||'Característica',text:x.effect||x.origin||''}));return arr}
 function shipSetClass(name){const s=ship(),cfg=SHIP_CLASSES[name];if(!cfg)return;const oldMax=shipMaxIntegrity(),wasFull=num(s.integrityCurrent)>=oldMax;s.class=name;s.baseIntegrity=cfg.integrity;s.baseResistance=cfg.resistance;s.roomMax=cfg.rooms;s.cargoSafe=cfg.cargo;s.baseManeuver=cfg.maneuver;if(num(s.baseSpeed)<cfg.speedMin||num(s.baseSpeed)>cfg.speedMax)s.baseSpeed=cfg.speedMin;if(num(s.crewCurrent)<=0)s.crewCurrent=cfg.crewMin;const newMax=shipMaxIntegrity();s.integrityCurrent=wasFull?newMax:clamp(num(s.integrityCurrent),0,newMax);renderShip();saveState();toast(`Classe do navio: ${name}.`)}
+const SHIP_VIEWS=['storage','rooms','structure','combat'];
 const SHIP_CARGO_CATEGORIES=['Comida','Água','Dinheiro','Tesouro','Munição','Armas','Materiais','Outros'];
 const SHIP_MATERIALS={
   'Madeira Comum':{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:'Sem modificadores.'},
@@ -3680,19 +3834,19 @@ function shipRoomNames(){const s=ship();return [...new Set([...s.rooms.map(r=>r.
 function shipRoomLoad(name){return ship().cargo.filter(i=>i.room===name).reduce((a,i)=>a+Math.max(0,num(i.qty,1))*Math.max(0,num(i.space)),0)}
 function shipRoomAvailable(name){return ship().rooms.some(r=>r.name===name&&r.state!=='Destruída')}
 function selectShipView(view,focus=false){
-  const s=ship();s.view=['storage','structure','combat'].includes(view)?view:'storage';
+  const s=ship();s.view=SHIP_VIEWS.includes(view)?view:'storage';
   document.querySelectorAll('#page-ship [data-ship-view]').forEach(b=>{const on=b.dataset.shipView===s.view;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus()});
-  ['storage','structure','combat'].forEach(key=>document.getElementById(`shipView-${key}`).hidden=key!==s.view);
+  SHIP_VIEWS.forEach(key=>document.getElementById(`shipView-${key}`).hidden=key!==s.view);
   saveState();
 }
 function renderShip(){
   if(!document.getElementById('page-ship'))return;
   const ui=shipUI(),s=ship(),cfg=shipClassCfg(),max=shipMaxIntegrity();s.integrityCurrent=clamp(num(s.integrityCurrent,max),0,max);
-  if(!['hull','sails','structure','rooms'].includes(s.activePart))s.activePart='hull';
+  if(!['hull','sails','structure'].includes(s.activePart))s.activePart='hull';
   const st=shipIntegrityState(),cargo=shipCargoCurrent(),safe=shipCargoSafe(),speed=shipSpeed(),man=shipManeuver();
-  const view=['storage','structure','combat'].includes(s.view)?s.view:'storage';
+  const view=SHIP_VIEWS.includes(s.view)?s.view:'storage';
   document.querySelectorAll('#page-ship [data-ship-view]').forEach(b=>{const on=b.dataset.shipView===view;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});
-  ['storage','structure','combat'].forEach(key=>document.getElementById(`shipView-${key}`).hidden=key!==view);
+  SHIP_VIEWS.forEach(key=>document.getElementById(`shipView-${key}`).hidden=key!==view);
   document.querySelectorAll('#page-ship .ship-bind').forEach(el=>{if(document.activeElement!==el)el.value=getPath(s,el.dataset.shipKey)??''});
   document.querySelectorAll('#page-ship [data-ship-class]').forEach(b=>{const on=b.dataset.shipClass===s.class;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
   navalSet('shipNamePlaque',s.name||'Meu Navio');navalSet('shipClassRead',s.class);
@@ -3705,7 +3859,7 @@ function renderShip(){
   document.getElementById('shipIntegrityFill').style.background=st.name==='Intacto'?'var(--gold)':'var(--red)';
   navalSet('shipResistanceStat',navalNumber(shipResistance()));navalSet('shipCRStat',navalNumber(shipCR()));navalSet('shipSpeedStat',navalNumber(speed));navalSet('shipManeuverStat',man<=-90?'—':signed(man));
   navalSet('shipWeaponsSummary',`${s.weapons.length} armamento${s.weapons.length===1?'':'s'}`);navalSet('shipSpecialCount',s.specials.length);
-  renderShipArt();renderShipCargo();renderShipWorkbench();renderShipCombat();renderShipBonuses();
+  renderShipArt();renderShipCargo();renderShipRoomsPanel();renderShipWorkbench();renderShipCombat();renderShipBonuses();
   const undo=document.getElementById('shipCargoUndo');undo.hidden=!ui.removed;if(ui.removed)navalSet('shipCargoUndoText',`${ui.removed.item.name||'Item'} removido.`);
 }
 function renderShipArt(){
@@ -3808,24 +3962,20 @@ function shipModCard(m){
 }
 function renderShipWorkbench(){
   const ui=shipUI(),s=ship(),part=s.activePart,key=`${ui.characterId}:${part}`,body=document.getElementById('shipWorkbenchBody');
-  const info={hull:['Casco & material','Madeira, blindagem e reforços da embarcação.'],sails:['Velas & propulsão','Ajuste o estado das velas e instale melhorias de navegação.'],structure:['Componentes & reforços','Acompanhe cada parte do navio e suas modificações.'],rooms:['Planta de salas','Organize os espaços internos e a capacidade dos compartimentos.']}[part];
+  const info={hull:['Casco & material','Madeira, blindagem e reforços da embarcação.'],sails:['Velas & propulsão','Ajuste o estado das velas e instale melhorias de navegação.'],structure:['Componentes & reforços','Acompanhe cada parte do navio e suas modificações.']}[part];
   navalSet('shipWorkbenchTitle',info[0]);navalSet('shipWorkbenchSubtitle',info[1]);
   document.querySelectorAll('#page-ship [data-ship-part]').forEach(b=>{const on=b.dataset.shipPart===part;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
   if(ui.workbenchKey!==key){
     ui.workbenchKey=key;
-    if(part==='rooms')body.innerHTML=shipRoomsEditor();
-    else{
       let intro='';
       if(part==='hull')intro=`<details class="naval-disclosure" open><summary>Material do casco</summary><form class="naval-disclosure-body" id="shipMaterialForm"><div class="naval-form-grid">${navalSelect('shipMaterialPreset','Modelo de material',[...Object.keys(SHIP_MATERIALS),'Personalizado'],s.material.name)}${navalField('shipMaterialName','Nome do material',{required:true})}${navalField('shipMaterialIntegrity','Integridade (%)',{type:'number'})}${navalField('shipMaterialResistance','Resistência',{type:'number'})}${navalField('shipMaterialSpeed','Velocidade (%)',{type:'number'})}${navalNotes('shipMaterialEffect','Efeito do material')}</div><div class="naval-actions"><button class="naval-btn" type="submit">Aplicar material</button></div></form></details><div style="height:18px" aria-hidden="true"></div>`;
       if(part==='sails')intro=shipComponentsEditor(['Velas','Mastro','Motor']);
       if(part==='structure')intro=shipComponentsEditor();
       body.innerHTML=intro+'<div class="naval-record-list" id="shipModList"></div>'+shipModEditor(part);
       if(part==='hull')fillShipMaterialEditor();
-    }
   }
   document.querySelectorAll('#shipWorkbenchBody [data-ship-component]').forEach(el=>{if(document.activeElement!==el)el.value=s.components[el.dataset.shipComponent]||'Intacto'});
   const mods=document.getElementById('shipModList');if(mods)mods.innerHTML=s.mods.filter(m=>m.part===part).map(shipModCard).join('')||'<div class="naval-empty-inline">Nenhuma melhoria instalada nesta parte.</div>';
-  renderShipRooms();
 }
 function fillShipMaterialEditor(){
   const m=ship().material,preset=document.getElementById('shipMaterialPreset');if(!preset)return;
@@ -3841,29 +3991,43 @@ function shipComponentsEditor(names=Object.keys(ship().components)){
   return `<div class="naval-component-grid">${names.map((name,index)=>{const value=ship().components[name]||'Intacto',id=`shipComponent-${index}`;return `<div class="naval-component"><label for="${id}">${esc(name)}</label><select class="input" id="${id}" data-ship-component="${esc(name)}">${['Intacto','Danificado','Destruído'].map(state=>`<option${state===value?' selected':''}>${state}</option>`).join('')}</select></div>`}).join('')}</div>`;
 }
 function shipRoomsEditor(){
-  return `<div class="naval-record-list" id="shipRoomsList"></div><details class="naval-disclosure" id="shipRoomDetails"><summary>Construir sala</summary><form class="naval-disclosure-body" id="shipRoomForm"><div class="naval-form-grid">${navalSelect('shipRoomType','Tipo / modelo',Object.keys(SHIP_ROOM_PRESETS),'Armazenamento Pequeno')}${navalField('shipRoomName','Nome da sala',{value:'Armazenamento Pequeno',required:true})}${navalField('shipRoomSpaces','Espaços ocupados',{type:'number',min:0,value:1})}${navalField('shipRoomCapacity','Capacidade de carga',{type:'number',min:0,step:'any',value:15})}${navalSelect('shipRoomState','Estado',['Intacta','Danificada','Destruída'],'Intacta')}${navalNotes('shipRoomEffect','Efeito / benefício',SHIP_ROOM_PRESETS['Armazenamento Pequeno'].effect)}</div><div class="naval-actions"><button class="naval-btn" type="submit" id="shipSaveRoom">Construir sala</button><button class="naval-text-btn" type="button" data-ship-action="cancel-room" hidden>Cancelar edição</button></div></form></details>`;
+  return `<div class="naval-room-grid" id="shipRoomsList"></div><details class="naval-disclosure naval-panel naval-room-editor" id="shipRoomDetails"><summary>Adicionar sala</summary><form class="naval-disclosure-body" id="shipRoomForm" data-previous-type="Quartos"><div class="naval-form-grid">${navalSelect('shipRoomType','Tipo de sala',Object.keys(SHIP_ROOM_PRESETS),'Quartos')}${navalField('shipRoomName','Nome da sala',{value:'Quartos',required:true})}<div class="field full"><label class="naval-upgrade-option" for="shipRoomUpgraded"><input type="checkbox" id="shipRoomUpgraded"><span><b>Sala aprimorada</b><small>Ocupa 2 espaços de sala em vez de 1.</small></span><span class="naval-stamp" id="shipRoomCostPreview">1 espaço de sala</span></label></div>${navalSelect('shipRoomState','Estado',['Intacta','Danificada','Destruída'],'Intacta')}${navalField('shipRoomCapacity','Capacidade de carga (opcional)',{type:'number',min:0,step:'any',value:0})}<div class="field full"><label for="shipRoomEffect">Vantagens e efeitos</label><textarea class="input" id="shipRoomEffect" rows="5" placeholder="Escreva as vantagens da sala, seus efeitos e o que muda quando ela é aprimorada."></textarea></div></div><div class="naval-actions"><button class="naval-btn primary" type="submit" id="shipSaveRoom">Adicionar sala</button><button class="naval-text-btn" type="button" data-ship-action="cancel-room" hidden>Cancelar edição</button></div></form></details>`;
 }
+function renderShipRoomsPanel(){
+  const ui=shipUI(),s=ship(),body=document.getElementById('shipRoomsBody');
+  if(ui.roomsKey!==ui.characterId){body.innerHTML=shipRoomsEditor();ui.roomsKey=ui.characterId}
+  const used=shipRoomUsed(),max=shipRoomMax(),upgraded=s.rooms.filter(r=>r.upgraded).length;
+  navalSet('shipRoomsTabCount',s.rooms.length);navalSet('shipRoomsUsage',`${navalNumber(used)} / ${navalNumber(max)} espaços de sala`);
+  navalSet('shipRoomsSpaceHint',used>max?`${navalNumber(used-max)} ${used-max===1?'espaço acima':'espaços acima'} do limite`:`${navalNumber(max-used)} ${max-used===1?'espaço disponível':'espaços disponíveis'}`);
+  navalSet('shipRoomsCount',`${s.rooms.length} ${s.rooms.length===1?'sala construída':'salas construídas'}`);navalSet('shipRoomsUpgradedCount',`${upgraded} ${upgraded===1?'aprimorada':'aprimoradas'}`);
+  document.getElementById('shipRoomsCapacity').classList.toggle('overloaded',used>max);navalMeter('shipRoomsMeter','shipRoomsFill',used,max);renderShipRooms();
+}
+function updateShipRoomCost(){const upgraded=document.getElementById('shipRoomUpgraded').checked;navalSet('shipRoomCostPreview',upgraded?'2 espaços de sala':'1 espaço de sala')}
 function renderShipRooms(){
   const box=document.getElementById('shipRoomsList');if(!box)return;
   const rooms=ship().rooms;
-  if(!rooms.length){box.innerHTML='<div class="naval-empty-inline">Nenhuma sala construída. Adicione um compartimento para organizar o navio.</div>';return}
-  box.querySelector('.naval-empty-inline')?.remove();
+  if(!rooms.length){box.innerHTML='<div class="naval-empty"><span class="ui-icon i-room" aria-hidden="true"></span><h4>Um lugar para cada coisa.</h4><p>Adicione quartos, cozinha, enfermaria e outros espaços da tripulação.</p><button class="naval-btn" type="button" data-ship-action="new-room">Adicionar primeira sala</button></div>';return}
+  box.querySelector('.naval-empty')?.remove();
   const nodes=new Map([...box.querySelectorAll('[data-room-id]')].map(el=>[el.dataset.roomId,el])),ids=new Set(rooms.map(r=>r.id));
   nodes.forEach((el,id)=>{if(!ids.has(id))el.remove()});
   rooms.forEach((r,index)=>{
-    let card=nodes.get(r.id);const signature=JSON.stringify({...r,state:undefined,load:shipRoomLoad(r.name)});
+    let card=nodes.get(r.id);const signature=JSON.stringify({...r,state:undefined,spaces:undefined,upgraded:undefined,load:shipRoomLoad(r.name)});
     if(!card||card.dataset.signature!==signature){
-      const holder=document.createElement('div');holder.innerHTML=`<article class="naval-record${r.state!=='Intacta'?' damaged':''}"><div><h5>${esc(r.name||r.type)}</h5><p>${esc(r.type)} · ${navalNumber(r.spaces)} espaço(s) de sala${num(r.capacity)>0?` · carga ${navalNumber(shipRoomLoad(r.name))} / ${navalNumber(r.capacity)}`:''}</p>${r.effect?`<p>${esc(r.effect)}</p>`:''}</div><div class="naval-record-actions"><label class="sr-only" for="shipRoomState-${esc(r.id)}">Estado de ${esc(r.name)}</label><select class="input" id="shipRoomState-${esc(r.id)}" data-ship-room-state="${esc(r.id)}">${['Intacta','Danificada','Destruída'].map(st=>`<option${st===r.state?' selected':''}>${st}</option>`).join('')}</select><button class="naval-btn" type="button" data-ship-action="edit-room" data-id="${esc(r.id)}">Editar</button><button class="naval-icon-btn" type="button" data-ship-action="remove-room" data-id="${esc(r.id)}" aria-label="Remover sala ${esc(r.name)}">×</button></div></article>`;
-      const next=holder.firstElementChild;next.dataset.roomId=r.id;next.dataset.signature=signature;if(card)card.replaceWith(next);card=next;
+      const next=document.createElement('article');next.className='naval-room-card';next.dataset.roomId=r.id;next.dataset.signature=signature;
+      next.innerHTML=`<div class="naval-room-card-head"><span class="naval-item-icon"><span class="ui-icon i-room" aria-hidden="true"></span></span><div><small>${esc(r.type||'Personalizada')}</small><h4>${esc(r.name||'Sala')}</h4></div><span class="naval-stamp" data-room-space-count></span></div><div class="naval-room-effects"><span class="naval-sidebar-label">Vantagens e efeitos</span><p${r.effect?'':' class="unfilled"'}>${r.effect?esc(r.effect):'Preencha as vantagens e os efeitos desta sala.'}</p></div>${num(r.capacity)>0?`<div class="naval-room-cargo">Carga armazenada <b>${navalNumber(shipRoomLoad(r.name))} / ${navalNumber(r.capacity)}</b></div>`:''}<div class="naval-room-card-controls"><label class="naval-room-upgrade"><input type="checkbox" data-ship-room-upgraded="${esc(r.id)}" aria-label="Sala aprimorada: ${esc(r.name)}"><span>Aprimorada</span></label><label class="sr-only" for="shipRoomState-${esc(r.id)}">Estado de ${esc(r.name)}</label><select class="input" id="shipRoomState-${esc(r.id)}" data-ship-room-state="${esc(r.id)}">${['Intacta','Danificada','Destruída'].map(st=>`<option${st===r.state?' selected':''}>${st}</option>`).join('')}</select></div><div class="naval-room-card-actions"><button class="naval-btn" type="button" data-ship-action="edit-room" data-id="${esc(r.id)}">Editar sala e efeitos</button><button class="naval-icon-btn" type="button" data-ship-action="remove-room" data-id="${esc(r.id)}" aria-label="Remover sala ${esc(r.name)}">×</button></div>`;
+      if(card)card.replaceWith(next);card=next;
     }
-    card.classList.toggle('damaged',r.state!=='Intacta');const state=card.querySelector('[data-ship-room-state]');if(document.activeElement!==state)state.value=r.state;
+    card.classList.toggle('damaged',r.state!=='Intacta');card.classList.toggle('upgraded',r.upgraded);
+    card.querySelector('[data-room-space-count]').textContent=r.upgraded?'2 espaços':'1 espaço';card.querySelector('[data-ship-room-upgraded]').checked=!!r.upgraded;
+    const status=card.querySelector('[data-ship-room-state]');if(document.activeElement!==status)status.value=r.state;
     if(box.children[index]!==card)box.insertBefore(card,box.children[index]||null);
   });
 }
 function resetShipEditor(kind){
   const form=document.getElementById(`ship${kind==='mod'?'Mod':kind==='room'?'Room':'Weapon'}Form`);if(!form)return;
   form.reset();delete form.dataset.editingId;form.querySelector('[data-ship-action^="cancel-"]').hidden=true;
-  navalSet(kind==='mod'?'shipSaveMod':kind==='room'?'shipSaveRoom':'shipSaveWeapon',kind==='mod'?'Instalar melhoria':kind==='room'?'Construir sala':'Instalar armamento');
+  if(kind==='room'){form.dataset.previousType='Quartos';updateShipRoomCost()}
+  navalSet(kind==='mod'?'shipSaveMod':kind==='room'?'shipSaveRoom':'shipSaveWeapon',kind==='mod'?'Instalar melhoria':kind==='room'?'Adicionar sala':'Instalar armamento');
 }
 function focusShipEditor(id){const el=document.getElementById(id);el.closest('details').open=true;el.focus();el.scrollIntoView({block:'center',behavior:'smooth'})}
 function editShipMod(id){
@@ -3880,14 +4044,14 @@ function shipAddMod(){
 function editShipRoom(id){
   const r=ship().rooms.find(x=>x.id===id);if(!r)return;
   const form=document.getElementById('shipRoomForm');form.dataset.editingId=id;
-  [['shipRoomName','name'],['shipRoomSpaces','spaces'],['shipRoomCapacity','capacity'],['shipRoomEffect','effect'],['shipRoomState','state']].forEach(([el,key])=>document.getElementById(el).value=r[key]??'');
-  const type=document.getElementById('shipRoomType');if(r.type&&![...type.options].some(o=>o.value===r.type))type.add(new Option(r.type,r.type));type.value=r.type||'Personalizada';form.querySelector('[data-ship-action="cancel-room"]').hidden=false;navalSet('shipSaveRoom','Salvar sala');focusShipEditor('shipRoomName');
+  [['shipRoomName','name'],['shipRoomCapacity','capacity'],['shipRoomEffect','effect'],['shipRoomState','state']].forEach(([el,key])=>document.getElementById(el).value=r[key]??'');
+  const type=document.getElementById('shipRoomType');if(r.type&&![...type.options].some(o=>o.value===r.type))type.add(new Option(r.type,r.type));type.value=r.type||'Personalizada';form.dataset.previousType=type.value;document.getElementById('shipRoomUpgraded').checked=!!r.upgraded;updateShipRoomCost();form.querySelector('[data-ship-action="cancel-room"]').hidden=false;navalSet('shipSaveRoom','Salvar sala');focusShipEditor('shipRoomName');
 }
 function shipAddRoom(){
   const s=ship(),form=document.getElementById('shipRoomForm');if(!form.reportValidity())return;
   const id=form.dataset.editingId,r=id?s.rooms.find(x=>x.id===id):null,name=navalValue('shipRoomName').trim();if(!name){toast('Dê um nome para a sala.');return}
   if((!r||r.name!==name)&&s.rooms.some(x=>x.id!==id&&x.name===name)){toast('Use um nome diferente para identificar esta sala.');return}
-  const data={name,type:navalValue('shipRoomType'),spaces:Math.max(0,num(navalValue('shipRoomSpaces'),1)),capacity:Math.max(0,num(navalValue('shipRoomCapacity'))),effect:navalValue('shipRoomEffect'),state:navalValue('shipRoomState')||'Intacta'};
+  const data={name,type:navalValue('shipRoomType'),upgraded:document.getElementById('shipRoomUpgraded').checked,spaces:document.getElementById('shipRoomUpgraded').checked?2:1,capacity:Math.max(0,num(navalValue('shipRoomCapacity'))),effect:navalValue('shipRoomEffect'),state:navalValue('shipRoomState')||'Intacta'};
   if(r){const old=r.name,unique=!s.rooms.some(x=>x.id!==id&&x.name===old);Object.assign(r,data);if(old!==name&&unique)s.cargo.forEach(i=>{if(i.room===old)i.room=name})}else s.rooms.push({id:uid(),...data});
   resetShipEditor('room');renderShip();saveState();toast(r?'Sala atualizada.':'Sala construída.');
 }
@@ -3962,7 +4126,7 @@ function shipHandleAction(action,id){
   if(action==='close-cargo'){document.getElementById('shipCargoDialog').close();return}
   if(action==='clear-filters'){clearShipCargoFilters();return}
   if(action==='edit-identity'||action==='edit-crew'){selectShipView('structure');document.getElementById(action==='edit-crew'?'shipCrewInput':'shipNameInput').focus();return}
-  if(action==='manage-rooms'){selectShipView('structure');s.activePart='rooms';renderShipWorkbench();saveState();document.getElementById('shipWorkbench').scrollIntoView({block:'start',behavior:'smooth'});return}
+  if(action==='manage-rooms'||action==='new-room'){selectShipView('rooms');renderShipRoomsPanel();if(action==='new-room')focusShipEditor('shipRoomName');else document.getElementById('shipView-rooms').scrollIntoView({block:'start',behavior:'smooth'});return}
   if(action==='edit-mod'){editShipMod(id);return}if(action==='edit-room'){editShipRoom(id);return}if(action==='edit-weapon'){editShipWeapon(id);return}
   if(action.startsWith('cancel-')){resetShipEditor(action.slice(7));return}
   if(action==='remove-cargo'){const index=s.cargo.findIndex(i=>i.id===id);if(index<0)return;ui.removed={item:clone(s.cargo[index]),index};s.cargo.splice(index,1)}
@@ -4001,7 +4165,7 @@ function bindShipEvents(){
   });
   page.addEventListener('keydown',e=>{
     const tab=e.target.closest('[data-ship-view]');if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();
-    const views=['storage','structure','combat'],index=views.indexOf(tab.dataset.shipView),next=e.key==='Home'?0:e.key==='End'?2:(index+(e.key==='ArrowRight'?1:2))%3;selectShipView(views[next],true);
+    const views=SHIP_VIEWS,index=views.indexOf(tab.dataset.shipView),next=e.key==='Home'?0:e.key==='End'?views.length-1:(index+(e.key==='ArrowRight'?1:views.length-1))%views.length;selectShipView(views[next],true);
   });
   page.addEventListener('input',e=>{
     const el=e.target;
@@ -4016,12 +4180,14 @@ function bindShipEvents(){
     if(el.matches('.ship-bind')){updateShipBinding(el);if(el.type==='number')el.value=getPath(ship(),el.dataset.shipKey);return}
     if(el.hasAttribute('data-ship-cargo-qty')){el.value=Math.max(0,num(el.value));return}
     if(el.hasAttribute('data-ship-component')){ship().components[el.dataset.shipComponent]=el.value;renderShip();saveState();return}
+    if(el.id==='shipRoomUpgraded'){updateShipRoomCost();return}
+    if(el.hasAttribute('data-ship-room-upgraded')){const room=ship().rooms.find(x=>x.id===el.dataset.shipRoomUpgraded);if(room){room.upgraded=el.checked;room.spaces=el.checked?2:1}renderShip();saveState();return}
     if(el.hasAttribute('data-ship-room-state')){const room=ship().rooms.find(x=>x.id===el.dataset.shipRoomState);if(room)room.state=el.value;renderShip();saveState();return}
     if(el.id==='shipCargoRoomFilter'){shipUI().room=el.value;renderShipCargo();return}
     if(el.id==='shipCargoSort'){shipUI().sort=el.value;renderShipCargo();return}
     if(el.id==='shipCargoCategory'){updateShipCargoPreview();return}
     if(el.id==='shipDistanceSelect'){ship().distance=el.value;renderShipCombat();saveState();return}
-    if(el.id==='shipRoomType'){const preset=SHIP_ROOM_PRESETS[el.value]||SHIP_ROOM_PRESETS.Personalizada;document.getElementById('shipRoomName').value=el.value==='Personalizada'?'':el.value;document.getElementById('shipRoomSpaces').value=preset.spaces;document.getElementById('shipRoomCapacity').value=preset.capacity;document.getElementById('shipRoomEffect').value=preset.effect;return}
+    if(el.id==='shipRoomType'){const form=document.getElementById('shipRoomForm'),name=document.getElementById('shipRoomName'),preset=SHIP_ROOM_PRESETS[el.value]||SHIP_ROOM_PRESETS.Personalizada;if(!name.value.trim()||name.value===form.dataset.previousType)name.value=el.value==='Personalizada'?'':el.value;form.dataset.previousType=el.value;if(!form.dataset.editingId)document.getElementById('shipRoomCapacity').value=preset.capacity;return}
     if(el.id==='shipMaterialPreset'){const m=SHIP_MATERIALS[el.value];if(m)[['shipMaterialName','name'],['shipMaterialIntegrity','integrityPct'],['shipMaterialResistance','resistance'],['shipMaterialSpeed','speedPct'],['shipMaterialEffect','effect']].forEach(([id,key])=>document.getElementById(id).value=m[key]);return}
   });
   page.addEventListener('submit',e=>{
