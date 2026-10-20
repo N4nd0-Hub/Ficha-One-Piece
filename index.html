@@ -2224,6 +2224,271 @@ body.clear-sheet[data-theme] .overview-skill>input:focus-visible,body.clear-shee
 @media(max-width:540px){body.clear-sheet.mobile-only-build[data-theme] .overview-skill-grid{grid-template-columns:1fr!important}}
 
 </style>
+<style id="naval-redesign-style">
+/* Navio 2.2 — manifesto, estaleiro e postos de batalha. */
+#page-ship.naval-page{background:transparent;color:var(--text);font-family:var(--font-ui,Arial,sans-serif);padding:0;--naval-accent:var(--gold);--naval-surface:var(--panel);--naval-soft:color-mix(in srgb,var(--gold) 6%,var(--panel));--naval-border:color-mix(in srgb,var(--gold) 23%,var(--line))}
+#page-ship [hidden]{display:none!important}
+#page-ship *,#page-ship *::before,#page-ship *::after{box-sizing:border-box}
+#page-ship button,#page-ship input,#page-ship select,#page-ship textarea{font-family:inherit}
+#page-ship button{cursor:pointer}
+#page-ship button:disabled{opacity:.35;cursor:default}
+#page-ship :is(button,input,select,textarea,summary):focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#page-ship .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#page-ship .input{width:100%;min-width:0;min-height:40px;background:var(--inset,var(--bg2));color:var(--text);border:1px solid var(--line);border-radius:7px;padding:9px 11px;font-size:12px;line-height:1.45;box-shadow:none}
+#page-ship .input::placeholder{color:var(--muted);opacity:.75}
+#page-ship textarea.input{resize:vertical;min-height:70px}
+#page-ship .field{min-width:0;display:flex;flex-direction:column;gap:6px;margin:0}
+#page-ship .field>label,#page-ship .naval-disclosure-body>label{color:var(--muted);font-size:11px;font-weight:550;letter-spacing:0;text-transform:none;line-height:1.4}
+#page-ship .field>small{color:var(--muted);font-size:10px}
+#page-ship .naval-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:9px 13px;border:1px solid var(--line);border-radius:7px;background:var(--panel2);color:var(--text);font-size:11px;font-weight:650;line-height:1.35;box-shadow:none;white-space:normal;text-align:center;transition:background .15s,border-color .15s}
+#page-ship .naval-btn:hover{border-color:var(--gold);background:var(--naval-soft)}
+#page-ship .naval-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--primary-ink);min-height:42px;font-size:12px;padding:11px 17px}
+#page-ship .naval-btn.primary:hover{background:var(--gold2);border-color:var(--gold2)}
+#page-ship .naval-btn.subtle{background:transparent;border-color:var(--naval-border)}
+#page-ship .naval-btn.danger,#page-ship .naval-icon-btn.danger{color:var(--red);background:color-mix(in srgb,var(--red) 7%,var(--panel));border-color:color-mix(in srgb,var(--red) 32%,var(--line))}
+#page-ship .naval-icon-btn{display:inline-grid;place-items:center;min-width:32px;height:32px;padding:5px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:transparent;font-size:19px;line-height:1}
+#page-ship .naval-icon-btn:hover{color:var(--text);border-color:var(--gold)}
+#page-ship .naval-text-btn{background:none;border:0;border-radius:3px;color:var(--gold2);padding:5px 0;font-size:11px;line-height:1.5;text-align:left}
+#page-ship .naval-text-btn:hover{text-decoration:underline;text-underline-offset:3px}
+#page-ship .naval-eyebrow{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:9px;font-weight:650;text-transform:uppercase;letter-spacing:.16em;line-height:1.6}
+#page-ship .naval-masthead{position:relative;display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:18px;align-items:center;padding:27px 30px 0;border:1px solid var(--naval-border);border-radius:12px 12px 0 0;background:radial-gradient(ellipse at 0 0,color-mix(in srgb,var(--gold) 13%,transparent),transparent 62%),var(--panel);overflow:hidden}
+#page-ship .naval-masthead::before{content:"";position:absolute;top:0;left:30px;right:30px;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+#page-ship .naval-crest{display:grid;place-items:center;width:70px;height:70px;border:1px solid var(--naval-border);border-radius:50%;color:var(--gold);background:color-mix(in srgb,var(--gold) 7%,transparent);outline:1px solid var(--naval-border);outline-offset:-7px}
+#page-ship .naval-crest .ui-icon{width:35px;height:35px}
+#page-ship .naval-identity{min-width:0}
+#page-ship .naval-identity .naval-eyebrow>span{border-left:1px solid var(--naval-border);padding-left:12px;color:var(--gold2);letter-spacing:.05em}
+#page-ship .naval-identity h2{font:700 clamp(25px,2.5vw,37px)/1.15 var(--atlas-display,Georgia,serif);margin:5px 0 8px;letter-spacing:-.02em;text-transform:none;color:var(--text);overflow-wrap:anywhere}
+#page-ship .naval-identity p{color:var(--muted);font-size:11px;margin:0;line-height:1.6;overflow-wrap:anywhere}
+#page-ship .naval-header-end{display:flex;align-items:flex-end;flex-direction:column;gap:13px}
+#page-ship .naval-status{display:inline-flex;gap:7px;align-items:center;padding:5px 10px;border:1px solid var(--naval-border);border-radius:5px;color:var(--gold2);background:var(--naval-soft);font-size:10px;font-weight:650;white-space:nowrap}
+#page-ship .naval-status::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+#page-ship .naval-status[data-damaged="true"]{color:var(--red);border-color:color-mix(in srgb,var(--red) 30%,var(--line));background:color-mix(in srgb,var(--red) 8%,var(--panel))}
+#page-ship .naval-manifest{grid-column:1/-1;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding:14px 0;margin-top:4px}
+#page-ship .naval-manifest>span{display:flex;gap:12px;align-items:baseline;font-size:10px;color:var(--muted)}
+#page-ship .naval-manifest b{font-size:12px;font-weight:600;color:var(--text);font-variant-numeric:tabular-nums}
+#page-ship .naval-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--naval-border);border-top:0;background:var(--panel);border-radius:0 0 10px 10px;overflow:hidden}
+#page-ship .naval-tabs>button{display:flex;align-items:center;justify-content:center;gap:12px;position:relative;padding:18px 12px;border:0;border-right:1px solid var(--line);background:transparent;color:var(--muted);font-size:13px;font-weight:600;text-align:left;min-width:0}
+#page-ship .naval-tabs>button:last-child{border-right:0}
+#page-ship .naval-tabs>button>.ui-icon{width:22px;height:22px;flex:0 0 22px;opacity:.75}
+#page-ship .naval-tabs>button small{display:block;margin-top:3px;font-size:9px;font-weight:400;opacity:.85;letter-spacing:.02em}
+#page-ship .naval-tabs>button[aria-selected="true"]{color:var(--gold2);background:var(--naval-soft)}
+#page-ship .naval-tabs>button[aria-selected="true"]::after{content:"";position:absolute;bottom:0;left:20%;right:20%;height:3px;background:var(--gold);border-radius:3px 3px 0 0}
+#page-ship .naval-tab-count{display:grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border:1px solid var(--naval-border);border-radius:5px;font-size:10px;font-variant-numeric:tabular-nums}
+#page-ship .naval-view{padding:26px 26px 24px}
+#page-ship .naval-section-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 21px}
+#page-ship .naval-section-heading h3{font:700 27px/1.2 var(--atlas-display,Georgia,serif);color:var(--text);margin:5px 0 7px;letter-spacing:-.02em}
+#page-ship .naval-section-heading p{font-size:11px;line-height:1.7;color:var(--muted);margin:0}
+#page-ship .naval-provisions{display:grid;grid-template-columns:minmax(190px,1.7fr) repeat(3,minmax(90px,1fr));gap:0;border:1px solid var(--line);border-radius:9px;background:var(--panel);margin-bottom:22px;overflow:hidden}
+#page-ship .naval-capacity{padding:20px 22px;display:flex;flex-direction:column;justify-content:center;gap:9px}
+#page-ship .naval-capacity>div:first-child{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:11px;color:var(--muted)}
+#page-ship .naval-capacity b{font-size:13px;font-weight:650;color:var(--text);white-space:nowrap}
+#page-ship .naval-capacity>small{color:var(--muted);font-size:10px}
+#page-ship .naval-meter{width:100%;height:6px;background:color-mix(in srgb,var(--muted) 15%,var(--bg));border-radius:20px;overflow:hidden}
+#page-ship .naval-meter>span{height:100%;width:0;display:block;background:var(--gold);border-radius:20px;transition:width .2s}
+#page-ship .naval-capacity.overloaded b,#page-ship .naval-capacity.overloaded>small{color:var(--red)}
+#page-ship .naval-capacity.overloaded .naval-meter>span{background:var(--red)}
+#page-ship .naval-provision{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:17px 12px;border-left:1px solid var(--line)}
+#page-ship .naval-provision>span{color:var(--muted);font-size:10px}
+#page-ship .naval-provision>b{color:var(--text);font:650 24px/1.25 var(--atlas-display,Georgia,serif);font-variant-numeric:tabular-nums}
+#page-ship .naval-provision>small,#page-ship .naval-provision>button{font-size:9px;color:var(--muted)}
+#page-ship .naval-provision>button{background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px}
+#page-ship .naval-provision.autonomy{background:var(--naval-soft)}
+#page-ship .naval-provision.autonomy>b{color:var(--gold2)}
+#page-ship .naval-hold-layout{display:grid;grid-template-columns:185px minmax(0,1fr);gap:24px;align-items:start}
+#page-ship .naval-hold-sidebar{border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:17px 10px;min-width:0}
+#page-ship .naval-sidebar-label{display:block;color:var(--muted);font-size:9px;font-weight:650;letter-spacing:.11em;text-transform:uppercase;line-height:1.5}
+#page-ship .naval-hold-sidebar>.naval-sidebar-label{padding:0 9px;margin-bottom:10px}
+#page-ship .naval-categories{display:flex;flex-direction:column;gap:3px}
+#page-ship .naval-categories>button{display:flex;align-items:center;gap:9px;width:100%;border:1px solid transparent;border-radius:6px;background:none;color:var(--muted);font-size:11px;padding:10px 9px;text-align:left;white-space:nowrap}
+#page-ship .naval-categories>button svg{width:16px;height:16px;flex:0 0 16px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#page-ship .naval-categories>button>b{font-size:9px;font-weight:550;margin-left:auto;min-width:18px;text-align:right;opacity:.7}
+#page-ship .naval-categories>button[aria-pressed="true"]{background:var(--naval-soft);border-color:var(--naval-border);color:var(--gold2)}
+#page-ship .naval-categories>button:hover{color:var(--text);background:var(--naval-soft)}
+#page-ship .naval-compartment-filter{border-top:1px solid var(--line);margin:14px 6px 0;padding-top:16px;display:flex;flex-direction:column;gap:10px}
+#page-ship .naval-compartment-filter>.input{font-size:10px;padding:8px 6px;min-height:36px}
+#page-ship .naval-room-meters{display:flex;flex-direction:column;gap:9px}
+#page-ship .naval-room-meter{display:block;width:100%;text-align:left;background:transparent;color:var(--muted);border:1px solid transparent;border-radius:5px;padding:5px 3px}
+#page-ship .naval-room-meter>span{display:block;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:5px}
+#page-ship .naval-room-meter>small{display:block;font-size:9px;text-align:right;margin-top:4px;font-variant-numeric:tabular-nums}
+#page-ship .naval-room-meter .naval-meter{height:3px}
+#page-ship .naval-room-meter[aria-pressed="true"]{color:var(--gold2);border-color:var(--naval-border)}
+#page-ship .naval-room-meter.overloaded>small{color:var(--red)}
+#page-ship .naval-room-meter.overloaded .naval-meter>span{background:var(--red)}
+#page-ship .naval-inventory{min-width:0}
+#page-ship .naval-inventory-tools{display:flex;align-items:center;gap:8px}
+#page-ship .naval-search{position:relative;flex:1;min-width:100px}
+#page-ship .naval-search>svg{position:absolute;left:12px;top:12px;width:16px;height:16px;fill:none;stroke:var(--muted);stroke-width:1.6;pointer-events:none}
+#page-ship .naval-search>.input{padding-left:36px}
+#page-ship .naval-sort{width:156px;flex:0 0 156px;font-size:10px}
+#page-ship .naval-layout-toggle{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line);border-radius:7px;background:var(--panel)}
+#page-ship .naval-layout-toggle button{display:grid;place-items:center;width:31px;height:32px;background:none;color:var(--muted);border:0;border-radius:4px}
+#page-ship .naval-layout-toggle svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7}
+#page-ship .naval-layout-toggle button[aria-pressed="true"]{color:var(--gold2);background:var(--naval-soft)}
+#page-ship .naval-inventory-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:38px;margin-bottom:5px;color:var(--muted);font-size:10px}
+#page-ship .naval-inventory-meta button{font-size:10px}
+#page-ship .naval-cargo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:12px;align-items:stretch}
+#page-ship .naval-cargo-card{position:relative;min-width:0;display:flex;flex-direction:column;gap:15px;padding:17px;border:1px solid var(--line);border-radius:9px;background:var(--panel);transition:border-color .15s}
+#page-ship .naval-cargo-card:hover{border-color:var(--naval-border)}
+#page-ship .naval-item-heading{display:flex;gap:10px;align-items:flex-start;min-width:0}
+#page-ship .naval-item-icon{width:35px;height:35px;display:grid;place-items:center;flex:0 0 35px;border:1px solid var(--naval-border);border-radius:8px;color:var(--gold2);background:var(--naval-soft)}
+#page-ship .naval-item-icon svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#page-ship .naval-item-copy{min-width:0;flex:1}
+#page-ship .naval-item-copy small{display:block;color:var(--muted);font-size:9px;margin:0 0 5px}
+#page-ship .naval-item-copy h4{font-size:13px;font-weight:600;line-height:1.45;margin:0;color:var(--text);overflow-wrap:anywhere}
+#page-ship .naval-item-details{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:auto}
+#page-ship .naval-item-room{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:9px;max-width:100%;overflow-wrap:anywhere}
+#page-ship .naval-item-room .ui-icon{width:12px;height:12px;flex:0 0 12px}
+#page-ship .naval-item-room.unavailable{color:var(--red)}
+#page-ship .naval-item-space{display:flex;flex-direction:column;font-size:10px;color:var(--muted);line-height:1.55}
+#page-ship .naval-item-space b{font-size:12px;font-weight:600;color:var(--text)}
+#page-ship .naval-item-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:12px}
+#page-ship .naval-quantity{display:flex;align-items:center;height:32px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--inset,var(--bg2))}
+#page-ship .naval-quantity button{width:27px;height:30px;padding:0;background:none;border:0;color:var(--muted);font-size:16px}
+#page-ship .naval-quantity button:hover{color:var(--gold2);background:var(--naval-soft)}
+#page-ship .naval-quantity input{width:42px;min-width:0;height:30px;padding:0 2px;border:0;background:transparent;text-align:center;color:var(--text);font-size:12px;appearance:textfield;-moz-appearance:textfield}
+#page-ship .naval-quantity input::-webkit-inner-spin-button,#page-ship .naval-quantity input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#page-ship .naval-item-actions{display:flex;align-items:center;gap:7px}
+#page-ship .naval-item-actions .naval-text-btn{font-size:10px}
+#page-ship .naval-item-actions .naval-icon-btn{font-size:17px;width:25px;height:28px;min-width:25px;border-color:transparent}
+#page-ship .naval-item-actions .naval-icon-btn:hover{color:var(--red);border-color:var(--line)}
+#page-ship .naval-cargo-grid.list{grid-template-columns:1fr;gap:8px}
+#page-ship .naval-cargo-grid.list .naval-cargo-card{display:grid;grid-template-columns:minmax(160px,1.25fr) minmax(120px,1fr) auto;gap:18px;padding:14px 17px;align-items:center}
+#page-ship .naval-cargo-grid.list .naval-item-details{margin:0;align-self:center}
+#page-ship .naval-cargo-grid.list .naval-item-bottom{margin:0;padding:0;border:0;gap:18px}
+#page-ship .naval-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;min-height:300px;padding:35px 22px;border:1px dashed var(--naval-border);border-radius:10px;background:color-mix(in srgb,var(--panel) 55%,transparent);color:var(--muted)}
+#page-ship .naval-empty>svg{width:65px;height:65px;stroke:var(--gold);stroke-width:1.2;fill:none;opacity:.75;margin-bottom:5px}
+#page-ship .naval-empty h4{font:600 23px/1.3 var(--atlas-display,Georgia,serif);margin:0;color:var(--text)}
+#page-ship .naval-empty p{font-size:11px;line-height:1.7;max-width:290px;margin:0}
+#page-ship .naval-undo{display:flex;align-items:center;gap:12px;justify-content:space-between;background:var(--naval-soft);border:1px solid var(--naval-border);border-radius:6px;padding:8px 10px;font-size:11px;margin-bottom:12px;overflow-wrap:anywhere}
+#page-ship .naval-undo>span{flex:1;min-width:0}
+#page-ship .naval-panel{min-width:0;padding:23px;border:1px solid var(--line);border-radius:9px;background:var(--panel);box-shadow:none;content-visibility:visible}
+#page-ship .naval-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 0 19px;min-width:0}
+#page-ship .naval-panel-heading h4,#page-ship .naval-disclosure-body>h4{color:var(--text);font:600 20px/1.3 var(--atlas-display,Georgia,serif);margin:3px 0 0;text-transform:none;letter-spacing:0}
+#page-ship .naval-panel-heading p{font-size:11px;line-height:1.7;color:var(--muted);margin:6px 0 0}
+#page-ship .naval-panel-heading>.ui-icon{color:var(--gold);width:25px;height:25px}
+#page-ship .naval-stamp{font-size:10px;font-weight:500;line-height:1.5;padding:6px 9px;border:1px solid var(--naval-border);border-radius:5px;color:var(--gold2);white-space:nowrap;font-variant-numeric:tabular-nums}
+#page-ship .naval-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+#page-ship .naval-form-grid>.full{grid-column:1/-1}
+#page-ship .naval-help{font-size:10px;line-height:1.7;color:var(--muted);margin:9px 0 0}
+#page-ship .naval-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+#page-ship .naval-structure-top{display:grid;grid-template-columns:minmax(240px,.85fr) minmax(0,1.3fr);gap:20px;align-items:start;margin-bottom:20px}
+#page-ship .naval-art-panel{overflow:hidden;border:1px solid var(--naval-border);border-radius:9px;background:var(--panel)}
+#page-ship .naval-art{position:relative;aspect-ratio:4/3;min-height:230px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,color-mix(in srgb,var(--gold) 10%,transparent),transparent 70%),repeating-linear-gradient(0deg,transparent 0 29px,color-mix(in srgb,var(--muted) 6%,transparent) 29px 30px),repeating-linear-gradient(90deg,transparent 0 29px,color-mix(in srgb,var(--muted) 6%,transparent) 29px 30px),var(--bg2)}
+#page-ship .naval-art img{position:absolute;left:50%;top:50%;user-select:none;touch-action:none;cursor:grab;transform-origin:center}
+#page-ship .naval-art img.dragging{cursor:grabbing}
+#page-ship .naval-art-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px;gap:8px;text-align:center;color:var(--muted)}
+#page-ship .naval-art-empty>svg{width:90%;max-width:300px;max-height:190px;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+#page-ship .naval-art-empty>b{font:600 20px/1.3 var(--atlas-display,Georgia,serif);color:var(--text)}
+#page-ship .naval-art-empty>span{font-size:10px}
+#page-ship .naval-art-controls{border-radius:0;border:0;border-top:1px solid var(--line)}
+#page-ship .naval-image-sliders{display:grid;gap:10px;margin-top:18px}
+#page-ship .naval-image-sliders>label{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;color:var(--muted);font-size:10px}
+#page-ship input[type="range"]{width:100%;accent-color:var(--gold)}
+#page-ship .naval-class-section{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+#page-ship .naval-class-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}
+#page-ship .naval-class-options button{padding:12px 7px;border:1px solid var(--line);border-radius:7px;background:var(--bg2);color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:5px}
+#page-ship .naval-class-options button>b{font-size:12px;font-weight:600}
+#page-ship .naval-class-options button>small{font-size:9px}
+#page-ship .naval-class-options button.active{border-color:var(--gold);background:var(--naval-soft);color:var(--gold2)}
+#page-ship .naval-disclosure{border:1px solid var(--line);border-radius:7px;background:transparent;margin-top:15px}
+#page-ship .naval-disclosure>summary{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;padding:14px 16px;color:var(--text);font-size:11px;font-weight:550;line-height:1.5;min-height:44px}
+#page-ship .naval-disclosure>summary::-webkit-details-marker{display:none}
+#page-ship .naval-disclosure>summary::after{content:"+";color:var(--gold2);font-size:16px;font-weight:400;margin-left:auto}
+#page-ship .naval-disclosure[open]>summary::after{content:"−"}
+#page-ship .naval-disclosure>summary>span{color:var(--muted);font-size:10px}
+#page-ship .naval-disclosure-body{padding:4px 16px 18px;min-width:0}
+#page-ship .naval-disclosure-body:not(.naval-form-grid)>.field+.field{margin-top:15px}
+#page-ship .naval-disclosure.naval-panel{padding:0;margin-top:0;background:var(--panel)}
+#page-ship .naval-disclosure.naval-panel>summary{padding:20px 23px;font-size:13px;font-family:var(--atlas-display,Georgia,serif)}
+#page-ship .naval-disclosure.naval-panel>.naval-disclosure-body{padding:0 23px 23px}
+#page-ship .naval-workbench{padding:0;overflow:hidden;margin-bottom:20px}
+#page-ship .naval-part-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line);background:var(--bg2)}
+#page-ship .naval-part-tabs>button{display:flex;align-items:center;justify-content:center;gap:9px;padding:16px 10px;border:0;border-right:1px solid var(--line);background:none;color:var(--muted);font-size:11px;min-width:0}
+#page-ship .naval-part-tabs>button:last-child{border-right:0}
+#page-ship .naval-part-tabs>button .ui-icon{width:17px;height:17px;flex:0 0 17px}
+#page-ship .naval-part-tabs>button.active{color:var(--gold2);background:var(--panel);box-shadow:inset 0 -2px var(--gold)}
+#page-ship .naval-workbench-content{padding:23px}
+#page-ship .naval-structure-extras{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+#page-ship .naval-component-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+#page-ship .naval-component{background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:12px}
+#page-ship .naval-component label{display:block;color:var(--muted);font-size:10px;margin-bottom:8px}
+#page-ship .naval-component .input{font-size:11px}
+#page-ship .naval-record-list{display:grid;gap:10px}
+#page-ship .naval-record{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:16px;border:1px solid var(--line);border-radius:7px;background:var(--bg2);min-width:0}
+#page-ship .naval-record>div:first-child{flex:1;min-width:0}
+#page-ship .naval-record h5{font-size:13px;font-weight:600;color:var(--text);margin:0 0 7px;line-height:1.4;overflow-wrap:anywhere}
+#page-ship .naval-record p{font-size:11px;line-height:1.65;color:var(--muted);margin:5px 0 0;overflow-wrap:anywhere;white-space:pre-line}
+#page-ship .naval-record-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:7px;max-width:230px}
+#page-ship .naval-record-actions .naval-btn{min-height:31px;padding:6px 9px;font-size:10px}
+#page-ship .naval-record-actions .input{min-height:33px;width:110px;font-size:10px;padding:6px}
+#page-ship .naval-record-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+#page-ship .naval-record-tags>span{padding:4px 6px;background:var(--naval-soft);border:1px solid var(--naval-border);border-radius:4px;font-size:9px;color:var(--gold2);line-height:1.4}
+#page-ship .naval-record.disabled{opacity:.6}
+#page-ship .naval-record.damaged{border-color:color-mix(in srgb,var(--red) 35%,var(--line))}
+#page-ship .naval-empty-inline{font-size:11px;line-height:1.7;padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:7px}
+#page-ship .naval-inline-form{margin-top:18px;border-top:1px solid var(--line);padding-top:18px}
+#page-ship .naval-inline-form>button{margin-top:15px}
+#page-ship .naval-effects{display:grid;gap:12px}
+#page-ship .naval-effect{padding:0 0 10px;border-bottom:1px solid var(--line)}
+#page-ship .naval-effect>b{font-size:11px;font-weight:600;color:var(--text)}
+#page-ship .naval-effect>p{font-size:10px;line-height:1.7;color:var(--muted);margin:5px 0 0;white-space:pre-line;overflow-wrap:anywhere}
+#page-ship .naval-effects+.naval-record-list{margin-top:15px}
+#page-ship .naval-effects~h4{margin:22px 0 15px;font-size:16px}
+#page-ship .naval-battle-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,1fr);gap:20px;margin-bottom:20px}
+#page-ship .naval-integrity .naval-panel-heading{margin-bottom:14px}
+#page-ship .naval-integrity-number{font:650 30px/1.2 var(--atlas-display,Georgia,serif);margin-bottom:13px;color:var(--text);font-variant-numeric:tabular-nums}
+#page-ship .naval-integrity .naval-meter{height:8px}
+#page-ship .naval-damage-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:18px}
+#page-ship .naval-damage-controls>.input{width:68px;min-height:37px;flex:0 0 68px;text-align:center}
+#page-ship .naval-damage-controls>.naval-btn{font-size:10px;min-height:37px;padding:8px 10px}
+#page-ship .naval-battle-stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:9px;background:var(--panel);overflow:hidden}
+#page-ship .naval-battle-stats>div{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 12px;gap:6px;text-align:center}
+#page-ship .naval-battle-stats>div:nth-child(odd){border-right:1px solid var(--line)}
+#page-ship .naval-battle-stats>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+#page-ship .naval-battle-stats small{font-size:10px;color:var(--muted)}
+#page-ship .naval-battle-stats b{font:650 25px/1.2 var(--atlas-display,Georgia,serif);color:var(--gold2)}
+#page-ship .naval-battle-stats span{font-size:9px;color:var(--muted)}
+#page-ship .naval-tactics{display:grid;grid-template-columns:minmax(0,1fr) 180px;align-items:center;gap:35px;margin-bottom:20px}
+#page-ship .naval-tactics .naval-panel-heading{margin-bottom:16px}
+#page-ship .naval-tactics .naval-panel-heading>span{font-size:10px;color:var(--gold2)}
+#page-ship .naval-position-track{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+#page-ship .naval-position-track>button{min-height:37px;padding:5px 2px;background:var(--bg2);color:var(--muted);border:1px solid var(--line);border-radius:5px;font-size:12px}
+#page-ship .naval-position-track>button.active{background:var(--gold);color:var(--primary-ink);border-color:var(--gold);font-weight:700}
+#page-ship .naval-position-legend{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font-size:9px;color:var(--muted)}
+#page-ship .naval-counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#page-ship .naval-counter{padding:18px;border:1px solid var(--line);border-radius:8px;background:var(--panel);min-width:0}
+#page-ship .naval-counter>div:first-child{display:flex;align-items:baseline;justify-content:space-between;gap:7px}
+#page-ship .naval-counter h4{margin:0;color:var(--text);font-size:12px;font-weight:550}
+#page-ship .naval-counter b{font-size:12px;color:var(--gold2);font-weight:600;white-space:nowrap}
+#page-ship .naval-pips{display:flex;gap:5px;flex-wrap:wrap;margin:16px 0;min-height:5px}
+#page-ship .naval-pips>span{height:5px;flex:1;min-width:4px;background:color-mix(in srgb,var(--muted) 20%,var(--bg));border-radius:3px}
+#page-ship .naval-pips>span.on{background:var(--gold)}
+#page-ship .naval-pips.bad>span.on{background:var(--red)}
+#page-ship .naval-counter-controls{display:flex;justify-content:space-between;align-items:center;gap:5px}
+#page-ship .naval-counter-controls>.naval-btn{width:30px;min-height:30px;padding:3px;font-size:16px}
+#page-ship .naval-counter-controls>span,#page-ship .naval-counter-controls>.naval-text-btn{font-size:9px;color:var(--muted)}
+#page-ship .naval-command-settings{margin-bottom:22px}
+#page-ship .naval-command-settings>.naval-disclosure-body{display:flex;align-items:center;gap:15px}
+#page-ship .naval-command-settings .input{max-width:85px}
+#page-ship .naval-arsenal,#page-ship .naval-damage-log{margin-bottom:20px}
+#page-ship .naval-ammo{display:flex;align-items:center;gap:8px;margin-top:13px;color:var(--muted);font-size:10px}
+#page-ship .naval-ammo .naval-quantity>span{min-width:54px;text-align:center;font-size:11px;color:var(--text);padding:0 7px}
+#page-ship .naval-dialog{width:min(570px,calc(100vw - 28px));max-height:calc(100dvh - 32px);padding:0;margin:auto;border:1px solid var(--naval-border);border-radius:12px;background:var(--panel);color:var(--text);box-shadow:0 30px 120px #0007;overflow:auto;overscroll-behavior:contain}
+#page-ship .naval-dialog::backdrop{background:#080c13b3;backdrop-filter:blur(4px)}
+#page-ship .naval-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:22px 24px 18px;border-bottom:1px solid var(--line)}
+#page-ship .naval-dialog-head h3{font:600 25px/1.2 var(--atlas-display,Georgia,serif);margin:5px 0 0;color:var(--text)}
+#page-ship .naval-dialog-body{padding:22px 24px;display:flex;flex-direction:column;gap:18px}
+#page-ship .naval-dialog-footer{display:flex;justify-content:flex-end;align-items:center;gap:10px;padding:16px 24px;border-top:1px solid var(--line);background:var(--panel);position:sticky;bottom:0}
+#page-ship .naval-cargo-preview{padding:10px 12px;border:1px solid var(--naval-border);border-radius:6px;background:var(--naval-soft);color:var(--gold2);font-size:11px;line-height:1.5}
+#page-ship .naval-provision-fields{margin:0;border:1px solid var(--line);padding:15px;border-radius:7px;min-width:0}
+#page-ship .naval-provision-fields>legend{font-size:10px;color:var(--gold2);padding:0 6px}
+@media(min-width:1400px){#page-ship .naval-hold-layout{grid-template-columns:200px minmax(0,1fr);gap:26px}#page-ship .naval-cargo-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+@media(max-width:1100px){#page-ship .naval-hold-layout{grid-template-columns:160px minmax(0,1fr);gap:15px}#page-ship .naval-cargo-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}#page-ship .naval-provisions{grid-template-columns:minmax(190px,1.5fr) repeat(3,minmax(80px,1fr))}#page-ship .naval-capacity{padding:17px 15px}#page-ship .naval-cargo-grid.list .naval-cargo-card{grid-template-columns:minmax(140px,1fr) auto;gap:12px}#page-ship .naval-cargo-grid.list .naval-item-details{grid-column:1;grid-row:2;justify-content:flex-start;gap:12px}#page-ship .naval-cargo-grid.list .naval-item-bottom{grid-column:2;grid-row:1/3;flex-direction:column;gap:8px}#page-ship .naval-record{flex-wrap:wrap}#page-ship .naval-record-actions{max-width:none;justify-content:flex-start}}
+@media(max-width:760px){#page-ship .naval-masthead{grid-template-columns:52px minmax(0,1fr) auto;padding:20px 18px 0;gap:12px}#page-ship .naval-crest{width:52px;height:52px}#page-ship .naval-crest .ui-icon{width:27px;height:27px}#page-ship .naval-identity h2{font-size:28px}#page-ship .naval-header-end .naval-btn{min-height:32px;font-size:9px;padding:7px 9px}#page-ship .naval-status{font-size:9px}#page-ship .naval-manifest{gap:10px;padding:13px 0}#page-ship .naval-manifest>span{gap:6px;font-size:9px}#page-ship .naval-manifest b{font-size:10px}#page-ship .naval-tabs>button{gap:8px;padding:16px 8px;font-size:12px}#page-ship .naval-tabs>button small{font-size:8px}#page-ship .naval-tab-count{display:none}#page-ship .naval-view{padding:23px 18px 20px}#page-ship .naval-section-heading h3{font-size:25px}#page-ship .naval-hold-layout{grid-template-columns:1fr;gap:16px}#page-ship .naval-hold-sidebar{padding:11px;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:10px;align-items:center}#page-ship .naval-hold-sidebar>.naval-sidebar-label{display:none}#page-ship .naval-categories{flex-direction:row;overflow:auto;gap:4px;scrollbar-width:thin;padding-bottom:5px}#page-ship .naval-categories>button{width:auto;flex:0 0 auto;font-size:10px;padding:9px 10px}#page-ship .naval-categories>button svg{width:14px;height:14px;flex-basis:14px}#page-ship .naval-categories>button>b{margin-left:3px;font-size:9px}#page-ship .naval-compartment-filter{padding:0 0 0 12px;margin:0;border-top:0;border-left:1px solid var(--line);gap:5px}#page-ship .naval-compartment-filter>.naval-sidebar-label{font-size:8px}#page-ship .naval-compartment-filter>.naval-text-btn,#page-ship .naval-room-meters{display:none}#page-ship .naval-provisions{grid-template-columns:1fr 1fr 1fr}#page-ship .naval-capacity{grid-column:1/-1;border-bottom:1px solid var(--line);padding:16px 18px}#page-ship .naval-provision{padding:14px 8px}#page-ship .naval-provision:nth-child(2){border-left:0}#page-ship .naval-provision>b{font-size:23px}#page-ship .naval-structure-top{grid-template-columns:1fr}#page-ship .naval-art{aspect-ratio:16/9;min-height:220px}#page-ship .naval-art-empty>svg{max-height:145px}#page-ship .naval-structure-extras{grid-template-columns:1fr;gap:14px}#page-ship .naval-battle-top{grid-template-columns:1fr;gap:14px}#page-ship .naval-battle-stats{grid-template-columns:repeat(4,minmax(0,1fr))}#page-ship .naval-battle-stats>div{border:0!important;border-right:1px solid var(--line)!important;padding:15px 8px}#page-ship .naval-battle-stats>div:last-child{border:0!important}#page-ship .naval-battle-stats span{font-size:8px}#page-ship .naval-counters{grid-template-columns:1fr 1fr;gap:10px}#page-ship .naval-tactics{grid-template-columns:1fr;gap:18px}#page-ship .naval-component-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){#page-ship .naval-masthead{grid-template-columns:44px minmax(0,1fr);padding:19px 15px 0;gap:10px}#page-ship .naval-crest{width:44px;height:44px;outline-offset:-5px}#page-ship .naval-crest .ui-icon{width:24px;height:24px}#page-ship .naval-identity h2{font-size:26px;margin:4px 0}#page-ship .naval-identity .naval-eyebrow{font-size:8px;gap:8px}#page-ship .naval-identity .naval-eyebrow>span{padding-left:8px}#page-ship .naval-identity p{font-size:10px}#page-ship .naval-header-end{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;padding-top:6px}#page-ship .naval-manifest{display:grid;grid-template-columns:1fr 1fr;margin-top:2px;gap:11px 16px}#page-ship .naval-manifest>span{justify-content:space-between}#page-ship .naval-tabs>button{flex-direction:column;text-align:center;gap:6px;padding:14px 3px;font-size:10px}#page-ship .naval-tabs>button>.ui-icon{width:19px;height:19px;flex-basis:19px}#page-ship .naval-tabs>button small{display:none}#page-ship .naval-view{padding:20px 13px}#page-ship .naval-section-heading{gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:17px}#page-ship .naval-section-heading>div{flex:1;min-width:185px}#page-ship .naval-section-heading>.naval-btn.primary{width:100%}#page-ship .naval-section-heading h3{font-size:25px}#page-ship .naval-section-heading p{font-size:10px}#page-ship .naval-provisions{margin-bottom:16px}#page-ship .naval-provision>small,#page-ship .naval-provision>button{font-size:8px}#page-ship .naval-hold-sidebar{display:block;padding:9px}#page-ship .naval-compartment-filter{border-left:0;border-top:1px solid var(--line);padding:9px 2px 1px;margin-top:6px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:center}#page-ship .naval-compartment-filter>.input{min-height:32px}#page-ship .naval-inventory-tools{flex-wrap:wrap;gap:7px}#page-ship .naval-search{flex:0 0 100%}#page-ship .naval-sort{flex:1;width:auto}#page-ship .naval-cargo-grid{grid-template-columns:1fr;gap:10px}#page-ship .naval-cargo-card{padding:16px;gap:13px}#page-ship .naval-item-icon{width:36px;height:36px;flex-basis:36px}#page-ship .naval-item-copy h4{font-size:14px}#page-ship .naval-item-details{flex-wrap:nowrap}#page-ship .naval-item-space{text-align:right;flex-shrink:0}#page-ship .naval-quantity{height:35px}#page-ship .naval-quantity button{width:34px;height:33px}#page-ship .naval-quantity input{height:33px;width:47px;font-size:13px}#page-ship .naval-item-actions .naval-icon-btn{height:34px;min-width:34px}#page-ship .naval-item-actions .naval-text-btn{font-size:11px}#page-ship .naval-cargo-grid.list .naval-cargo-card{grid-template-columns:minmax(0,1fr) auto;padding:13px;gap:10px}#page-ship .naval-cargo-grid.list .naval-item-heading{gap:8px}#page-ship .naval-cargo-grid.list .naval-item-icon{display:none}#page-ship .naval-cargo-grid.list .naval-item-details{flex-wrap:wrap;font-size:9px}#page-ship .naval-cargo-grid.list .naval-item-space{text-align:left}#page-ship .naval-cargo-grid.list .naval-item-copy h4{font-size:12px}#page-ship .naval-panel,#page-ship .naval-workbench-content{padding:17px}#page-ship .naval-workbench{padding:0}#page-ship .naval-panel-heading h4{font-size:19px}#page-ship .naval-form-grid{gap:12px}#page-ship .naval-part-tabs>button{flex-direction:column;gap:7px;font-size:9px;padding:13px 3px}#page-ship .naval-disclosure-body{padding:3px 12px 15px}#page-ship .naval-disclosure>summary{padding:12px;font-size:10px}#page-ship .naval-disclosure.naval-panel>summary{padding:17px;font-size:13px}#page-ship .naval-disclosure.naval-panel>.naval-disclosure-body{padding:0 17px 17px}#page-ship .naval-record{padding:13px;gap:10px}#page-ship .naval-record>div:first-child{flex-basis:100%}#page-ship .naval-record-actions{width:100%}#page-ship .naval-component-grid{gap:8px}#page-ship .naval-component{padding:10px}#page-ship .naval-component .input{font-size:10px;padding:7px}#page-ship .naval-counter{padding:15px 12px}#page-ship .naval-counter h4{font-size:11px}#page-ship .naval-counter b{font-size:11px}#page-ship .naval-battle-stats small{font-size:9px}#page-ship .naval-battle-stats b{font-size:22px}#page-ship .naval-battle-stats span{font-size:7px}#page-ship .naval-damage-controls{display:grid;grid-template-columns:65px 1fr 1fr}#page-ship .naval-damage-controls>.naval-text-btn{grid-column:1/-1;text-align:right}#page-ship .naval-damage-controls>.input{width:100%}#page-ship .naval-dialog-head{padding:19px 17px 16px}#page-ship .naval-dialog-body{padding:18px 17px}#page-ship .naval-dialog-footer{padding:13px 17px}#page-ship .naval-dialog-head h3{font-size:23px}#page-ship .naval-dialog .input{font-size:16px;padding:8px 10px}#page-ship .naval-dialog .field>label{font-size:10px}#page-ship .naval-dialog .naval-form-grid{gap:13px 10px}}
+@media(prefers-reduced-motion:reduce){#page-ship *,#page-ship *::before,#page-ship *::after{transition:none!important;scroll-behavior:auto!important}}
+
+</style>
 </head>
 <body data-theme="rosalya" class="clear-sheet nautical-sheet">
 <header class="topbar">
@@ -2762,55 +3027,63 @@ body.clear-sheet[data-theme] .overview-skill>input:focus-visible,body.clear-shee
       </section>
 
       
-      <section class="page" id="page-ship"><div class="page-intro-v21"><div class="page-intro-icon"><span class="ui-icon i-ship"></span></div><div class="page-intro-copy"><small>Oficina Naval</small><h2>Navio</h2><p>Projeto, componentes, salas, inventário e combate naval.</p></div><div class="page-intro-metrics" hidden=""><div class="page-intro-metric"><small>Navio</small><b id="piShipName">—</b></div><div class="page-intro-metric"><small>Integridade</small><b id="piShipHp">—</b></div><div class="page-intro-metric"><small>CR</small><b id="piShipCr">—</b></div><div class="page-intro-metric"><small>Velocidade</small><b id="piShipSpeed">—</b></div></div></div>
-        <div class="ship-page-wrap">
-          <div class="ship-workshop">
-            <div class="ship-workshop-top">
-              <div class="ship-gallery-stage ship-gallery-stage-v12" id="shipGalleryStage">
-                <button class="ship-hotspot" data-ship-part="sails"><span class="ui-icon i-sail"></span><span><b>Velas</b><small id="shipSailsSummary">Propulsão &amp; vento</small></span></button>
-                <button class="ship-hotspot" data-ship-part="hull"><span class="ui-icon i-hull"></span><span><b>Casco</b><small id="shipHullSummary">Material &amp; blindagem</small></span></button>
-                <button class="ship-hotspot" data-ship-part="weapons"><span class="ui-icon i-cannon"></span><span><b>Armamento</b><small id="shipWeaponsSummary">0 armas instaladas</small></span></button>
-                <button class="ship-hotspot" data-ship-part="structure"><span class="ui-icon i-beam"></span><span><b>Estrutural</b><small id="shipStructureSummary">Componentes &amp; reforços</small></span></button>
-                <button class="ship-hotspot" data-ship-part="rooms"><span class="ui-icon i-room"></span><span><b>Salas</b><small id="shipRoomsSummary">0 / 0 espaços</small></span></button>
-                <div class="ship-painting-frame">
-                  <div class="ship-canvas" id="shipCanvas"><div class="ship-art-empty" id="shipArtEmpty"><span class="ui-icon i-ship"></span><b>A Pintura do Navio</b><span>Envie a arte da embarcação e ajuste o enquadramento dentro da moldura.</span></div><img id="shipArtImage" alt="Arte do navio" hidden></div>
-                  <div class="ship-name-plaque" id="shipNamePlaque">MEU NAVIO</div>
-                </div>
-                <div class="ship-gallery-controls-v12"><details><summary>Ajustar Pintura</summary><div class="ship-art-editor"><input class="input" id="shipImageUrl" placeholder="URL da arte do navio"><button class="ship-wood-btn" id="shipApplyImageUrl">Aplicar URL</button><button class="ship-wood-btn" id="shipUploadImageBtn">Enviar imagem</button><input type="file" id="shipImageInput" accept="image/*" hidden><div class="ship-art-sliders"><label>Zoom <input id="shipImageZoom" type="range" min="0.5" max="3" step="0.01"></label><label>Horizontal <input id="shipImageX" type="range" min="-65" max="65" step="1"></label><label>Vertical <input id="shipImageY" type="range" min="-65" max="65" step="1"></label></div><button class="ship-wood-btn" id="shipImageFit">Mostrar inteira</button><button class="ship-wood-btn" id="shipImageCenter">Centralizar</button></div></details></div>
-              </div>
-            </div>
+      <section class="page naval-page" id="page-ship" aria-label="Navio da tripulação">
+        <header class="naval-masthead">
+          <div class="naval-crest" aria-hidden="true"><span class="ui-icon i-ship"></span></div>
+          <div class="naval-identity"><div class="naval-eyebrow">Registro naval <span id="shipClassRead">Leve</span></div><h2 id="shipNamePlaque">Meu Navio</h2><p id="shipIdentityLine">O lar da tripulação em alto-mar.</p></div>
+          <div class="naval-header-end"><span class="naval-status" id="shipHeaderCondition">Intacto</span><button class="naval-btn subtle" type="button" data-ship-action="edit-identity">Editar navio <span aria-hidden="true">↗</span></button></div>
+          <div class="naval-manifest"><span>Integridade <b id="shipHeaderIntegrity">100 / 100</b></span><span>Carga <b id="shipHeaderCargo">0 / 20</b></span><span>Tripulação <b id="shipCrewStat">4</b></span><span>Velocidade <b id="shipHeaderSpeed">100 km/h</b></span></div>
+        </header>
+        <div class="naval-tabs" role="tablist" aria-label="Áreas do navio">
+          <button type="button" role="tab" id="shipTab-storage" aria-controls="shipView-storage" aria-selected="true" data-ship-view="storage"><span class="ui-icon i-bag" aria-hidden="true"></span><span>Armazenamento<small>Carga e provisões</small></span><span class="naval-tab-count" id="shipCargoTabCount">0</span></button>
+          <button type="button" role="tab" id="shipTab-structure" aria-controls="shipView-structure" aria-selected="false" tabindex="-1" data-ship-view="structure"><span class="ui-icon i-beam" aria-hidden="true"></span><span>Estrutura<small>Projeto e melhorias</small></span></button>
+          <button type="button" role="tab" id="shipTab-combat" aria-controls="shipView-combat" aria-selected="false" tabindex="-1" data-ship-view="combat"><span class="ui-icon i-cannon" aria-hidden="true"></span><span>Combate<small>Manobras e arsenal</small></span></button>
+        </div>
 
-            <section class="ship-workbench" id="shipWorkbench"><div class="ship-workbench-head"><div><h3 id="shipWorkbenchTitle">Bancada de Velas</h3><p id="shipWorkbenchSubtitle">Clique nos blueprints ao redor da pintura para trabalhar em uma parte do navio.</p></div><button class="ship-wood-btn" id="shipCloseWorkbench">Recolher</button></div><div class="ship-workbench-body" id="shipWorkbenchBody"></div></section>
-
-            <section class="ship-game-hud">
-              <div class="ship-hud-top">
-                <div class="ship-hud-integrity"><div class="ship-integrity-head"><span>INTEGRIDADE</span><span id="shipIntegrityText">100 / 100</span></div><div class="ship-integrity-bar"><div class="ship-integrity-fill" id="shipIntegrityFill"></div></div><div class="ship-integrity-controls"><input class="input" id="shipIntegrityAmount" type="number" min="0" value="10"><button class="ship-wood-btn danger" id="shipDamageBtn">Dano</button><button class="ship-wood-btn" id="shipRepairBtn">Reparar</button><button class="ship-wood-btn" id="shipFullRepairBtn">Máximo</button></div></div>
-                <div class="ship-hud-tile"><small>Classe</small><b id="shipClassRead">Leve</b><span id="shipClassTrait">Ágil</span></div>
-                <div class="ship-hud-tile"><small>Resistência</small><b id="shipResistanceStat">0</b><span>redução</span></div>
-                <div class="ship-hud-tile"><small>CR</small><b id="shipCRStat">0</b><span>naval</span></div>
-                <div class="ship-hud-tile"><small>Velocidade</small><b id="shipSpeedRead">100</b><span id="shipSpeedStat">100 km/h</span></div>
-                <div class="ship-hud-tile"><small>Manobra</small><b id="shipManeuverRead">+2</b><span id="shipManeuverStat">+2</span></div>
-                <div class="ship-hud-tile"><small>Salas</small><b id="shipRoomStat">1 / 3</b><span>espaços</span></div>
-                <div class="ship-hud-tile"><small>Tripulação</small><b id="shipCrewStat">4</b><span id="shipCrewRecommended">rec. 4–8</span></div>
-              </div>
-              <div class="ship-hud-bottom"><div class="ship-hud-condition"><div class="ship-condition-badge" id="shipConditionBadge">INTACTO</div><span id="shipDamagePenaltyText">Sem penalidades de Integridade.</span></div><div class="ship-bonus-strip" id="shipBonusStrip"></div></div>
-              <details class="ship-hud-settings"><summary>Registro, classe e parâmetros da embarcação</summary><div class="ship-hud-settings-body">
-                <div class="field"><label for="shipNameInput">Nome do Navio</label><input class="input ship-bind" data-ship-key="name" id="shipNameInput" placeholder="Nome da embarcação"></div><div class="field"><label for="sheet-field-100">Apelido / Título</label><input class="input ship-bind" data-ship-key="title" id="sheet-field-100"></div><div class="field"><label for="sheet-field-101">Capitão</label><input class="input ship-bind" data-ship-key="captain" id="sheet-field-101"></div><div class="field"><label for="sheet-field-102">Porto de Origem</label><input class="input ship-bind" data-ship-key="port" id="sheet-field-102"></div><div class="field"><label for="sheet-field-103">Construtor</label><input class="input ship-bind" data-ship-key="builder" id="sheet-field-103"></div><div class="field"><label for="sheet-field-104">Jolly Roger / Bandeira</label><input class="input ship-bind" data-ship-key="jolly" id="sheet-field-104"></div><div class="field"><label for="sheet-field-105">Tripulação Atual</label><input class="input ship-bind" data-ship-key="crewCurrent" type="number" min="0" id="sheet-field-105"></div><div class="field"><label for="sheet-field-106">Velocidade Base</label><input class="input ship-bind" data-ship-key="baseSpeed" type="number" min="0" id="sheet-field-106"></div><div class="field"><label for="sheet-field-107">CR Base</label><input class="input ship-bind" data-ship-key="baseCR" type="number" id="sheet-field-107"></div><div class="field"><label for="sheet-field-108">Comando Máx.</label><input class="input ship-bind" data-ship-key="commandMax" type="number" min="0" id="sheet-field-108"></div>
-                <div class="field wide"><label>Classe</label><div class="ship-class-stamp" id="shipClassButtons"><button data-ship-class="Leve">Leve</button><button data-ship-class="Média">Média</button><button data-ship-class="Pesada">Pesada</button></div></div>
-                <div style="display:none"><b id="shipSpeedStatHidden"></b><b id="shipManeuverStatHidden"></b><b id="shipSinkingStat">3</b><b id="shipAutonomyRead">0 d</b><b id="shipCargoRead">0 / 20</b><b id="shipComfortRead">2 / 5</b><span id="shipComfortText">Básico</span></div>
-              </div></details>
+        <div class="naval-view" id="shipView-storage" role="tabpanel" aria-labelledby="shipTab-storage">
+          <div class="naval-section-heading"><div><span class="naval-eyebrow">Manifesto de bordo</span><h3>Porão &amp; provisões</h3><p>Tudo o que a tripulação leva para a próxima ilha.</p></div><button class="naval-btn primary" type="button" data-ship-action="new-cargo"><span aria-hidden="true">+</span> Adicionar item</button></div>
+          <div class="naval-provisions">
+            <div class="naval-capacity" id="shipCargoCapacity"><div><span>Carga segura</span><b id="shipCargoSummaryLabel">0 / 20 espaços</b></div><div class="naval-meter" role="meter" id="shipCargoMeter" aria-label="Ocupação da carga segura" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><span id="shipCargoFill"></span></div><small id="shipCargoCapacityHint">20 espaços livres</small></div>
+            <div class="naval-provision"><span>Comida</span><b id="shipFoodDays">0 d</b><small>para a tripulação</small></div><div class="naval-provision"><span>Água</span><b id="shipWaterDays">0 d</b><small>para a tripulação</small></div><div class="naval-provision autonomy"><span>Autonomia</span><b id="shipAutonomyStat">0 d</b><button type="button" data-ship-action="edit-crew" id="shipProvisionCrew">4 tripulantes ↗</button></div>
+          </div>
+          <div class="naval-hold-layout">
+            <aside class="naval-hold-sidebar" aria-label="Filtros do inventário naval"><div class="naval-sidebar-label">Categorias</div><div class="naval-categories" id="shipCargoCategories"></div><div class="naval-compartment-filter"><label class="naval-sidebar-label" for="shipCargoRoomFilter">Compartimento</label><select class="input" id="shipCargoRoomFilter"><option value="all">Todos os compartimentos</option></select><div class="naval-room-meters" id="shipRoomMeters"></div><button class="naval-text-btn" type="button" data-ship-action="manage-rooms">Gerenciar salas <span aria-hidden="true">↗</span></button></div></aside>
+            <section class="naval-inventory" aria-label="Itens armazenados">
+              <div class="naval-inventory-tools"><div class="naval-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><label class="sr-only" for="shipCargoSearch">Buscar no inventário do navio</label><input class="input" id="shipCargoSearch" type="search" placeholder="Buscar no porão…" autocomplete="off"></div><label class="sr-only" for="shipCargoSort">Ordenar inventário do navio</label><select class="input naval-sort" id="shipCargoSort"><option value="name">Nome: A–Z</option><option value="category">Categoria</option><option value="qty">Maior quantidade</option><option value="space">Mais espaço ocupado</option></select><div class="naval-layout-toggle" role="group" aria-label="Visualização do inventário"><button type="button" data-ship-layout="grid" aria-pressed="true" aria-label="Visualizar em cartões" title="Cartões"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button><button type="button" data-ship-layout="list" aria-pressed="false" aria-label="Visualizar em lista" title="Lista"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"/></svg></button></div></div>
+              <div class="naval-inventory-meta"><span id="shipCargoResultCount" role="status" aria-live="polite">0 itens</span><button class="naval-text-btn" type="button" data-ship-action="clear-filters" id="shipClearCargoFilters" hidden>Limpar filtros</button></div>
+              <div class="naval-undo" id="shipCargoUndo" role="status" hidden><span id="shipCargoUndoText"></span><button class="naval-text-btn" type="button" data-ship-action="undo-cargo">Desfazer</button><button class="naval-icon-btn" type="button" data-ship-action="dismiss-undo" aria-label="Fechar aviso">×</button></div>
+              <div class="naval-cargo-grid" id="shipCargoList"></div>
             </section>
-
-            <div class="ship-lower">
-              <div class="ship-bottom-grid">
-                <details class="ship-collapse" open><summary><span>Inventário &amp; Carga</span><span id="shipCargoSummaryLabel">0 / 20</span></summary><div class="ship-collapse-body"><div class="ship-cargo-summary"><div class="ship-stat-tile"><small>Carga Atual</small><b id="shipCargoCurrent">0</b><span>espaços</span></div><div class="ship-stat-tile"><small>Comida</small><b id="shipFoodDays">0 d</b><span>para tripulação</span></div><div class="ship-stat-tile"><small>Água</small><b id="shipWaterDays">0 d</b><span>para tripulação</span></div><div class="ship-stat-tile"><small>Autonomia</small><b id="shipAutonomyStat">0 d</b><span>recurso limitante</span></div></div><div class="ship-cargo-form"><div class="field"><label for="shipCargoName">Nome</label><input class="input" id="shipCargoName"></div><div class="field"><label for="shipCargoCategory">Categoria</label><select class="input" id="shipCargoCategory"><option>Comida</option><option>Água</option><option>Dinheiro</option><option>Tesouro</option><option>Munição</option><option>Armas</option><option>Materiais</option><option>Outros</option></select></div><div class="field"><label for="shipCargoQty">Qtd.</label><input class="input" id="shipCargoQty" type="number" min="0" value="1"></div><div class="field"><label for="shipCargoSpace">Espaço/un.</label><input class="input" id="shipCargoSpace" type="number" min="0" step="0.5" value="1"></div><div class="field"><label for="shipCargoDays">Dias</label><input class="input" id="shipCargoDays" type="number" min="0" step="0.5" value="0"></div><div class="field"><label for="shipCargoPeople">Pessoas</label><input class="input" id="shipCargoPeople" type="number" min="0" value="0"></div><div class="field"><label for="shipCargoRoom">Sala</label><select class="input" id="shipCargoRoom"></select></div></div><div class="helper" style="color:#bca483;margin-top:6px">Para Comida e Água, “Dias × Pessoas” vira provisão total; a autonomia é recalculada pela Tripulação Atual.</div><div class="ship-editor-actions"><button class="ship-wood-btn" id="shipAddCargo">Adicionar Carga</button></div><div class="ship-cargo-list" id="shipCargoList"></div></div></details>
-                <details class="ship-collapse" open><summary><span>Combate Naval</span><span id="shipNavalStateLabel">Equilibrado</span></summary><div class="ship-collapse-body ship-combat-strip"><div><label>Posição Naval</label><div class="ship-position-track" id="shipPositionTrack"></div></div><div class="field"><label for="shipDistanceSelect">Distância Naval</label><select class="input" id="shipDistanceSelect"><option>Encostado</option><option>Curto</option><option>Médio</option><option>Longo</option><option>Extremo</option></select></div><div class="ship-counter-row"><div class="ship-counter"><div class="ship-counter-head"><span>Impulso</span><span id="shipMomentumText">0 / 3</span></div><div class="ship-pips" id="shipMomentumPips"></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-counter="momentum" data-delta="-1">−</button><button class="ship-wood-btn" data-ship-counter="momentum" data-delta="1">+</button></div></div><div class="ship-counter"><div class="ship-counter-head"><span>Desordem</span><span id="shipDisorderText">0 / 3</span></div><div class="ship-pips" id="shipDisorderPips"></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-counter="disorder" data-delta="-1">−</button><button class="ship-wood-btn" data-ship-counter="disorder" data-delta="1">+</button></div></div><div class="ship-counter"><div class="ship-counter-head"><span>Comando</span><span id="shipCommandText">2 / 2</span></div><div class="ship-pips" id="shipCommandPips"></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-counter="commandCurrent" data-delta="-1">−</button><button class="ship-wood-btn" data-ship-counter="commandCurrent" data-delta="1">+</button></div></div><div class="ship-counter"><div class="ship-counter-head"><span>Naufrágio</span><span id="shipSinkingText">3 / 3</span></div><div class="ship-pips" id="shipSinkingPips"></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-counter="sinking" data-delta="-1">−</button><button class="ship-wood-btn" data-ship-counter="sinking" data-delta="1">+</button></div></div></div><div class="ship-editor-actions"><button class="ship-wood-btn" id="shipNewRound">Nova Rodada</button><button class="ship-wood-btn" id="shipResetCommand">Restaurar Comando</button></div><div id="shipAvariasList"></div></div></details>
-                <details class="ship-collapse"><summary><span>Bônus &amp; Características</span><span id="shipSpecialCount">0</span></summary><div class="ship-collapse-body"><div class="ship-editor-grid"><div class="field"><label for="shipSpecialName">Nome</label><input class="input" id="shipSpecialName"></div><div class="field wide"><label for="shipSpecialEffect">Efeito</label><input class="input" id="shipSpecialEffect"></div><div class="field"><label for="shipSpecialOrigin">Origem</label><input class="input" id="shipSpecialOrigin"></div></div><div class="ship-editor-actions"><button class="ship-wood-btn" id="shipAddSpecial">Adicionar Característica</button></div><div class="ship-special-grid" id="shipSpecialList"></div></div></details>
-                <details class="ship-collapse"><summary><span>Diário da Embarcação</span><span>História</span></summary><div class="ship-collapse-body"><div class="field"><label for="sheet-field-121">Descrição</label><textarea class="input ship-bind" data-ship-key="description" style="min-height:90px" id="sheet-field-121"></textarea></div><div class="field" style="margin-top:8px"><label for="sheet-field-122">História, Feitos e Avarias Marcantes</label><textarea class="input ship-bind" data-ship-key="history" style="min-height:140px" id="sheet-field-122"></textarea></div></div></details>
-              </div>
-            </div>
           </div>
         </div>
+
+        <div class="naval-view" id="shipView-structure" role="tabpanel" aria-labelledby="shipTab-structure" hidden>
+          <div class="naval-section-heading"><div><span class="naval-eyebrow">Estaleiro</span><h3>Da quilha ao mastro</h3><p>Identidade, construção e tudo o que faz seu navio único.</p></div><span class="naval-stamp" id="shipRoomStat">1 / 3 espaços de sala</span></div>
+          <div class="naval-structure-top">
+            <section class="naval-art-panel"><div class="naval-art" id="shipCanvas"><div class="naval-art-empty" id="shipArtEmpty"><svg viewBox="0 0 320 220" fill="none" aria-hidden="true"><path d="M45 154h233l-30 29H78zM159 31v123M147 47 89 137h58zM171 52l68 85h-68zM158 31l28 8-28 9M37 195c15-12 26 12 41 0s26 12 41 0 26 12 41 0 26 12 41 0 26 12 41 0 26 12 41 0"/><circle cx="95" cy="166" r="3"/><circle cx="123" cy="166" r="3"/><circle cx="151" cy="166" r="3"/><path d="M30 112h25M42 100v24M268 52h20M278 42v20"/></svg><b>Seu navio, sua bandeira.</b><span>Adicione a arte da embarcação.</span></div><img id="shipArtImage" alt="Arte do navio" hidden></div><details class="naval-disclosure naval-art-controls"><summary>Imagem da embarcação</summary><div class="naval-disclosure-body"><div class="field"><label for="shipImageUrl">URL da imagem</label><input class="input" id="shipImageUrl" type="url" placeholder="https://…"></div><div class="naval-actions"><button class="naval-btn" type="button" id="shipApplyImageUrl">Aplicar URL</button><button class="naval-btn" type="button" id="shipUploadImageBtn">Enviar imagem</button><input type="file" id="shipImageInput" accept="image/*" hidden></div><div class="naval-image-sliders"><label for="shipImageZoom">Zoom<input id="shipImageZoom" type="range" min="0.5" max="3" step="0.01"></label><label for="shipImageX">Horizontal<input id="shipImageX" type="range" min="-65" max="65" step="1"></label><label for="shipImageY">Vertical<input id="shipImageY" type="range" min="-65" max="65" step="1"></label></div><div class="naval-actions"><button class="naval-btn" type="button" id="shipImageFit">Mostrar inteira</button><button class="naval-btn" type="button" id="shipImageCenter">Centralizar</button></div></div></details></section>
+            <section class="naval-panel naval-registry"><div class="naval-panel-heading"><div><span class="naval-eyebrow">Registro da embarcação</span><h4>Nome &amp; bandeira</h4></div><span class="ui-icon i-ship" aria-hidden="true"></span></div><div class="naval-form-grid"><div class="field full"><label for="shipNameInput">Nome do navio</label><input class="input ship-bind" data-ship-key="name" id="shipNameInput" placeholder="Nome da embarcação"></div><div class="field"><label for="shipTitleInput">Apelido / título</label><input class="input ship-bind" data-ship-key="title" id="shipTitleInput"></div><div class="field"><label for="shipCaptainInput">Capitão</label><input class="input ship-bind" data-ship-key="captain" id="shipCaptainInput"></div><div class="field"><label for="shipPortInput">Porto de origem</label><input class="input ship-bind" data-ship-key="port" id="shipPortInput"></div><div class="field"><label for="shipBuilderInput">Construtor</label><input class="input ship-bind" data-ship-key="builder" id="shipBuilderInput"></div><div class="field"><label for="shipJollyInput">Jolly Roger / bandeira</label><input class="input ship-bind" data-ship-key="jolly" id="shipJollyInput"></div><div class="field"><label for="shipCrewInput">Tripulação atual</label><input class="input ship-bind" data-ship-key="crewCurrent" id="shipCrewInput" type="number" min="0" step="1"><small id="shipCrewRecommended"></small></div></div><div class="naval-class-section"><span class="naval-sidebar-label">Classe da embarcação</span><div class="naval-class-options" id="shipClassButtons"><button type="button" data-ship-class="Leve"><b>Leve</b><small>Ágil</small></button><button type="button" data-ship-class="Média"><b>Média</b><small>Equilibrada</small></button><button type="button" data-ship-class="Pesada"><b>Pesada</b><small>Colosso</small></button></div><p class="naval-help">A classe define os valores base de integridade, resistência, manobra, salas e carga.</p></div><details class="naval-disclosure" id="shipParameters"><summary>Parâmetros personalizados</summary><div class="naval-disclosure-body naval-form-grid"><div class="field"><label for="shipBaseIntegrity">Integridade base</label><input class="input ship-bind" data-ship-key="baseIntegrity" id="shipBaseIntegrity" type="number" min="1"></div><div class="field"><label for="shipBaseResistance">Resistência base</label><input class="input ship-bind" data-ship-key="baseResistance" id="shipBaseResistance" type="number"></div><div class="field"><label for="shipBaseSpeed">Velocidade base (km/h)</label><input class="input ship-bind" data-ship-key="baseSpeed" id="shipBaseSpeed" type="number" min="0"></div><div class="field"><label for="shipBaseManeuver">Manobrabilidade base</label><input class="input ship-bind" data-ship-key="baseManeuver" id="shipBaseManeuver" type="number"></div><div class="field"><label for="shipBaseCR">CR base</label><input class="input ship-bind" data-ship-key="baseCR" id="shipBaseCR" type="number"></div><div class="field"><label for="shipRoomMax">Espaços de sala base</label><input class="input ship-bind" data-ship-key="roomMax" id="shipRoomMax" type="number" min="0"></div><div class="field"><label for="shipCargoSafe">Carga segura base</label><input class="input ship-bind" data-ship-key="cargoSafe" id="shipCargoSafe" type="number" min="0" step="0.5"></div><div class="field"><label for="shipComfort">Conforto (0 a 5)</label><input class="input ship-bind" data-ship-key="comfort" id="shipComfort" type="number" min="0" max="5"><small id="shipComfortText">Básico</small></div></div></details></section>
+          </div>
+          <section class="naval-panel naval-workbench" id="shipWorkbench"><div class="naval-part-tabs" role="group" aria-label="Partes da estrutura"><button type="button" data-ship-part="hull"><span class="ui-icon i-hull" aria-hidden="true"></span>Casco</button><button type="button" data-ship-part="sails"><span class="ui-icon i-sail" aria-hidden="true"></span>Velas</button><button type="button" data-ship-part="structure"><span class="ui-icon i-beam" aria-hidden="true"></span>Componentes</button><button type="button" data-ship-part="rooms"><span class="ui-icon i-room" aria-hidden="true"></span>Salas</button></div><div class="naval-workbench-content"><div class="naval-panel-heading"><div><h4 id="shipWorkbenchTitle">Casco &amp; material</h4><p id="shipWorkbenchSubtitle"></p></div></div><div id="shipWorkbenchBody"></div></div></section>
+          <div class="naval-structure-extras"><details class="naval-disclosure naval-panel"><summary>Características &amp; bônus <span id="shipSpecialCount">0</span></summary><div class="naval-disclosure-body"><div class="naval-effects" id="shipBonusStrip"></div><h4>Características especiais</h4><div id="shipSpecialList" class="naval-record-list"></div><form id="shipSpecialForm" class="naval-inline-form"><div class="naval-form-grid"><div class="field"><label for="shipSpecialName">Nome</label><input class="input" id="shipSpecialName" required></div><div class="field"><label for="shipSpecialOrigin">Origem</label><input class="input" id="shipSpecialOrigin"></div><div class="field full"><label for="shipSpecialEffect">Efeito</label><textarea class="input" id="shipSpecialEffect" rows="2"></textarea></div></div><button class="naval-btn" type="submit" id="shipAddSpecial">Adicionar característica</button></form></div></details><details class="naval-disclosure naval-panel"><summary>Diário da embarcação</summary><div class="naval-disclosure-body"><div class="field"><label for="shipDescription">Descrição</label><textarea class="input ship-bind" data-ship-key="description" id="shipDescription" rows="4" placeholder="Aparência, bandeira, detalhes marcantes…"></textarea></div><div class="field"><label for="shipHistory">História &amp; feitos</label><textarea class="input ship-bind" data-ship-key="history" id="shipHistory" rows="5"></textarea></div></div></details></div>
+        </div>
+
+        <div class="naval-view" id="shipView-combat" role="tabpanel" aria-labelledby="shipTab-combat" hidden>
+          <div class="naval-section-heading"><div><span class="naval-eyebrow">Postos de batalha</span><h3>Todos a postos.</h3><p>Integridade, manobras e armamento ao alcance da mão.</p></div><button class="naval-btn primary" type="button" id="shipNewRound">Nova rodada <span aria-hidden="true">↻</span></button></div>
+          <div class="naval-battle-top"><section class="naval-panel naval-integrity"><div class="naval-panel-heading"><h4>Integridade do navio</h4><span class="naval-status" id="shipConditionBadge">Intacto</span></div><div class="naval-integrity-number" id="shipIntegrityText">100 / 100</div><div class="naval-meter" role="meter" id="shipIntegrityMeter" aria-label="Integridade do navio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="shipIntegrityFill"></span></div><p class="naval-help" id="shipDamagePenaltyText">Sem penalidades de Integridade.</p><div class="naval-damage-controls"><label class="sr-only" for="shipIntegrityAmount">Quantidade de dano ou reparo</label><input class="input" id="shipIntegrityAmount" type="number" min="0" value="10"><button class="naval-btn danger" type="button" id="shipDamageBtn">Aplicar dano</button><button class="naval-btn" type="button" id="shipRepairBtn">Reparar</button><button class="naval-text-btn" type="button" id="shipFullRepairBtn">Reparar tudo</button></div></section><section class="naval-battle-stats" aria-label="Estatísticas navais"><div><small>Resistência</small><b id="shipResistanceStat">0</b><span>redução de dano</span></div><div><small>CR</small><b id="shipCRStat">0</b><span>classe de resistência</span></div><div><small>Velocidade</small><b id="shipSpeedStat">100</b><span>km/h</span></div><div><small>Manobra</small><b id="shipManeuverStat">+2</b><span>manobrabilidade</span></div></section></div>
+          <section class="naval-panel naval-tactics"><div class="naval-position"><div class="naval-panel-heading"><h4>Posição naval</h4><span id="shipNavalStateLabel">Equilibrado</span></div><div class="naval-position-track" id="shipPositionTrack"></div><div class="naval-position-legend"><span>Domínio inimigo</span><span>Seu domínio</span></div></div><div class="field naval-distance"><label for="shipDistanceSelect">Distância naval</label><select class="input" id="shipDistanceSelect"><option>Encostado</option><option>Curto</option><option>Médio</option><option>Longo</option><option>Extremo</option></select></div></section>
+          <div class="naval-counters">
+            <section class="naval-counter"><div><h4>Impulso</h4><b id="shipMomentumText">0 / 3</b></div><div class="naval-pips" id="shipMomentumPips" aria-hidden="true"></div><div class="naval-counter-controls"><button class="naval-btn" type="button" data-ship-counter="momentum" data-delta="-1" aria-label="Diminuir impulso">−</button><span>movimento</span><button class="naval-btn" type="button" data-ship-counter="momentum" data-delta="1" aria-label="Aumentar impulso">+</button></div></section>
+            <section class="naval-counter"><div><h4>Desordem</h4><b id="shipDisorderText">0 / 3</b></div><div class="naval-pips bad" id="shipDisorderPips" aria-hidden="true"></div><div class="naval-counter-controls"><button class="naval-btn" type="button" data-ship-counter="disorder" data-delta="-1" aria-label="Diminuir desordem">−</button><span>tripulação</span><button class="naval-btn" type="button" data-ship-counter="disorder" data-delta="1" aria-label="Aumentar desordem">+</button></div></section>
+            <section class="naval-counter"><div><h4>Comando</h4><b id="shipCommandText">2 / 2</b></div><div class="naval-pips" id="shipCommandPips" aria-hidden="true"></div><div class="naval-counter-controls"><button class="naval-btn" type="button" data-ship-counter="commandCurrent" data-delta="-1" aria-label="Gastar comando">−</button><button class="naval-text-btn" type="button" id="shipResetCommand">Restaurar</button><button class="naval-btn" type="button" data-ship-counter="commandCurrent" data-delta="1" aria-label="Recuperar comando">+</button></div></section>
+            <section class="naval-counter"><div><h4>Naufrágio</h4><b id="shipSinkingText">3 / 3</b></div><div class="naval-pips bad" id="shipSinkingPips" aria-hidden="true"></div><div class="naval-counter-controls"><button class="naval-btn" type="button" data-ship-counter="sinking" data-delta="-1" aria-label="Diminuir contagem de naufrágio">−</button><span>contagem</span><button class="naval-btn" type="button" data-ship-counter="sinking" data-delta="1" aria-label="Aumentar contagem de naufrágio">+</button></div></section>
+          </div>
+          <details class="naval-disclosure naval-command-settings"><summary>Ajustar comando máximo</summary><div class="naval-disclosure-body"><label for="shipCommandMax">Pontos de comando por rodada</label><input class="input ship-bind" data-ship-key="commandMax" id="shipCommandMax" type="number" min="0"></div></details>
+          <section class="naval-panel naval-arsenal"><div class="naval-panel-heading"><div><span class="naval-eyebrow">Arsenal</span><h4>Armamento instalado</h4></div><span class="naval-stamp" id="shipWeaponsSummary">0 armas</span></div><div class="naval-record-list" id="shipWeaponsList"></div><div id="shipWeaponsEditor"></div></section>
+          <section class="naval-panel naval-damage-log"><div class="naval-panel-heading"><div><span class="naval-eyebrow">Controle de danos</span><h4>Avarias</h4></div><span class="naval-stamp" id="shipAvariaCount">0 ativas</span></div><div id="shipAvariasList" class="naval-record-list"></div><details class="naval-disclosure"><summary>Registrar avaria</summary><form class="naval-disclosure-body" id="shipAvariaForm"><div class="naval-form-grid"><div class="field"><label for="shipAvariaName">Nome da avaria</label><input class="input" id="shipAvariaName" required></div><div class="field"><label for="shipAvariaComponent">Componente atingido</label><select class="input" id="shipAvariaComponent"></select></div><div class="field full"><label for="shipAvariaEffect">Efeito</label><textarea class="input" id="shipAvariaEffect" rows="2"></textarea></div></div><button class="naval-btn" type="submit">Registrar avaria</button></form></details></section>
+          <details class="naval-disclosure naval-panel"><summary>Efeitos ativos do navio</summary><div class="naval-disclosure-body naval-effects" id="shipCombatEffects"></div></details>
+        </div>
+
+        <dialog class="naval-dialog" id="shipCargoDialog" aria-labelledby="shipCargoDialogTitle"><form id="shipCargoForm"><div class="naval-dialog-head"><div><span class="naval-eyebrow">Inventário do navio</span><h3 id="shipCargoDialogTitle">Adicionar ao porão</h3></div><button class="naval-icon-btn" type="button" data-ship-action="close-cargo" aria-label="Fechar editor de carga">×</button></div><div class="naval-dialog-body"><div class="naval-form-grid"><div class="field full"><label for="shipCargoName">Nome do item</label><input class="input" id="shipCargoName" placeholder="Ex.: Barril de água" required maxlength="200"></div><div class="field"><label for="shipCargoCategory">Categoria</label><select class="input" id="shipCargoCategory"></select></div><div class="field"><label for="shipCargoRoom">Compartimento</label><select class="input" id="shipCargoRoom"></select></div><div class="field"><label for="shipCargoQty">Quantidade</label><input class="input" id="shipCargoQty" type="number" min="0" step="any" value="1" required></div><div class="field"><label for="shipCargoSpace">Espaço por unidade</label><input class="input" id="shipCargoSpace" type="number" min="0" step="any" value="1" required></div></div><div class="naval-cargo-preview" id="shipCargoSpacePreview">Ocupa 1 espaço no porão.</div><fieldset class="naval-provision-fields" id="shipCargoProvisionFields" hidden><legend>Provisões por unidade</legend><div class="naval-form-grid"><div class="field"><label for="shipCargoDays">Duração em dias</label><input class="input" id="shipCargoDays" type="number" min="0" step="any" value="0"></div><div class="field"><label for="shipCargoPeople">Pessoas atendidas</label><input class="input" id="shipCargoPeople" type="number" min="0" step="1" value="0"></div></div><p class="naval-help">Cada unidade atende esse número de pessoas por esses dias. A autonomia considera a quantidade e a tripulação atual.</p></fieldset><div class="field"><label for="shipCargoNotes">Anotações</label><textarea class="input" id="shipCargoNotes" rows="3" placeholder="Conteúdo, origem, propriedades…"></textarea></div><div class="field"><label for="shipCargoDurability">Conservação / durabilidade</label><input class="input" id="shipCargoDurability" placeholder="Ex.: Fresco, frágil, não perecível"></div></div><div class="naval-dialog-footer"><button class="naval-btn" type="button" data-ship-action="close-cargo">Cancelar</button><button class="naval-btn primary" type="submit" id="shipAddCargo">Adicionar item</button></div></form></dialog>
       </section>
 
 <div class="footer"><span>One Piece RPG • Ficha Interativa 2.2</span><span>Dados salvos localmente no navegador</span></div>
@@ -3317,13 +3590,6 @@ const SHIP_CLASSES={
   'Média':{integrity:250,resistance:2,rooms:10,cargo:80,speedMin:85,speedMax:125,maneuver:0,crewMin:15,crewMax:30,trait:'Equilibrada',wind:'Contra o vento viaja com metade da velocidade.'},
   'Pesada':{integrity:500,resistance:5,rooms:20,cargo:200,speedMin:75,speedMax:100,maneuver:-2,crewMin:50,crewMax:100,trait:'Colosso',wind:'Não recebe penalidade natural contra o vento.'}
 };
-const SHIP_PART_INFO={
-  sails:{title:'Bancada de Velas',subtitle:'Velas, mastros, propulsão, vento e velocidade.',icon:'sail'},
-  hull:{title:'Bancada do Casco',subtitle:'Madeira, blindagem, Integridade e Resistência.',icon:'hull'},
-  weapons:{title:'Arsenal & Armamentos',subtitle:'Canhões, arpões, balistas, munição e estado das armas.',icon:'cannon'},
-  structure:{title:'Estrutura & Componentes',subtitle:'Mastro, leme, âncora, motor, reforços e componentes críticos.',icon:'beam'},
-  rooms:{title:'Planta de Salas',subtitle:'Espaços, capacidades, estados e benefícios internos.',icon:'room'}
-};
 const SHIP_ROOM_PRESETS={
   'Armazenamento Pequeno':{spaces:1,capacity:15,effect:'Estável: mantém temperatura estável sem equipamento adicional.'},
   'Armazenamento Médio':{spaces:2,capacity:40,effect:'Armazenamento amplo; alimentos exigem refrigeração.'},
@@ -3346,7 +3612,7 @@ const SHIP_ROOM_PRESETS={
   'Personalizada':{spaces:1,capacity:0,effect:''}
 };
 function defaultShip(){return {enabled:true,name:'Meu Navio',title:'',class:'Leve',captain:'',port:'',builder:'',jolly:'',description:'',history:'',imageUrl:'',imageData:'',imageZoom:1,imageX:0,imageY:0,imageFit:'contain',baseIntegrity:100,integrityCurrent:100,baseResistance:0,baseSpeed:100,baseManeuver:2,baseCR:0,roomMax:3,cargoSafe:20,crewCurrent:4,comfort:2,material:{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:''},mods:[],rooms:[{id:uid(),name:'Armazenamento Pequeno',type:'Armazenamento Pequeno',spaces:1,capacity:15,effect:'Estável: mantém temperatura estável sem equipamento adicional.',state:'Intacta'}],weapons:[],cargo:[],specials:[],avaras:[],components:{Casco:'Intacto',Mastro:'Intacto',Velas:'Intacto',Leme:'Intacto','Âncora':'Intacto',Arsenal:'Intacto',Armamentos:'Intacto',Salas:'Intacto',Motor:'Intacto'},position:0,distance:'Médio',momentum:0,disorder:0,commandCurrent:2,commandMax:2,sinking:3,activePart:'sails'} }
-function ensureShip(c){if(!c.ship)c.ship=defaultShip();const s=c.ship,d=defaultShip();Object.keys(d).forEach(k=>{if(s[k]===undefined)s[k]=clone(d[k])});s.material=s.material||clone(d.material);s.mods=Array.isArray(s.mods)?s.mods:[];s.rooms=Array.isArray(s.rooms)?s.rooms:[];s.weapons=Array.isArray(s.weapons)?s.weapons:[];s.cargo=Array.isArray(s.cargo)?s.cargo:[];s.specials=Array.isArray(s.specials)?s.specials:[];s.avaras=Array.isArray(s.avaras)?s.avaras:[];s.components=s.components||clone(d.components);s.imageZoom=clamp(num(s.imageZoom,1),.5,3);s.imageX=clamp(num(s.imageX,0),-65,65);s.imageY=clamp(num(s.imageY,0),-65,65);s.position=clamp(num(s.position,0),-3,3);s.momentum=clamp(num(s.momentum,0),0,3);s.disorder=clamp(num(s.disorder,0),0,3);s.commandMax=Math.max(0,num(s.commandMax,2));s.commandCurrent=clamp(num(s.commandCurrent,s.commandMax),0,s.commandMax);s.sinking=clamp(num(s.sinking,3),0,3);return s}
+function ensureShip(c){if(!c.ship)c.ship=defaultShip();const s=c.ship,d=defaultShip();Object.keys(d).forEach(k=>{if(s[k]===undefined)s[k]=clone(d[k])});s.material=s.material||clone(d.material);s.mods=Array.isArray(s.mods)?s.mods:[];s.rooms=Array.isArray(s.rooms)?s.rooms:[];s.weapons=Array.isArray(s.weapons)?s.weapons:[];s.cargo=Array.isArray(s.cargo)?s.cargo:[];s.specials=Array.isArray(s.specials)?s.specials:[];s.avaras=Array.isArray(s.avaras)?s.avaras:[];s.components=s.components||clone(d.components);['mods','rooms','weapons','cargo','specials','avaras'].forEach(key=>s[key].forEach(item=>{if(!item.id)item.id=uid()}));s.imageZoom=clamp(num(s.imageZoom,1),.5,3);s.imageX=clamp(num(s.imageX,0),-65,65);s.imageY=clamp(num(s.imageY,0),-65,65);s.position=clamp(num(s.position,0),-3,3);s.momentum=clamp(num(s.momentum,0),0,3);s.disorder=clamp(num(s.disorder,0),0,3);s.commandMax=Math.max(0,num(s.commandMax,2));s.commandCurrent=clamp(num(s.commandCurrent,s.commandMax),0,s.commandMax);s.sinking=clamp(num(s.sinking,3),0,3);return s}
 function ship(){return ensureShip(current())}
 function shipMods(part=null){const s=ship();return s.mods.filter(m=>m.active!==false&&(!part||m.part===part))}
 function shipModSum(key){return shipMods().reduce((a,m)=>a+num(m[key]),0)}
@@ -3366,44 +3632,422 @@ function shipAutonomy(){const f=shipProvisionDays('Comida'),w=shipProvisionDays(
 function shipComfortText(v){return ['Insalubre','Precário','Básico','Confortável','Luxuoso','Extravagante'][clamp(Math.round(num(v)),0,5)]}
 function shipBonusTexts(){const s=ship(),arr=[];if(s.material.effect)arr.push({name:s.material.name||'Material',text:s.material.effect});shipMods().forEach(m=>{if(m.effect)arr.push({name:m.name||'Melhoria',text:m.effect})});s.specials.forEach(x=>arr.push({name:x.name||'Característica',text:x.effect||x.origin||''}));return arr}
 function shipSetClass(name){const s=ship(),cfg=SHIP_CLASSES[name];if(!cfg)return;const oldMax=shipMaxIntegrity(),wasFull=num(s.integrityCurrent)>=oldMax;s.class=name;s.baseIntegrity=cfg.integrity;s.baseResistance=cfg.resistance;s.roomMax=cfg.rooms;s.cargoSafe=cfg.cargo;s.baseManeuver=cfg.maneuver;if(num(s.baseSpeed)<cfg.speedMin||num(s.baseSpeed)>cfg.speedMax)s.baseSpeed=cfg.speedMin;if(num(s.crewCurrent)<=0)s.crewCurrent=cfg.crewMin;const newMax=shipMaxIntegrity();s.integrityCurrent=wasFull?newMax:clamp(num(s.integrityCurrent),0,newMax);renderShip();saveState();toast(`Classe do navio: ${name}.`)}
-function shipStateClass(s){return s==='Danificada'?'state-damaged':s==='Destruída'?'state-destroyed':''}
-function renderShip(){const c=current(),s=ensureShip(c);if(!document.getElementById('page-ship'))return;const max=shipMaxIntegrity();s.integrityCurrent=clamp(num(s.integrityCurrent,max),0,max);document.querySelectorAll('#page-ship [data-ship-part]').forEach(b=>b.classList.toggle('active',b.dataset.shipPart===s.activePart));const cfg=shipClassCfg(),st=shipIntegrityState(),speed=shipSpeed(),man=shipManeuver(),cargo=shipCargoCurrent(),safe=shipCargoSafe(),used=shipRoomUsed(),roomMax=shipRoomMax(),food=shipProvisionDays('Comida'),water=shipProvisionDays('Água'),auto=shipAutonomy();
-  document.querySelectorAll('.ship-bind').forEach(el=>{const v=getPath(s,el.dataset.shipKey);if(document.activeElement!==el)el.value=v??''});
-  document.querySelectorAll('[data-ship-class]').forEach(b=>b.classList.toggle('active',b.dataset.shipClass===s.class));
-  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val};set('shipNamePlaque',s.name||'MEU NAVIO');set('shipClassRead',s.class);set('shipClassTrait',`${cfg.trait} • ${cfg.speedMin}–${cfg.speedMax} km/h`);set('shipSpeedRead',speed);set('shipManeuverRead',man<=-90?'—':signed(man));set('shipAutonomyRead',`${auto} d`);set('shipCargoRead',`${cargo} / ${safe}`);set('shipComfortRead',`${clamp(num(s.comfort,0),0,5)} / 5`);set('shipComfortText',shipComfortText(s.comfort));set('shipIntegrityText',`${Math.round(s.integrityCurrent)} / ${max}`);set('shipResistanceStat',shipResistance());set('shipCRStat',shipCR());set('shipSpeedStat',speed);set('shipManeuverStat',man<=-90?'—':signed(man));set('shipRoomStat',`${used} / ${roomMax}`);set('shipCrewStat',num(s.crewCurrent));set('shipCrewRecommended',`rec. ${cfg.crewMin}–${cfg.crewMax}`);set('shipSinkingStat',s.sinking);set('shipCargoSummaryLabel',`${cargo} / ${safe}`);set('shipCargoCurrent',cargo);set('shipFoodDays',`${food} d`);set('shipWaterDays',`${water} d`);set('shipAutonomyStat',`${auto} d`);set('shipWeaponsSummary',`${s.weapons.length} arma${s.weapons.length===1?'':'s'} instalada${s.weapons.length===1?'':'s'}`);set('shipRoomsSummary',`${used} / ${roomMax} espaços`);set('shipSailsSummary',`${shipMods('sails').length} melhoria${shipMods('sails').length===1?'':'s'} • ${s.components.Velas}`);set('shipHullSummary',`${s.material.name} • RES ${shipResistance()}`);set('shipStructureSummary',`${shipMods('structure').length} reforço${shipMods('structure').length===1?'':'s'} • Leme ${s.components.Leme}`);set('shipSpecialCount',s.specials.length);
-  const fill=document.getElementById('shipIntegrityFill');if(fill)fill.style.width=`${max?clamp(s.integrityCurrent/max*100,0,100):0}%`;const badge=document.getElementById('shipConditionBadge');if(badge){badge.textContent=st.name;badge.className=`ship-condition-badge ${st.cls}`};set('shipDamagePenaltyText',st.text);
-  renderShipArt();renderShipWorkbench();renderShipCargo();renderShipCombat();renderShipBonuses();renderShipRoomOptions();
+const SHIP_CARGO_CATEGORIES=['Comida','Água','Dinheiro','Tesouro','Munição','Armas','Materiais','Outros'];
+const SHIP_MATERIALS={
+  'Madeira Comum':{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:'Sem modificadores.'},
+  'Carvalho Naval':{name:'Carvalho Naval',integrityPct:10,resistance:1,speedPct:0,effect:'+10% Integridade Máxima e +1 Resistência.'},
+  'Madeira Reforçada':{name:'Madeira Reforçada',integrityPct:20,resistance:2,speedPct:-5,effect:'+20% Integridade Máxima, +2 Resistência e −5% Velocidade.'}
+};
+let navalUi={characterId:null};
+function shipUI(){
+  const id=current().id;
+  if(navalUi.characterId!==id){
+    const dialog=document.getElementById('shipCargoDialog');if(dialog?.open)dialog.close();
+    navalUi={characterId:id,category:'all',room:'all',search:'',sort:'name',layout:'grid',editingCargo:null,removed:null,workbenchKey:'',arsenalKey:''};
+    const search=document.getElementById('shipCargoSearch');if(search)search.value='';
+  }
+  return navalUi;
 }
-function renderShipArt(){const s=ship(),img=document.getElementById('shipArtImage'),empty=document.getElementById('shipArtEmpty'),src=s.imageData||s.imageUrl;if(!img)return;img.hidden=!src;empty.hidden=!!src;if(src){if(img.src!==src)img.src=src;const fit=s.imageFit||'contain';img.style.width=fit==='cover'?'100%':'auto';img.style.height=fit==='cover'?'100%':'auto';img.style.maxWidth=fit==='contain'?'100%':'none';img.style.maxHeight=fit==='contain'?'100%':'none';img.style.objectFit=fit;img.style.transform=`translate(calc(-50% + ${num(s.imageX)}%),calc(-50% + ${num(s.imageY)}%)) scale(${num(s.imageZoom,1)})`;}const z=document.getElementById('shipImageZoom'),x=document.getElementById('shipImageX'),y=document.getElementById('shipImageY'),u=document.getElementById('shipImageUrl');if(z)z.value=s.imageZoom;if(x)x.value=s.imageX;if(y)y.value=s.imageY;if(u&&document.activeElement!==u)u.value=s.imageUrl||'';const fitBtn=document.getElementById('shipImageFit');if(fitBtn)fitBtn.textContent=s.imageFit==='cover'?'Preencher quadro':'Mostrar inteira'}
-function shipModEditor(part){const labels={sails:'Velas',hull:'Casco',structure:'Estrutural'};return `<div class="ship-editor-grid"><div class="field wide"><label>Nome da melhoria</label><input class="input" id="shipModName" placeholder="Ex.: Velas Especiais / Casco Reforçado"></div><div class="field"><label>Integridade %</label><input class="input" id="shipModIntegrity" type="number" value="0"></div><div class="field"><label>Resistência</label><input class="input" id="shipModResistance" type="number" value="0"></div><div class="field"><label>Velocidade %</label><input class="input" id="shipModSpeed" type="number" value="0"></div><div class="field"><label>Manobrabilidade</label><input class="input" id="shipModManeuver" type="number" value="0"></div><div class="field"><label>CR</label><input class="input" id="shipModCR" type="number" value="0"></div><div class="field"><label>Espaços de Sala</label><input class="input" id="shipModRooms" type="number" value="0"></div><div class="field"><label>Carga Segura</label><input class="input" id="shipModCargo" type="number" value="0"></div><div class="field full"><label>Efeito / descrição</label><textarea class="input" id="shipModEffect" placeholder="O que esta modificação faz no navio?"></textarea></div></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-action="add-mod" data-part="${part}">Instalar em ${labels[part]}</button></div><div class="ship-list">${ship().mods.filter(m=>m.part===part).map(m=>shipModCard(m)).join('')||'<div class="empty">Nenhuma melhoria instalada nesta parte.</div>'}</div>`}
-function shipModCard(m){const tags=[];if(num(m.integrityPct))tags.push(`${signed(num(m.integrityPct))}% Integridade`);if(num(m.resistance))tags.push(`${signed(num(m.resistance))} Resistência`);if(num(m.speedPct))tags.push(`${signed(num(m.speedPct))}% Velocidade`);if(num(m.maneuver))tags.push(`${signed(num(m.maneuver))} Manobra`);if(num(m.cr))tags.push(`${signed(num(m.cr))} CR`);if(num(m.roomSpaces))tags.push(`${signed(num(m.roomSpaces))} Salas`);if(num(m.cargoSafe))tags.push(`${signed(num(m.cargoSafe))} Carga`);return `<div class="ship-list-card"><div><h4>${esc(m.name||'Melhoria')}</h4><p>${esc(m.effect||'Sem descrição.')}</p><div class="tags">${tags.map(t=>`<span class="tag gold">${esc(t)}</span>`).join('')}</div></div><div class="ship-card-actions"><button class="ship-wood-btn ${m.active===false?'':'danger'}" data-ship-action="toggle-mod" data-id="${m.id}">${m.active===false?'Ativar':'Desligar'}</button><button class="ship-wood-btn danger" data-ship-action="remove-mod" data-id="${m.id}">×</button></div></div>`}
-function renderShipWorkbench(){const s=ship(),part=s.activePart||'sails',info=SHIP_PART_INFO[part]||SHIP_PART_INFO.sails;document.querySelectorAll('.ship-hotspot').forEach(b=>b.classList.toggle('active',b.dataset.shipPart===part));const title=document.getElementById('shipWorkbenchTitle'),sub=document.getElementById('shipWorkbenchSubtitle'),body=document.getElementById('shipWorkbenchBody');if(!body)return;title.textContent=info.title;sub.textContent=info.subtitle;
-  if(part==='hull'){body.innerHTML=`<div class="ship-editor-grid"><div class="field"><label>Material do Casco</label><select class="input" id="shipMaterialPreset"><option>Madeira Comum</option><option>Carvalho Naval</option><option>Madeira Reforçada</option><option>Madeira Rara / Personalizada</option></select></div><div class="field"><label>Nome personalizado</label><input class="input" id="shipMaterialName"></div><div class="field"><label>Integridade %</label><input class="input" id="shipMaterialIntegrity" type="number"></div><div class="field"><label>Resistência</label><input class="input" id="shipMaterialResistance" type="number"></div><div class="field"><label>Velocidade %</label><input class="input" id="shipMaterialSpeed" type="number"></div><div class="field full"><label>Efeito do material</label><textarea class="input" id="shipMaterialEffect"></textarea></div></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-action="save-material">Aplicar Material</button></div>${shipModEditor('hull')}`;setTimeout(fillShipMaterialEditor,0);return}
-  if(part==='weapons'){body.innerHTML=shipWeaponsEditor();return}
-  if(part==='rooms'){body.innerHTML=shipRoomsEditor();return}
-  if(part==='structure'){body.innerHTML=shipComponentsEditor()+shipModEditor('structure');return}
-  body.innerHTML=shipComponentsQuick('Velas')+shipModEditor('sails')}
-function shipComponentsQuick(name){const st=ship().components[name]||'Intacto';return `<div class="ship-editor-grid"><div class="field"><label>Estado de ${name}</label><select class="input" data-ship-component="${name}"><option ${st==='Intacto'?'selected':''}>Intacto</option><option ${st==='Danificado'?'selected':''}>Danificado</option><option ${st==='Destruído'?'selected':''}>Destruído</option></select></div></div>`}
-function fillShipMaterialEditor(){const s=ship(),m=s.material;const preset=document.getElementById('shipMaterialPreset');if(!preset)return;const known=['Madeira Comum','Carvalho Naval','Madeira Reforçada'];preset.value=known.includes(m.name)?m.name:'Madeira Rara / Personalizada';document.getElementById('shipMaterialName').value=m.name||'';document.getElementById('shipMaterialIntegrity').value=num(m.integrityPct);document.getElementById('shipMaterialResistance').value=num(m.resistance);document.getElementById('shipMaterialSpeed').value=num(m.speedPct);document.getElementById('shipMaterialEffect').value=m.effect||''}
-function shipWeaponsEditor(){const s=ship();return `<div class="ship-editor-grid"><div class="field"><label>Nome</label><input class="input" id="shipWeaponName" placeholder="Canhão de Bombordo"></div><div class="field"><label>Tipo</label><select class="input" id="shipWeaponType"><option>Canhão</option><option>Canhão Pesado</option><option>Canhão Giratório</option><option>Arpão</option><option>Balista</option><option>Arma Especial</option><option>Outros</option></select></div><div class="field"><label>Quantidade</label><input class="input" id="shipWeaponQty" type="number" min="1" value="1"></div><div class="field"><label>Localização</label><input class="input" id="shipWeaponLocation" placeholder="Bombordo, proa..."></div><div class="field"><label>Alcance</label><input class="input" id="shipWeaponRange"></div><div class="field"><label>Dano</label><input class="input" id="shipWeaponDamage" placeholder="Ex.: 6d10"></div><div class="field"><label>Munição Atual</label><input class="input" id="shipWeaponAmmo" type="number" min="0" value="0"></div><div class="field"><label>Munição Máx.</label><input class="input" id="shipWeaponAmmoMax" type="number" min="0" value="0"></div><div class="field"><label>Estado</label><select class="input" id="shipWeaponState"><option>Operacional</option><option>Danificada</option><option>Destruída</option></select></div><div class="field full"><label>Efeito / Observações</label><textarea class="input" id="shipWeaponEffect"></textarea></div></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-action="add-weapon">Instalar Armamento</button></div><div class="ship-list">${s.weapons.map(w=>`<div class="ship-list-card ${shipStateClass(w.state)}"><div><h4>${esc(w.name||w.type)} × ${num(w.qty,1)}</h4><p>${esc(w.type)} • ${esc(w.location||'Local não definido')} • ${esc(w.range||'—')} • ${esc(w.damage||'—')}<br>Munição ${num(w.ammo)}/${num(w.ammoMax)} • ${esc(w.state)}</p>${w.effect?`<p>${esc(w.effect)}</p>`:''}</div><div class="ship-card-actions"><button class="ship-wood-btn danger" data-ship-action="remove-weapon" data-id="${w.id}">×</button></div></div>`).join('')||'<div class="empty">Nenhum armamento instalado.</div>'}</div>`}
-function shipRoomsEditor(){const s=ship(),used=shipRoomUsed(),max=shipRoomMax();const opts=Object.keys(SHIP_ROOM_PRESETS).map(x=>`<option>${esc(x)}</option>`).join('');return `<div class="ship-editor-grid"><div class="field"><label>Tipo / Modelo</label><select class="input" id="shipRoomType">${opts}</select></div><div class="field"><label>Nome da Sala</label><input class="input" id="shipRoomName" value="Armazenamento Pequeno"></div><div class="field"><label>Espaços Ocupados</label><input class="input" id="shipRoomSpaces" type="number" min="0" value="1"></div><div class="field"><label>Capacidade de Carga</label><input class="input" id="shipRoomCapacity" type="number" min="0" value="15"></div><div class="field"><label>Estado</label><select class="input" id="shipRoomState"><option>Intacta</option><option>Danificada</option><option>Destruída</option></select></div><div class="field full"><label>Efeito / Benefício</label><textarea class="input" id="shipRoomEffect">Estável: mantém temperatura estável sem equipamento adicional.</textarea></div></div><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-action="add-room">Construir Sala</button><span class="ship-bonus-chip"><b>${used}</b> / ${max} Espaços usados</span></div><div class="ship-list">${s.rooms.map(r=>`<div class="ship-list-card ${shipStateClass(r.state)}"><div><h4>${esc(r.name||r.type)}</h4><p>${esc(r.type)} • ${num(r.spaces)} espaço(s) • capacidade ${num(r.capacity)} • ${esc(r.state)}</p><p>${esc(r.effect||'Sem benefício descrito.')}</p></div><div class="ship-card-actions"><select class="input" data-ship-room-state="${r.id}" style="width:112px"><option ${r.state==='Intacta'?'selected':''}>Intacta</option><option ${r.state==='Danificada'?'selected':''}>Danificada</option><option ${r.state==='Destruída'?'selected':''}>Destruída</option></select><button class="ship-wood-btn danger" data-ship-action="remove-room" data-id="${r.id}">×</button></div></div>`).join('')||'<div class="empty">Nenhuma sala construída.</div>'}</div>`}
-function shipComponentsEditor(){const s=ship();return `<div class="ship-editor-grid">${Object.entries(s.components).map(([name,state])=>`<div class="field"><label>${esc(name)}</label><select class="input" data-ship-component="${esc(name)}"><option ${state==='Intacto'?'selected':''}>Intacto</option><option ${state==='Danificado'?'selected':''}>Danificado</option><option ${state==='Destruído'?'selected':''}>Destruído</option></select></div>`).join('')}</div>`}
-function renderShipCargo(){const s=ship(),box=document.getElementById('shipCargoList');if(!box)return;box.innerHTML=s.cargo.length?s.cargo.map(i=>`<div class="ship-cargo-row"><div><b>${esc(i.name||'Carga')}</b><br><small>${esc(i.category)}</small></div><span>${num(i.qty,1)} un.</span><span>${num(i.space)} esp.</span><span>${num(i.supplyDays)||'—'} d</span><span>${num(i.supplyPeople)||'—'} pes.</span><span class="ship-room-pill">${esc(i.room||'Sem sala')}</span><button class="ship-wood-btn danger" data-ship-action="remove-cargo" data-id="${i.id}">×</button></div>`).join(''):'<div class="empty">Nenhuma carga registrada.</div>'}
-function renderShipRoomOptions(){const sel=document.getElementById('shipCargoRoom');if(!sel)return;const old=sel.value;sel.innerHTML='<option value="">Sem sala definida</option>'+ship().rooms.filter(r=>r.state!=='Destruída').map(r=>`<option value="${esc(r.name)}">${esc(r.name)}</option>`).join('');if([...sel.options].some(o=>o.value===old))sel.value=old}
-function renderShipCombat(){const s=ship(),track=document.getElementById('shipPositionTrack');if(!track)return;track.innerHTML=[-3,-2,-1,0,1,2,3].map(v=>`<button class="ship-position-step ${v===s.position?'active':''} ${v<0?'enemy':''}" data-ship-position="${v}">${v>0?'+':''}${v}</button>`).join('');const posName={[-3]:'Domínio Inimigo',[-2]:'Vantagem Inimiga',[-1]:'Pressão Inimiga',[0]:'Equilibrado',[1]:'Pressão',[2]:'Vantagem',[3]:'Domínio'}[s.position]||'Equilibrado';document.getElementById('shipNavalStateLabel').textContent=posName;document.getElementById('shipDistanceSelect').value=s.distance;document.getElementById('shipMomentumText').textContent=`${s.momentum} / 3`;document.getElementById('shipDisorderText').textContent=`${s.disorder} / 3`;document.getElementById('shipCommandText').textContent=`${s.commandCurrent} / ${s.commandMax}`;document.getElementById('shipSinkingText').textContent=`${s.sinking} / 3`;const pips=(id,n,max,bad=false)=>{const el=document.getElementById(id);if(el)el.innerHTML=Array.from({length:max},(_,i)=>`<span class="ship-pip ${i<n?'on':''} ${bad?'bad':''}"></span>`).join('')};pips('shipMomentumPips',s.momentum,3);pips('shipDisorderPips',s.disorder,3,true);pips('shipCommandPips',s.commandCurrent,Math.max(1,s.commandMax));pips('shipSinkingPips',s.sinking,3,true);const av=document.getElementById('shipAvariasList');if(av)av.innerHTML=s.avaras.length?s.avaras.map(a=>`<div class="ship-avaria"><b>${esc(a.name)}</b><p>${esc(a.component||'')} • ${esc(a.effect||'')}</p><div class="ship-editor-actions"><button class="ship-wood-btn" data-ship-action="repair-avaria" data-id="${a.id}">Reparar</button><button class="ship-wood-btn danger" data-ship-action="remove-avaria" data-id="${a.id}">Remover</button></div></div>`).join(''):''}
-function renderShipBonuses(){const s=ship(),strip=document.getElementById('shipBonusStrip'),list=document.getElementById('shipSpecialList'),arr=shipBonusTexts();if(strip)strip.innerHTML=arr.length?arr.slice(0,12).map(x=>`<span class="ship-bonus-chip"><b>${esc(x.name)}</b>${x.text?' — '+esc(x.text):''}</span>`).join(''):'<span class="ship-bonus-chip">Nenhum bônus ou característica especial registrado.</span>';if(list)list.innerHTML=s.specials.length?s.specials.map(x=>`<div class="ship-special"><b>${esc(x.name)}</b><p>${esc(x.effect||'')}</p>${x.origin?`<p>Origem: ${esc(x.origin)}</p>`:''}<button class="ship-wood-btn danger" data-ship-action="remove-special" data-id="${x.id}" style="margin-top:6px">Remover</button></div>`).join(''):'<div class="empty">Nenhuma característica especial registrada.</div>'}
-function shipAddAvaria(name,component,effect){const s=ship();s.avaras.push({id:uid(),name,component,effect,state:'Ativa'});renderShip();saveState()}
-function shipApplyDamage(amount){const s=ship(),d=Math.max(0,num(amount)),max=shipMaxIntegrity(),before=s.integrityCurrent;s.integrityCurrent=clamp(before-d,0,max);if(d>=max*.10&&d>0)shipAddAvaria('Avaria de Impacto','Casco',`Um único impacto causou ${d} de dano (10% ou mais da Integridade Máxima). Defina o componente atingido na narrativa.`);if(s.integrityCurrent<=0&&before>0)s.sinking=3;renderShip();saveState()}
-function shipApplyRepair(amount){const s=ship(),max=shipMaxIntegrity();s.integrityCurrent=clamp(s.integrityCurrent+Math.max(0,num(amount)),0,max);renderShip();saveState()}
-function shipAddMod(part){const s=ship(),v=id=>document.getElementById(id)?.value||'';s.mods.push({id:uid(),part,name:v('shipModName')||'Nova Melhoria',integrityPct:num(v('shipModIntegrity')),resistance:num(v('shipModResistance')),speedPct:num(v('shipModSpeed')),maneuver:num(v('shipModManeuver')),cr:num(v('shipModCR')),roomSpaces:num(v('shipModRooms')),cargoSafe:num(v('shipModCargo')),effect:v('shipModEffect'),active:true});const max=shipMaxIntegrity();s.integrityCurrent=clamp(s.integrityCurrent,0,max);renderShip();saveState();toast('Melhoria instalada no navio.')}
-function shipSaveMaterial(){const s=ship(),preset=document.getElementById('shipMaterialPreset').value;const presets={'Madeira Comum':{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:'Sem modificadores.'},'Carvalho Naval':{name:'Carvalho Naval',integrityPct:10,resistance:1,speedPct:0,effect:'+10% Integridade Máxima e +1 Resistência.'},'Madeira Reforçada':{name:'Madeira Reforçada',integrityPct:20,resistance:2,speedPct:-5,effect:'+20% Integridade Máxima, +2 Resistência e −5% Velocidade.'}};if(presets[preset])s.material=presets[preset];else s.material={name:document.getElementById('shipMaterialName').value||'Madeira Rara',integrityPct:num(document.getElementById('shipMaterialIntegrity').value),resistance:num(document.getElementById('shipMaterialResistance').value),speedPct:num(document.getElementById('shipMaterialSpeed').value),effect:document.getElementById('shipMaterialEffect').value};s.integrityCurrent=clamp(s.integrityCurrent,0,shipMaxIntegrity());renderShip();saveState();toast('Material do casco atualizado.')}
-function shipAddWeapon(){const s=ship(),v=id=>document.getElementById(id)?.value||'';s.weapons.push({id:uid(),name:v('shipWeaponName')||v('shipWeaponType')||'Armamento',type:v('shipWeaponType'),qty:Math.max(1,num(v('shipWeaponQty'),1)),location:v('shipWeaponLocation'),range:v('shipWeaponRange'),damage:v('shipWeaponDamage'),ammo:Math.max(0,num(v('shipWeaponAmmo'))),ammoMax:Math.max(0,num(v('shipWeaponAmmoMax'))),state:v('shipWeaponState')||'Operacional',effect:v('shipWeaponEffect')});renderShip();saveState()}
-function shipAddRoom(){const s=ship(),v=id=>document.getElementById(id)?.value||'';s.rooms.push({id:uid(),name:v('shipRoomName')||v('shipRoomType')||'Sala',type:v('shipRoomType'),spaces:Math.max(0,num(v('shipRoomSpaces'),1)),capacity:Math.max(0,num(v('shipRoomCapacity'))),effect:v('shipRoomEffect'),state:v('shipRoomState')||'Intacta'});renderShip();saveState()}
-function shipAddCargo(){const s=ship(),v=id=>document.getElementById(id)?.value||'';if(!v('shipCargoName').trim()){toast('Dê um nome para a carga.');return}s.cargo.push({id:uid(),name:v('shipCargoName').trim(),category:v('shipCargoCategory'),qty:Math.max(0,num(v('shipCargoQty'),1)),space:Math.max(0,num(v('shipCargoSpace'))),supplyDays:Math.max(0,num(v('shipCargoDays'))),supplyPeople:Math.max(0,num(v('shipCargoPeople'))),room:v('shipCargoRoom'),durability:'',notes:''});document.getElementById('shipCargoName').value='';renderShip();saveState()}
-function shipAddSpecial(){const s=ship(),name=document.getElementById('shipSpecialName').value.trim();if(!name){toast('Dê um nome para a característica.');return}s.specials.push({id:uid(),name,effect:document.getElementById('shipSpecialEffect').value,origin:document.getElementById('shipSpecialOrigin').value});document.getElementById('shipSpecialName').value='';document.getElementById('shipSpecialEffect').value='';document.getElementById('shipSpecialOrigin').value='';renderShip();saveState()}
-function shipHandleAction(action,id,part){const s=ship();if(action==='add-mod')shipAddMod(part);if(action==='toggle-mod'){const m=s.mods.find(x=>x.id===id);if(m)m.active=m.active===false;renderShip();saveState()}if(action==='remove-mod'){s.mods=s.mods.filter(x=>x.id!==id);renderShip();saveState()}if(action==='save-material')shipSaveMaterial();if(action==='add-weapon')shipAddWeapon();if(action==='remove-weapon'){s.weapons=s.weapons.filter(x=>x.id!==id);renderShip();saveState()}if(action==='add-room')shipAddRoom();if(action==='remove-room'){s.rooms=s.rooms.filter(x=>x.id!==id);renderShip();saveState()}if(action==='remove-cargo'){s.cargo=s.cargo.filter(x=>x.id!==id);renderShip();saveState()}if(action==='remove-special'){s.specials=s.specials.filter(x=>x.id!==id);renderShip();saveState()}if(action==='repair-avaria'){s.avaras=s.avaras.filter(x=>x.id!==id);renderShip();saveState()}if(action==='remove-avaria'){s.avaras=s.avaras.filter(x=>x.id!==id);renderShip();saveState()}}
-function bindShipEvents(){const page=document.getElementById('page-ship');if(!page||page.dataset.bound)return;page.dataset.bound='1';page.addEventListener('click',e=>{const part=e.target.closest('[data-ship-part]');if(part){ship().activePart=part.dataset.shipPart;renderShipWorkbench();saveState();return}const act=e.target.closest('[data-ship-action]');if(act){shipHandleAction(act.dataset.shipAction,act.dataset.id,act.dataset.part);return}const pos=e.target.closest('[data-ship-position]');if(pos){ship().position=clamp(num(pos.dataset.shipPosition),-3,3);renderShipCombat();saveState();return}const ctr=e.target.closest('[data-ship-counter]');if(ctr){const s=ship(),key=ctr.dataset.shipCounter,delta=num(ctr.dataset.delta);if(key==='commandCurrent')s[key]=clamp(num(s[key])+delta,0,s.commandMax);else if(key==='sinking')s[key]=clamp(num(s[key])+delta,0,3);else s[key]=clamp(num(s[key])+delta,0,3);renderShip();saveState();return}});page.addEventListener('change',e=>{const comp=e.target.closest('[data-ship-component]');if(comp){ship().components[comp.dataset.shipComponent]=comp.value;renderShip();saveState();return}const room=e.target.closest('[data-ship-room-state]');if(room){const r=ship().rooms.find(x=>x.id===room.dataset.shipRoomState);if(r)r.state=room.value;renderShip();saveState();return}if(e.target.id==='shipRoomType'){const p=SHIP_ROOM_PRESETS[e.target.value]||SHIP_ROOM_PRESETS.Personalizada;document.getElementById('shipRoomName').value=e.target.value==='Personalizada'?'':e.target.value;document.getElementById('shipRoomSpaces').value=p.spaces;document.getElementById('shipRoomCapacity').value=p.capacity;document.getElementById('shipRoomEffect').value=p.effect}if(e.target.id==='shipMaterialPreset'){const p={'Madeira Comum':{name:'Madeira Comum',integrityPct:0,resistance:0,speedPct:0,effect:'Sem modificadores.'},'Carvalho Naval':{name:'Carvalho Naval',integrityPct:10,resistance:1,speedPct:0,effect:'+10% Integridade Máxima e +1 Resistência.'},'Madeira Reforçada':{name:'Madeira Reforçada',integrityPct:20,resistance:2,speedPct:-5,effect:'+20% Integridade Máxima, +2 Resistência e −5% Velocidade.'}}[e.target.value];if(p){document.getElementById('shipMaterialName').value=p.name;document.getElementById('shipMaterialIntegrity').value=p.integrityPct;document.getElementById('shipMaterialResistance').value=p.resistance;document.getElementById('shipMaterialSpeed').value=p.speedPct;document.getElementById('shipMaterialEffect').value=p.effect}}});document.querySelectorAll('.ship-bind').forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',()=>{const s=ship(),key=el.dataset.shipKey,val=el.type==='number'?num(el.value):el.value;setPath(s,key,val);if(key==='commandMax'){s.commandMax=Math.max(0,num(s.commandMax));s.commandCurrent=clamp(num(s.commandCurrent),0,s.commandMax);renderShip()}else if(key==='crewCurrent'||key==='baseSpeed'||key==='baseCR')renderShip();else{document.getElementById('shipNamePlaque').textContent=s.name||'MEU NAVIO'}saveState()}));document.querySelectorAll('[data-ship-class]').forEach(b=>b.addEventListener('click',()=>shipSetClass(b.dataset.shipClass)));document.getElementById('shipDamageBtn').onclick=()=>shipApplyDamage(document.getElementById('shipIntegrityAmount').value);document.getElementById('shipRepairBtn').onclick=()=>shipApplyRepair(document.getElementById('shipIntegrityAmount').value);document.getElementById('shipFullRepairBtn').onclick=()=>{ship().integrityCurrent=shipMaxIntegrity();renderShip();saveState()};document.getElementById('shipAddCargo').onclick=shipAddCargo;document.getElementById('shipAddSpecial').onclick=shipAddSpecial;document.getElementById('shipDistanceSelect').onchange=e=>{ship().distance=e.target.value;renderShipCombat();saveState()};document.getElementById('shipResetCommand').onclick=()=>{ship().commandCurrent=ship().commandMax;renderShip();saveState()};document.getElementById('shipNewRound').onclick=()=>{const s=ship();s.commandCurrent=s.commandMax;if(s.integrityCurrent<=0)s.sinking=clamp(s.sinking-1,0,3);if(s.disorder>=3){s.commandCurrent=Math.max(0,s.commandCurrent-1);s.disorder=1}renderShip();saveState();toast('Nova rodada naval iniciada.')};document.getElementById('shipCloseWorkbench').onclick=()=>{const b=document.getElementById('shipWorkbenchBody');b.hidden=!b.hidden;document.getElementById('shipCloseWorkbench').textContent=b.hidden?'Abrir Bancada':'Recolher'};document.getElementById('shipApplyImageUrl').onclick=()=>{const s=ship();s.imageUrl=document.getElementById('shipImageUrl').value.trim();s.imageData='';renderShipArt();saveState()};document.getElementById('shipUploadImageBtn').onclick=()=>document.getElementById('shipImageInput').click();document.getElementById('shipImageInput').onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{const s=ship();s.imageData=r.result;s.imageZoom=1;s.imageX=0;s.imageY=0;s.imageFit='contain';renderShipArt();saveState()};r.readAsDataURL(f)};['shipImageZoom','shipImageX','shipImageY'].forEach(id=>document.getElementById(id).addEventListener('input',e=>{const s=ship();if(id==='shipImageZoom')s.imageZoom=num(e.target.value,1);if(id==='shipImageX')s.imageX=num(e.target.value);if(id==='shipImageY')s.imageY=num(e.target.value);renderShipArt();saveState()}));document.getElementById('shipImageFit').onclick=()=>{ship().imageFit=ship().imageFit==='cover'?'contain':'cover';renderShipArt();saveState()};document.getElementById('shipImageCenter').onclick=()=>{const s=ship();s.imageZoom=1;s.imageX=0;s.imageY=0;renderShipArt();saveState()};bindShipImageDrag()}
-function bindShipImageDrag(){const img=document.getElementById('shipArtImage');if(!img||img.dataset.dragBound)return;img.dataset.dragBound='1';let start=null;const down=e=>{if(img.hidden)return;e.preventDefault();img.setPointerCapture?.(e.pointerId);start={x:e.clientX,y:e.clientY,sx:ship().imageX,sy:ship().imageY};img.classList.add('dragging')};const move=e=>{if(!start)return;const box=document.getElementById('shipCanvas').getBoundingClientRect(),s=ship();s.imageX=clamp(start.sx+(e.clientX-start.x)/Math.max(1,box.width)*100,-65,65);s.imageY=clamp(start.sy+(e.clientY-start.y)/Math.max(1,box.height)*100,-65,65);renderShipArt()};const up=()=>{if(!start)return;start=null;img.classList.remove('dragging');saveState()};img.addEventListener('pointerdown',down);img.addEventListener('pointermove',move);img.addEventListener('pointerup',up);img.addEventListener('pointercancel',up)}
+function navalSet(id,value){const el=document.getElementById(id);if(el)el.textContent=value}
+function navalNumber(value){return num(value).toLocaleString('pt-BR',{maximumFractionDigits:2})}
+function navalValue(id){return document.getElementById(id)?.value||''}
+function navalField(id,label,{value='',type='text',min,step,placeholder='',full=false,required=false}={}){
+  return `<div class="field${full?' full':''}"><label for="${id}">${esc(label)}</label><input class="input" id="${id}" type="${type}" value="${esc(String(value))}"${min!==undefined?` min="${min}"`:''}${step!==undefined?` step="${step}"`:''}${placeholder?` placeholder="${esc(placeholder)}"`:''}${required?' required':''}></div>`;
+}
+function navalSelect(id,label,options,value){return `<div class="field"><label for="${id}">${esc(label)}</label><select class="input" id="${id}">${options.map(x=>`<option${x===value?' selected':''}>${esc(x)}</option>`).join('')}</select></div>`}
+function navalNotes(id,label,value=''){return `<div class="field full"><label for="${id}">${esc(label)}</label><textarea class="input" id="${id}" rows="2">${esc(value)}</textarea></div>`}
+function navalMeter(id,fillId,value,max){
+  const el=document.getElementById(id),fill=document.getElementById(fillId),limit=Math.max(1,num(max));
+  if(fill)fill.style.width=`${max>0?clamp(value/max*100,0,100):(value>0?100:0)}%`;
+  if(el){el.setAttribute('aria-valuemax',String(limit));el.setAttribute('aria-valuenow',String(clamp(value,0,limit)));el.setAttribute('aria-valuetext',`${navalNumber(value)} de ${navalNumber(max)}`)}
+}
+function shipCargoIcon(category){
+  const paths={
+    'Todos':'<path d="m3 7 9-4 9 4-9 4zM3 7v10l9 4 9-4V7M12 11v10M7 5l10 5"/>',
+    'Comida':'<path d="M4 3v6c0 3 5 3 5 0V3M6.5 3v18M18 21V3c-4 1-5 8 0 9"/>',
+    'Água':'<path d="M12 2C10 6 5 10 5 15a7 7 0 0 0 14 0c0-5-5-9-7-13Z M8 15a4 4 0 0 0 4 4"/>',
+    'Dinheiro':'<circle cx="12" cy="12" r="9"/><path d="M9 7h4a2.5 2.5 0 0 1 0 5H9h5a2.5 2.5 0 0 1 0 5H9V7Zm2-2v14M8 10h8M8 14h8"/>',
+    'Tesouro':'<path d="M3 11V8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3M3 11h18v9H3zM9 11V4M15 11V4M10 11v4h4v-4"/>',
+    'Munição':'<circle cx="11" cy="14" r="7"/><path d="m15 8 2-3 3 1M19 2l1-1M22 6h1M21 10l1 1M8 11c-1 0-2 1-2 3"/>',
+    'Armas':'<path d="m15 3 6-1-1 6-11 11-4-4zM4 13l7 7M2 22l5-5"/>',
+    'Materiais':'<path d="m3 8 12-5 6 3-12 5zM3 8v9l6 4 12-6V6M9 11v10M6 12v4M13 12v5M17 10v5"/>',
+    'Outros':'<path d="M3 7h18v14H3zM7 7V3h10v4M3 12h18M10 10v4h4v-4"/>'
+  };
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[category]||paths.Outros}</svg>`;
+}
+function shipCategories(){return [...new Set([...SHIP_CARGO_CATEGORIES,...ship().cargo.map(i=>i.category||'Outros')])]}
+function shipRoomNames(){const s=ship();return [...new Set([...s.rooms.map(r=>r.name),...s.cargo.map(i=>i.room)].filter(Boolean))]}
+function shipRoomLoad(name){return ship().cargo.filter(i=>i.room===name).reduce((a,i)=>a+Math.max(0,num(i.qty,1))*Math.max(0,num(i.space)),0)}
+function shipRoomAvailable(name){return ship().rooms.some(r=>r.name===name&&r.state!=='Destruída')}
+function selectShipView(view,focus=false){
+  const s=ship();s.view=['storage','structure','combat'].includes(view)?view:'storage';
+  document.querySelectorAll('#page-ship [data-ship-view]').forEach(b=>{const on=b.dataset.shipView===s.view;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus()});
+  ['storage','structure','combat'].forEach(key=>document.getElementById(`shipView-${key}`).hidden=key!==s.view);
+  saveState();
+}
+function renderShip(){
+  if(!document.getElementById('page-ship'))return;
+  const ui=shipUI(),s=ship(),cfg=shipClassCfg(),max=shipMaxIntegrity();s.integrityCurrent=clamp(num(s.integrityCurrent,max),0,max);
+  if(!['hull','sails','structure','rooms'].includes(s.activePart))s.activePart='hull';
+  const st=shipIntegrityState(),cargo=shipCargoCurrent(),safe=shipCargoSafe(),speed=shipSpeed(),man=shipManeuver();
+  const view=['storage','structure','combat'].includes(s.view)?s.view:'storage';
+  document.querySelectorAll('#page-ship [data-ship-view]').forEach(b=>{const on=b.dataset.shipView===view;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});
+  ['storage','structure','combat'].forEach(key=>document.getElementById(`shipView-${key}`).hidden=key!==view);
+  document.querySelectorAll('#page-ship .ship-bind').forEach(el=>{if(document.activeElement!==el)el.value=getPath(s,el.dataset.shipKey)??''});
+  document.querySelectorAll('#page-ship [data-ship-class]').forEach(b=>{const on=b.dataset.shipClass===s.class;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
+  navalSet('shipNamePlaque',s.name||'Meu Navio');navalSet('shipClassRead',s.class);
+  navalSet('shipIdentityLine',[s.title,s.captain?`Capitão: ${s.captain}`:'',s.port?`Porto: ${s.port}`:''].filter(Boolean).join(' · ')||'O lar da tripulação em alto-mar.');
+  navalSet('shipHeaderIntegrity',`${navalNumber(s.integrityCurrent)} / ${navalNumber(max)}`);navalSet('shipHeaderCargo',`${navalNumber(cargo)} / ${navalNumber(safe)}`);navalSet('shipHeaderSpeed',`${navalNumber(speed)} km/h`);
+  ['shipHeaderCondition','shipConditionBadge'].forEach(id=>{navalSet(id,st.name);document.getElementById(id).dataset.damaged=String(st.name!=='Intacto')});
+  navalSet('shipCrewStat',navalNumber(s.crewCurrent));navalSet('shipCrewRecommended',`Recomendação da classe: ${cfg.crewMin} a ${cfg.crewMax}`);navalSet('shipProvisionCrew',`${navalNumber(s.crewCurrent)} tripulantes ↗`);
+  navalSet('shipRoomStat',`${navalNumber(shipRoomUsed())} / ${navalNumber(shipRoomMax())} espaços de sala`);navalSet('shipComfortText',shipComfortText(s.comfort));
+  navalSet('shipIntegrityText',`${navalNumber(s.integrityCurrent)} / ${navalNumber(max)}`);navalSet('shipDamagePenaltyText',st.text);navalMeter('shipIntegrityMeter','shipIntegrityFill',s.integrityCurrent,max);
+  document.getElementById('shipIntegrityFill').style.background=st.name==='Intacto'?'var(--gold)':'var(--red)';
+  navalSet('shipResistanceStat',navalNumber(shipResistance()));navalSet('shipCRStat',navalNumber(shipCR()));navalSet('shipSpeedStat',navalNumber(speed));navalSet('shipManeuverStat',man<=-90?'—':signed(man));
+  navalSet('shipWeaponsSummary',`${s.weapons.length} armamento${s.weapons.length===1?'':'s'}`);navalSet('shipSpecialCount',s.specials.length);
+  renderShipArt();renderShipCargo();renderShipWorkbench();renderShipCombat();renderShipBonuses();
+  const undo=document.getElementById('shipCargoUndo');undo.hidden=!ui.removed;if(ui.removed)navalSet('shipCargoUndoText',`${ui.removed.item.name||'Item'} removido.`);
+}
+function renderShipArt(){
+  const s=ship(),img=document.getElementById('shipArtImage'),empty=document.getElementById('shipArtEmpty'),src=s.imageData||s.imageUrl;
+  img.hidden=!src;empty.hidden=!!src;
+  if(src){if(img.getAttribute('src')!==src)img.src=src;const fit=s.imageFit||'contain';img.style.width=fit==='cover'?'100%':'auto';img.style.height=fit==='cover'?'100%':'auto';img.style.maxWidth=fit==='contain'?'100%':'none';img.style.maxHeight=fit==='contain'?'100%':'none';img.style.objectFit=fit;img.style.transform=`translate(calc(-50% + ${num(s.imageX)}%),calc(-50% + ${num(s.imageY)}%)) scale(${num(s.imageZoom,1)})`}
+  [['shipImageZoom','imageZoom'],['shipImageX','imageX'],['shipImageY','imageY'],['shipImageUrl','imageUrl']].forEach(([id,key])=>{const el=document.getElementById(id);if(document.activeElement!==el)el.value=s[key]??''});
+  navalSet('shipImageFit',s.imageFit==='cover'?'Ajuste: preencher':'Ajuste: imagem inteira');
+}
+function renderShipCargo(){
+  const ui=shipUI(),s=ship(),cargo=shipCargoCurrent(),safe=shipCargoSafe(),categories=shipCategories();
+  if(ui.category!=='all'&&!categories.includes(ui.category))ui.category='all';
+  navalSet('shipCargoTabCount',s.cargo.length);navalSet('shipCargoSummaryLabel',`${navalNumber(cargo)} / ${navalNumber(safe)} espaços`);
+  navalSet('shipCargoCapacityHint',cargo>safe?`${navalNumber(cargo-safe)} ${cargo-safe===1?'espaço':'espaços'} acima do limite`:`${navalNumber(safe-cargo)} ${safe-cargo===1?'espaço livre':'espaços livres'}`);
+  document.getElementById('shipCargoCapacity').classList.toggle('overloaded',cargo>safe);navalMeter('shipCargoMeter','shipCargoFill',cargo,safe);
+  navalSet('shipFoodDays',`${navalNumber(shipProvisionDays('Comida'))} d`);navalSet('shipWaterDays',`${navalNumber(shipProvisionDays('Água'))} d`);navalSet('shipAutonomyStat',`${navalNumber(shipAutonomy())} d`);
+  const categoryBox=document.getElementById('shipCargoCategories');
+  const categoryKey=JSON.stringify(categories);
+  if(categoryBox.dataset.categories!==categoryKey){
+    categoryBox.dataset.categories=categoryKey;
+    categoryBox.innerHTML=[['all','Todos os itens','Todos'],...categories.map(c=>[c,c,c])].map(([value,label,icon])=>`<button type="button" data-ship-category="${esc(value)}" aria-pressed="false">${shipCargoIcon(icon)}<span>${esc(label)}</span><b></b></button>`).join('');
+  }
+  categoryBox.querySelectorAll('button').forEach(b=>{const value=b.dataset.shipCategory;b.setAttribute('aria-pressed',String(ui.category===value));b.querySelector('b').textContent=value==='all'?s.cargo.length:s.cargo.filter(i=>(i.category||'Outros')===value).length});
+  renderShipRoomFilter();
+  const query=ui.search.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').trim();
+  const items=s.cargo.filter(i=>{
+    const hay=[i.name,i.category,i.room,i.notes,i.durability].join(' ').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR');
+    return (ui.category==='all'||(i.category||'Outros')===ui.category)&&(ui.room==='all'||(ui.room==='none'?!i.room:i.room===ui.room.slice(5)))&&(!query||hay.includes(query));
+  });
+  const byName=(a,b)=>(a.name||'').localeCompare(b.name||'','pt-BR',{sensitivity:'base',numeric:true});
+  items.sort((a,b)=>ui.sort==='qty'?num(b.qty,1)-num(a.qty,1)||byName(a,b):ui.sort==='space'?num(b.qty,1)*num(b.space)-num(a.qty,1)*num(a.space)||byName(a,b):ui.sort==='category'?(a.category||'').localeCompare(b.category||'','pt-BR')||byName(a,b):byName(a,b));
+  const qty=items.reduce((a,i)=>a+Math.max(0,num(i.qty,1)),0),filtered=ui.category!=='all'||ui.room!=='all'||!!ui.search;
+  navalSet('shipCargoResultCount',`${filtered?`${items.length} de ${s.cargo.length}`:items.length} ${s.cargo.length===1?'item':'itens'} · ${navalNumber(qty)} unidades`);
+  document.getElementById('shipClearCargoFilters').hidden=!filtered;
+  const search=document.getElementById('shipCargoSearch');if(search.value!==ui.search)search.value=ui.search;
+  document.getElementById('shipCargoSort').value=ui.sort;
+  document.querySelectorAll('#page-ship [data-ship-layout]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.shipLayout===ui.layout)));
+  const box=document.getElementById('shipCargoList');box.classList.toggle('list',ui.layout==='list');
+  if(!items.length){box.innerHTML=`<div class="naval-empty">${shipCargoIcon('Todos')}<h4>${s.cargo.length?'Nada por aqui.':'O porão está vazio.'}</h4><p>${s.cargo.length?'Tente outra busca ou limpe os filtros para ver toda a carga.':'Guarde provisões, tesouros e equipamentos em um só lugar.'}</p><button class="naval-btn" type="button" data-ship-action="${s.cargo.length?'clear-filters':'new-cargo'}">${s.cargo.length?'Limpar filtros':'Adicionar primeiro item'}</button></div>`;return}
+  box.querySelector('.naval-empty')?.remove();
+  const nodes=new Map([...box.querySelectorAll('[data-cargo-id]')].map(el=>[el.dataset.cargoId,el])),visible=new Set(items.map(i=>i.id));
+  nodes.forEach((el,id)=>{if(!visible.has(id))el.remove()});
+  const editingQuantity=box.contains(document.activeElement)&&document.activeElement?.hasAttribute('data-ship-cargo-qty');
+  items.forEach((i,index)=>{
+    let card=nodes.get(i.id);if(!card){card=document.createElement('article');card.className='naval-cargo-card';card.dataset.cargoId=i.id}
+    const unavailable=!!i.room&&!shipRoomAvailable(i.room),signature=JSON.stringify([i.name,i.category,i.room,i.space,i.supplyDays,i.supplyPeople,unavailable]);
+    if(card.dataset.signature!==signature){
+      card.dataset.signature=signature;
+      card.innerHTML=`<div class="naval-item-heading"><span class="naval-item-icon">${shipCargoIcon(i.category)}</span><div class="naval-item-copy"><small>${esc(i.category||'Outros')}</small><h4>${esc(i.name||'Carga')}</h4></div></div><div class="naval-item-details"><span class="naval-item-room${unavailable?' unavailable':''}"><span class="ui-icon i-room" aria-hidden="true"></span>${esc(i.room||'Sem compartimento')}${unavailable?' · indisponível':''}</span><span class="naval-item-space"><b data-cargo-total></b><small>${navalNumber(i.space)} por unidade</small></span></div><div class="naval-item-bottom"><div class="naval-quantity"><button type="button" data-ship-cargo-step="-1" data-id="${esc(i.id)}" aria-label="Diminuir quantidade de ${esc(i.name)}">−</button><input type="number" min="0" step="any" data-ship-cargo-qty="${esc(i.id)}" aria-label="Quantidade de ${esc(i.name)}"><button type="button" data-ship-cargo-step="1" data-id="${esc(i.id)}" aria-label="Aumentar quantidade de ${esc(i.name)}">+</button></div><div class="naval-item-actions"><button class="naval-text-btn" type="button" data-ship-action="edit-cargo" data-id="${esc(i.id)}" aria-label="Editar ${esc(i.name)}">Editar</button><button class="naval-icon-btn" type="button" data-ship-action="remove-cargo" data-id="${esc(i.id)}" aria-label="Remover ${esc(i.name)}">×</button></div></div>`;
+    }
+    const input=card.querySelector('[data-ship-cargo-qty]');if(document.activeElement!==input)input.value=Math.max(0,num(i.qty,1));
+    card.querySelector('[data-ship-cargo-step="-1"]').disabled=num(i.qty,1)<=0;
+    card.querySelector('[data-cargo-total]').textContent=`${navalNumber(Math.max(0,num(i.qty,1))*Math.max(0,num(i.space)))} ${Math.max(0,num(i.qty,1))*Math.max(0,num(i.space))===1?'espaço':'espaços'}`;
+    if(!editingQuantity&&box.children[index]!==card)box.insertBefore(card,box.children[index]||null);else if(!card.isConnected)box.append(card);
+  });
+}
+function renderShipRoomFilter(){
+  const ui=shipUI(),s=ship(),names=shipRoomNames(),select=document.getElementById('shipCargoRoomFilter');
+  if(ui.room!=='all'&&ui.room!=='none'&&!names.includes(ui.room.slice(5)))ui.room='all';
+  const html='<option value="all">Todos os compartimentos</option><option value="none">Sem compartimento</option>'+names.map(name=>{const room=s.rooms.find(r=>r.name===name),cap=num(room?.capacity);return `<option value="room:${esc(name)}">${esc(name)}${!shipRoomAvailable(name)?' (indisponível)':cap>0?` (${navalNumber(shipRoomLoad(name))}/${navalNumber(cap)})`:''}</option>`}).join('');
+  if(select.dataset.options!==html){select.innerHTML=html;select.dataset.options=html}select.value=ui.room;
+  const meters=document.getElementById('shipRoomMeters');
+  meters.innerHTML=s.rooms.filter(r=>num(r.capacity)>0&&r.state!=='Destruída').map(r=>{const used=shipRoomLoad(r.name),capacity=num(r.capacity);return `<button type="button" class="naval-room-meter${used>capacity?' overloaded':''}" data-ship-room-filter="${esc(r.name)}" aria-pressed="${ui.room===`room:${r.name}`}"><span>${esc(r.name)}</span><div class="naval-meter" aria-hidden="true"><span style="width:${clamp(used/capacity*100,0,100)}%"></span></div><small>${navalNumber(used)} / ${navalNumber(capacity)} espaços</small></button>`}).join('');
+}
+function renderShipRoomOptions(selected){
+  const select=document.getElementById('shipCargoRoom'),old=selected??select.value,s=ship(),names=[...new Set([...s.rooms.filter(r=>r.state!=='Destruída').map(r=>r.name),...(old?[old]:[])])];
+  select.innerHTML='<option value="">Sem compartimento</option>'+names.map(name=>`<option value="${esc(name)}">${esc(name)}${shipRoomAvailable(name)?'':' (indisponível)'}</option>`).join('');select.value=old||'';
+}
+function openShipCargo(id){
+  const ui=shipUI(),s=ship(),item=id?s.cargo.find(i=>i.id===id):null;if(id&&!item)return;
+  ui.editingCargo=item?.id||null;document.getElementById('shipCargoForm').reset();
+  const defaults={name:'',category:ui.category==='all'?'Outros':ui.category,qty:1,space:1,supplyDays:0,supplyPeople:0,room:ui.room.startsWith('room:')?ui.room.slice(5):'',notes:'',durability:''},i=item||defaults;
+  document.getElementById('shipCargoCategory').innerHTML=shipCategories().map(c=>`<option>${esc(c)}</option>`).join('');
+  [['shipCargoName','name'],['shipCargoCategory','category'],['shipCargoQty','qty'],['shipCargoSpace','space'],['shipCargoDays','supplyDays'],['shipCargoPeople','supplyPeople'],['shipCargoNotes','notes'],['shipCargoDurability','durability']].forEach(([el,key])=>document.getElementById(el).value=i[key]??defaults[key]);
+  renderShipRoomOptions(i.room||'');navalSet('shipCargoDialogTitle',item?'Editar item':'Adicionar ao porão');navalSet('shipAddCargo',item?'Salvar alterações':'Adicionar item');updateShipCargoPreview();
+  const dialog=document.getElementById('shipCargoDialog');if(!dialog.open)dialog.showModal();document.getElementById('shipCargoName').focus();
+}
+function updateShipCargoPreview(){
+  const qty=Math.max(0,num(navalValue('shipCargoQty'))),space=Math.max(0,num(navalValue('shipCargoSpace'))),total=qty*space;
+  document.getElementById('shipCargoProvisionFields').hidden=!['Comida','Água'].includes(navalValue('shipCargoCategory'));
+  navalSet('shipCargoSpacePreview',`Ocupa ${navalNumber(total)} ${total===1?'espaço':'espaços'} no porão.`);
+}
+function shipAddCargo(){
+  const ui=shipUI(),s=ship(),form=document.getElementById('shipCargoForm');if(!form.reportValidity())return;
+  const name=navalValue('shipCargoName').trim();if(!name){toast('Dê um nome para o item.');document.getElementById('shipCargoName').focus();return}
+  const data={name,category:navalValue('shipCargoCategory')||'Outros',qty:Math.max(0,num(navalValue('shipCargoQty'),1)),space:Math.max(0,num(navalValue('shipCargoSpace'))),supplyDays:Math.max(0,num(navalValue('shipCargoDays'))),supplyPeople:Math.max(0,num(navalValue('shipCargoPeople'))),room:navalValue('shipCargoRoom'),notes:navalValue('shipCargoNotes'),durability:navalValue('shipCargoDurability')};
+  const existing=ui.editingCargo?s.cargo.find(i=>i.id===ui.editingCargo):null;if(ui.editingCargo&&!existing){document.getElementById('shipCargoDialog').close();return}
+  if(existing)Object.assign(existing,data);else s.cargo.push({id:uid(),...data});
+  ui.search='';if(ui.category!=='all'&&ui.category!==data.category)ui.category='all';if(ui.room!=='all'&&(ui.room==='none'?!!data.room:ui.room.slice(5)!==data.room))ui.room='all';
+  document.getElementById('shipCargoDialog').close();ui.editingCargo=null;renderShip();saveState();toast(existing?'Item atualizado.':'Item guardado no porão.');
+}
+function setShipCargoQuantity(id,value){const item=ship().cargo.find(i=>i.id===id);if(!item)return;item.qty=Math.max(0,num(value));renderShip();saveState()}
+function clearShipCargoFilters(){const ui=shipUI();ui.category='all';ui.room='all';ui.search='';renderShipCargo()}
+function shipModEditor(part){
+  return `<details class="naval-disclosure" id="shipModDetails"><summary>Instalar melhoria</summary><form class="naval-disclosure-body" id="shipModForm" data-part="${part}"><div class="naval-form-grid">${navalField('shipModName','Nome da melhoria',{full:true,required:true,placeholder:'Ex.: Velas de tempestade'})}${navalField('shipModIntegrity','Integridade (%)',{type:'number',value:0})}${navalField('shipModResistance','Resistência',{type:'number',value:0})}${navalField('shipModSpeed','Velocidade (%)',{type:'number',value:0})}${navalField('shipModManeuver','Manobrabilidade',{type:'number',value:0})}${navalField('shipModCR','CR',{type:'number',value:0})}${navalField('shipModRooms','Espaços de sala',{type:'number',value:0})}${navalField('shipModCargo','Carga segura',{type:'number',value:0,step:'any'})}${navalNotes('shipModEffect','Efeito / descrição')}</div><div class="naval-actions"><button class="naval-btn" type="submit" id="shipSaveMod">Instalar melhoria</button><button class="naval-text-btn" type="button" data-ship-action="cancel-mod" hidden>Cancelar edição</button></div></form></details>`;
+}
+function shipModCard(m){
+  const tags=[];[['integrityPct','% integridade'],['resistance',' resistência'],['speedPct','% velocidade'],['maneuver',' manobra'],['cr',' CR'],['roomSpaces',' salas'],['cargoSafe',' carga']].forEach(([key,label])=>{if(num(m[key]))tags.push(`${signed(num(m[key]))}${label}`)});
+  return `<article class="naval-record${m.active===false?' disabled':''}"><div><h5>${esc(m.name||'Melhoria')}</h5>${m.effect?`<p>${esc(m.effect)}</p>`:''}${tags.length?`<div class="naval-record-tags">${tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>`:''}</div><div class="naval-record-actions"><button class="naval-btn" type="button" data-ship-action="toggle-mod" data-id="${esc(m.id)}" aria-pressed="${m.active!==false}">${m.active===false?'Ativar':'Ativa'}</button><button class="naval-btn" type="button" data-ship-action="edit-mod" data-id="${esc(m.id)}">Editar</button><button class="naval-icon-btn" type="button" data-ship-action="remove-mod" data-id="${esc(m.id)}" aria-label="Remover melhoria ${esc(m.name)}">×</button></div></article>`;
+}
+function renderShipWorkbench(){
+  const ui=shipUI(),s=ship(),part=s.activePart,key=`${ui.characterId}:${part}`,body=document.getElementById('shipWorkbenchBody');
+  const info={hull:['Casco & material','Madeira, blindagem e reforços da embarcação.'],sails:['Velas & propulsão','Ajuste o estado das velas e instale melhorias de navegação.'],structure:['Componentes & reforços','Acompanhe cada parte do navio e suas modificações.'],rooms:['Planta de salas','Organize os espaços internos e a capacidade dos compartimentos.']}[part];
+  navalSet('shipWorkbenchTitle',info[0]);navalSet('shipWorkbenchSubtitle',info[1]);
+  document.querySelectorAll('#page-ship [data-ship-part]').forEach(b=>{const on=b.dataset.shipPart===part;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
+  if(ui.workbenchKey!==key){
+    ui.workbenchKey=key;
+    if(part==='rooms')body.innerHTML=shipRoomsEditor();
+    else{
+      let intro='';
+      if(part==='hull')intro=`<details class="naval-disclosure" open><summary>Material do casco</summary><form class="naval-disclosure-body" id="shipMaterialForm"><div class="naval-form-grid">${navalSelect('shipMaterialPreset','Modelo de material',[...Object.keys(SHIP_MATERIALS),'Personalizado'],s.material.name)}${navalField('shipMaterialName','Nome do material',{required:true})}${navalField('shipMaterialIntegrity','Integridade (%)',{type:'number'})}${navalField('shipMaterialResistance','Resistência',{type:'number'})}${navalField('shipMaterialSpeed','Velocidade (%)',{type:'number'})}${navalNotes('shipMaterialEffect','Efeito do material')}</div><div class="naval-actions"><button class="naval-btn" type="submit">Aplicar material</button></div></form></details><div style="height:18px" aria-hidden="true"></div>`;
+      if(part==='sails')intro=shipComponentsEditor(['Velas','Mastro','Motor']);
+      if(part==='structure')intro=shipComponentsEditor();
+      body.innerHTML=intro+'<div class="naval-record-list" id="shipModList"></div>'+shipModEditor(part);
+      if(part==='hull')fillShipMaterialEditor();
+    }
+  }
+  document.querySelectorAll('#shipWorkbenchBody [data-ship-component]').forEach(el=>{if(document.activeElement!==el)el.value=s.components[el.dataset.shipComponent]||'Intacto'});
+  const mods=document.getElementById('shipModList');if(mods)mods.innerHTML=s.mods.filter(m=>m.part===part).map(shipModCard).join('')||'<div class="naval-empty-inline">Nenhuma melhoria instalada nesta parte.</div>';
+  renderShipRooms();
+}
+function fillShipMaterialEditor(){
+  const m=ship().material,preset=document.getElementById('shipMaterialPreset');if(!preset)return;
+  preset.value=SHIP_MATERIALS[m.name]?m.name:'Personalizado';
+  [['shipMaterialName','name'],['shipMaterialIntegrity','integrityPct'],['shipMaterialResistance','resistance'],['shipMaterialSpeed','speedPct'],['shipMaterialEffect','effect']].forEach(([id,key])=>document.getElementById(id).value=m[key]??'');
+}
+function shipSaveMaterial(){
+  const form=document.getElementById('shipMaterialForm');if(!form.reportValidity())return;
+  Object.assign(ship().material,{name:navalValue('shipMaterialName').trim()||'Material personalizado',integrityPct:num(navalValue('shipMaterialIntegrity')),resistance:num(navalValue('shipMaterialResistance')),speedPct:num(navalValue('shipMaterialSpeed')),effect:navalValue('shipMaterialEffect')});
+  renderShip();saveState();toast('Material do casco atualizado.');
+}
+function shipComponentsEditor(names=Object.keys(ship().components)){
+  return `<div class="naval-component-grid">${names.map((name,index)=>{const value=ship().components[name]||'Intacto',id=`shipComponent-${index}`;return `<div class="naval-component"><label for="${id}">${esc(name)}</label><select class="input" id="${id}" data-ship-component="${esc(name)}">${['Intacto','Danificado','Destruído'].map(state=>`<option${state===value?' selected':''}>${state}</option>`).join('')}</select></div>`}).join('')}</div>`;
+}
+function shipRoomsEditor(){
+  return `<div class="naval-record-list" id="shipRoomsList"></div><details class="naval-disclosure" id="shipRoomDetails"><summary>Construir sala</summary><form class="naval-disclosure-body" id="shipRoomForm"><div class="naval-form-grid">${navalSelect('shipRoomType','Tipo / modelo',Object.keys(SHIP_ROOM_PRESETS),'Armazenamento Pequeno')}${navalField('shipRoomName','Nome da sala',{value:'Armazenamento Pequeno',required:true})}${navalField('shipRoomSpaces','Espaços ocupados',{type:'number',min:0,value:1})}${navalField('shipRoomCapacity','Capacidade de carga',{type:'number',min:0,step:'any',value:15})}${navalSelect('shipRoomState','Estado',['Intacta','Danificada','Destruída'],'Intacta')}${navalNotes('shipRoomEffect','Efeito / benefício',SHIP_ROOM_PRESETS['Armazenamento Pequeno'].effect)}</div><div class="naval-actions"><button class="naval-btn" type="submit" id="shipSaveRoom">Construir sala</button><button class="naval-text-btn" type="button" data-ship-action="cancel-room" hidden>Cancelar edição</button></div></form></details>`;
+}
+function renderShipRooms(){
+  const box=document.getElementById('shipRoomsList');if(!box)return;
+  const rooms=ship().rooms;
+  if(!rooms.length){box.innerHTML='<div class="naval-empty-inline">Nenhuma sala construída. Adicione um compartimento para organizar o navio.</div>';return}
+  box.querySelector('.naval-empty-inline')?.remove();
+  const nodes=new Map([...box.querySelectorAll('[data-room-id]')].map(el=>[el.dataset.roomId,el])),ids=new Set(rooms.map(r=>r.id));
+  nodes.forEach((el,id)=>{if(!ids.has(id))el.remove()});
+  rooms.forEach((r,index)=>{
+    let card=nodes.get(r.id);const signature=JSON.stringify({...r,state:undefined,load:shipRoomLoad(r.name)});
+    if(!card||card.dataset.signature!==signature){
+      const holder=document.createElement('div');holder.innerHTML=`<article class="naval-record${r.state!=='Intacta'?' damaged':''}"><div><h5>${esc(r.name||r.type)}</h5><p>${esc(r.type)} · ${navalNumber(r.spaces)} espaço(s) de sala${num(r.capacity)>0?` · carga ${navalNumber(shipRoomLoad(r.name))} / ${navalNumber(r.capacity)}`:''}</p>${r.effect?`<p>${esc(r.effect)}</p>`:''}</div><div class="naval-record-actions"><label class="sr-only" for="shipRoomState-${esc(r.id)}">Estado de ${esc(r.name)}</label><select class="input" id="shipRoomState-${esc(r.id)}" data-ship-room-state="${esc(r.id)}">${['Intacta','Danificada','Destruída'].map(st=>`<option${st===r.state?' selected':''}>${st}</option>`).join('')}</select><button class="naval-btn" type="button" data-ship-action="edit-room" data-id="${esc(r.id)}">Editar</button><button class="naval-icon-btn" type="button" data-ship-action="remove-room" data-id="${esc(r.id)}" aria-label="Remover sala ${esc(r.name)}">×</button></div></article>`;
+      const next=holder.firstElementChild;next.dataset.roomId=r.id;next.dataset.signature=signature;if(card)card.replaceWith(next);card=next;
+    }
+    card.classList.toggle('damaged',r.state!=='Intacta');const state=card.querySelector('[data-ship-room-state]');if(document.activeElement!==state)state.value=r.state;
+    if(box.children[index]!==card)box.insertBefore(card,box.children[index]||null);
+  });
+}
+function resetShipEditor(kind){
+  const form=document.getElementById(`ship${kind==='mod'?'Mod':kind==='room'?'Room':'Weapon'}Form`);if(!form)return;
+  form.reset();delete form.dataset.editingId;form.querySelector('[data-ship-action^="cancel-"]').hidden=true;
+  navalSet(kind==='mod'?'shipSaveMod':kind==='room'?'shipSaveRoom':'shipSaveWeapon',kind==='mod'?'Instalar melhoria':kind==='room'?'Construir sala':'Instalar armamento');
+}
+function focusShipEditor(id){const el=document.getElementById(id);el.closest('details').open=true;el.focus();el.scrollIntoView({block:'center',behavior:'smooth'})}
+function editShipMod(id){
+  const m=ship().mods.find(x=>x.id===id);if(!m)return;
+  const form=document.getElementById('shipModForm');form.dataset.editingId=id;
+  [['shipModName','name'],['shipModIntegrity','integrityPct'],['shipModResistance','resistance'],['shipModSpeed','speedPct'],['shipModManeuver','maneuver'],['shipModCR','cr'],['shipModRooms','roomSpaces'],['shipModCargo','cargoSafe'],['shipModEffect','effect']].forEach(([el,key])=>document.getElementById(el).value=m[key]??'');
+  form.querySelector('[data-ship-action="cancel-mod"]').hidden=false;navalSet('shipSaveMod','Salvar melhoria');focusShipEditor('shipModName');
+}
+function shipAddMod(){
+  const s=ship(),form=document.getElementById('shipModForm');if(!form.reportValidity())return;
+  const id=form.dataset.editingId,m=id?s.mods.find(x=>x.id===id):null,data={part:form.dataset.part,name:navalValue('shipModName').trim()||'Melhoria',integrityPct:num(navalValue('shipModIntegrity')),resistance:num(navalValue('shipModResistance')),speedPct:num(navalValue('shipModSpeed')),maneuver:num(navalValue('shipModManeuver')),cr:num(navalValue('shipModCR')),roomSpaces:num(navalValue('shipModRooms')),cargoSafe:num(navalValue('shipModCargo')),effect:navalValue('shipModEffect')};
+  if(m)Object.assign(m,data);else s.mods.push({id:uid(),active:true,...data});resetShipEditor('mod');renderShip();saveState();toast(m?'Melhoria atualizada.':'Melhoria instalada.');
+}
+function editShipRoom(id){
+  const r=ship().rooms.find(x=>x.id===id);if(!r)return;
+  const form=document.getElementById('shipRoomForm');form.dataset.editingId=id;
+  [['shipRoomName','name'],['shipRoomSpaces','spaces'],['shipRoomCapacity','capacity'],['shipRoomEffect','effect'],['shipRoomState','state']].forEach(([el,key])=>document.getElementById(el).value=r[key]??'');
+  const type=document.getElementById('shipRoomType');if(r.type&&![...type.options].some(o=>o.value===r.type))type.add(new Option(r.type,r.type));type.value=r.type||'Personalizada';form.querySelector('[data-ship-action="cancel-room"]').hidden=false;navalSet('shipSaveRoom','Salvar sala');focusShipEditor('shipRoomName');
+}
+function shipAddRoom(){
+  const s=ship(),form=document.getElementById('shipRoomForm');if(!form.reportValidity())return;
+  const id=form.dataset.editingId,r=id?s.rooms.find(x=>x.id===id):null,name=navalValue('shipRoomName').trim();if(!name){toast('Dê um nome para a sala.');return}
+  if((!r||r.name!==name)&&s.rooms.some(x=>x.id!==id&&x.name===name)){toast('Use um nome diferente para identificar esta sala.');return}
+  const data={name,type:navalValue('shipRoomType'),spaces:Math.max(0,num(navalValue('shipRoomSpaces'),1)),capacity:Math.max(0,num(navalValue('shipRoomCapacity'))),effect:navalValue('shipRoomEffect'),state:navalValue('shipRoomState')||'Intacta'};
+  if(r){const old=r.name,unique=!s.rooms.some(x=>x.id!==id&&x.name===old);Object.assign(r,data);if(old!==name&&unique)s.cargo.forEach(i=>{if(i.room===old)i.room=name})}else s.rooms.push({id:uid(),...data});
+  resetShipEditor('room');renderShip();saveState();toast(r?'Sala atualizada.':'Sala construída.');
+}
+function renderShipBonuses(){
+  const s=ship(),effects=shipBonusTexts(),markup=effects.map(x=>`<div class="naval-effect"><b>${esc(x.name)}</b><p>${esc(x.text||'')}</p></div>`).join('')||'<div class="naval-empty-inline">Nenhum efeito especial ativo.</div>';
+  document.getElementById('shipBonusStrip').innerHTML=markup;document.getElementById('shipCombatEffects').innerHTML=markup;
+  document.getElementById('shipSpecialList').innerHTML=s.specials.map(x=>`<article class="naval-record"><div><h5>${esc(x.name||'Característica')}</h5><p>${esc(x.effect||'')}</p>${x.origin?`<p>Origem: ${esc(x.origin)}</p>`:''}</div><button class="naval-icon-btn" type="button" data-ship-action="remove-special" data-id="${esc(x.id)}" aria-label="Remover característica ${esc(x.name)}">×</button></article>`).join('')||'<div class="naval-empty-inline">Registre o que torna sua embarcação especial.</div>';
+}
+function shipAddSpecial(){
+  const name=navalValue('shipSpecialName').trim();if(!name)return;
+  ship().specials.push({id:uid(),name,effect:navalValue('shipSpecialEffect'),origin:navalValue('shipSpecialOrigin')});document.getElementById('shipSpecialForm').reset();renderShip();saveState();
+}
+function shipWeaponsEditor(){
+  return `<details class="naval-disclosure" id="shipWeaponDetails"><summary>Instalar armamento</summary><form class="naval-disclosure-body" id="shipWeaponForm"><div class="naval-form-grid">${navalField('shipWeaponName','Nome do armamento',{required:true,placeholder:'Ex.: Canhão de bombordo'})}${navalSelect('shipWeaponType','Tipo',['Canhão','Canhão Pesado','Canhão Giratório','Arpão','Balista','Arma Especial','Outros'],'Canhão')}${navalField('shipWeaponQty','Quantidade',{type:'number',min:1,value:1})}${navalField('shipWeaponLocation','Localização',{placeholder:'Bombordo, proa…'})}${navalField('shipWeaponRange','Alcance')}${navalField('shipWeaponDamage','Dano',{placeholder:'Ex.: 6d10'})}${navalField('shipWeaponAmmo','Munição atual',{type:'number',min:0,value:0})}${navalField('shipWeaponAmmoMax','Munição máxima',{type:'number',min:0,value:0})}${navalSelect('shipWeaponState','Estado',['Operacional','Danificada','Destruída'],'Operacional')}${navalNotes('shipWeaponEffect','Efeito / observações')}</div><div class="naval-actions"><button class="naval-btn" type="submit" id="shipSaveWeapon">Instalar armamento</button><button class="naval-text-btn" type="button" data-ship-action="cancel-weapon" hidden>Cancelar edição</button></div></form></details>`;
+}
+function renderShipCombat(){
+  const ui=shipUI(),s=ship(),track=document.getElementById('shipPositionTrack'),names=['Domínio inimigo','Vantagem inimiga','Pressão inimiga','Equilibrado','Pressão','Vantagem','Domínio'];
+  if(!track.children.length)track.innerHTML=[-3,-2,-1,0,1,2,3].map(v=>`<button type="button" data-ship-position="${v}" aria-label="Posição ${signed(v)}: ${names[v+3]}">${v>0?'+':''}${v}</button>`).join('');
+  track.querySelectorAll('button').forEach(b=>{const active=num(b.dataset.shipPosition)===s.position;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
+  navalSet('shipNavalStateLabel',names[s.position+3]);document.getElementById('shipDistanceSelect').value=s.distance;
+  [['momentum','shipMomentum',3],['disorder','shipDisorder',3],['commandCurrent','shipCommand',s.commandMax],['sinking','shipSinking',3]].forEach(([key,prefix,max])=>{
+    navalSet(prefix+'Text',`${navalNumber(s[key])} / ${navalNumber(max)}`);
+    const n=Math.min(30,Math.max(0,Math.floor(max))),pips=document.getElementById(prefix+'Pips');pips.innerHTML=Array.from({length:n},(_,i)=>`<span${i<s[key]?' class="on"':''}></span>`).join('');
+    document.querySelectorAll(`#page-ship [data-ship-counter="${key}"]`).forEach(b=>b.disabled=num(b.dataset.delta)<0?s[key]<=0:s[key]>=max);
+  });
+  if(ui.arsenalKey!==ui.characterId){document.getElementById('shipWeaponsEditor').innerHTML=shipWeaponsEditor();ui.arsenalKey=ui.characterId}
+  renderShipWeapons();
+  navalSet('shipAvariaCount',`${s.avaras.length} ativa${s.avaras.length===1?'':'s'}`);
+  document.getElementById('shipAvariasList').innerHTML=s.avaras.map(a=>`<article class="naval-record damaged"><div><h5>${esc(a.name)}</h5><p>${esc(a.component||'Componente não definido')}${a.effect?' · '+esc(a.effect):''}</p></div><div class="naval-record-actions"><button class="naval-btn" type="button" data-ship-action="repair-avaria" data-id="${esc(a.id)}">Reparada</button><button class="naval-icon-btn" type="button" data-ship-action="remove-avaria" data-id="${esc(a.id)}" aria-label="Remover avaria ${esc(a.name)}">×</button></div></article>`).join('')||'<div class="naval-empty-inline">Nenhuma avaria ativa.</div>';
+  const component=document.getElementById('shipAvariaComponent'),old=component.value,options=Object.keys(s.components).map(name=>`<option>${esc(name)}</option>`).join('');if(component.dataset.options!==options){component.innerHTML=options;component.dataset.options=options;if([...component.options].some(o=>o.value===old))component.value=old}
+}
+function renderShipWeapons(){
+  const s=ship(),box=document.getElementById('shipWeaponsList');
+  if(!s.weapons.length){box.innerHTML='<div class="naval-empty-inline">Nenhum armamento instalado. Prepare o arsenal antes da próxima batalha.</div>';return}
+  box.querySelector('.naval-empty-inline')?.remove();
+  const nodes=new Map([...box.querySelectorAll('[data-weapon-id]')].map(el=>[el.dataset.weaponId,el])),ids=new Set(s.weapons.map(w=>w.id));
+  nodes.forEach((el,id)=>{if(!ids.has(id))el.remove()});
+  s.weapons.forEach((w,index)=>{
+    let card=nodes.get(w.id);const signature=JSON.stringify({...w,ammo:undefined});
+    if(!card||card.dataset.signature!==signature){
+      const holder=document.createElement('div');holder.innerHTML=`<article class="naval-record${w.state!=='Operacional'?' damaged':''}"><div><h5>${esc(w.name||w.type)} <span style="color:var(--muted);font-weight:400">× ${navalNumber(w.qty)}</span></h5><p>${esc(w.type)} · ${esc(w.location||'Local não definido')} · ${esc(w.state||'Operacional')}</p><div class="naval-record-tags"><span>Dano ${esc(w.damage||'—')}</span><span>Alcance ${esc(w.range||'—')}</span></div>${w.effect?`<p>${esc(w.effect)}</p>`:''}<div class="naval-ammo"><span>Munição</span><div class="naval-quantity"><button type="button" data-ship-ammo="-1" data-id="${esc(w.id)}" aria-label="Gastar munição de ${esc(w.name)}"${num(w.ammo)<=0?' disabled':''}>−</button><span data-ammo-read>${navalNumber(w.ammo)} / ${num(w.ammoMax)>0?navalNumber(w.ammoMax):'—'}</span><button type="button" data-ship-ammo="1" data-id="${esc(w.id)}" aria-label="Repor munição de ${esc(w.name)}"${num(w.ammoMax)>0&&num(w.ammo)>=num(w.ammoMax)?' disabled':''}>+</button></div></div></div><div class="naval-record-actions"><button class="naval-btn" type="button" data-ship-action="edit-weapon" data-id="${esc(w.id)}">Editar</button><button class="naval-icon-btn" type="button" data-ship-action="remove-weapon" data-id="${esc(w.id)}" aria-label="Remover armamento ${esc(w.name)}">×</button></div></article>`;
+      const next=holder.firstElementChild;next.dataset.weaponId=w.id;next.dataset.signature=signature;if(card)card.replaceWith(next);card=next;
+    }
+    card.querySelector('[data-ammo-read]').textContent=`${navalNumber(w.ammo)} / ${num(w.ammoMax)>0?navalNumber(w.ammoMax):'—'}`;
+    card.querySelector('[data-ship-ammo="-1"]').disabled=num(w.ammo)<=0;
+    card.querySelector('[data-ship-ammo="1"]').disabled=num(w.ammoMax)>0&&num(w.ammo)>=num(w.ammoMax);
+    if(box.children[index]!==card)box.insertBefore(card,box.children[index]||null);
+  });
+}
+function editShipWeapon(id){
+  const w=ship().weapons.find(x=>x.id===id);if(!w)return;
+  const form=document.getElementById('shipWeaponForm');form.dataset.editingId=id;
+  [['shipWeaponName','name'],['shipWeaponType','type'],['shipWeaponQty','qty'],['shipWeaponLocation','location'],['shipWeaponRange','range'],['shipWeaponDamage','damage'],['shipWeaponAmmo','ammo'],['shipWeaponAmmoMax','ammoMax'],['shipWeaponState','state'],['shipWeaponEffect','effect']].forEach(([el,key])=>{const input=document.getElementById(el);if(input.tagName==='SELECT'&&w[key]&&![...input.options].some(o=>o.value===w[key]))input.add(new Option(w[key],w[key]));input.value=w[key]??''});
+  navalSet('shipSaveWeapon','Salvar armamento');form.querySelector('[data-ship-action="cancel-weapon"]').hidden=false;focusShipEditor('shipWeaponName');
+}
+function shipAddWeapon(){
+  const s=ship(),form=document.getElementById('shipWeaponForm');if(!form.reportValidity())return;
+  const w=form.dataset.editingId?s.weapons.find(x=>x.id===form.dataset.editingId):null,data={name:navalValue('shipWeaponName').trim()||'Armamento',type:navalValue('shipWeaponType'),qty:Math.max(1,num(navalValue('shipWeaponQty'),1)),location:navalValue('shipWeaponLocation'),range:navalValue('shipWeaponRange'),damage:navalValue('shipWeaponDamage'),ammo:Math.max(0,num(navalValue('shipWeaponAmmo'))),ammoMax:Math.max(0,num(navalValue('shipWeaponAmmoMax'))),state:navalValue('shipWeaponState')||'Operacional',effect:navalValue('shipWeaponEffect')};
+  if(w)Object.assign(w,data);else s.weapons.push({id:uid(),...data});resetShipEditor('weapon');renderShip();saveState();toast(w?'Armamento atualizado.':'Armamento instalado.');
+}
+function shipAddAvaria(name,component,effect){ship().avaras.push({id:uid(),name,component,effect,state:'Ativa'});renderShip();saveState()}
+function shipApplyDamage(amount){
+  const s=ship(),damage=Math.max(0,num(amount)),max=shipMaxIntegrity(),before=s.integrityCurrent;s.integrityCurrent=clamp(before-damage,0,max);
+  if(damage>=max*.1&&damage>0)s.avaras.push({id:uid(),name:'Avaria de Impacto',component:'Casco',effect:`Um único impacto causou ${damage} de dano (10% ou mais da Integridade Máxima). Defina o componente atingido na narrativa.`,state:'Ativa'});
+  if(s.integrityCurrent<=0&&before>0)s.sinking=3;renderShip();saveState();
+}
+function shipApplyRepair(amount){ship().integrityCurrent=clamp(ship().integrityCurrent+Math.max(0,num(amount)),0,shipMaxIntegrity());renderShip();saveState()}
+function shipHandleAction(action,id){
+  const ui=shipUI(),s=ship();
+  if(action==='new-cargo'){openShipCargo();return}
+  if(action==='edit-cargo'){openShipCargo(id);return}
+  if(action==='close-cargo'){document.getElementById('shipCargoDialog').close();return}
+  if(action==='clear-filters'){clearShipCargoFilters();return}
+  if(action==='edit-identity'||action==='edit-crew'){selectShipView('structure');document.getElementById(action==='edit-crew'?'shipCrewInput':'shipNameInput').focus();return}
+  if(action==='manage-rooms'){selectShipView('structure');s.activePart='rooms';renderShipWorkbench();saveState();document.getElementById('shipWorkbench').scrollIntoView({block:'start',behavior:'smooth'});return}
+  if(action==='edit-mod'){editShipMod(id);return}if(action==='edit-room'){editShipRoom(id);return}if(action==='edit-weapon'){editShipWeapon(id);return}
+  if(action.startsWith('cancel-')){resetShipEditor(action.slice(7));return}
+  if(action==='remove-cargo'){const index=s.cargo.findIndex(i=>i.id===id);if(index<0)return;ui.removed={item:clone(s.cargo[index]),index};s.cargo.splice(index,1)}
+  if(action==='undo-cargo'&&ui.removed){s.cargo.splice(Math.min(ui.removed.index,s.cargo.length),0,ui.removed.item);ui.removed=null;ui.search='';ui.category='all';ui.room='all'}
+  if(action==='dismiss-undo')ui.removed=null;
+  if(action==='toggle-mod'){const m=s.mods.find(x=>x.id===id);if(m)m.active=m.active===false}
+  if(action==='remove-mod'){s.mods=s.mods.filter(x=>x.id!==id);if(document.getElementById('shipModForm')?.dataset.editingId===id)resetShipEditor('mod')}
+  if(action==='remove-room'){s.rooms=s.rooms.filter(x=>x.id!==id);if(document.getElementById('shipRoomForm')?.dataset.editingId===id)resetShipEditor('room');toast('Sala removida. Os itens continuam no inventário.')}
+  if(action==='remove-weapon'){s.weapons=s.weapons.filter(x=>x.id!==id);if(document.getElementById('shipWeaponForm')?.dataset.editingId===id)resetShipEditor('weapon')}
+  if(action==='remove-special')s.specials=s.specials.filter(x=>x.id!==id);
+  if(action==='remove-avaria'||action==='repair-avaria')s.avaras=s.avaras.filter(x=>x.id!==id);
+  renderShip();saveState();
+}
+function updateShipBinding(el){
+  if(el.type==='number'&&el.value==='')return;
+  const s=ship(),key=el.dataset.shipKey;let value=el.type==='number'?num(el.value):el.value;
+  if(el.type==='number'){if(el.min!=='')value=Math.max(num(el.min),value);if(el.max!=='')value=Math.min(num(el.max),value)}
+  setPath(s,key,value);if(key==='commandMax')s.commandCurrent=clamp(num(s.commandCurrent),0,value);
+  renderShip();saveState();
+}
+function bindShipEvents(){
+  const page=document.getElementById('page-ship');if(!page||page.dataset.bound)return;page.dataset.bound='1';
+  page.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b||b.disabled)return;
+    if(b.hasAttribute('data-ship-view')){selectShipView(b.dataset.shipView);return}
+    if(b.hasAttribute('data-ship-part')){ship().activePart=b.dataset.shipPart;renderShipWorkbench();saveState();return}
+    if(b.hasAttribute('data-ship-action')){shipHandleAction(b.dataset.shipAction,b.dataset.id);return}
+    if(b.hasAttribute('data-ship-class')){shipSetClass(b.dataset.shipClass);return}
+    if(b.hasAttribute('data-ship-category')){shipUI().category=b.dataset.shipCategory;renderShipCargo();return}
+    if(b.hasAttribute('data-ship-room-filter')){shipUI().room=`room:${b.dataset.shipRoomFilter}`;renderShipCargo();return}
+    if(b.hasAttribute('data-ship-layout')){shipUI().layout=b.dataset.shipLayout;renderShipCargo();return}
+    if(b.hasAttribute('data-ship-cargo-step')){const item=ship().cargo.find(i=>i.id===b.dataset.id);if(item)setShipCargoQuantity(item.id,num(item.qty,1)+num(b.dataset.shipCargoStep));return}
+    if(b.hasAttribute('data-ship-position')){ship().position=clamp(num(b.dataset.shipPosition),-3,3);renderShipCombat();saveState();return}
+    if(b.hasAttribute('data-ship-counter')){const s=ship(),key=b.dataset.shipCounter,max=key==='commandCurrent'?s.commandMax:3;s[key]=clamp(num(s[key])+num(b.dataset.delta),0,max);renderShipCombat();saveState();return}
+    if(b.hasAttribute('data-ship-ammo')){const w=ship().weapons.find(x=>x.id===b.dataset.id);if(w)w.ammo=clamp(num(w.ammo)+num(b.dataset.shipAmmo),0,num(w.ammoMax)>0?num(w.ammoMax):Infinity);renderShipCombat();saveState()}
+  });
+  page.addEventListener('keydown',e=>{
+    const tab=e.target.closest('[data-ship-view]');if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();
+    const views=['storage','structure','combat'],index=views.indexOf(tab.dataset.shipView),next=e.key==='Home'?0:e.key==='End'?2:(index+(e.key==='ArrowRight'?1:2))%3;selectShipView(views[next],true);
+  });
+  page.addEventListener('input',e=>{
+    const el=e.target;
+    if(el.matches('.ship-bind')){updateShipBinding(el);return}
+    if(el.id==='shipCargoSearch'){shipUI().search=el.value;renderShipCargo();return}
+    if(el.hasAttribute('data-ship-cargo-qty')){setShipCargoQuantity(el.dataset.shipCargoQty,el.value);return}
+    if(['shipCargoQty','shipCargoSpace','shipCargoDays','shipCargoPeople'].includes(el.id)){updateShipCargoPreview();return}
+    const imageKeys={shipImageZoom:'imageZoom',shipImageX:'imageX',shipImageY:'imageY'};if(imageKeys[el.id]){ship()[imageKeys[el.id]]=num(el.value);renderShipArt();saveState()}
+  });
+  page.addEventListener('change',e=>{
+    const el=e.target;
+    if(el.matches('.ship-bind')){updateShipBinding(el);if(el.type==='number')el.value=getPath(ship(),el.dataset.shipKey);return}
+    if(el.hasAttribute('data-ship-cargo-qty')){el.value=Math.max(0,num(el.value));return}
+    if(el.hasAttribute('data-ship-component')){ship().components[el.dataset.shipComponent]=el.value;renderShip();saveState();return}
+    if(el.hasAttribute('data-ship-room-state')){const room=ship().rooms.find(x=>x.id===el.dataset.shipRoomState);if(room)room.state=el.value;renderShip();saveState();return}
+    if(el.id==='shipCargoRoomFilter'){shipUI().room=el.value;renderShipCargo();return}
+    if(el.id==='shipCargoSort'){shipUI().sort=el.value;renderShipCargo();return}
+    if(el.id==='shipCargoCategory'){updateShipCargoPreview();return}
+    if(el.id==='shipDistanceSelect'){ship().distance=el.value;renderShipCombat();saveState();return}
+    if(el.id==='shipRoomType'){const preset=SHIP_ROOM_PRESETS[el.value]||SHIP_ROOM_PRESETS.Personalizada;document.getElementById('shipRoomName').value=el.value==='Personalizada'?'':el.value;document.getElementById('shipRoomSpaces').value=preset.spaces;document.getElementById('shipRoomCapacity').value=preset.capacity;document.getElementById('shipRoomEffect').value=preset.effect;return}
+    if(el.id==='shipMaterialPreset'){const m=SHIP_MATERIALS[el.value];if(m)[['shipMaterialName','name'],['shipMaterialIntegrity','integrityPct'],['shipMaterialResistance','resistance'],['shipMaterialSpeed','speedPct'],['shipMaterialEffect','effect']].forEach(([id,key])=>document.getElementById(id).value=m[key]);return}
+  });
+  page.addEventListener('submit',e=>{
+    const handlers={shipCargoForm:shipAddCargo,shipModForm:shipAddMod,shipRoomForm:shipAddRoom,shipMaterialForm:shipSaveMaterial,shipWeaponForm:shipAddWeapon,shipSpecialForm:shipAddSpecial,shipAvariaForm:()=>{const name=navalValue('shipAvariaName').trim();if(name){shipAddAvaria(name,navalValue('shipAvariaComponent'),navalValue('shipAvariaEffect'));document.getElementById('shipAvariaForm').reset()}}};
+    if(handlers[e.target.id]){e.preventDefault();handlers[e.target.id]()}
+  });
+  document.getElementById('shipDamageBtn').onclick=()=>shipApplyDamage(navalValue('shipIntegrityAmount'));
+  document.getElementById('shipRepairBtn').onclick=()=>shipApplyRepair(navalValue('shipIntegrityAmount'));
+  document.getElementById('shipFullRepairBtn').onclick=()=>{ship().integrityCurrent=shipMaxIntegrity();renderShip();saveState()};
+  document.getElementById('shipResetCommand').onclick=()=>{ship().commandCurrent=ship().commandMax;renderShipCombat();saveState()};
+  document.getElementById('shipNewRound').onclick=()=>{const s=ship();s.commandCurrent=s.commandMax;if(s.integrityCurrent<=0)s.sinking=clamp(s.sinking-1,0,3);if(s.disorder>=3){s.commandCurrent=Math.max(0,s.commandCurrent-1);s.disorder=1}renderShip();saveState();toast('Nova rodada naval iniciada.')};
+  document.getElementById('shipApplyImageUrl').onclick=()=>{const s=ship();s.imageUrl=navalValue('shipImageUrl').trim();s.imageData='';renderShipArt();saveState()};
+  document.getElementById('shipUploadImageBtn').onclick=()=>document.getElementById('shipImageInput').click();
+  document.getElementById('shipImageInput').onchange=e=>{const file=e.target.files?.[0];if(!file)return;const target=ship(),characterId=current().id,reader=new FileReader();reader.onload=()=>{target.imageData=reader.result;target.imageZoom=1;target.imageX=0;target.imageY=0;target.imageFit='contain';if(current().id===characterId)renderShipArt();saveState()};reader.readAsDataURL(file);e.target.value=''};
+  document.getElementById('shipImageFit').onclick=()=>{ship().imageFit=ship().imageFit==='cover'?'contain':'cover';renderShipArt();saveState()};
+  document.getElementById('shipImageCenter').onclick=()=>{Object.assign(ship(),{imageZoom:1,imageX:0,imageY:0});renderShipArt();saveState()};
+  const dialog=document.getElementById('shipCargoDialog');dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()});dialog.addEventListener('close',()=>shipUI().editingCargo=null);
+  bindShipImageDrag();
+}
+function bindShipImageDrag(){
+  const img=document.getElementById('shipArtImage');let start=null;
+  img.addEventListener('pointerdown',e=>{if(img.hidden)return;e.preventDefault();img.setPointerCapture?.(e.pointerId);start={x:e.clientX,y:e.clientY,sx:ship().imageX,sy:ship().imageY,characterId:current().id};img.classList.add('dragging')});
+  img.addEventListener('pointermove',e=>{if(!start||start.characterId!==current().id)return;const box=document.getElementById('shipCanvas').getBoundingClientRect(),s=ship();s.imageX=clamp(start.sx+(e.clientX-start.x)/Math.max(1,box.width)*100,-65,65);s.imageY=clamp(start.sy+(e.clientY-start.y)/Math.max(1,box.height)*100,-65,65);renderShipArt()});
+  const end=()=>{if(!start)return;start=null;img.classList.remove('dragging');saveState()};img.addEventListener('pointerup',end);img.addEventListener('pointercancel',end);
+}
+
 
 
 
