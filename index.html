@@ -3914,7 +3914,7 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
 :is(#functionBook,#styleBook) .fb-card.is-locked.is-clamped .fb-card-text{max-height:4.9em}
 /* Em telas grandes a página da esquerda acompanha a leitura da árvore */
 #functionBook #fbFnLeft,#styleBook #sbFnLeft{flex:0 0 auto}
-@media (min-width:1061px){#functionBook #fbFnLeft.fb-stick,#styleBook #sbFnLeft.fb-stick{position:sticky;top:84px}}
+
 
 /* Virada de página */
 :is(#functionBook,#styleBook) .fb-turn-layer{position:absolute;inset:0;z-index:30;pointer-events:none;perspective:3000px}
@@ -3981,6 +3981,20 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
 }
 @media (prefers-reduced-motion:reduce){:is(#functionBook,#styleBook) *{animation:none!important;transition:none!important}}
 
+
+/* Livro com altura da tela: cada página rola por dentro */
+@media (min-width:1061px){
+  :is(#functionBook,#styleBook) .fb-spread{height:max(520px,calc(100vh - 212px))}
+  :is(#functionBook,#styleBook) .fb-page{height:100%;min-height:0;padding:34px 0 18px;overflow:hidden}
+  :is(#functionBook,#styleBook) .fb-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:6px 40px 24px 46px;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--acc) 45%,var(--rule)) transparent;
+    -webkit-mask-image:linear-gradient(transparent,#000 14px,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(transparent,#000 14px,#000 calc(100% - 22px),transparent)}
+  :is(#functionBook,#styleBook) .fb-right .fb-body{padding:6px 40px 24px 46px}
+  :is(#functionBook,#styleBook) .fb-body::-webkit-scrollbar{width:8px}
+  :is(#functionBook,#styleBook) .fb-body::-webkit-scrollbar-thumb{border-radius:8px;background:color-mix(in srgb,var(--acc) 40%,var(--rule));border:2px solid var(--paper)}
+  :is(#functionBook,#styleBook) .fb-body::-webkit-scrollbar-track{background:transparent}
+  :is(#functionBook,#styleBook) .fb-folio{margin:0 40px 0 46px;margin-top:0}
+  :is(#functionBook,#styleBook) .fb-face .fb-clone,:is(#functionBook,#styleBook) .fb-still .fb-clone{height:100%}
+}
 /* Emblemas dos Estilos de Combate */
 .style-symbol.st-atirador{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='8.6' fill='%23fff'/%3E%3Ccircle cx='12' cy='12' r='6.8' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%238a8a8a'/%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='1.2' fill='%23fff'/%3E %3Cpath d='M12 1.6v5.2M12 17.2v5.2M1.6 12h5.2M17.2 12h5.2' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='8.6' fill='%23fff'/%3E%3Ccircle cx='12' cy='12' r='6.8' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%238a8a8a'/%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='1.2' fill='%23fff'/%3E %3Cpath d='M12 1.6v5.2M12 17.2v5.2M1.6 12h5.2M17.2 12h5.2' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
 .style-symbol.st-aventureiro{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cg transform='translate(12 11) scale(1.18) translate(-12 -11)'%3E%3Cg transform='rotate(-35 12 12)'%3E%3Crect x='2.6' y='9.4' width='6' height='5.2' rx='1' fill='%23fff'/%3E%3Crect x='8.4' y='9.9' width='6' height='4.2' rx='.8' fill='%238a8a8a'/%3E%3Crect x='14.2' y='10.3' width='5.4' height='3.4' rx='.7' fill='%23fff'/%3E%3Crect x='19.4' y='10.6' width='2.4' height='2.8' rx='.5' fill='%238a8a8a'/%3E %3Cpath d='M5.6 9.4v5.2M11.4 9.9v4.2' stroke='%23000' stroke-width='.8'/%3E%3C/g%3E%3C/g%3E%3Cpath d='M4.2 22l3.2-5.6 3.2 5.6' stroke='%238a8a8a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cg transform='translate(12 11) scale(1.18) translate(-12 -11)'%3E%3Cg transform='rotate(-35 12 12)'%3E%3Crect x='2.6' y='9.4' width='6' height='5.2' rx='1' fill='%23fff'/%3E%3Crect x='8.4' y='9.9' width='6' height='4.2' rx='.8' fill='%238a8a8a'/%3E%3Crect x='14.2' y='10.3' width='5.4' height='3.4' rx='.7' fill='%23fff'/%3E%3Crect x='19.4' y='10.6' width='2.4' height='2.8' rx='.5' fill='%238a8a8a'/%3E %3Cpath d='M5.6 9.4v5.2M11.4 9.9v4.2' stroke='%23000' stroke-width='.8'/%3E%3C/g%3E%3C/g%3E%3Cpath d='M4.2 22l3.2-5.6 3.2 5.6' stroke='%238a8a8a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
@@ -7456,7 +7470,7 @@ addEventListener('resize',()=>{clearTimeout(fbCheckStick.t);fbCheckStick.t=setTi
 if(window.ResizeObserver){const ro=new ResizeObserver(()=>{clearTimeout(fbCheckStick.r);fbCheckStick.r=setTimeout(fbCheckStick,60)});['fbFnLeft','fbFnRight'].forEach(id=>{const el=document.getElementById(id);if(el)ro.observe(el)})}
 
 /* ---------- Virada de página ---------- */
-function fbClone(el){const k=el.cloneNode(true);k.removeAttribute('id');k.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));const src=el.querySelectorAll('textarea,input,select'),dst=k.querySelectorAll('textarea,input,select');src.forEach((s,i)=>{if(dst[i])dst[i].value=s.value});k.classList.add('fb-clone');k.setAttribute('aria-hidden','true');k.inert=true;k.style.width=el.offsetWidth+'px';return k}
+function fbClone(el){const k=el.cloneNode(true);k.removeAttribute('id');k.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));const src=el.querySelectorAll('textarea,input,select'),dst=k.querySelectorAll('textarea,input,select');src.forEach((s,i)=>{if(dst[i])dst[i].value=s.value});k.classList.add('fb-clone');k.setAttribute('aria-hidden','true');k.inert=true;k.style.width=el.offsetWidth+'px';const sb=el.querySelectorAll('.fb-body'),db=k.querySelectorAll('.fb-body');sb.forEach((b,i)=>{const d=db[i];if(d&&b.scrollTop){d.style.overflow='hidden';[...d.children].forEach(ch=>ch.style.transform=`translateY(${-b.scrollTop}px)`)}});return k}
 function fbFinishTurn(){const t=fbUi().turning;if(!t)return;t.anims.forEach(a=>{try{a.cancel()}catch(_){}});t.layer.remove();fbUi().turning=null}
 function fbGo(target,opts={}){
   const c=current(),ui=fbUi(),from=fbCurrentSpread(c),to=clamp(num(target),0,fbFns().length);
@@ -7464,9 +7478,9 @@ function fbGo(target,opts={}){
   if(to===from){fbFocusCard();return}
   fbFinishTurn();
   const spreadEl=document.getElementById('fbSpread'),L=document.getElementById('fbLeft'),R=document.getElementById('fbRight'),bookTop=document.getElementById('functionBook').getBoundingClientRect().top;
-  if(bookTop<0)window.scrollBy(0,bookTop-76);
+  if(bookTop<0||(innerWidth>1060&&document.getElementById('functionBook').getBoundingClientRect().bottom>innerHeight+4))window.scrollBy(0,bookTop-76);
   const bookEl=document.getElementById('functionBook'),cs=getComputedStyle(bookEl),accVars=['--acc','--acc-ink','--acc-soft'].map(k=>[k,cs.getPropertyValue(k)]),oldL=fbClone(L),oldR=fbClone(R),wide=L.offsetTop===R.offsetTop;[oldL,oldR].forEach(k=>accVars.forEach(([n,v])=>k.style.setProperty(n,v)));
-  ui.spread=to;renderJobs();saveState();
+  ui.spread=to;renderJobs();saveState();document.querySelectorAll('#functionBook .fb-body').forEach(b=>b.scrollTop=0);
   if(fbReduced()||!spreadEl.animate){spreadEl.animate?.([{opacity:.4},{opacity:1}],{duration:220});fbFocusCard();return}
   const dir=to>from?1:-1,H=spreadEl.offsetHeight,layer=document.createElement('div');layer.className='fb-turn-layer';spreadEl.appendChild(layer);
   layer.style.perspectiveOrigin=`50% ${Math.round(clamp(window.innerHeight/2-spreadEl.getBoundingClientRect().top,0,H))}px`;
@@ -7650,10 +7664,10 @@ function sbGo(target,opts={}){
   if(to===from){sbFocus();return}
   sbFinishTurn();
   const book=document.getElementById('styleBook'),spreadEl=document.getElementById('sbSpread'),L=document.getElementById('sbLeft'),R=document.getElementById('sbRight'),top=book.getBoundingClientRect().top;
-  if(top<0)window.scrollBy(0,top-76);
+  if(top<0||(innerWidth>1060&&book.getBoundingClientRect().bottom>innerHeight+4))window.scrollBy(0,top-76);
   const cs=getComputedStyle(book),accVars=['--acc','--acc-ink','--acc-soft'].map(k=>[k,cs.getPropertyValue(k)]),oldL=fbClone(L),oldR=fbClone(R),wide=L.offsetTop===R.offsetTop;[oldL,oldR].forEach(k=>accVars.forEach(([n,v])=>k.style.setProperty(n,v)));
   ui.spread=to;if(opts.focus){ui.type='all';ui.branch='';const cls=sbClasses()[to-1],e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===opts.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id}
-  sbRender();saveState();
+  sbRender();saveState();document.querySelectorAll('#styleBook .fb-body').forEach(b=>b.scrollTop=0);
   if(fbReduced()||!spreadEl.animate){spreadEl.animate?.([{opacity:.4},{opacity:1}],{duration:220});sbFocus();return}
   const dir=to>from?1:-1,H=spreadEl.offsetHeight,layer=document.createElement('div');layer.className='fb-turn-layer';spreadEl.appendChild(layer);
   layer.style.perspectiveOrigin=`50% ${Math.round(clamp(window.innerHeight/2-spreadEl.getBoundingClientRect().top,0,H))}px`;
@@ -7694,7 +7708,7 @@ function sbWire(){const book=document.getElementById('styleBook');if(!book||sbWi
     const jump=ev.target.closest('[data-sb-jump]');if(jump){let lvl=num(jump.dataset.sbJump),tier=null;while(lvl>=1&&!(tier=document.querySelector(`#sbFnRight [data-sb-tier="${lvl}"]`)))lvl--;tier?.scrollIntoView({block:'start',behavior:fbReduced()?'auto':'smooth'});return}
     const here=ev.target.closest('[data-sb-focus-here]');if(here){ui.type='all';ui.branch='';ui.focus=here.dataset.sbFocusHere;const cls=sbClasses()[sbSpread(c)-1],e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===ui.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id;sbRender();sbFocus();return}
     const type=ev.target.closest('[data-sb-type]');if(type){ui.type=type.dataset.sbType;sbRender();return}
-    const opt=ev.target.closest('[data-sb-opt]');if(opt){ui.opt[opt.dataset.sbOpt]=opt.dataset.id;const block=opt.closest('.sb-choice'),y=block?.getBoundingClientRect().top;sbRender();const nb=document.querySelector(`#sbFnRight .sb-opt[data-id="${CSS.escape(opt.dataset.id)}"]`)?.closest('.sb-choice');if(nb&&y!=null)window.scrollBy(0,nb.getBoundingClientRect().top-y);return}
+    const opt=ev.target.closest('[data-sb-opt]');if(opt){ui.opt[opt.dataset.sbOpt]=opt.dataset.id;const block=opt.closest('.sb-choice'),y=block?.getBoundingClientRect().top;sbRender();const nb=document.querySelector(`#sbFnRight .sb-opt[data-id="${CSS.escape(opt.dataset.id)}"]`)?.closest('.sb-choice');if(nb&&y!=null){const d=nb.getBoundingClientRect().top-y,box=nb.closest('.fb-body');if(box&&box.scrollHeight>box.clientHeight)box.scrollTop+=d;else window.scrollBy(0,d)}return}
     const more=ev.target.closest('[data-sb-open]');if(more){const key=more.dataset.sbOpen,card=more.closest('.fb-card'),open=!ui.open[key];ui.open[key]=open;if(card.classList.contains('sb-compact'))card.classList.toggle('is-open-text',open);else card.classList.toggle('is-clamped',!open);more.textContent=open?'Recolher':card.classList.contains('sb-compact')?'Ler regra':'Ler tudo';more.setAttribute('aria-expanded',String(open));if(!open){const r=card.getBoundingClientRect();if(r.top<70)card.scrollIntoView({block:'start',behavior:'smooth'})}return}
   });
   book.addEventListener('change',ev=>{if(ev.target.id==='sbBranch'){sbUi().branch=ev.target.value;sbRender()}});
