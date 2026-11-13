@@ -3687,299 +3687,451 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
    Livro de Funções — objeto físico: capa de couro tingida pela Função aberta,
    papel envelhecido, marcadores de fita e virada de página em 3D.
    ========================================================================== */
-#functionBook{
+:is(#functionBook,#styleBook){
   --paper:#f4ead6;--paper-2:#eadfc6;--paper-3:#fbf6ea;--ink:#2b2017;--ink-2:#55432f;--muted:#8a7357;--rule:#c8b28a;--rule-soft:#ded0b2;
   --acc:var(--fn-accent,#8d6037);--acc-ink:color-mix(in srgb,var(--acc) 78%,#1a0f08);--acc-soft:color-mix(in srgb,var(--acc) 12%,transparent);
   --serif:"Alegreya","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sc:"Alegreya SC","Alegreya",Georgia,serif;--sans:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
   position:relative;max-width:1380px;margin:0 auto;padding:30px 26px 22px;color:var(--ink);font-family:var(--serif);
 }
-#functionBook *{box-sizing:border-box}
-#functionBook button{font:inherit;color:inherit;cursor:pointer}
-#functionBook [hidden]{display:none!important}
+:is(#functionBook,#styleBook) *{box-sizing:border-box}
+:is(#functionBook,#styleBook) button{font:inherit;color:inherit;cursor:pointer}
+:is(#functionBook,#styleBook) [hidden]{display:none!important}
 
 /* Marcadores de fita */
-#functionBook .fb-ribbons{position:relative;z-index:1;display:flex;gap:6px;padding:0 48px;margin-bottom:-12px;align-items:flex-end;min-height:76px}
-#functionBook .fb-ribbon{position:relative;width:38px;height:58px;border:0;padding:8px 0 0;display:flex;flex-direction:column;align-items:center;gap:2px;
+:is(#functionBook,#styleBook) .fb-ribbons{position:relative;z-index:1;display:flex;gap:6px;padding:0 48px;margin-bottom:-12px;align-items:flex-end;min-height:76px}
+:is(#functionBook,#styleBook) .fb-ribbon{position:relative;width:38px;height:58px;border:0;padding:8px 0 0;display:flex;flex-direction:column;align-items:center;gap:2px;
   background:var(--fn-color,#6b4a2c);color:#fff8ea;clip-path:polygon(0 0,100% 0,100% 100%,50% 84%,0 100%);
   box-shadow:inset 0 -18px 18px -14px rgba(0,0,0,.35);filter:saturate(.75) brightness(.92);transition:height .3s cubic-bezier(.2,.8,.2,1),filter .2s,transform .3s cubic-bezier(.2,.8,.2,1)}
-#functionBook .fb-ribbon .function-symbol,#functionBook .fb-ribbon .ui-icon{width:18px;height:18px;background:currentColor}
-#functionBook .fb-ribbon b{font:800 11px/1 var(--sans)}
-#functionBook .fb-ribbon:hover{height:64px;filter:none}
-#functionBook .fb-ribbon.is-active{height:76px;filter:none}
-#functionBook .fb-ribbon-toc{--fn-color:#3c2a1c}
-#functionBook .fb-ribbon:not(.is-owned):not(.is-active){filter:saturate(.35) brightness(1.05);opacity:.82}
-#functionBook .fb-ribbon:focus-visible{outline:2px solid #f3d27a;outline-offset:2px}
-#functionBook .fb-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e8b04b;box-shadow:0 0 0 2px var(--paper)}
-#functionBook .fb-ribbon .fb-dot{position:absolute;top:4px;right:4px;box-shadow:0 0 0 2px var(--fn-color)}
+:is(#functionBook,#styleBook) .fb-ribbon :is(.function-symbol,.style-symbol),:is(#functionBook,#styleBook) .fb-ribbon .ui-icon{width:18px;height:18px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-ribbon b{font:800 11px/1 var(--sans)}
+:is(#functionBook,#styleBook) .fb-ribbon:hover{height:64px;filter:none}
+:is(#functionBook,#styleBook) .fb-ribbon.is-active{height:76px;filter:none}
+:is(#functionBook,#styleBook) .fb-ribbon-toc{--fn-color:#3c2a1c}
+:is(#functionBook,#styleBook) .fb-ribbon:not(.is-owned):not(.is-active){filter:saturate(.35) brightness(1.05);opacity:.82}
+:is(#functionBook,#styleBook) .fb-ribbon:focus-visible{outline:2px solid #f3d27a;outline-offset:2px}
+:is(#functionBook,#styleBook) .fb-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e8b04b;box-shadow:0 0 0 2px var(--paper)}
+:is(#functionBook,#styleBook) .fb-ribbon .fb-dot{position:absolute;top:4px;right:4px;box-shadow:0 0 0 2px var(--fn-color)}
 
 /* Capa e páginas */
-#functionBook .fb-cover{position:relative;z-index:2;padding:14px;border-radius:16px;
+:is(#functionBook,#styleBook) .fb-cover{position:relative;z-index:2;padding:14px;border-radius:16px;
   background:radial-gradient(120% 80% at 50% 0%,rgba(255,255,255,.08),transparent 60%),color-mix(in srgb,var(--acc) 38%,#24150d);
   box-shadow:0 2px 0 rgba(255,255,255,.08) inset,0 28px 50px -24px rgba(0,0,0,.75),0 4px 10px rgba(0,0,0,.3);transition:background-color .7s ease}
-#functionBook .fb-spread{position:relative;display:grid;grid-template-columns:1fr 1fr}
-#functionBook .fb-page{position:relative;display:flex;flex-direction:column;min-height:780px;padding:40px 46px 22px;
+:is(#functionBook,#styleBook) .fb-spread{position:relative;display:grid;grid-template-columns:1fr 1fr}
+:is(#functionBook,#styleBook) .fb-page{position:relative;display:flex;flex-direction:column;min-height:780px;padding:40px 46px 22px;
   background-color:var(--paper);background-image:radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10));}
-#functionBook .fb-left{border-radius:8px 0 0 8px;background-image:linear-gradient(to left,rgba(90,58,24,.22),rgba(90,58,24,.05) 4%,transparent 9%),radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10));
+:is(#functionBook,#styleBook) .fb-left{border-radius:8px 0 0 8px;background-image:linear-gradient(to left,rgba(90,58,24,.22),rgba(90,58,24,.05) 4%,transparent 9%),radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10));
   box-shadow:-3px 3px 0 #e4d6b7,-6px 6px 0 #d7c49f,-8px 9px 14px rgba(0,0,0,.25)}
-#functionBook .fb-right{border-radius:0 8px 8px 0;background-image:linear-gradient(to right,rgba(90,58,24,.22),rgba(90,58,24,.05) 4%,transparent 9%),radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10));
+:is(#functionBook,#styleBook) .fb-right{border-radius:0 8px 8px 0;background-image:linear-gradient(to right,rgba(90,58,24,.22),rgba(90,58,24,.05) 4%,transparent 9%),radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10));
   box-shadow:3px 3px 0 #e4d6b7,6px 6px 0 #d7c49f,8px 9px 14px rgba(0,0,0,.25)}
-#functionBook .fb-body{flex:1;display:flex;flex-direction:column}
-#functionBook .fb-view{flex:1;display:flex;flex-direction:column}
+:is(#functionBook,#styleBook) .fb-body{flex:1;display:flex;flex-direction:column}
+:is(#functionBook,#styleBook) .fb-view{flex:1;display:flex;flex-direction:column}
 
 /* Canto dobrado ao passar o mouse na seta */
-#functionBook .fb-page::after{content:"";position:absolute;bottom:0;width:0;height:0;transition:width .25s ease,height .25s ease;pointer-events:none}
-#functionBook .fb-right::after{right:0;background:linear-gradient(225deg,transparent 50%,#e1d0ad 50%,#f1e5cb 70%);border-radius:0 0 8px 0}
-#functionBook .fb-left::after{left:0;background:linear-gradient(135deg,transparent 50%,#e1d0ad 50%,#f1e5cb 70%);border-radius:0 0 0 8px}
-#functionBook .fb-right:has(.fb-turn-next:hover)::after,#functionBook .fb-left:has(.fb-turn-prev:hover)::after{width:38px;height:38px;filter:drop-shadow(-2px -2px 3px rgba(0,0,0,.15))}
+:is(#functionBook,#styleBook) .fb-page::after{content:"";position:absolute;bottom:0;width:0;height:0;transition:width .25s ease,height .25s ease;pointer-events:none}
+:is(#functionBook,#styleBook) .fb-right::after{right:0;background:linear-gradient(225deg,transparent 50%,#e1d0ad 50%,#f1e5cb 70%);border-radius:0 0 8px 0}
+:is(#functionBook,#styleBook) .fb-left::after{left:0;background:linear-gradient(135deg,transparent 50%,#e1d0ad 50%,#f1e5cb 70%);border-radius:0 0 0 8px}
+:is(#functionBook,#styleBook) .fb-right:has(.fb-turn-next:hover)::after,:is(#functionBook,#styleBook) .fb-left:has(.fb-turn-prev:hover)::after{width:38px;height:38px;filter:drop-shadow(-2px -2px 3px rgba(0,0,0,.15))}
 
 /* Rodapé de página */
-#functionBook .fb-folio{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px;padding-top:12px;border-top:1px solid var(--rule-soft);min-height:40px}
-#functionBook .fb-folio-num{font:italic 15px var(--serif);color:var(--muted)}
-#functionBook .fb-turn{display:inline-flex;align-items:center;gap:8px;border:0;background:none;padding:6px 4px;font:600 14px var(--sans);color:var(--ink-2);border-radius:6px;max-width:70%}
-#functionBook .fb-turn>span[aria-hidden]{font:400 26px/1 var(--serif);color:var(--acc);transition:transform .2s ease}
-#functionBook .fb-turn-next:hover>span[aria-hidden]{transform:translateX(3px)}
-#functionBook .fb-turn-prev:hover>span[aria-hidden]{transform:translateX(-3px)}
-#functionBook .fb-turn:hover{color:var(--ink)}
-#functionBook .fb-turn-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#functionBook .fb-hint{margin:14px 0 0;text-align:center;font:14px var(--sans);color:color-mix(in srgb,var(--text,#ddd) 60%,transparent)}
+:is(#functionBook,#styleBook) .fb-folio{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px;padding-top:12px;border-top:1px solid var(--rule-soft);min-height:40px}
+:is(#functionBook,#styleBook) .fb-folio-num{font:italic 15px var(--serif);color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-turn{display:inline-flex;align-items:center;gap:8px;border:0;background:none;padding:6px 4px;font:600 14px var(--sans);color:var(--ink-2);border-radius:6px;max-width:70%}
+:is(#functionBook,#styleBook) .fb-turn>span[aria-hidden]{font:400 26px/1 var(--serif);color:var(--acc);transition:transform .2s ease}
+:is(#functionBook,#styleBook) .fb-turn-next:hover>span[aria-hidden]{transform:translateX(3px)}
+:is(#functionBook,#styleBook) .fb-turn-prev:hover>span[aria-hidden]{transform:translateX(-3px)}
+:is(#functionBook,#styleBook) .fb-turn:hover{color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-turn-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:is(#functionBook,#styleBook) .fb-hint{margin:14px 0 0;text-align:center;font:14px var(--sans);color:color-mix(in srgb,var(--text,#ddd) 60%,transparent)}
 
 /* Tipografia */
-#functionBook .fb-kicker{margin:0 0 6px;font:700 15px var(--sc);letter-spacing:.03em;color:var(--acc-ink)}
-#functionBook .fb-title{display:flex;align-items:center;gap:14px;margin:0;font:800 42px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
-#functionBook .fb-title .function-symbol{width:40px;height:40px;color:var(--acc);background:currentColor;flex:0 0 auto}
-#functionBook .fb-lede,#functionBook .fb-intro p{margin:14px 0 0;font:italic 17.5px/1.55 var(--serif);color:var(--ink-2);max-width:58ch}
-#functionBook .fb-h1{margin:0;font:800 30px/1.1 var(--serif);color:var(--ink)}
-#functionBook .fb-h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px;font:700 20px var(--sc);color:var(--ink)}
-#functionBook .fb-h2-aside{font:500 14px var(--sans);color:var(--muted)}
-#functionBook .fb-h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 17px var(--sc);color:var(--acc-ink)}
-#functionBook .fb-h3 .ui-icon{width:16px;height:16px;background:currentColor}
-#functionBook .fb-ornament{position:relative;height:16px;margin:26px 0;background:linear-gradient(to right,transparent,var(--rule) 18%,var(--rule) 82%,transparent) center/100% 1px no-repeat}
-#functionBook .fb-ornament::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;transform:translate(-50%,-50%) rotate(45deg);background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--acc)}
-#functionBook .fb-empty{margin:4px 0;font:italic 16px/1.5 var(--serif);color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-kicker{margin:0 0 6px;font:700 15px var(--sc);letter-spacing:.03em;color:var(--acc-ink)}
+:is(#functionBook,#styleBook) .fb-title{display:flex;align-items:center;gap:14px;margin:0;font:800 42px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-title :is(.function-symbol,.style-symbol){width:40px;height:40px;color:var(--acc);background:currentColor;flex:0 0 auto}
+:is(#functionBook,#styleBook) .fb-lede,:is(#functionBook,#styleBook) .fb-intro p{margin:14px 0 0;font:italic 17.5px/1.55 var(--serif);color:var(--ink-2);max-width:58ch}
+:is(#functionBook,#styleBook) .fb-h1{margin:0;font:800 30px/1.1 var(--serif);color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px;font:700 20px var(--sc);color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-h2-aside{font:500 14px var(--sans);color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 17px var(--sc);color:var(--acc-ink)}
+:is(#functionBook,#styleBook) .fb-h3 .ui-icon{width:16px;height:16px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-ornament{position:relative;height:16px;margin:26px 0;background:linear-gradient(to right,transparent,var(--rule) 18%,var(--rule) 82%,transparent) center/100% 1px no-repeat}
+:is(#functionBook,#styleBook) .fb-ornament::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;transform:translate(-50%,-50%) rotate(45deg);background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--acc)}
+:is(#functionBook,#styleBook) .fb-empty{margin:4px 0;font:italic 16px/1.5 var(--serif);color:var(--muted)}
 
 /* Texto das regras */
-#functionBook .fb-card-text p,#functionBook .fb-aside p,#functionBook .fb-tier-note p{margin:0 0 .65em;font:16px/1.62 var(--serif);color:var(--ink)}
-#functionBook .fb-card-text p:last-child,#functionBook .fb-aside p:last-child{margin-bottom:0}
-#functionBook .fb-card-text ul,#functionBook .fb-aside ul{margin:.2em 0 .7em;padding-left:1.2em}
-#functionBook .fb-card-text li,#functionBook .fb-aside li{font:16px/1.55 var(--serif);margin:.15em 0}
-#functionBook .fb-card-text li::marker{color:var(--acc)}
-#functionBook strong.fb-num,#functionBook span.fb-num{font-weight:700;color:var(--acc-ink);background:linear-gradient(transparent 66%,color-mix(in srgb,var(--acc) 13%,transparent) 66%);padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-#functionBook span.fb-num{font-weight:600}
-#functionBook strong.fb-term{font-weight:700;color:var(--ink)}
-#functionBook .fb-note{font-style:italic;color:var(--muted)}
-#functionBook p:has(>.fb-note:only-child){font-size:15px;color:var(--muted)}
-#functionBook .fb-obs{font-style:italic;color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-card-text p,:is(#functionBook,#styleBook) .fb-aside p,:is(#functionBook,#styleBook) .fb-tier-note p{margin:0 0 .65em;font:16px/1.62 var(--serif);color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-card-text p:last-child,:is(#functionBook,#styleBook) .fb-aside p:last-child{margin-bottom:0}
+:is(#functionBook,#styleBook) .fb-card-text ul,:is(#functionBook,#styleBook) .fb-aside ul{margin:.2em 0 .7em;padding-left:1.2em}
+:is(#functionBook,#styleBook) .fb-card-text li,:is(#functionBook,#styleBook) .fb-aside li{font:16px/1.55 var(--serif);margin:.15em 0}
+:is(#functionBook,#styleBook) .fb-card-text li::marker{color:var(--acc)}
+:is(#functionBook,#styleBook) strong.fb-num,:is(#functionBook,#styleBook) span.fb-num{font-weight:700;color:var(--acc-ink);background:linear-gradient(transparent 66%,color-mix(in srgb,var(--acc) 13%,transparent) 66%);padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+:is(#functionBook,#styleBook) span.fb-num{font-weight:600}
+:is(#functionBook,#styleBook) strong.fb-term{font-weight:700;color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-note{font-style:italic;color:var(--muted)}
+:is(#functionBook,#styleBook) p:has(>.fb-note:only-child){font-size:15px;color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-obs{font-style:italic;color:var(--ink-2)}
 
 /* Campos */
-#functionBook .fb-input{width:100%;font:16px var(--serif);color:var(--ink);background:var(--paper-3);border:1px solid var(--rule);border-radius:8px;padding:9px 12px;transition:border-color .2s,box-shadow .2s}
-#functionBook .fb-input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
-#functionBook select.fb-input{appearance:auto}
-#functionBook .fb-field label{display:block;margin-bottom:5px;font:600 14px var(--sans);color:var(--ink-2)}
-#functionBook .fb-office{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
-#functionBook .fb-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-#functionBook .fb-chip{font:600 14px var(--sans);padding:4px 11px;border-radius:99px;background:var(--paper-2);color:var(--ink-2);border:1px solid var(--rule-soft)}
-#functionBook .fb-search{position:relative;margin:18px 0 6px}
-#functionBook .fb-search .ui-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:17px;height:17px;background:var(--muted)}
-#functionBook .fb-search .fb-input{padding-left:38px;border-radius:99px}
+:is(#functionBook,#styleBook) .fb-input{width:100%;font:16px var(--serif);color:var(--ink);background:var(--paper-3);border:1px solid var(--rule);border-radius:8px;padding:9px 12px;transition:border-color .2s,box-shadow .2s}
+:is(#functionBook,#styleBook) .fb-input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+:is(#functionBook,#styleBook) select.fb-input{appearance:auto}
+:is(#functionBook,#styleBook) .fb-field label{display:block;margin-bottom:5px;font:600 14px var(--sans);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-office{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+:is(#functionBook,#styleBook) .fb-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+:is(#functionBook,#styleBook) .fb-chip{font:600 14px var(--sans);padding:4px 11px;border-radius:99px;background:var(--paper-2);color:var(--ink-2);border:1px solid var(--rule-soft)}
+:is(#functionBook,#styleBook) .fb-search{position:relative;margin:18px 0 6px}
+:is(#functionBook,#styleBook) .fb-search .ui-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:17px;height:17px;background:var(--muted)}
+:is(#functionBook,#styleBook) .fb-search .fb-input{padding-left:38px;border-radius:99px}
 
 /* Medalhões */
-#functionBook .fb-medal{flex:0 0 auto;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--paper-3);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--fn-color,var(--acc)) 70%,transparent);color:var(--fn-color,var(--acc))}
-#functionBook .fb-medal .function-symbol{width:21px;height:21px;background:currentColor}
-#functionBook .fb-medal-lg{width:46px;height:46px}
-#functionBook .fb-medal-lg .function-symbol{width:26px;height:26px}
-#functionBook .fb-medal-xl{width:84px;height:84px;background:radial-gradient(circle at 35% 30%,var(--paper-3),var(--paper-2));box-shadow:inset 0 0 0 2px var(--acc),inset 0 0 0 6px var(--paper-3),inset 0 0 0 7px color-mix(in srgb,var(--acc) 45%,transparent),0 6px 14px -8px rgba(60,30,10,.6);color:var(--acc)}
-#functionBook .fb-medal-xl .function-symbol{width:44px;height:44px}
+:is(#functionBook,#styleBook) .fb-medal{flex:0 0 auto;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--paper-3);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--fn-color,var(--acc)) 70%,transparent);color:var(--fn-color,var(--acc))}
+:is(#functionBook,#styleBook) .fb-medal :is(.function-symbol,.style-symbol){width:21px;height:21px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-medal-lg{width:46px;height:46px}
+:is(#functionBook,#styleBook) .fb-medal-lg :is(.function-symbol,.style-symbol){width:26px;height:26px}
+:is(#functionBook,#styleBook) .fb-medal-xl{width:84px;height:84px;background:radial-gradient(circle at 35% 30%,var(--paper-3),var(--paper-2));box-shadow:inset 0 0 0 2px var(--acc),inset 0 0 0 6px var(--paper-3),inset 0 0 0 7px color-mix(in srgb,var(--acc) 45%,transparent),0 6px 14px -8px rgba(60,30,10,.6);color:var(--acc)}
+:is(#functionBook,#styleBook) .fb-medal-xl :is(.function-symbol,.style-symbol){width:44px;height:44px}
 
 /* Sumário */
-#functionBook .fb-toc{display:flex;flex-direction:column;gap:18px;margin-top:10px}
-#functionBook .fb-toc-group h3{margin:0 0 4px;font:700 16px var(--sc);color:var(--muted);display:flex;gap:8px;align-items:baseline}
-#functionBook .fb-toc-group h3 small{font:500 13px var(--sans)}
-#functionBook .fb-toc-row{display:flex;align-items:center;gap:12px;width:100%;padding:8px 10px;margin:0 -10px;width:calc(100% + 20px);border:0;background:transparent;border-radius:10px;text-align:left;transition:background-color .18s ease}
-#functionBook .fb-toc-row:hover{background:color-mix(in srgb,var(--fn-color) 9%,transparent)}
-#functionBook .fb-toc-name{display:flex;flex-direction:column;font:700 18px var(--serif);color:var(--ink);position:relative}
-#functionBook .fb-toc-name .fb-dot{position:absolute;right:-14px;top:6px}
-#functionBook .fb-toc-name small{font:500 13.5px var(--sans);color:var(--muted)}
-#functionBook .fb-toc-row:hover .fb-toc-name{color:color-mix(in srgb,var(--fn-color) 80%,#1a0f08)}
-#functionBook .fb-leader{flex:1;min-width:20px;align-self:flex-end;margin-bottom:8px;border-bottom:2px dotted var(--rule)}
-#functionBook .fb-toc-status{font:600 13.5px var(--sans);color:var(--fn-color)}
-#functionBook .fb-toc-page{min-width:24px;text-align:right;font:italic 16px var(--serif);color:var(--ink-2)}
-#functionBook .fb-toc-row:not(.is-owned) .fb-medal{opacity:.85}
+:is(#functionBook,#styleBook) .fb-toc{display:flex;flex-direction:column;gap:18px;margin-top:10px}
+:is(#functionBook,#styleBook) .fb-toc-group h3{margin:0 0 4px;font:700 16px var(--sc);color:var(--muted);display:flex;gap:8px;align-items:baseline}
+:is(#functionBook,#styleBook) .fb-toc-group h3 small{font:500 13px var(--sans)}
+:is(#functionBook,#styleBook) .fb-toc-row{display:flex;align-items:center;gap:12px;width:100%;padding:8px 10px;margin:0 -10px;width:calc(100% + 20px);border:0;background:transparent;border-radius:10px;text-align:left;transition:background-color .18s ease}
+:is(#functionBook,#styleBook) .fb-toc-row:hover{background:color-mix(in srgb,var(--fn-color) 9%,transparent)}
+:is(#functionBook,#styleBook) .fb-toc-name{display:flex;flex-direction:column;font:700 18px var(--serif);color:var(--ink);position:relative}
+:is(#functionBook,#styleBook) .fb-toc-name .fb-dot{position:absolute;right:-14px;top:6px}
+:is(#functionBook,#styleBook) .fb-toc-name small{font:500 13.5px var(--sans);color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-toc-row:hover .fb-toc-name{color:color-mix(in srgb,var(--fn-color) 80%,#1a0f08)}
+:is(#functionBook,#styleBook) .fb-leader{flex:1;min-width:20px;align-self:flex-end;margin-bottom:8px;border-bottom:2px dotted var(--rule)}
+:is(#functionBook,#styleBook) .fb-toc-status{font:600 13.5px var(--sans);color:var(--fn-color)}
+:is(#functionBook,#styleBook) .fb-toc-page{min-width:24px;text-align:right;font:italic 16px var(--serif);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-toc-row:not(.is-owned) .fb-medal{opacity:.85}
 
 /* Funções adquiridas */
-#functionBook .fb-owned{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-#functionBook .fb-own{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;border:1px solid var(--rule-soft);background:var(--paper-3);text-align:left;transition:border-color .2s,transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
-#functionBook .fb-own:hover{border-color:var(--fn-color);transform:translateY(-2px);box-shadow:0 10px 18px -14px rgba(60,30,10,.7)}
-#functionBook .fb-own-body{display:flex;flex-direction:column;gap:4px;min-width:0}
-#functionBook .fb-own-body b{font:700 17px var(--serif);color:var(--ink)}
-#functionBook .fb-own-body small{font:500 13.5px var(--sans);color:var(--muted)}
-#functionBook .fb-own-body small em{font-style:normal;font-weight:700;color:#a4671c}
-#functionBook .fb-pips{display:flex;gap:3px}
-#functionBook .fb-pips i{width:14px;height:5px;border-radius:3px;background:var(--rule-soft)}
-#functionBook .fb-pips i.on{background:var(--fn-color)}
+:is(#functionBook,#styleBook) .fb-owned{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+:is(#functionBook,#styleBook) .fb-own{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;border:1px solid var(--rule-soft);background:var(--paper-3);text-align:left;transition:border-color .2s,transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
+:is(#functionBook,#styleBook) .fb-own:hover{border-color:var(--fn-color);transform:translateY(-2px);box-shadow:0 10px 18px -14px rgba(60,30,10,.7)}
+:is(#functionBook,#styleBook) .fb-own-body{display:flex;flex-direction:column;gap:4px;min-width:0}
+:is(#functionBook,#styleBook) .fb-own-body b{font:700 17px var(--serif);color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-own-body small{font:500 13.5px var(--sans);color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-own-body small em{font-style:normal;font-weight:700;color:#a4671c}
+:is(#functionBook,#styleBook) .fb-pips{display:flex;gap:3px}
+:is(#functionBook,#styleBook) .fb-pips i{width:14px;height:5px;border-radius:3px;background:var(--rule-soft)}
+:is(#functionBook,#styleBook) .fb-pips i.on{background:var(--fn-color)}
 
 /* Página da Função */
-#functionBook .fb-fn-head{display:flex;align-items:center;gap:18px}
-#functionBook .fb-fn-title{margin:0;font:800 40px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
-#functionBook .fb-intro{margin-bottom:6px}
-#functionBook .fb-progress{margin-top:24px;padding:18px 20px;border-radius:12px;background:var(--paper-2);border:1px solid var(--rule-soft)}
-#functionBook .fb-track{display:flex;align-items:center;margin:6px 0 10px}
-#functionBook .fb-lv{width:38px;height:38px;flex:0 0 auto;border-radius:50%;border:2px solid var(--rule);background:var(--paper-3);font:800 16px var(--serif);color:var(--ink-2);transition:background-color .25s,color .25s,border-color .25s,transform .2s cubic-bezier(.2,.8,.2,1)}
-#functionBook .fb-lv:hover{border-color:var(--acc);transform:translateY(-2px)}
-#functionBook .fb-lv.on{background:var(--acc);border-color:var(--acc);color:#fff8ea}
-#functionBook .fb-lv.cur{box-shadow:0 0 0 4px var(--acc-soft);transform:scale(1.08)}
-#functionBook .fb-lv-link{flex:1;max-width:44px;min-width:10px;height:3px;background:var(--rule);border-radius:2px}
-#functionBook .fb-lv.on+.fb-lv-link:has(+.fb-lv.on){background:var(--acc)}
-#functionBook .fb-progress-line{margin:0;font:15px var(--sans);color:var(--ink-2)}
-#functionBook .fb-progress-line b{color:#a4671c}
-#functionBook .fb-link{margin-top:10px;padding:0;border:0;background:none;font:500 14px var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-#functionBook .fb-link:hover{color:#9b2f22}
-#functionBook .fb-cta{display:inline-flex;align-items:center;gap:10px;margin:4px 0 10px;padding:12px 22px;border:0;border-radius:99px;background:var(--acc);color:#fff8ea!important;font:700 16px var(--sans)!important;box-shadow:0 8px 16px -10px color-mix(in srgb,var(--acc) 80%,#000);transition:transform .15s,filter .15s}
-#functionBook .fb-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
-#functionBook .fb-cta .function-symbol{width:20px;height:20px;background:currentColor}
-#functionBook .fb-aside{margin-top:22px}
-#functionBook .fb-diary{margin-top:24px;display:flex;flex-direction:column}
-#functionBook .fb-notes{height:152px;min-height:92px;resize:vertical;border:0;border-radius:0;padding:0 4px;background:repeating-linear-gradient(transparent 0 29px,var(--rule-soft) 29px 30px);line-height:30px;font:italic 16.5px/30px var(--serif)}
-#functionBook .fb-notes:focus{box-shadow:none;background-color:color-mix(in srgb,var(--acc) 4%,transparent)}
+:is(#functionBook,#styleBook) .fb-fn-head{display:flex;align-items:center;gap:18px}
+:is(#functionBook,#styleBook) .fb-fn-title{margin:0;font:800 40px/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-intro{margin-bottom:6px}
+:is(#functionBook,#styleBook) .fb-progress{margin-top:24px;padding:18px 20px;border-radius:12px;background:var(--paper-2);border:1px solid var(--rule-soft)}
+:is(#functionBook,#styleBook) .fb-track{display:flex;align-items:center;margin:6px 0 10px}
+:is(#functionBook,#styleBook) .fb-lv{width:38px;height:38px;flex:0 0 auto;border-radius:50%;border:2px solid var(--rule);background:var(--paper-3);font:800 16px var(--serif);color:var(--ink-2);transition:background-color .25s,color .25s,border-color .25s,transform .2s cubic-bezier(.2,.8,.2,1)}
+:is(#functionBook,#styleBook) .fb-lv:hover{border-color:var(--acc);transform:translateY(-2px)}
+:is(#functionBook,#styleBook) .fb-lv.on{background:var(--acc);border-color:var(--acc);color:#fff8ea}
+:is(#functionBook,#styleBook) .fb-lv.cur{box-shadow:0 0 0 4px var(--acc-soft);transform:scale(1.08)}
+:is(#functionBook,#styleBook) .fb-lv-link{flex:1;max-width:44px;min-width:10px;height:3px;background:var(--rule);border-radius:2px}
+:is(#functionBook,#styleBook) .fb-lv.on+.fb-lv-link:has(+.fb-lv.on){background:var(--acc)}
+:is(#functionBook,#styleBook) .fb-progress-line{margin:0;font:15px var(--sans);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-progress-line b{color:#a4671c}
+:is(#functionBook,#styleBook) .fb-link{margin-top:10px;padding:0;border:0;background:none;font:500 14px var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+:is(#functionBook,#styleBook) .fb-link:hover{color:#9b2f22}
+:is(#functionBook,#styleBook) .fb-cta{display:inline-flex;align-items:center;gap:10px;margin:4px 0 10px;padding:12px 22px;border:0;border-radius:99px;background:var(--acc);color:#fff8ea!important;font:700 16px var(--sans)!important;box-shadow:0 8px 16px -10px color-mix(in srgb,var(--acc) 80%,#000);transition:transform .15s,filter .15s}
+:is(#functionBook,#styleBook) .fb-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+:is(#functionBook,#styleBook) .fb-cta :is(.function-symbol,.style-symbol){width:20px;height:20px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-aside{margin-top:22px}
+:is(#functionBook,#styleBook) .fb-diary{margin-top:24px;display:flex;flex-direction:column}
+:is(#functionBook,#styleBook) .fb-notes{height:152px;min-height:92px;resize:vertical;border:0;border-radius:0;padding:0 4px;background:repeating-linear-gradient(transparent 0 29px,var(--rule-soft) 29px 30px);line-height:30px;font:italic 16.5px/30px var(--serif)}
+:is(#functionBook,#styleBook) .fb-notes:focus{box-shadow:none;background-color:color-mix(in srgb,var(--acc) 4%,transparent)}
 
 /* Árvore */
-#functionBook .fb-tree-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px}
-#functionBook .fb-legend{display:flex;gap:12px;font:500 13px var(--sans);color:var(--ink-2)}
-#functionBook .fb-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-#functionBook .lg-got::before{background:var(--acc)}
-#functionBook .lg-open::before{box-shadow:inset 0 0 0 1.5px var(--ink-2)}
-#functionBook .lg-lock::before{background:var(--rule-soft)}
-#functionBook .fb-preview-banner{display:flex;gap:10px;align-items:center;margin-bottom:18px;padding:12px 14px;border-radius:10px;border:1.5px dashed var(--rule);font:italic 15.5px var(--serif);color:var(--ink-2)}
-#functionBook .fb-preview-banner .ui-icon{width:18px;height:18px;background:var(--acc);flex:0 0 auto}
-#functionBook .fb-tier{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding-bottom:26px}
-#functionBook .fb-tier-rail{position:relative;display:flex;justify-content:center}
-#functionBook .fb-tier-rail::before{content:"";position:absolute;top:40px;bottom:-26px;left:50%;width:3px;transform:translateX(-50%);background:var(--rule-soft);border-radius:2px}
-#functionBook .fb-tier:last-child .fb-tier-rail::before{display:none}
-#functionBook .fb-tier.is-reached .fb-tier-rail::before{background:var(--acc)}
-#functionBook .fb-tier.is-reached:has(+.fb-tier.is-locked) .fb-tier-rail::before{background:linear-gradient(var(--acc),var(--rule-soft))}
-#functionBook .fb-tier-num{position:relative;z-index:1;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--paper-3);border:2px solid var(--rule);font:800 18px var(--serif);color:var(--ink-2)}
-#functionBook .fb-tier-num .ui-icon{width:17px;height:17px;background:var(--muted)}
-#functionBook .fb-tier.is-reached .fb-tier-num{background:var(--acc);border-color:var(--acc);color:#fff8ea}
-#functionBook .fb-tier.is-pending .fb-tier-num{animation:fb-pending-ring 2.2s ease-in-out infinite}
+:is(#functionBook,#styleBook) .fb-tree-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+:is(#functionBook,#styleBook) .fb-legend{display:flex;gap:12px;font:500 13px var(--sans);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+:is(#functionBook,#styleBook) .lg-got::before{background:var(--acc)}
+:is(#functionBook,#styleBook) .lg-open::before{box-shadow:inset 0 0 0 1.5px var(--ink-2)}
+:is(#functionBook,#styleBook) .lg-lock::before{background:var(--rule-soft)}
+:is(#functionBook,#styleBook) .fb-preview-banner{display:flex;gap:10px;align-items:center;margin-bottom:18px;padding:12px 14px;border-radius:10px;border:1.5px dashed var(--rule);font:italic 15.5px var(--serif);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-preview-banner .ui-icon{width:18px;height:18px;background:var(--acc);flex:0 0 auto}
+:is(#functionBook,#styleBook) .fb-tier{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding-bottom:26px}
+:is(#functionBook,#styleBook) .fb-tier-rail{position:relative;display:flex;justify-content:center}
+:is(#functionBook,#styleBook) .fb-tier-rail::before{content:"";position:absolute;top:40px;bottom:-26px;left:50%;width:3px;transform:translateX(-50%);background:var(--rule-soft);border-radius:2px}
+:is(#functionBook,#styleBook) .fb-tier:last-child .fb-tier-rail::before{display:none}
+:is(#functionBook,#styleBook) .fb-tier.is-reached .fb-tier-rail::before{background:var(--acc)}
+:is(#functionBook,#styleBook) .fb-tier.is-reached:has(+.fb-tier.is-locked) .fb-tier-rail::before{background:linear-gradient(var(--acc),var(--rule-soft))}
+:is(#functionBook,#styleBook) .fb-tier-num{position:relative;z-index:1;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--paper-3);border:2px solid var(--rule);font:800 18px var(--serif);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-tier-num .ui-icon{width:17px;height:17px;background:var(--muted)}
+:is(#functionBook,#styleBook) .fb-tier.is-reached .fb-tier-num{background:var(--acc);border-color:var(--acc);color:#fff8ea}
+:is(#functionBook,#styleBook) .fb-tier.is-pending .fb-tier-num{animation:fb-pending-ring 2.2s ease-in-out infinite}
 @keyframes fb-pending-ring{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,#e8b04b 70%,transparent)}50%{box-shadow:0 0 0 8px transparent}}
-#functionBook .fb-tier-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;min-height:40px;padding-top:6px;margin-bottom:10px}
-#functionBook .fb-tier-head h3{margin:0;font:800 21px var(--serif);color:var(--ink)}
-#functionBook .fb-tier-head>span{font:500 14.5px var(--sans);color:var(--ink-2)}
-#functionBook .fb-pending{font:700 12.5px var(--sans);padding:2px 9px;border-radius:99px;background:#e8b04b;color:#2b1a05}
-#functionBook .fb-tier-note{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-#functionBook .fb-tier-note p{margin:0!important;padding:4px 10px;border-radius:8px;background:var(--acc-soft);font-size:14.5px!important;line-height:1.4!important}
-#functionBook .fb-tier-note strong.fb-num{background:none}
-#functionBook .fb-cards{display:flex;flex-direction:column;gap:10px}
-#functionBook .fb-or{display:flex;align-items:center;gap:12px;font:700 14px var(--sc);color:var(--muted)}
-#functionBook .fb-or::before,#functionBook .fb-or::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
+:is(#functionBook,#styleBook) .fb-tier-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;min-height:40px;padding-top:6px;margin-bottom:10px}
+:is(#functionBook,#styleBook) .fb-tier-head h3{margin:0;font:800 21px var(--serif);color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-tier-head>span{font:500 14.5px var(--sans);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-pending{font:700 12.5px var(--sans);padding:2px 9px;border-radius:99px;background:#e8b04b;color:#2b1a05}
+:is(#functionBook,#styleBook) .fb-tier-note{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+:is(#functionBook,#styleBook) .fb-tier-note p{margin:0!important;padding:4px 10px;border-radius:8px;background:var(--acc-soft);font-size:14.5px!important;line-height:1.4!important}
+:is(#functionBook,#styleBook) .fb-tier-note strong.fb-num{background:none}
+:is(#functionBook,#styleBook) .fb-cards{display:flex;flex-direction:column;gap:10px}
+:is(#functionBook,#styleBook) .fb-or{display:flex;align-items:center;gap:12px;font:700 14px var(--sc);color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-or::before,:is(#functionBook,#styleBook) .fb-or::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
 
 /* Cartões de habilidade */
-#functionBook .fb-card{position:relative;padding:16px 18px;border-radius:12px;background:var(--paper-3);border:1px solid var(--rule-soft);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 6px 14px -12px rgba(60,30,10,.5);transition:opacity .3s,border-color .3s,background-color .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
-#functionBook .fb-card>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-#functionBook .fb-card h4{margin:0;font:800 19.5px/1.2 var(--serif);color:var(--ink)}
-#functionBook .fb-stamp{flex:0 0 auto;font:700 13px var(--sc);padding:1px 8px 2px;border:1.5px solid currentColor;border-radius:4px;color:var(--ink-2);transform:rotate(-3deg);opacity:.85}
-#functionBook .fb-card.is-has{border-color:color-mix(in srgb,var(--acc) 55%,var(--rule-soft));background:linear-gradient(color-mix(in srgb,var(--acc) 6%,transparent),transparent 70%),var(--paper-3);box-shadow:inset 4px 0 0 var(--acc),0 8px 18px -14px rgba(60,30,10,.6)}
-#functionBook .fb-card.is-has .fb-stamp{color:var(--acc);opacity:1}
-#functionBook .fb-card.is-other{opacity:.6}
-#functionBook .fb-card.is-other:hover{opacity:1}
-#functionBook .fb-card.is-locked{background:color-mix(in srgb,var(--paper-3) 50%,var(--paper))}
-#functionBook .fb-card.is-locked .fb-stamp{color:var(--muted)}
-#functionBook .fb-card-meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
-#functionBook .fb-meta{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--ink) 6%,transparent);font:600 13.5px var(--sans);color:var(--ink-2)}
-#functionBook .fb-meta .ui-icon{width:14px;height:14px;background:currentColor}
-#functionBook .fb-meta-pp{background:color-mix(in srgb,#2f5d83 14%,transparent);color:#24496a}
-#functionBook .fb-card-text{max-width:66ch}
-#functionBook .fb-card.is-clamped .fb-card-text{max-height:8.2em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
-#functionBook .fb-card>footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
-#functionBook .fb-more{margin-right:auto;padding:4px 0;border:0;background:none;font:700 14px var(--sans);color:var(--acc-ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
-#functionBook .fb-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:99px;border:1.5px solid var(--acc);background:transparent;font:700 14px var(--sans);color:var(--acc-ink);transition:background-color .18s,color .18s,transform .12s}
-#functionBook .fb-btn:hover{background:var(--acc-soft)}
-#functionBook .fb-btn:active{transform:scale(.97)}
-#functionBook .fb-btn.is-on{background:var(--acc);color:#fff8ea}
-#functionBook .fb-btn-ghost{border-color:var(--rule);color:var(--ink-2)}
-#functionBook .fb-btn .ui-icon,#functionBook .fb-btn-done .ui-icon{width:14px;height:14px;background:currentColor}
-#functionBook .fb-btn-done{display:inline-flex;align-items:center;gap:6px;font:600 13.5px var(--sans);color:var(--acc-ink)}
-#functionBook .fb-card:focus-within{border-color:var(--acc)}
-#functionBook button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+:is(#functionBook,#styleBook) .fb-card{position:relative;padding:16px 18px;border-radius:12px;background:var(--paper-3);border:1px solid var(--rule-soft);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 6px 14px -12px rgba(60,30,10,.5);transition:opacity .3s,border-color .3s,background-color .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+:is(#functionBook,#styleBook) .fb-card>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+:is(#functionBook,#styleBook) .fb-card h4{margin:0;font:800 19.5px/1.2 var(--serif);color:var(--ink)}
+:is(#functionBook,#styleBook) .fb-stamp{flex:0 0 auto;font:700 13px var(--sc);padding:1px 8px 2px;border:1.5px solid currentColor;border-radius:4px;color:var(--ink-2);transform:rotate(-3deg);opacity:.85}
+:is(#functionBook,#styleBook) .fb-card.is-has{border-color:color-mix(in srgb,var(--acc) 55%,var(--rule-soft));background:linear-gradient(color-mix(in srgb,var(--acc) 6%,transparent),transparent 70%),var(--paper-3);box-shadow:inset 4px 0 0 var(--acc),0 8px 18px -14px rgba(60,30,10,.6)}
+:is(#functionBook,#styleBook) .fb-card.is-has .fb-stamp{color:var(--acc);opacity:1}
+:is(#functionBook,#styleBook) .fb-card.is-other{opacity:.6}
+:is(#functionBook,#styleBook) .fb-card.is-other:hover{opacity:1}
+:is(#functionBook,#styleBook) .fb-card.is-locked{background:color-mix(in srgb,var(--paper-3) 50%,var(--paper))}
+:is(#functionBook,#styleBook) .fb-card.is-locked .fb-stamp{color:var(--muted)}
+:is(#functionBook,#styleBook) .fb-card-meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+:is(#functionBook,#styleBook) .fb-meta{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--ink) 6%,transparent);font:600 13.5px var(--sans);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-meta .ui-icon{width:14px;height:14px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-meta-pp{background:color-mix(in srgb,#2f5d83 14%,transparent);color:#24496a}
+:is(#functionBook,#styleBook) .fb-card-text{max-width:66ch}
+:is(#functionBook,#styleBook) .fb-card.is-clamped .fb-card-text{max-height:8.2em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+:is(#functionBook,#styleBook) .fb-card>footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+:is(#functionBook,#styleBook) .fb-more{margin-right:auto;padding:4px 0;border:0;background:none;font:700 14px var(--sans);color:var(--acc-ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+:is(#functionBook,#styleBook) .fb-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:99px;border:1.5px solid var(--acc);background:transparent;font:700 14px var(--sans);color:var(--acc-ink);transition:background-color .18s,color .18s,transform .12s}
+:is(#functionBook,#styleBook) .fb-btn:hover{background:var(--acc-soft)}
+:is(#functionBook,#styleBook) .fb-btn:active{transform:scale(.97)}
+:is(#functionBook,#styleBook) .fb-btn.is-on{background:var(--acc);color:#fff8ea}
+:is(#functionBook,#styleBook) .fb-btn-ghost{border-color:var(--rule);color:var(--ink-2)}
+:is(#functionBook,#styleBook) .fb-btn .ui-icon,:is(#functionBook,#styleBook) .fb-btn-done .ui-icon{width:14px;height:14px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-btn-done{display:inline-flex;align-items:center;gap:6px;font:600 13.5px var(--sans);color:var(--acc-ink)}
+:is(#functionBook,#styleBook) .fb-card:focus-within{border-color:var(--acc)}
+:is(#functionBook,#styleBook) button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 
 /* Momentos de movimento: escolher, liberar nível, achar pela busca */
 @keyframes fb-stamp{0%{opacity:0;transform:scale(2) rotate(-16deg)}60%{opacity:1;transform:scale(.92) rotate(-2deg)}100%{transform:scale(1) rotate(-3deg)}}
-#functionBook .fb-card.just-chosen .fb-stamp{animation:fb-stamp .5s cubic-bezier(.2,.8,.2,1) both}
+:is(#functionBook,#styleBook) .fb-card.just-chosen .fb-stamp{animation:fb-stamp .5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes fb-unlock{0%{background-color:color-mix(in srgb,var(--acc) 22%,transparent)}100%{background-color:transparent}}
 @keyframes fb-pop{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
-#functionBook .fb-tier.is-new{border-radius:14px;animation:fb-unlock 1.6s ease-out both}
-#functionBook .fb-tier.is-new .fb-tier-num{animation:fb-pop .5s cubic-bezier(.2,.8,.2,1) both}
+:is(#functionBook,#styleBook) .fb-tier.is-new{border-radius:14px;animation:fb-unlock 1.6s ease-out both}
+:is(#functionBook,#styleBook) .fb-tier.is-new .fb-tier-num{animation:fb-pop .5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes fb-focus{0%,100%{box-shadow:0 0 0 0 transparent}30%{box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 45%,transparent)}}
-#functionBook .fb-card.is-focus{animation:fb-focus 1.3s ease-in-out 2;border-color:var(--acc)}
+:is(#functionBook,#styleBook) .fb-card.is-focus{animation:fb-focus 1.3s ease-in-out 2;border-color:var(--acc)}
 
-#functionBook .fb-card.is-locked.is-clamped .fb-card-text{max-height:4.9em}
+:is(#functionBook,#styleBook) .fb-card.is-locked.is-clamped .fb-card-text{max-height:4.9em}
 /* Em telas grandes a página da esquerda acompanha a leitura da árvore */
-#functionBook #fbFnLeft{flex:0 0 auto}
-@media (min-width:1061px){#functionBook #fbFnLeft.fb-stick{position:sticky;top:84px}}
+#functionBook #fbFnLeft,#styleBook #sbFnLeft{flex:0 0 auto}
+@media (min-width:1061px){#functionBook #fbFnLeft.fb-stick,#styleBook #sbFnLeft.fb-stick{position:sticky;top:84px}}
 
 /* Virada de página */
-#functionBook .fb-turn-layer{position:absolute;inset:0;z-index:30;pointer-events:none;perspective:3000px}
-#functionBook .fb-still,#functionBook .fb-cast,#functionBook .fb-leaf{position:absolute;top:0}
-#functionBook .fb-still{overflow:hidden}
-#functionBook .fb-cast{opacity:0}
-#functionBook .fb-cast.from-left{background:linear-gradient(to right,rgba(40,20,6,.42),rgba(40,20,6,.08) 45%,transparent 70%)}
-#functionBook .fb-cast.from-right{background:linear-gradient(to left,rgba(40,20,6,.42),rgba(40,20,6,.08) 45%,transparent 70%)}
-#functionBook .fb-leaf{transform-style:preserve-3d;will-change:transform}
-#functionBook .fb-leaf.turn-fwd{transform-origin:0 50%}
-#functionBook .fb-leaf.turn-back{transform-origin:100% 50%}
-#functionBook .fb-leaf-mobile.turn-back{transform-origin:100% 50%}
-#functionBook .fb-face{position:absolute;inset:0;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden;background:var(--paper)}
-#functionBook .fb-back{transform:rotateY(180deg)}
-#functionBook .fb-face .fb-clone{min-height:100%;border-radius:0;box-shadow:none!important}
-#functionBook .fb-blank{background:repeating-linear-gradient(transparent 0 31px,rgba(150,115,70,.08) 31px 32px),radial-gradient(140% 90% at 50% 40%,var(--paper),var(--paper-2))}
-#functionBook .fb-shade{position:absolute;inset:0;opacity:0;pointer-events:none}
-#functionBook .turn-fwd .fb-front .fb-shade{background:linear-gradient(to left,rgba(50,25,8,.55),rgba(50,25,8,.12) 70%,rgba(50,25,8,.25))}
-#functionBook .turn-fwd .fb-back .fb-shade{background:linear-gradient(to left,rgba(50,25,8,.45),rgba(50,25,8,.06) 60%)}
-#functionBook .turn-back .fb-front .fb-shade{background:linear-gradient(to right,rgba(50,25,8,.55),rgba(50,25,8,.12) 70%,rgba(50,25,8,.25))}
-#functionBook .turn-back .fb-back .fb-shade{background:linear-gradient(to right,rgba(50,25,8,.45),rgba(50,25,8,.06) 60%)}
-#functionBook .fb-stack{display:flex;flex-direction:column}
-#functionBook .fb-stack .fb-clone{width:100%!important}
+:is(#functionBook,#styleBook) .fb-turn-layer{position:absolute;inset:0;z-index:30;pointer-events:none;perspective:3000px}
+:is(#functionBook,#styleBook) .fb-still,:is(#functionBook,#styleBook) .fb-cast,:is(#functionBook,#styleBook) .fb-leaf{position:absolute;top:0}
+:is(#functionBook,#styleBook) .fb-still{overflow:hidden}
+:is(#functionBook,#styleBook) .fb-cast{opacity:0}
+:is(#functionBook,#styleBook) .fb-cast.from-left{background:linear-gradient(to right,rgba(40,20,6,.42),rgba(40,20,6,.08) 45%,transparent 70%)}
+:is(#functionBook,#styleBook) .fb-cast.from-right{background:linear-gradient(to left,rgba(40,20,6,.42),rgba(40,20,6,.08) 45%,transparent 70%)}
+:is(#functionBook,#styleBook) .fb-leaf{transform-style:preserve-3d;will-change:transform}
+:is(#functionBook,#styleBook) .fb-leaf.turn-fwd{transform-origin:0 50%}
+:is(#functionBook,#styleBook) .fb-leaf.turn-back{transform-origin:100% 50%}
+:is(#functionBook,#styleBook) .fb-leaf-mobile.turn-back{transform-origin:100% 50%}
+:is(#functionBook,#styleBook) .fb-face{position:absolute;inset:0;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden;background:var(--paper)}
+:is(#functionBook,#styleBook) .fb-back{transform:rotateY(180deg)}
+:is(#functionBook,#styleBook) .fb-face .fb-clone{min-height:100%;border-radius:0;box-shadow:none!important}
+:is(#functionBook,#styleBook) .fb-blank{background:repeating-linear-gradient(transparent 0 31px,rgba(150,115,70,.08) 31px 32px),radial-gradient(140% 90% at 50% 40%,var(--paper),var(--paper-2))}
+:is(#functionBook,#styleBook) .fb-shade{position:absolute;inset:0;opacity:0;pointer-events:none}
+:is(#functionBook,#styleBook) .turn-fwd .fb-front .fb-shade{background:linear-gradient(to left,rgba(50,25,8,.55),rgba(50,25,8,.12) 70%,rgba(50,25,8,.25))}
+:is(#functionBook,#styleBook) .turn-fwd .fb-back .fb-shade{background:linear-gradient(to left,rgba(50,25,8,.45),rgba(50,25,8,.06) 60%)}
+:is(#functionBook,#styleBook) .turn-back .fb-front .fb-shade{background:linear-gradient(to right,rgba(50,25,8,.55),rgba(50,25,8,.12) 70%,rgba(50,25,8,.25))}
+:is(#functionBook,#styleBook) .turn-back .fb-back .fb-shade{background:linear-gradient(to right,rgba(50,25,8,.45),rgba(50,25,8,.06) 60%)}
+:is(#functionBook,#styleBook) .fb-stack{display:flex;flex-direction:column}
+:is(#functionBook,#styleBook) .fb-stack .fb-clone{width:100%!important}
 
 /* Telas menores: uma página por vez, empilhadas */
 @media (max-width:1060px){
-  #functionBook{padding:20px 12px 18px}
-  #functionBook .fb-ribbons{padding:0 22px;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;margin-bottom:-10px;min-height:62px}
-  #functionBook .fb-ribbons::-webkit-scrollbar{display:none}
-  #functionBook .fb-ribbon{flex:0 0 32px;width:32px;height:48px}
-  #functionBook .fb-ribbon:hover{height:52px}
-  #functionBook .fb-ribbon.is-active{height:62px}
-  #functionBook .fb-cover{padding:8px;border-radius:12px}
-  #functionBook .fb-spread{grid-template-columns:1fr}
-  #functionBook .fb-page{min-height:0;padding:28px 22px 16px}
-  #functionBook .fb-left{border-radius:8px 8px 0 0;box-shadow:none;background-image:radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10))}
-  #functionBook .fb-right{border-radius:0 0 8px 8px;box-shadow:0 6px 0 -2px #e4d6b7,0 10px 0 -4px #d7c49f;background-image:linear-gradient(rgba(90,58,24,.16),transparent 18px);border-top:1px dashed var(--rule)}
-  #functionBook .fb-left .fb-folio{display:none}
-  #functionBook .fb-page::after{display:none}
-  #functionBook .fb-title{font-size:32px}
-  #functionBook .fb-title .function-symbol{width:30px;height:30px}
-  #functionBook .fb-fn-title{font-size:31px}
-  #functionBook .fb-medal-xl{width:64px;height:64px}
-  #functionBook .fb-medal-xl .function-symbol{width:34px;height:34px}
-  #functionBook .fb-h1{font-size:26px}
-  #functionBook .fb-owned{grid-template-columns:1fr}
-  #functionBook .fb-office{grid-template-columns:1fr}
-  #functionBook .fb-tier{grid-template-columns:32px minmax(0,1fr);gap:10px}
-  #functionBook .fb-tier-num{width:32px;height:32px;font-size:15px}
-  #functionBook .fb-tier-rail::before{top:32px}
-  #functionBook .fb-card{padding:14px}
-  #functionBook .fb-card h4{font-size:18px}
-  #functionBook .fb-lv{width:34px;height:34px}
-  #functionBook .fb-hint{font-size:13px}
+  :is(#functionBook,#styleBook){padding:20px 12px 18px}
+  :is(#functionBook,#styleBook) .fb-ribbons{padding:0 22px;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;margin-bottom:-10px;min-height:62px}
+  :is(#functionBook,#styleBook) .fb-ribbons::-webkit-scrollbar{display:none}
+  :is(#functionBook,#styleBook) .fb-ribbon{flex:0 0 32px;width:32px;height:48px}
+  :is(#functionBook,#styleBook) .fb-ribbon:hover{height:52px}
+  :is(#functionBook,#styleBook) .fb-ribbon.is-active{height:62px}
+  :is(#functionBook,#styleBook) .fb-cover{padding:8px;border-radius:12px}
+  :is(#functionBook,#styleBook) .fb-spread{grid-template-columns:1fr}
+  :is(#functionBook,#styleBook) .fb-page{min-height:0;padding:28px 22px 16px}
+  :is(#functionBook,#styleBook) .fb-left{border-radius:8px 8px 0 0;box-shadow:none;background-image:radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10))}
+  :is(#functionBook,#styleBook) .fb-right{border-radius:0 0 8px 8px;box-shadow:0 6px 0 -2px #e4d6b7,0 10px 0 -4px #d7c49f;background-image:linear-gradient(rgba(90,58,24,.16),transparent 18px);border-top:1px dashed var(--rule)}
+  :is(#functionBook,#styleBook) .fb-left .fb-folio{display:none}
+  :is(#functionBook,#styleBook) .fb-page::after{display:none}
+  :is(#functionBook,#styleBook) .fb-title{font-size:32px}
+  :is(#functionBook,#styleBook) .fb-title :is(.function-symbol,.style-symbol){width:30px;height:30px}
+  :is(#functionBook,#styleBook) .fb-fn-title{font-size:31px}
+  :is(#functionBook,#styleBook) .fb-medal-xl{width:64px;height:64px}
+  :is(#functionBook,#styleBook) .fb-medal-xl :is(.function-symbol,.style-symbol){width:34px;height:34px}
+  :is(#functionBook,#styleBook) .fb-h1{font-size:26px}
+  :is(#functionBook,#styleBook) .fb-owned{grid-template-columns:1fr}
+  :is(#functionBook,#styleBook) .fb-office{grid-template-columns:1fr}
+  :is(#functionBook,#styleBook) .fb-tier{grid-template-columns:32px minmax(0,1fr);gap:10px}
+  :is(#functionBook,#styleBook) .fb-tier-num{width:32px;height:32px;font-size:15px}
+  :is(#functionBook,#styleBook) .fb-tier-rail::before{top:32px}
+  :is(#functionBook,#styleBook) .fb-card{padding:14px}
+  :is(#functionBook,#styleBook) .fb-card h4{font-size:18px}
+  :is(#functionBook,#styleBook) .fb-lv{width:34px;height:34px}
+  :is(#functionBook,#styleBook) .fb-hint{font-size:13px}
 }
 /* Em telas estreitas as duas setas ficam no rodapé da página de baixo */
-#functionBook .fb-narrow-only{display:none}
+:is(#functionBook,#styleBook) .fb-narrow-only{display:none}
 @media (max-width:1060px){
-  #functionBook .fb-narrow-only:not([hidden]){display:inline-flex}
-  #functionBook .fb-right .fb-folio{gap:8px}
-  #functionBook .fb-right .fb-folio .fb-folio-num{display:none}
-  #functionBook .fb-turn{max-width:48%}
-  #functionBook .fb-turn-next{margin-left:auto}
+  :is(#functionBook,#styleBook) .fb-narrow-only:not([hidden]){display:inline-flex}
+  :is(#functionBook,#styleBook) .fb-right .fb-folio{gap:8px}
+  :is(#functionBook,#styleBook) .fb-right .fb-folio .fb-folio-num{display:none}
+  :is(#functionBook,#styleBook) .fb-turn{max-width:48%}
+  :is(#functionBook,#styleBook) .fb-turn-next{margin-left:auto}
 }
-@media (prefers-reduced-motion:reduce){#functionBook *{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){:is(#functionBook,#styleBook) *{animation:none!important;transition:none!important}}
+
+/* Emblemas dos Estilos de Combate */
+.style-symbol.st-atirador{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='8.6' fill='%23fff'/%3E%3Ccircle cx='12' cy='12' r='6.8' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%238a8a8a'/%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='1.2' fill='%23fff'/%3E %3Cpath d='M12 1.6v5.2M12 17.2v5.2M1.6 12h5.2M17.2 12h5.2' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='8.6' fill='%23fff'/%3E%3Ccircle cx='12' cy='12' r='6.8' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%238a8a8a'/%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='1.2' fill='%23fff'/%3E %3Cpath d='M12 1.6v5.2M12 17.2v5.2M1.6 12h5.2M17.2 12h5.2' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-aventureiro{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cg transform='translate(12 11) scale(1.18) translate(-12 -11)'%3E%3Cg transform='rotate(-35 12 12)'%3E%3Crect x='2.6' y='9.4' width='6' height='5.2' rx='1' fill='%23fff'/%3E%3Crect x='8.4' y='9.9' width='6' height='4.2' rx='.8' fill='%238a8a8a'/%3E%3Crect x='14.2' y='10.3' width='5.4' height='3.4' rx='.7' fill='%23fff'/%3E%3Crect x='19.4' y='10.6' width='2.4' height='2.8' rx='.5' fill='%238a8a8a'/%3E %3Cpath d='M5.6 9.4v5.2M11.4 9.9v4.2' stroke='%23000' stroke-width='.8'/%3E%3C/g%3E%3C/g%3E%3Cpath d='M4.2 22l3.2-5.6 3.2 5.6' stroke='%238a8a8a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cg transform='translate(12 11) scale(1.18) translate(-12 -11)'%3E%3Cg transform='rotate(-35 12 12)'%3E%3Crect x='2.6' y='9.4' width='6' height='5.2' rx='1' fill='%23fff'/%3E%3Crect x='8.4' y='9.9' width='6' height='4.2' rx='.8' fill='%238a8a8a'/%3E%3Crect x='14.2' y='10.3' width='5.4' height='3.4' rx='.7' fill='%23fff'/%3E%3Crect x='19.4' y='10.6' width='2.4' height='2.8' rx='.5' fill='%238a8a8a'/%3E %3Cpath d='M5.6 9.4v5.2M11.4 9.9v4.2' stroke='%23000' stroke-width='.8'/%3E%3C/g%3E%3C/g%3E%3Cpath d='M4.2 22l3.2-5.6 3.2 5.6' stroke='%238a8a8a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-brutamontes{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cg transform='rotate(40 12 12)'%3E%3Cpath d='M8 1.6h8l1.2 12.4H6.8z' rx='2' fill='%23fff'/%3E%3Crect x='10.7' y='13.4' width='2.6' height='8.6' rx='1.1' fill='%238a8a8a'/%3E %3Ccircle cx='10.2' cy='4.4' r='1' fill='%23000'/%3E%3Ccircle cx='13.8' cy='4.4' r='1' fill='%23000'/%3E%3Ccircle cx='12' cy='7.4' r='1' fill='%23000'/%3E%3Ccircle cx='9.8' cy='10.4' r='1' fill='%23000'/%3E%3Ccircle cx='14.2' cy='10.4' r='1' fill='%23000'/%3E%3Crect x='10.6' y='13.8' width='2.8' height='8.4' rx='1.2' fill='%238a8a8a'/%3E%3C/g%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cg transform='rotate(40 12 12)'%3E%3Cpath d='M8 1.6h8l1.2 12.4H6.8z' rx='2' fill='%23fff'/%3E%3Crect x='10.7' y='13.4' width='2.6' height='8.6' rx='1.1' fill='%238a8a8a'/%3E %3Ccircle cx='10.2' cy='4.4' r='1' fill='%23000'/%3E%3Ccircle cx='13.8' cy='4.4' r='1' fill='%23000'/%3E%3Ccircle cx='12' cy='7.4' r='1' fill='%23000'/%3E%3Ccircle cx='9.8' cy='10.4' r='1' fill='%23000'/%3E%3Ccircle cx='14.2' cy='10.4' r='1' fill='%23000'/%3E%3Crect x='10.6' y='13.8' width='2.8' height='8.4' rx='1.2' fill='%238a8a8a'/%3E%3C/g%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-caratecahomempeixe{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M2.4 12c3-4.8 8.4-6.6 13.2-3.6l4.8-3v13.2l-4.8-3C10.8 18.6 5.4 16.8 2.4 12z' fill='%23fff'/%3E%3Ccircle cx='7' cy='11.2' r='1.2' fill='%23000'/%3E %3Cpath d='M11 9.4c.9 1.6.9 3.6 0 5.2' stroke='%23000' stroke-width='1.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M8.4 6.6l2.4-3.4 2.2 4.4' fill='%238a8a8a'/%3E%3Cpath d='M10 17.4l1.4 3.4 1.6-3.8' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M2.4 12c3-4.8 8.4-6.6 13.2-3.6l4.8-3v13.2l-4.8-3C10.8 18.6 5.4 16.8 2.4 12z' fill='%23fff'/%3E%3Ccircle cx='7' cy='11.2' r='1.2' fill='%23000'/%3E %3Cpath d='M11 9.4c.9 1.6.9 3.6 0 5.2' stroke='%23000' stroke-width='1.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M8.4 6.6l2.4-3.4 2.2 4.4' fill='%238a8a8a'/%3E%3Cpath d='M10 17.4l1.4 3.4 1.6-3.8' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-ciborgue{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M10.3 2.5h3.4l.5 2.6 2 .9 2.2-1.5 2.4 2.4-1.5 2.2.9 2 2.6.5v3.4l-2.6.5-.9 2 1.5 2.2-2.4 2.4-2.2-1.5-2 .9-.5 2.6h-3.4l-.5-2.6-2-.9-2.2 1.5-2.4-2.4 1.5-2.2-.9-2-2.6-.5v-3.4l2.6-.5.9-2-1.5-2.2 2.4-2.4 2.2 1.5 2-.9z' fill='%23fff'/%3E %3Ccircle cx='12' cy='12' r='5.2' fill='%23000'/%3E%3Cpath d='M13 7.8l-3.4 4.8h2.6l-1.2 3.6 3.6-5h-2.6z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M10.3 2.5h3.4l.5 2.6 2 .9 2.2-1.5 2.4 2.4-1.5 2.2.9 2 2.6.5v3.4l-2.6.5-.9 2 1.5 2.2-2.4 2.4-2.2-1.5-2 .9-.5 2.6h-3.4l-.5-2.6-2-.9-2.2 1.5-2.4-2.4 1.5-2.2-.9-2-2.6-.5v-3.4l2.6-.5.9-2-1.5-2.2 2.4-2.4 2.2 1.5 2-.9z' fill='%23fff'/%3E %3Ccircle cx='12' cy='12' r='5.2' fill='%23000'/%3E%3Cpath d='M13 7.8l-3.4 4.8h2.6l-1.2 3.6 3.6-5h-2.6z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-guerrilheiro{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='10.4' cy='14' r='7' fill='%23fff'/%3E%3Crect x='12.6' y='5.2' width='4' height='3.6' rx='.8' transform='rotate(42 14.6 7)' fill='%238a8a8a'/%3E %3Cpath d='M16.4 5.2c.8-1.6 2.2-2 3.4-1.4' stroke='%23fff' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M20.6 2v1.4M22 3.6h-1.4M21.6 1.2l-.9.9' stroke='%238a8a8a' stroke-width='1.2' stroke-linecap='round'/%3E %3Cpath d='M6.6 12.4a4 4 0 0 1 3-3' stroke='%23000' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='10.4' cy='14' r='7' fill='%23fff'/%3E%3Crect x='12.6' y='5.2' width='4' height='3.6' rx='.8' transform='rotate(42 14.6 7)' fill='%238a8a8a'/%3E %3Cpath d='M16.4 5.2c.8-1.6 2.2-2 3.4-1.4' stroke='%23fff' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M20.6 2v1.4M22 3.6h-1.4M21.6 1.2l-.9.9' stroke='%238a8a8a' stroke-width='1.2' stroke-linecap='round'/%3E %3Cpath d='M6.6 12.4a4 4 0 0 1 3-3' stroke='%23000' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-ninja{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M12 1.8l2.4 7.8 7.8 2.4-7.8 2.4-2.4 7.8-2.4-7.8L1.8 12l7.8-2.4z' fill='%23fff'/%3E%3Cpath d='M12 6.2l1.2 4.6 4.6 1.2-4.6 1.2L12 17.8l-1.2-4.6L6.2 12l4.6-1.2z' fill='%238a8a8a'/%3E%3Ccircle cx='12' cy='12' r='1.7' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M12 1.8l2.4 7.8 7.8 2.4-7.8 2.4-2.4 7.8-2.4-7.8L1.8 12l7.8-2.4z' fill='%23fff'/%3E%3Cpath d='M12 6.2l1.2 4.6 4.6 1.2-4.6 1.2L12 17.8l-1.2-4.6L6.2 12l4.6-1.2z' fill='%238a8a8a'/%3E%3Ccircle cx='12' cy='12' r='1.7' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-okamakenpo{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M3 15.6c2.6 3.6 8.8 4.6 13.6 2.2 2.6-1.3 3.8-3.8 3.4-6.6-1.6 1.6-3.8 2.4-6.2 2.2-3.6-.2-7.4.6-10.8 2.2z' fill='%23fff'/%3E %3Cpath d='M11.6 14.4C9 12.2 8.6 8.4 10.2 6c1.4-2.2 4.4-2.6 5.6-.6' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E %3Cpath d='M15.4 5l3.2.6-2.6 1.2z' fill='%238a8a8a'/%3E%3Ccircle cx='14.4' cy='5.4' r='.7' fill='%23000'/%3E%3Cpath d='M6.2 16.2c2.6.6 5.8.4 8.2-.8' stroke='%23000' stroke-width='1' fill='none' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M3 15.6c2.6 3.6 8.8 4.6 13.6 2.2 2.6-1.3 3.8-3.8 3.4-6.6-1.6 1.6-3.8 2.4-6.2 2.2-3.6-.2-7.4.6-10.8 2.2z' fill='%23fff'/%3E %3Cpath d='M11.6 14.4C9 12.2 8.6 8.4 10.2 6c1.4-2.2 4.4-2.6 5.6-.6' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E %3Cpath d='M15.4 5l3.2.6-2.6 1.2z' fill='%238a8a8a'/%3E%3Ccircle cx='14.4' cy='5.4' r='.7' fill='%23000'/%3E%3Cpath d='M6.2 16.2c2.6.6 5.8.4 8.2-.8' stroke='%23000' stroke-width='1' fill='none' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-rokushiki{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23fff'/%3E%3Ccircle cx='19.20' cy='12.00' r='2.3' fill='%23fff'/%3E%3Ccircle cx='15.60' cy='18.24' r='2.3' fill='%238a8a8a'/%3E%3Ccircle cx='8.40' cy='18.24' r='2.3' fill='%23fff'/%3E%3Ccircle cx='4.80' cy='12.00' r='2.3' fill='%238a8a8a'/%3E%3Ccircle cx='8.40' cy='5.76' r='2.3' fill='%23fff'/%3E%3Ccircle cx='15.60' cy='5.76' r='2.3' fill='%238a8a8a'/%3E %3Ccircle cx='12' cy='12' r='7.2' stroke='%238a8a8a' stroke-width='.8' fill='none'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23fff'/%3E%3Ccircle cx='19.20' cy='12.00' r='2.3' fill='%23fff'/%3E%3Ccircle cx='15.60' cy='18.24' r='2.3' fill='%238a8a8a'/%3E%3Ccircle cx='8.40' cy='18.24' r='2.3' fill='%23fff'/%3E%3Ccircle cx='4.80' cy='12.00' r='2.3' fill='%238a8a8a'/%3E%3Ccircle cx='8.40' cy='5.76' r='2.3' fill='%23fff'/%3E%3Ccircle cx='15.60' cy='5.76' r='2.3' fill='%238a8a8a'/%3E %3Ccircle cx='12' cy='12' r='7.2' stroke='%238a8a8a' stroke-width='.8' fill='none'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-samurai{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M4 15.2a8 8 0 0 1 16 0z' fill='%23fff'/%3E%3Cpath d='M3 15.2h18v1.8l-2.4 3.4h-3.2l-.8-2.6h-5.2l-.8 2.6H5.4L3 17z' fill='%238a8a8a'/%3E %3Cpath d='M12 7.2C9 6.6 6.6 4.6 6 1.8c2.6 1.4 4.4 1.8 6 1.8s3.4-.4 6-1.8c-.6 2.8-3 4.8-6 5.4z' fill='%23fff'/%3E%3Cpath d='M4 15.2h16' stroke='%23000' stroke-width='1'/%3E%3Ccircle cx='12' cy='11.4' r='1.4' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M4 15.2a8 8 0 0 1 16 0z' fill='%23fff'/%3E%3Cpath d='M3 15.2h18v1.8l-2.4 3.4h-3.2l-.8-2.6h-5.2l-.8 2.6H5.4L3 17z' fill='%238a8a8a'/%3E %3Cpath d='M12 7.2C9 6.6 6.6 4.6 6 1.8c2.6 1.4 4.4 1.8 6 1.8s3.4-.4 6-1.8c-.6 2.8-3 4.8-6 5.4z' fill='%23fff'/%3E%3Cpath d='M4 15.2h16' stroke='%23000' stroke-width='1'/%3E%3Ccircle cx='12' cy='11.4' r='1.4' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-blackleg{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M9.2 3.2h4.4l.6 9.6c2.4.2 5.6.8 6.6 2.6.8 1.4.2 3.4-1.6 3.4H8.8z' fill='%23fff'/%3E%3Cpath d='M8.8 16.8h11.4v2H8.8z' fill='%23000'/%3E %3Cpath d='M7.4 6.2C5 7 3.4 9 4 11.2c-1.6-.2-2.4 1.6-1.4 3 .6 1 1.6 1.4 2.6 1.4-1 1.4-.4 3.4 1.2 3.8L7.6 6.2z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M9.2 3.2h4.4l.6 9.6c2.4.2 5.6.8 6.6 2.6.8 1.4.2 3.4-1.6 3.4H8.8z' fill='%23fff'/%3E%3Cpath d='M8.8 16.8h11.4v2H8.8z' fill='%23000'/%3E %3Cpath d='M7.4 6.2C5 7 3.4 9 4 11.2c-1.6-.2-2.4 1.6-1.4 3 .6 1 1.6 1.4 2.6 1.4-1 1.4-.4 3.4 1.2 3.8L7.6 6.2z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-esgrimista{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M20.8 3.2L9.6 14.4' stroke='%23fff' stroke-width='1.4' stroke-linecap='round'/%3E%3Cpath d='M5.6 12.2a5.6 5.6 0 0 0 6.2 6.2z' fill='%23fff'/%3E %3Cpath d='M8.2 15.8L4 20' stroke='%238a8a8a' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='3.6' cy='20.4' r='1.5' fill='%23fff'/%3E%3Cpath d='M6.4 13.4c.4 1.8 2.4 3.8 4.2 4.2' stroke='%23000' stroke-width='.9' fill='none'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M20.8 3.2L9.6 14.4' stroke='%23fff' stroke-width='1.4' stroke-linecap='round'/%3E%3Cpath d='M5.6 12.2a5.6 5.6 0 0 0 6.2 6.2z' fill='%23fff'/%3E %3Cpath d='M8.2 15.8L4 20' stroke='%238a8a8a' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='3.6' cy='20.4' r='1.5' fill='%23fff'/%3E%3Cpath d='M6.4 13.4c.4 1.8 2.4 3.8 4.2 4.2' stroke='%23000' stroke-width='.9' fill='none'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-heroi{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M12 2.4l8 3v6.2c0 4.8-3.4 8.6-8 10-4.6-1.4-8-5.2-8-10V5.4z' fill='%23fff'/%3E%3Cpath d='M12 2.4v19.2c-4.6-1.4-8-5.2-8-10V5.4z' fill='%238a8a8a'/%3E %3Cpath d='m12 6.8 1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5z' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M12 2.4l8 3v6.2c0 4.8-3.4 8.6-8 10-4.6-1.4-8-5.2-8-10V5.4z' fill='%23fff'/%3E%3Cpath d='M12 2.4v19.2c-4.6-1.4-8-5.2-8-10V5.4z' fill='%238a8a8a'/%3E %3Cpath d='m12 6.8 1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5z' fill='%23000'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-usuarioinsito{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='14' r='7.6' fill='%23fff'/%3E %3Cpath d='M7.4 12.6a2 2 0 1 1 2.6 2.4M13 10.4a2 2 0 1 1 2.8 1.8M10.6 17.8a2 2 0 1 1 3.4-.6M16.8 16.4a1.6 1.6 0 1 1 .6-2.4' stroke='%23000' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E %3Cpath d='M12 6.4c0-1.6.6-2.8 1.8-3.6' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M13.8 2.8c2-.4 3.8.4 4.6 2-2 .8-3.6.3-4.6-2z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Ccircle cx='12' cy='14' r='7.6' fill='%23fff'/%3E %3Cpath d='M7.4 12.6a2 2 0 1 1 2.6 2.4M13 10.4a2 2 0 1 1 2.8 1.8M10.6 17.8a2 2 0 1 1 3.4-.6M16.8 16.4a1.6 1.6 0 1 1 .6-2.4' stroke='%23000' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E %3Cpath d='M12 6.4c0-1.6.6-2.8 1.8-3.6' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M13.8 2.8c2-.4 3.8.4 4.6 2-2 .8-3.6.3-4.6-2z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-espadachim{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M21 2.6C19.6 6.9 15.6 11.4 10.1 16.1l-1.9-1.9C12.9 8.7 17.2 4.8 21 2.6z' fill='%23fff'/%3E %3Cellipse cx='8.2' cy='15.8' rx='3.4' ry='1.35' transform='rotate(45 8.2 15.8)' fill='%23fff'/%3E %3Cpath d='M7.1 16.9l-3.6 3.6' stroke='%238a8a8a' stroke-width='3' stroke-linecap='round'/%3E %3Cpath d='M6.2 17.4l.8.8M5 18.6l.8.8' stroke='%23000' stroke-width='.9' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cpath d='M21 2.6C19.6 6.9 15.6 11.4 10.1 16.1l-1.9-1.9C12.9 8.7 17.2 4.8 21 2.6z' fill='%23fff'/%3E %3Cellipse cx='8.2' cy='15.8' rx='3.4' ry='1.35' transform='rotate(45 8.2 15.8)' fill='%23fff'/%3E %3Cpath d='M7.1 16.9l-3.6 3.6' stroke='%238a8a8a' stroke-width='3' stroke-linecap='round'/%3E %3Cpath d='M6.2 17.4l.8.8M5 18.6l.8.8' stroke='%23000' stroke-width='.9' stroke-linecap='round'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-lutador{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Crect x='5' y='5.4' width='3.4' height='7.2' rx='1.7' fill='%23fff'/%3E%3Crect x='8.7' y='4.4' width='3.4' height='8.2' rx='1.7' fill='%23fff'/%3E %3Crect x='12.4' y='4.8' width='3.4' height='7.8' rx='1.7' fill='%23fff'/%3E%3Crect x='16.1' y='6' width='3.2' height='6.6' rx='1.6' fill='%23fff'/%3E %3Crect x='5' y='9.6' width='14.3' height='8.2' rx='3.4' fill='%23fff'/%3E %3Crect x='3.6' y='11.2' width='11.6' height='5.4' rx='2.7' fill='%23000'/%3E%3Crect x='4.6' y='12.1' width='9.8' height='3.6' rx='1.8' fill='%23fff'/%3E %3Crect x='7.4' y='18.6' width='9.4' height='3' rx='1' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Crect x='5' y='5.4' width='3.4' height='7.2' rx='1.7' fill='%23fff'/%3E%3Crect x='8.7' y='4.4' width='3.4' height='8.2' rx='1.7' fill='%23fff'/%3E %3Crect x='12.4' y='4.8' width='3.4' height='7.8' rx='1.7' fill='%23fff'/%3E%3Crect x='16.1' y='6' width='3.2' height='6.6' rx='1.6' fill='%23fff'/%3E %3Crect x='5' y='9.6' width='14.3' height='8.2' rx='3.4' fill='%23fff'/%3E %3Crect x='3.6' y='11.2' width='11.6' height='5.4' rx='2.7' fill='%23000'/%3E%3Crect x='4.6' y='12.1' width='9.8' height='3.6' rx='1.8' fill='%23fff'/%3E %3Crect x='7.4' y='18.6' width='9.4' height='3' rx='1' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol.st-solfista{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cellipse cx='6.9' cy='17.6' rx='2.9' ry='2.2' transform='rotate(-20 6.9 17.6)' fill='%23fff'/%3E %3Cellipse cx='16.6' cy='15.4' rx='2.9' ry='2.2' transform='rotate(-20 16.6 15.4)' fill='%23fff'/%3E %3Cpath d='M9.4 17V5.6M19.1 14.8V3.4' stroke='%23fff' stroke-width='1.9' stroke-linecap='round'/%3E %3Cpath d='M8.45 5.2L20.05 2.6v3.2L8.45 8.4z' fill='%23fff'/%3E%3Cpath d='M8.45 9.6l11.6-2.6v2.3L8.45 11.9z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23000'/%3E%3Cellipse cx='6.9' cy='17.6' rx='2.9' ry='2.2' transform='rotate(-20 6.9 17.6)' fill='%23fff'/%3E %3Cellipse cx='16.6' cy='15.4' rx='2.9' ry='2.2' transform='rotate(-20 16.6 15.4)' fill='%23fff'/%3E %3Cpath d='M9.4 17V5.6M19.1 14.8V3.4' stroke='%23fff' stroke-width='1.9' stroke-linecap='round'/%3E %3Cpath d='M8.45 5.2L20.05 2.6v3.2L8.45 8.4z' fill='%23fff'/%3E%3Cpath d='M8.45 9.6l11.6-2.6v2.3L8.45 11.9z' fill='%238a8a8a'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23m)'/%3E%3C/svg%3E")}
+.style-symbol{display:inline-block;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;background:currentColor}
+
+/* ---------- Livro de Estilos: peças próprias (o resto vem do Livro de Funções) ---------- */
+#bookPanel-styles.r21-library-layout{display:block!important;padding:0!important;gap:0!important;grid-template-columns:none!important}
+#styleBook .fb-turn-label{font:600 14px var(--sans)}
+#styleBook .fb-card-text{font-size:calc(var(--book-read-size,14px) + 2px)}
+#styleBook .fb-card-text p,#styleBook .fb-card-text li{font-size:inherit}
+#styleBook .fb-card-text h4{margin:.9em 0 .3em;font:700 1em var(--sc);color:var(--acc-ink)}
+#styleBook .fb-card-text .r21-bullet{position:relative;padding-left:1.1em}
+#styleBook .fb-card-text .r21-bullet::before{content:"";position:absolute;left:.2em;top:.62em;width:.38em;height:.38em;border-radius:50%;background:var(--acc)}
+#styleBook .fb-card-text table{width:100%;border-collapse:collapse;margin:.6em 0;font:14px var(--sans)}
+#styleBook .fb-card-text th,#styleBook .fb-card-text td{padding:5px 8px;border-bottom:1px solid var(--rule-soft);text-align:left}
+#styleBook .fb-card-text th{font-weight:700;color:var(--acc-ink);background:var(--acc-soft)}
+#styleBook .fb-card-text .r21-source,#styleBook .fb-card-text small.r21-source{display:block;margin-top:.6em;font:italic 13px var(--serif);color:var(--muted)}
+#styleBook .fb-card-text strong{color:var(--ink)}
+#styleBook .fb-card-text .r21-link{display:none}
+#styleBook .sb-lvbar{display:block;width:120px;height:5px;border-radius:3px;background:var(--rule-soft);overflow:hidden}
+#styleBook .sb-lvbar i{display:block;height:100%;background:var(--fn-color)}
+#styleBook .sb-howto{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px}
+#styleBook .sb-howto li{font:16px/1.55 var(--serif);color:var(--ink-2)}
+#styleBook .sb-howto li::marker{color:var(--acc)}
+#styleBook .sb-howto b{color:var(--ink)}
+#styleBook .sb-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:22px;border-radius:12px;overflow:hidden;background:var(--rule-soft);border:1px solid var(--rule-soft)}
+#styleBook .sb-stats>div{padding:10px 12px;background:var(--paper-3)}
+#styleBook .sb-stats small{display:block;font:600 12.5px var(--sans);color:var(--muted)}
+#styleBook .sb-stats b{display:block;margin-top:2px;font:700 16px/1.25 var(--serif);color:var(--ink)}
+#styleBook .sb-track{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;margin:6px 0 10px}
+#styleBook .sb-pip{height:24px;padding:0;border:0;border-radius:4px;background:var(--paper-3);box-shadow:inset 0 0 0 1px var(--rule);font:700 11px var(--sans);color:var(--muted);transition:transform .15s,background-color .2s}
+#styleBook .sb-pip:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px var(--acc)}
+#styleBook .sb-pip.on{background:var(--acc);color:#fff8ea;box-shadow:none}
+#styleBook .sb-pip.cur{box-shadow:0 0 0 3px var(--acc-soft)}
+#styleBook .sb-choices{list-style:none;margin:6px 0 12px;padding:0;display:flex;flex-direction:column;gap:4px}
+#styleBook .sb-choices li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--rule-soft);font:15px var(--sans);color:var(--ink-2)}
+#styleBook .sb-choices b{font:700 15.5px var(--serif);color:var(--ink);text-align:right}
+#styleBook .sb-choices em{font-style:normal;color:#a4671c}
+#styleBook .sb-dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0}
+#styleBook .sb-dl dt{font:600 14px var(--sans);color:var(--muted)}
+#styleBook .sb-dl dd{margin:0;font:16px/1.45 var(--serif);color:var(--ink)}
+#styleBook .sb-details{margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:8px}
+#styleBook .sb-details summary{cursor:pointer;font:700 15px var(--sans);color:var(--acc-ink);list-style:none;display:flex;align-items:center;gap:8px}
+#styleBook .sb-details summary::-webkit-details-marker{display:none}
+#styleBook .sb-details summary::before{content:"+";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--acc-soft);font:700 14px/1 var(--sans)}
+#styleBook .sb-details[open] summary::before{content:"−"}
+#styleBook .sb-details>.fb-card-text,#styleBook .sb-chapter-body{margin-top:10px}
+#styleBook .sb-chapter{margin-top:22px}
+#styleBook .sb-chapter-body .r21-reference{margin:6px 0;border:1px solid var(--rule-soft);border-radius:10px;background:var(--paper-3);padding:8px 12px}
+#styleBook .sb-chapter-body .r21-reference summary{cursor:pointer;font:600 14px var(--sans);color:var(--ink-2);display:flex;justify-content:space-between}
+#styleBook .sb-chapter-body .r21-rule-text{margin-top:8px;font:15px/1.6 var(--serif);color:var(--ink)}
+#styleBook .sb-chapter-body .r21-rule-text h4{font:700 15px var(--sc);color:var(--acc-ink);margin:.8em 0 .2em}
+#styleBook .sb-count{font:700 12px var(--sans);padding:1px 8px;border-radius:99px;background:var(--acc);color:#fff8ea}
+#styleBook .sb-count:empty{display:none}
+#styleBook .sb-plan-list{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:6px}
+#styleBook .sb-plan-list li{display:flex;align-items:center;gap:6px;border-radius:10px;background:var(--paper-3);border:1px solid var(--rule-soft)}
+#styleBook .sb-plan-list li.is-ready{border-color:color-mix(in srgb,var(--acc) 50%,var(--rule-soft))}
+#styleBook .sb-plan-go{flex:1;display:grid;grid-template-columns:30px 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;padding:8px 10px;border:0;background:none;text-align:left}
+#styleBook .sb-plan-lv{grid-row:1/3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--acc-soft);font:800 14px var(--serif);color:var(--acc-ink)}
+#styleBook .sb-plan-go b{font:700 15.5px var(--serif);color:var(--ink)}
+#styleBook .sb-plan-go small{font:500 13px var(--sans);color:var(--muted)}
+#styleBook .sb-plan-list li.is-ready small{color:var(--acc-ink);font-weight:700}
+#styleBook .sb-plan-list li.is-known{opacity:.7}
+#styleBook .sb-x{width:32px;height:32px;margin-right:6px;border:0;border-radius:50%;background:none;font:400 20px var(--sans);color:var(--muted)}
+#styleBook .sb-x:hover{background:color-mix(in srgb,#9b2f22 10%,transparent);color:#9b2f22}
+#styleBook .sb-diary-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+#styleBook .sb-diary-head .fb-h3{margin:0}
+#styleBook .sb-level-select{width:auto;padding:6px 10px;font:600 14px var(--sans)}
+#styleBook .sb-forecast{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px;font:500 13.5px var(--sans);color:var(--ink-2)}
+#styleBook .sb-forecast b{font:800 15px var(--serif);color:var(--ink)}
+#styleBook .sb-total{font:600 14px var(--sans);color:var(--muted)}
+#styleBook .sb-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:-6px 0 18px}
+#styleBook .sb-seg{display:inline-flex;padding:3px;border-radius:99px;background:var(--paper-2);border:1px solid var(--rule-soft)}
+#styleBook .sb-seg button{border:0;background:none;padding:6px 14px;border-radius:99px;font:600 14px var(--sans);color:var(--ink-2);transition:background-color .2s,color .2s}
+#styleBook .sb-seg button[aria-pressed="true"]{background:var(--acc);color:#fff8ea}
+#styleBook .sb-branch{display:flex;align-items:center;gap:8px;font:600 14px var(--sans);color:var(--ink-2)}
+#styleBook .sb-branch select{width:auto;max-width:240px;padding:6px 10px;font:500 14px var(--sans)}
+#styleBook .sb-guide{margin-bottom:18px}
+#styleBook .sb-guide .r21-technique-guide{border:1.5px dashed var(--rule);border-radius:12px;padding:10px 14px;background:var(--paper-3)}
+#styleBook .sb-guide summary{cursor:pointer;list-style:none;font:700 15px var(--sans);color:var(--acc-ink);display:flex;justify-content:space-between}
+#styleBook .sb-guide summary::-webkit-details-marker{display:none}
+#styleBook .sb-guide .r21-rule-text{margin-top:10px;font:15.5px/1.6 var(--serif);color:var(--ink)}
+#styleBook .sb-guide .r21-link{display:none}
+#styleBook .fb-tier.is-current .fb-tier-num{box-shadow:0 0 0 5px var(--acc-soft)}
+#styleBook .sb-now{background:var(--acc);color:#fff8ea}
+#styleBook .fb-card h4 small{display:block;font:700 12px var(--sans);color:var(--muted);letter-spacing:0}
+#styleBook .sb-meta-path{background:var(--acc-soft);color:var(--acc-ink)}
+#styleBook .sb-tech{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 10px;padding:8px 12px;border-radius:8px;background:var(--paper-2)}
+#styleBook .sb-tech div{display:flex;gap:6px;align-items:baseline}
+#styleBook .sb-tech dt{font:600 12.5px var(--sans);color:var(--muted)}
+#styleBook .sb-tech dd{margin:0;font:600 14.5px var(--serif);color:var(--ink)}
+#styleBook .sb-tech .sb-dmg dd{color:#9b2f22}
+#styleBook .fb-card.is-planned:not(.is-has){border-color:color-mix(in srgb,var(--acc) 40%,var(--rule-soft));border-style:dashed}
+#styleBook .fb-btn.is-planned{border-color:var(--acc);color:var(--acc-ink);background:var(--acc-soft)}
+#styleBook .fb-btn:disabled{opacity:.45;cursor:not-allowed}
+#styleBook .sb-spacer{margin-right:auto}
+#styleBook .sb-fmt{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:50%;background:none;color:var(--muted)}
+#styleBook .sb-fmt:hover{background:var(--acc-soft);color:var(--acc-ink)}
+#styleBook .sb-fmt .ui-icon{width:16px;height:16px;background:currentColor}
+#styleBook .sb-improve{padding:12px 16px;background:color-mix(in srgb,var(--paper-3) 60%,var(--paper))}
+#styleBook .sb-improve h4{font-size:17px}
+#styleBook .sb-choice{padding:14px;border-radius:14px;border:1.5px solid var(--rule-soft);background:color-mix(in srgb,var(--acc) 4%,var(--paper))}
+#styleBook .sb-choice>header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:10px}
+#styleBook .sb-choice>header h4{margin:0;font:800 18px var(--serif);color:var(--ink)}
+#styleBook .sb-choice>header span{font:500 14px var(--sans);color:var(--ink-2)}
+#styleBook .sb-choice>header b{color:var(--acc-ink)}
+#styleBook .sb-opts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+#styleBook .sb-opt{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;border:1.5px solid var(--rule);background:var(--paper-3);font:600 14px var(--sans);color:var(--ink-2);transition:background-color .18s,border-color .18s,color .18s}
+#styleBook .sb-opt:hover{border-color:var(--acc)}
+#styleBook .sb-opt.is-open{background:var(--ink);border-color:var(--ink);color:var(--paper-3)}
+#styleBook .sb-opt.is-chosen{border-color:var(--acc);color:var(--acc-ink)}
+#styleBook .sb-opt.is-chosen.is-open{background:var(--acc);border-color:var(--acc);color:#fff8ea}
+#styleBook .sb-opt .ui-icon{width:13px;height:13px;background:currentColor}
+#styleBook .sb-choice .fb-card{animation:sb-swap .28s cubic-bezier(.2,.8,.2,1)}
+
+#styleBook .fb-card-text .r21-table-scroll{overflow-x:auto;margin:.7em 0;border-radius:10px;border:1px solid var(--rule-soft);background:var(--paper-3)!important;box-shadow:none!important}
+#styleBook .fb-card-text table.r21-data-table{margin:0;background:transparent!important;color:var(--ink)!important;font:14px/1.4 var(--sans)}
+#styleBook .fb-card-text table.r21-data-table caption{caption-side:top;text-align:left;padding:8px 10px 4px;font:700 14px var(--sc);color:var(--acc-ink)!important;background:transparent!important}
+#styleBook .fb-card-text table.r21-data-table :is(th,td){background:transparent!important;color:var(--ink)!important;border:0!important;border-bottom:1px solid var(--rule-soft)!important;padding:6px 10px!important;font-size:14px!important}
+#styleBook .fb-card-text table.r21-data-table thead th{color:var(--acc-ink)!important;background:var(--acc-soft)!important;font-weight:700}
+#styleBook .fb-card-text table.r21-data-table tbody th{font-weight:700}
+#styleBook .fb-card.sb-compact .fb-card-text{display:none}
+#styleBook .fb-card.sb-compact.is-open-text .fb-card-text{display:block}
+#styleBook .fb-card.sb-compact{padding:12px 16px}
+#styleBook .fb-card.sb-compact .fb-card-meta{margin-bottom:0}
+#styleBook .fb-card.sb-compact .sb-tech{margin:8px 0 0}
+#styleBook .fb-card.sb-compact>footer{margin-top:10px}
+#styleBook .fb-card.is-clamped .fb-card-text{max-height:6.6em}
+@keyframes sb-swap{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (max-width:1060px){
+  #styleBook .sb-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #styleBook .sb-track{gap:2px}
+  #styleBook .sb-pip{height:20px;font-size:0}
+  #styleBook .sb-tools{gap:8px}
+  #styleBook .sb-seg button{padding:6px 10px}
+}
 
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -4594,7 +4746,26 @@ document.addEventListener('change',function(e){
       <section class="page r21-page" id="page-jobs" aria-label="Livro e evolução do personagem">
   <header class="r21-masthead"><div class="r21-bookmark" aria-hidden="true"><span class="ui-icon i-scroll"></span></div><div><span class="r21-kicker">OP RPG · Biblioteca do personagem</span><h2>Livro & evolução</h2><p>Consulte seu estilo, escolha seus caminhos e prepare os próximos níveis.</p></div><div id="bookReadingTools"></div></header>
   <div class="r21-tabs" role="tablist" aria-label="Áreas do livro"><button type="button" role="tab" data-book-tab="styles" id="bookTab-styles" aria-controls="bookPanel-styles" aria-selected="true">Classes & arquétipos</button><button type="button" role="tab" data-book-tab="professions" id="bookTab-professions" aria-controls="bookPanel-professions" aria-selected="false" tabindex="-1">Profissões</button><button type="button" role="tab" data-book-tab="crew" id="bookTab-crew" aria-controls="bookPanel-crew" aria-selected="false" tabindex="-1">Funções da tripulação</button></div>
-  <div id="bookPanel-styles" role="tabpanel" aria-labelledby="bookTab-styles" class="r21-library-layout"><div id="pdStyleShelf"></div><div class="r21-class-main" id="bookClassDetail"></div><dialog id="pdStyleCatalog" aria-labelledby="pdStyleCatalogTitle"><header class="pd-dialog-head"><div><span class="pd-kicker">Biblioteca do personagem</span><h3 id="pdStyleCatalogTitle">Encontre seu estilo</h3></div><button type="button" class="pd-btn" data-pd-action="close-styles" aria-label="Fechar catálogo de estilos">×</button></header><div class="pd-dialog-body"><div class="pd-filter-row"><label class="pd-field" for="bookClassSearch"><span>Buscar estilo</span><input class="input" id="bookClassSearch" type="search" placeholder="Nome ou atributo primário…" autocomplete="off"></label><label class="pd-field" for="pdStyleCatalogFilter"><span>Coleção</span><select class="input" id="pdStyleCatalogFilter"><option value="all">Todos os 17 estilos</option><option value="mine">Meus estilos</option><option value="player">Livro do Jogador</option><option value="styles">Estilos exclusivos</option></select></label></div><div id="bookClassIndex"></div><div id="pdStyleCatalogPager"></div></div></dialog></div>
+  <div id="bookPanel-styles" role="tabpanel" aria-labelledby="bookTab-styles" class="r21-library-layout"><div class="fb sb" id="styleBook">
+          <nav class="fb-ribbons" id="sbRibbons" aria-label="Marcadores do livro de estilos"></nav>
+          <div class="fb-cover">
+            <div class="fb-spread" id="sbSpread">
+              <section class="fb-page fb-left" id="sbLeft" aria-live="polite">
+                <div class="fb-body"><div class="fb-view" data-sb-view="toc" id="sbTocLeft"></div><div class="fb-view" data-sb-view="style" id="sbFnLeft" hidden></div></div>
+                <footer class="fb-folio"><button type="button" class="fb-turn fb-turn-prev" data-sb-turn="-1" aria-label="Página anterior"><span aria-hidden="true">‹</span><span class="fb-turn-label sb-prev-label">Anterior</span></button><span class="fb-folio-num" id="sbFolioL">i</span></footer>
+              </section>
+              <section class="fb-page fb-right" id="sbRight">
+                <div class="fb-body"><div class="fb-view" data-sb-view="toc">
+                  <h2 class="fb-h1">Sumário</h2>
+                  <div class="fb-search"><span class="ui-icon i-eye" aria-hidden="true"></span><input class="fb-input" id="sbSearch" type="search" placeholder="Buscar estilo, habilidade ou técnica" aria-label="Buscar estilo, habilidade ou técnica" autocomplete="off"></div>
+                  <div class="fb-toc" id="sbToc"></div>
+                </div><div class="fb-view" data-sb-view="style" id="sbFnRight" hidden></div></div>
+                <footer class="fb-folio"><button type="button" class="fb-turn fb-turn-prev fb-narrow-only" data-sb-turn="-1" aria-label="Página anterior"><span aria-hidden="true">‹</span><span class="fb-turn-label sb-prev-label">Anterior</span></button><span class="fb-folio-num" id="sbFolioR">ii</span><button type="button" class="fb-turn fb-turn-next" data-sb-turn="1" aria-label="Próxima página"><span class="fb-turn-label sb-next-label">Próxima</span><span aria-hidden="true">›</span></button></footer>
+              </section>
+            </div>
+          </div>
+          <p class="fb-hint">Vire as páginas pelos cantos, pelos marcadores, com as setas do teclado ou deslizando o dedo. Os números de página são os do livro original.</p>
+        </div><dialog id="pdStyleCatalog" aria-labelledby="pdStyleCatalogTitle"><header class="pd-dialog-head"><div><span class="pd-kicker">Biblioteca do personagem</span><h3 id="pdStyleCatalogTitle">Encontre seu estilo</h3></div><button type="button" class="pd-btn" data-pd-action="close-styles" aria-label="Fechar catálogo de estilos">×</button></header><div class="pd-dialog-body"><div class="pd-filter-row"><label class="pd-field" for="bookClassSearch"><span>Buscar estilo</span><input class="input" id="bookClassSearch" type="search" placeholder="Nome ou atributo primário…" autocomplete="off"></label><label class="pd-field" for="pdStyleCatalogFilter"><span>Coleção</span><select class="input" id="pdStyleCatalogFilter"><option value="all">Todos os 17 estilos</option><option value="mine">Meus estilos</option><option value="player">Livro do Jogador</option><option value="styles">Estilos exclusivos</option></select></label></div><div id="bookClassIndex"></div><div id="pdStyleCatalogPager"></div></div></dialog></div>
   <div id="bookPanel-professions" role="tabpanel" aria-labelledby="bookTab-professions" class="r21-section" hidden><div class="r21-section-title"><div><span class="r21-kicker">Ofícios do livro</span><h3>Profissões</h3><p>Escolha um ofício para ver suas habilidades, ferramentas e ganhos por graduação.</p></div><label class="r21-search-label">Buscar profissão<input class="input" id="bookProfessionSearch" type="search" placeholder="Nome ou habilidade…"></label></div><div class="r21-profession-layout"><aside id="bookProfessionList" class="r21-profession-index" aria-label="Profissões do livro"></aside><div id="bookProfessionDetail"></div></div></div>
   <div id="bookPanel-crew" role="tabpanel" aria-labelledby="bookTab-crew" class="r21-section" hidden><div id="bookCrewContent"></div></div>
   <dialog id="bookFormatDialog" class="r21-dialog" aria-labelledby="bookFormatTitle"><header class="r21-dialog-head"><div><span class="r21-kicker">Texto & apresentação</span><h3 id="bookFormatTitle">Personalizar texto</h3></div><button type="button" class="r21-icon-button" data-book-action="close-format" aria-label="Fechar editor">×</button></header><div class="r21-dialog-body"><p>Organize o texto como preferir. A edição fica salva neste personagem; o texto original continua disponível para restaurar.</p><textarea id="bookFormatText" aria-label="Texto da habilidade"></textarea></div><footer class="r21-dialog-footer"><button type="button" class="r21-btn" data-book-action="reset-format">Restaurar original</button><div><button type="button" class="r21-btn" data-book-action="close-format">Cancelar</button> <button type="button" class="r21-btn primary" data-book-action="save-format">Salvar formatação</button></div></footer></dialog>
@@ -7352,6 +7523,191 @@ function fbWire(){const ui=fbUi();if(ui.wired)return;const book=document.getElem
   sp?.addEventListener('pointercancel',()=>sw=null);
 }
 fbWire();if(document.getElementById('fbSpread'))renderJobs();
+
+/* ==========================================================================
+   Livro de Estilos (OP RPG 2.1) — mesmo livro das Funções: sumário, uma
+   página dupla por Estilo de Combate, marcadores e virada de página.
+   Usa o estado e as ações do Livro 2.1 (browsing, planned, choices, notes,
+   data-book-action="setup|plan|add-entry|format-entry|apply-plan").
+   ========================================================================== */
+function sbUi(){const c=current(),s=sbUi.s||(sbUi.s={});if(s.cid!==c.id)Object.assign(s,{cid:c.id,spread:null,query:'',type:'all',branch:null,open:{},opt:{},focus:'',turning:null});return s}
+function sbClasses(){return BOOK21.classes}
+function sbSpread(c){const ui=sbUi(),list=sbClasses();if(ui.spread==null){const b=ensureBookState(c),i=list.findIndex(x=>x.name===c.style);ui.spread=i>=0?i+1:0;if(i>=0)b.browsing=list[i].id}return clamp(num(ui.spread),0,list.length)}
+function sbRequest(){if(sbRequest.q)return;sbRequest.q=true;queueMicrotask(()=>{sbRequest.q=false;sbRender()})}
+function sbChosen(p,group){const v=p.choices[group];return Array.isArray(v)?v.length>0:!!v}
+function sbIsChosen(p,group,value){const v=p.choices[group];return Array.isArray(v)?v.includes(value):v===value}
+function sbSource(cls){return `${cls.book==='styles'?'Estilos Exclusivos 2.1':'Livro do Jogador 2.1'} · p. ${cls.page}${cls.endPage?'–'+cls.endPage:''}`}
+function sbClean(t){return String(t||'').replace(/\.$/,'').trim()}
+
+/* ---------- Sumário ---------- */
+function sbTocRow(c,cls,i){const lv=bookStyleLevel(cls,c);return `<button type="button" class="fb-toc-row${lv?' is-owned':''}" data-sb-go="${i+1}" style="--fn-color:${cls.color}"><span class="fb-medal"><span class="style-symbol st-${cls.id}"></span></span><span class="fb-toc-name">${esc(cls.name)}<small>${esc(sbClean(cls.primary))} · d${cls.hitDie}</small></span><span class="fb-leader" aria-hidden="true"></span><span class="fb-toc-status">${lv?`Nível ${lv}`:''}</span><span class="fb-toc-page">${cls.page}</span></button>`}
+function sbRenderToc(c){const ui=sbUi(),q=fbNorm(ui.query.trim()),list=sbClasses(),box=document.getElementById('sbToc');if(!box)return;
+  if(!q){box.innerHTML=[['player','Livro do Jogador'],['styles','Estilos exclusivos']].map(([k,l])=>{const items=list.map((x,i)=>[x,i]).filter(([x])=>x.book===k);return items.length?`<section class="fb-toc-group"><h3>${l}</h3>${items.map(([x,i])=>sbTocRow(c,x,i)).join('')}</section>`:''}).join('');return}
+  const hits=list.map((x,i)=>[x,i]).filter(([x])=>fbNorm(x.name+' '+x.primary).includes(q)),ab=[];
+  list.forEach((x,i)=>[...x.features,...x.techniques].forEach(e=>{if(fbNorm(e.name+' '+e.description).includes(q))ab.push({x,i,e})}));
+  const html=(hits.length?`<section class="fb-toc-group"><h3>Estilos</h3>${hits.map(([x,i])=>sbTocRow(c,x,i)).join('')}</section>`:'')+(ab.length?`<section class="fb-toc-group"><h3>Habilidades e técnicas <small>${ab.length}</small></h3>${ab.slice(0,40).map(h=>`<button type="button" class="fb-toc-row fb-toc-ability" data-sb-go="${h.i+1}" data-sb-focus="${esc(h.e.id)}" style="--fn-color:${h.x.color}"><span class="fb-medal"><span class="style-symbol st-${h.x.id}"></span></span><span class="fb-toc-name">${esc(bookTitle(h.e.name))}<small>${esc(h.x.name)}, nível ${num(h.e.level)}${h.e.kind==='technique'?' · técnica':''}</small></span><span class="fb-leader" aria-hidden="true"></span><span class="fb-toc-page">${num(h.e.page)||h.x.page}</span></button>`).join('')}</section>`:'');
+  box.innerHTML=html||`<p class="fb-empty">Nada encontrado para “${esc(ui.query.trim())}”.</p>`}
+function sbRenderTocLeft(c){const owned=sbClasses().map((x,i)=>[x,i,bookStyleLevel(x,c)]).filter(x=>x[2]>0);
+  return `<p class="fb-kicker">One Piece · OP RPG 2.1</p><h1 class="fb-title"><span class="style-symbol st-espadachim" aria-hidden="true"></span>Livro de Estilos</h1>
+  <p class="fb-lede">Cada Estilo de Combate é um caminho de treino com características, técnicas e escolhas do 1º ao 20º nível. Abra um pelo sumário para ler, planejar a evolução e levar os ganhos para a ficha.</p>
+  <div class="fb-ornament" aria-hidden="true"></div>
+  <h2 class="fb-h2">Seus estilos <span class="fb-h2-aside">${owned.length?`Nível do personagem ${num(c.level,1)}`:'Nenhum aplicado'}</span></h2>
+  <div class="fb-owned">${owned.length?owned.map(([x,i,lv])=>`<button type="button" class="fb-own" data-sb-go="${i+1}" style="--fn-color:${x.color}"><span class="fb-medal fb-medal-lg"><span class="style-symbol st-${x.id}"></span></span><span class="fb-own-body"><b>${esc(x.name)}</b><span class="sb-lvbar" aria-hidden="true"><i style="width:${Math.round(lv/20*100)}%"></i></span><small>${x.name===c.style?'Estilo principal':'Multiestilo'} · nível ${lv} de 20</small></span></button>`).join(''):'<p class="fb-empty">Abra um estilo no sumário e toque em “Usar este estilo” para aplicá-lo à ficha.</p>'}</div>
+  <div class="fb-ornament" aria-hidden="true"></div>
+  <h2 class="fb-h2">Como usar</h2>
+  <ul class="sb-howto"><li><b>Planejar</b> guarda um ganho no seu plano. Se o nível já chegou, ele vai direto para a ficha.</li><li><b>Adicionar à ficha</b> leva características para o Dossiê e técnicas para Técnicas e Combate.</li><li>Ganhos com ramos (caminhos, empunhaduras, auras) mostram as opções lado a lado: toque em uma para ler.</li></ul>`}
+
+/* ---------- Página da esquerda: o Estilo ---------- */
+function sbRenderLeft(c,cls){
+  const p=bookStyleProgress(cls,c),lv=bookStyleLevel(cls,c),main=c.style===cls.name,all=[...cls.features,...cls.techniques];
+  const pips=Array.from({length:20},(_,k)=>`<button type="button" class="sb-pip${k<lv?' on':''}${k+1===lv?' cur':''}" data-sb-jump="${k+1}" title="Ir ao nível ${k+1}" aria-label="Ir ao nível ${k+1}">${(k+1)%5===0||k===0?k+1:''}</button>`).join('');
+  const choices=cls.choices.map(ch=>{const v=p.choices[ch.name],vals=(Array.isArray(v)?v:v?[v]:[]).map(x=>bookTitle(ch.options.find(o=>o.value===x)?.label||x));return `<li><span>${esc(bookTitle(ch.name))}</span><b>${vals.length?esc(vals.join(', ')):lv>=ch.level?'<em>escolha pendente</em>':`no nível ${ch.level}`}</b></li>`}).join('');
+  const planned=Object.entries(p.planned).map(([id,l])=>({e:all.find(x=>x.id===id),l:num(l)})).filter(x=>x.e).sort((a,b)=>a.l-b.l),ready=planned.filter(x=>x.l<=lv&&!bookEntryKnown(x.e,c)).length;
+  const target=clamp(num(p.target,Math.min(20,lv+1)),1,20),note=p.notes[target]||(p.noteHtml?.[target]?bookHtmlPlain(p.noteHtml[target]):''),special=bookRestrictedPoints(cls,target,c);
+  const progress=lv
+    ?`<div class="sb-track" role="group" aria-label="Nível no estilo: toque para ir ao nível na progressão">${pips}</div><p class="fb-progress-line">Nível ${lv} · ${main?'estilo principal':'multiestilo'}</p>${choices?`<ul class="sb-choices">${choices}</ul>`:''}<button type="button" class="fb-btn" data-book-action="setup" data-id="${cls.id}">Revisar escolhas do estilo</button>`
+    :`<button type="button" class="fb-cta" data-book-action="setup" data-id="${cls.id}"><span class="style-symbol st-${cls.id}" aria-hidden="true"></span>Usar este estilo</button><p class="fb-progress-line">Ao aplicar você escolhe perícias, arma favorita e habilidade inata, ou define como multiestilo.</p>`;
+  return `<header class="fb-fn-head"><span class="fb-medal fb-medal-xl"><span class="style-symbol st-${cls.id}"></span></span><div><p class="fb-kicker">${esc(sbSource(cls))}</p><h1 class="fb-fn-title">${esc(cls.name)}</h1></div></header>
+  <div class="sb-stats"><div><small>Dado de vida</small><b>d${lv?bookHitDie(cls,c):cls.hitDie}</b></div><div><small>Atributo primário</small><b>${esc(sbClean(cls.primary))}</b></div><div><small>Salvaguardas</small><b>${esc(sbClean(cls.saves))}</b></div><div><small>Perícias</small><b>${cls.skillCount} ${cls.skillOptions.length?'da lista':'à escolha'}</b></div></div>
+  <section class="fb-progress${lv?' is-owned':''}"><h2 class="fb-h3">Seu progresso</h2>${progress}</section>
+  <section class="fb-aside"><h2 class="fb-h3"><span class="ui-icon i-anchor" aria-hidden="true"></span>Ponto de partida</h2><dl class="sb-dl"><dt>Armas</dt><dd>${esc(sbClean(cls.weapons))}</dd><dt>Arma favorita</dt><dd>${esc(sbClean(cls.favorite))}</dd><dt>Habilidade inata</dt><dd>${esc(sbClean(cls.innate))}</dd><dt>Perícias</dt><dd>${esc(sbClean(cls.skillsText))}</dd></dl><details class="sb-details"><summary>Equipamento inicial</summary><div class="fb-card-text">${bookText(cls.equipment)}</div></details></section>
+  <section class="fb-aside sb-plan"><h2 class="fb-h3"><span class="ui-icon i-flag" aria-hidden="true"></span>Plano de evolução <span class="sb-count">${planned.length||''}</span></h2>${planned.length?`<ul class="sb-plan-list">${planned.map(({e,l})=>`<li class="${bookEntryKnown(e,c)?'is-known':l<=lv?'is-ready':''}"><button type="button" class="sb-plan-go" data-sb-focus-here="${esc(e.id)}"><span class="sb-plan-lv">${l}</span><b>${esc(bookTitle(e.name))}</b><small>${bookEntryKnown(e,c)?'Na ficha':l<=lv?'Pronto para a ficha':'Futuro'}</small></button><button type="button" class="sb-x" data-book-action="plan" data-id="${esc(e.id)}" data-level="${l}" aria-label="Tirar ${esc(bookTitle(e.name))} do plano">×</button></li>`).join('')}</ul>${ready?`<button type="button" class="fb-btn is-on" data-book-action="apply-plan">Levar ${ready} ${ready===1?'ganho pronto':'ganhos prontos'} para a ficha</button>`:''}`:'<p class="fb-empty">Use “Planejar” nos ganhos da página ao lado para montar sua rota.</p>'}</section>
+  <section class="fb-diary"><div class="sb-diary-head"><label class="fb-h3" for="bookPlanNotes">Caderno do nível</label><select class="fb-input sb-level-select" id="bookTargetLevel" aria-label="Nível do caderno">${Array.from({length:20},(_,i)=>`<option value="${i+1}" ${target===i+1?'selected':''}>Nível ${i+1}${i+1===lv?' (atual)':''}</option>`).join('')}</select></div>
+  <div class="sb-forecast"><span>Proficiência <b>${signed(prof(target))}</b></span><span>PP base <b>${4*target}</b></span><span>PT gerais <b>${3*Math.min(5,Math.floor(target/2))}</b></span><span>${special?'PT do estilo':'AVA'} <b>${special||avaPoints(target)}</b></span></div>
+  <textarea class="fb-input fb-notes" id="bookPlanNotes" placeholder="Atributos, treinos e ideias para o nível ${target}…">${esc(note)}</textarea></section>
+  <details class="sb-details sb-chapter"><summary>Ler o capítulo original · ${esc(cls.name)}</summary><div class="sb-chapter-body">${bookReferencePages(cls.reference.map(x=>({...x,book:cls.book})))}</div></details>`}
+
+/* ---------- Página da direita: progressão ---------- */
+function sbMatches(e,L,p,branch){if(!branch)return true;if(branch==='__mine'){if(e.choiceGroup&&!sbChosen(p,e.choiceGroup))return true;if(e.requiredChoiceGroup&&!sbChosen(p,e.requiredChoiceGroup))return true;return bookChoicesMatch(e,p,L)}return !e.choiceValue&&!e.requiredChoiceValue||e.choiceValue===branch||e.requiredChoiceValue===branch}
+function sbCard(c,cls,p,lv,e,L,improvement){
+  const ui=sbUi(),known=bookEntryKnown(e,c),planned=!!p.planned[e.id],eligible=lv>=L,future=L>lv,grp=e.choiceGroup||e.requiredChoiceGroup,other=lv>0&&grp&&sbChosen(p,grp)&&!bookChoicesMatch(e,p,L);
+  const state=known?'Na ficha':planned?'No plano':other?'Outro caminho':!lv?'':future?`Nível ${L}`:'Disponível';
+  const tech=e.kind==='technique',kind=tech?(e.template?'Modelo de técnica':num(e.grade)>0?`Técnica de ${e.grade}º grau`:'Técnica auxiliar'):improvement?'Aprimoramento':'Característica';
+  const chips=[`<span class="fb-meta"><span class="ui-icon ${tech?'i-spark':improvement?'i-training':'i-star'}" aria-hidden="true"></span>${kind}</span>`];
+  if(tech&&e.cost!==''&&e.cost!=null)chips.push(`<span class="fb-meta fb-meta-pp">${num(e.cost)} PP</span>`);
+  if(e.choiceGroup)chips.push(`<span class="fb-meta sb-meta-path">${esc(bookTitle(e.choiceGroup))}</span>`);else if(e.requiredChoiceValue)chips.push(`<span class="fb-meta sb-meta-path">Requer ${esc(bookTitle(e.requiredChoiceValue))}</span>`);
+  const data=tech?`<dl class="sb-tech">${e.requirement?`<div><dt>Uso</dt><dd>${esc(e.requirement)}</dd></div>`:''}${e.range?`<div><dt>Alcance</dt><dd>${esc(e.range)}</dd></div>`:''}${e.duration?`<div><dt>Duração</dt><dd>${esc(e.duration)}</dd></div>`:''}${e.damage?`<div class="sb-dmg"><dt>Dano</dt><dd>${esc(e.damage)}</dd></div>`:''}</dl>`:'';
+  const key=e.id+'|'+L,open=!!ui.open[key],compact=improvement||L>Math.max(lv,1)+2,long=compact||String(e.description||'').length>300;
+  let foot='';
+  if(long)foot+=`<button type="button" class="fb-more" data-sb-open="${esc(key)}" aria-expanded="${open}">${open?'Recolher':compact?'Ler regra':'Ler tudo'}</button>`;
+  else foot+='<span class="sb-spacer"></span>';
+  if(!improvement){foot+=`<button type="button" class="fb-btn fb-btn-ghost${planned?' is-planned':''}" data-book-action="plan" data-id="${esc(e.id)}" data-level="${L}" aria-pressed="${planned}"><span class="ui-icon i-flag" aria-hidden="true"></span>${planned?'No plano':'Planejar'}</button>`;
+    foot+=known?'<span class="fb-btn-done"><span class="ui-icon i-star" aria-hidden="true"></span>Na ficha</span>':`<button type="button" class="fb-btn" data-book-action="add-entry" data-id="${esc(e.id)}" ${eligible?'':'disabled'} title="${eligible?'':'Disponível no nível '+L+' deste estilo'}">${e.template?'Criar técnica':'Adicionar à ficha'}</button>`}
+  foot+=`<button type="button" class="sb-fmt" data-book-action="format-entry" data-id="${esc(e.id)}" title="Personalizar o texto desta regra" aria-label="Personalizar o texto de ${esc(bookTitle(e.name))}"><span class="ui-icon i-scroll" aria-hidden="true"></span></button>`;
+  return `<article class="fb-card${known?' is-has':''}${planned?' is-planned':''}${other?' is-other':''}${lv&&future?' is-locked':''}${long&&!open&&!compact?' is-clamped':''}${compact?' sb-compact':''}${compact&&open?' is-open-text':''}${improvement?' sb-improve':''}" data-sb-card="${esc(e.id)}"><header><h4>${improvement?'<small>Aprimora</small>':''}${esc(bookTitle(e.name))}</h4>${state?`<span class="fb-stamp">${state}</span>`:''}</header><div class="fb-card-meta">${chips.join('')}</div>${data}<div class="fb-card-text">${bookCustomized(e)}</div><footer>${foot}</footer></article>`}
+function sbChoiceBlock(c,cls,p,lv,group,items,L){
+  const ui=sbUi(),ch=cls.choices.find(x=>x.name===group),key=`${cls.id}|${group}|${L}`,chosenItem=items.find(x=>sbIsChosen(p,group,x.entry.choiceValue));
+  let show=items.find(x=>x.entry.id===ui.opt[key])||chosenItem||items[0];
+  const chips=items.map(x=>{const on=x===show,ch2=sbIsChosen(p,group,x.entry.choiceValue);return `<button type="button" class="sb-opt${on?' is-open':''}${ch2?' is-chosen':''}" data-sb-opt="${esc(key)}" data-id="${esc(x.entry.id)}" aria-pressed="${on}">${ch2?'<span class="ui-icon i-star" aria-hidden="true"></span>':''}${esc(bookTitle(x.entry.choiceValue||x.entry.name))}</button>`}).join('');
+  return `<div class="sb-choice"><header><h4>${esc(bookTitle(group))}</h4><span>${ch?.multiple?'Escolhas ao longo dos níveis':'Escolha um ramo'} · ${items.length} ${items.length===1?'opção':'opções'}${chosenItem?` · <b>${esc(bookTitle(chosenItem.entry.choiceValue))}</b>`:''}</span></header><div class="sb-opts" role="group" aria-label="Opções de ${esc(bookTitle(group))}">${chips}</div>${sbCard(c,cls,p,lv,show.entry,L,show.improvement)}</div>`}
+function sbRenderRight(c,cls){
+  const ui=sbUi(),p=bookStyleProgress(cls,c),lv=bookStyleLevel(cls,c),guideId=cls.techniqueGuide?.id;
+  if(ui.branch==null||ui.branchCls!==cls.id){ui.branchCls=cls.id;ui.branch=lv&&Object.values(p.choices).some(v=>Array.isArray(v)?v.length:!!v)?'__mine':''}
+  const opts=cls.choices.length?`<label class="sb-branch"><span>Caminhos</span><select class="fb-input" id="sbBranch"><option value="">Todos</option>${lv?`<option value="__mine" ${ui.branch==='__mine'?'selected':''}>Só os meus</option>`:''}${cls.choices.map(ch=>`<optgroup label="${esc(bookTitle(ch.name))}">${ch.options.map(o=>`<option value="${esc(o.value)}" ${ui.branch===o.value?'selected':''}>${esc(bookTitle(o.label))}</option>`).join('')}</optgroup>`).join('')}</select></label>`:'';
+  const tiers=[];let count=0;
+  for(let L=1;L<=20;L++){
+    const items=bookEntriesAt(cls,L).filter(({entry:e})=>e.id!==guideId&&(ui.type==='all'||ui.type==='technique'&&e.kind==='technique'||ui.type==='feature'&&e.kind!=='technique')&&sbMatches(e,L,p,ui.branch));
+    if(!items.length)continue;count+=items.length;
+    const plain=items.filter(x=>!x.entry.choiceGroup||x.improvement),groups=new Map();items.filter(x=>x.entry.choiceGroup&&!x.improvement).forEach(x=>{if(!groups.has(x.entry.choiceGroup))groups.set(x.entry.choiceGroup,[]);groups.get(x.entry.choiceGroup).push(x)});
+    const body=plain.sort((a,b)=>(a.improvement?1:0)-(b.improvement?1:0)||(a.entry.kind==='technique'?1:0)-(b.entry.kind==='technique'?1:0)).map(x=>sbCard(c,cls,p,lv,x.entry,L,x.improvement)).join('')+[...groups].map(([g,list])=>sbChoiceBlock(c,cls,p,lv,g,list,L)).join('');
+    tiers.push(`<section class="fb-tier${lv&&L<=lv?' is-reached':''}${lv&&L>lv?' is-locked':''}${L===lv?' is-current':''}" data-sb-tier="${L}"><div class="fb-tier-rail"><span class="fb-tier-num">${L}</span></div><div class="fb-tier-body"><header class="fb-tier-head"><h3>Nível ${L}</h3><span>${L===lv?'Seu nível atual':lv&&L<lv?'Já alcançado':''}${L===1?(L===lv||lv>L?' · ':'')+'Ganhos iniciais':''}</span>${L===lv?'<b class="fb-pending sb-now">Agora</b>':''}</header><div class="fb-cards">${body}</div></div></section>`)}
+  return `<header class="fb-tree-head"><h2 class="fb-h1">Progressão</h2><span class="sb-total">${count} ganhos</span></header>
+  <div class="sb-tools"><div class="sb-seg" role="group" aria-label="Mostrar">${[['all','Tudo'],['feature','Características'],['technique','Técnicas']].map(([k,l])=>`<button type="button" data-sb-type="${k}" aria-pressed="${ui.type===k}">${l}</button>`).join('')}</div>${opts}</div>
+  ${cls.techniqueGuide?`<div class="sb-guide">${bookTechniqueGuideHTML(cls)}</div>`:''}
+  <div class="fb-tree">${tiers.join('')||'<p class="fb-empty">Nenhum ganho com esses filtros.</p>'}</div>`}
+
+/* ---------- Render ---------- */
+function sbRender(){
+  const book=document.getElementById('styleBook');if(!book)return;const c=current(),ui=sbUi(),list=sbClasses(),spread=sbSpread(c),cls=spread?list[spread-1]:null,b=ensureBookState(c);
+  if(cls)b.browsing=cls.id;
+  book.style.setProperty('--fn-accent',cls?.color||'#7a5a3a');book.dataset.spread=String(spread);
+  document.getElementById('sbRibbons').innerHTML=`<button type="button" class="fb-ribbon fb-ribbon-toc${spread===0?' is-active':''}" data-sb-go="0" title="Sumário" aria-label="Sumário"${spread===0?' aria-current="page"':''}><span class="ui-icon i-book"></span></button>`+list.map((x,i)=>{const lv=bookStyleLevel(x,c),on=spread===i+1;return `<button type="button" class="fb-ribbon${on?' is-active':''}${lv?' is-owned':''}" style="--fn-color:${x.color}" data-sb-go="${i+1}" title="${esc(x.name)}${lv?`, nível ${lv}`:''}" aria-label="${esc(x.name)}"${on?' aria-current="page"':''}><span class="style-symbol st-${x.id}"></span>${lv?`<b>${lv}</b>`:''}</button>`}).join('');
+  book.querySelectorAll('[data-sb-view]').forEach(v=>v.hidden=v.dataset.sbView!==(spread?'style':'toc'));
+  if(cls){document.getElementById('sbFnLeft').innerHTML=sbRenderLeft(c,cls);document.getElementById('sbFnRight').innerHTML=sbRenderRight(c,cls)}
+  else{document.getElementById('sbTocLeft').innerHTML=sbRenderTocLeft(c);const s=document.getElementById('sbSearch');if(s&&s.value!==ui.query)s.value=ui.query;sbRenderToc(c)}
+  fbSet('sbFolioL',cls?String(cls.page):'i');fbSet('sbFolioR',cls?String(cls.endPage||cls.page+1):'ii');
+  const prev=spread>0?(spread===1?'Sumário':list[spread-2].name):'',next=spread<list.length?list[spread].name:'';
+  book.querySelectorAll('.fb-turn-prev').forEach(x=>{x.hidden=!prev;x.setAttribute('aria-label',prev?`Voltar para ${prev}`:'Página anterior')});book.querySelectorAll('.sb-prev-label').forEach(x=>x.textContent=prev);
+  book.querySelectorAll('.fb-turn-next').forEach(x=>{x.hidden=!next;x.setAttribute('aria-label',next?`Avançar para ${next}`:'Próxima página')});book.querySelectorAll('.sb-next-label').forEach(x=>x.textContent=next);
+  sbCheckStick();
+}
+function sbCheckStick(){const fl=document.getElementById('sbFnLeft');if(!fl||fl.hidden)return;fl.classList.remove('fb-stick');const right=document.getElementById('sbFnRight');if(fl.offsetHeight&&fl.offsetHeight<window.innerHeight-110&&right&&right.offsetHeight>fl.offsetHeight+200)fl.classList.add('fb-stick')}
+
+/* As funções antigas do painel agora só pedem um redesenho do livro */
+function renderBookIndex(){sbRequest()}
+function renderBookClass(){sbRequest()}
+function renderBookTimeline(){sbRequest()}
+function pdRenderTimeline(){sbRequest()}
+function pdRenderStyleCatalog(){sbRequest()}
+function renderBookCandidates(){sbRequest()}
+function renderBookPlanned(){sbRequest()}
+function renderBookForecast(){sbRequest()}
+
+/* ---------- Virada de página ---------- */
+function sbFinishTurn(){const t=sbUi().turning;if(!t)return;t.anims.forEach(a=>{try{a.cancel()}catch(_){}});t.layer.remove();sbUi().turning=null}
+function sbGo(target,opts={}){
+  const c=current(),ui=sbUi(),from=sbSpread(c),to=clamp(num(target),0,sbClasses().length);ui.focus=opts.focus||'';
+  if(to===from){sbFocus();return}
+  sbFinishTurn();
+  const book=document.getElementById('styleBook'),spreadEl=document.getElementById('sbSpread'),L=document.getElementById('sbLeft'),R=document.getElementById('sbRight'),top=book.getBoundingClientRect().top;
+  if(top<0)window.scrollBy(0,top-76);
+  const cs=getComputedStyle(book),accVars=['--acc','--acc-ink','--acc-soft'].map(k=>[k,cs.getPropertyValue(k)]),oldL=fbClone(L),oldR=fbClone(R),wide=L.offsetTop===R.offsetTop;[oldL,oldR].forEach(k=>accVars.forEach(([n,v])=>k.style.setProperty(n,v)));
+  ui.spread=to;if(opts.focus){ui.type='all';ui.branch='';const cls=sbClasses()[to-1],e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===opts.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id}
+  sbRender();saveState();
+  if(fbReduced()||!spreadEl.animate){spreadEl.animate?.([{opacity:.4},{opacity:1}],{duration:220});sbFocus();return}
+  const dir=to>from?1:-1,H=spreadEl.offsetHeight,layer=document.createElement('div');layer.className='fb-turn-layer';spreadEl.appendChild(layer);
+  layer.style.perspectiveOrigin=`50% ${Math.round(clamp(window.innerHeight/2-spreadEl.getBoundingClientRect().top,0,H))}px`;
+  const anims=[],ease='cubic-bezier(.42,.08,.2,1)',hop=Math.min(3,Math.abs(to-from)-1),delay=hop*95,DUR=880;
+  const face=(content,back)=>{const f=document.createElement('div');f.className=`fb-face${back?' fb-back':' fb-front'}`;if(content)f.appendChild(content);else f.classList.add('fb-blank');const sh=document.createElement('div');sh.className='fb-shade';f.appendChild(sh);return f};
+  const box=(x,w,h)=>{const d=document.createElement('div');d.style.cssText=`left:${x}px;width:${w}px;height:${h}px`;return d};
+  const stack=(a,b2)=>{const w=document.createElement('div');w.className='fb-stack';w.append(a,b2);return w};
+  if(wide){
+    const half=L.offsetWidth,still=box(dir>0?L.offsetLeft:R.offsetLeft,half,H);still.className='fb-still';still.appendChild(dir>0?oldL:oldR);layer.appendChild(still);
+    const cast=box(dir>0?R.offsetLeft:L.offsetLeft,half,H);cast.className=`fb-cast ${dir>0?'from-left':'from-right'}`;layer.appendChild(cast);
+    anims.push(cast.animate([{opacity:0},{opacity:1,offset:.45},{opacity:0}],{duration:DUR,delay,easing:'ease-in-out',fill:'both'}));
+    const mkLeaf=(front,back,dl,dur)=>{const leaf=box(dir>0?R.offsetLeft:L.offsetLeft,half,H);leaf.className=`fb-leaf ${dir>0?'turn-fwd':'turn-back'}`;leaf.append(face(front,false),face(back,true));layer.appendChild(leaf);
+      anims.push(leaf.animate([{transform:'rotateY(0deg)'},{transform:`rotateY(${dir>0?-180:180}deg)`}],{duration:dur,delay:dl,easing:ease,fill:'both'}));
+      const [fs,bs]=leaf.querySelectorAll('.fb-shade');anims.push(fs.animate([{opacity:0},{opacity:.55}],{duration:dur/2,delay:dl,easing:'ease-in',fill:'both'}),bs.animate([{opacity:.55},{opacity:0}],{duration:dur/2,delay:dl+dur/2,easing:'ease-out',fill:'both'}))};
+    for(let k=0;k<hop;k++)mkLeaf(null,null,k*95,560);
+    mkLeaf(dir>0?oldR:oldL,dir>0?fbClone(L):fbClone(R),delay,DUR);
+  }else{
+    const vis=Math.min(H,window.innerHeight+120);layer.style.perspectiveOrigin=`50% ${Math.round(vis/2)}px`;layer.style.perspective='1500px';
+    const leaf=box(0,spreadEl.offsetWidth,vis);leaf.className='fb-leaf fb-leaf-mobile turn-fwd';
+    if(dir>0){leaf.append(face(stack(oldL,oldR),false),face(null,true));layer.appendChild(leaf);
+      anims.push(leaf.animate([{transform:'rotateY(0deg)',opacity:1},{transform:'rotateY(-125deg)',opacity:1,offset:.78},{transform:'rotateY(-150deg)',opacity:0}],{duration:820,easing:'cubic-bezier(.5,.05,.3,1)',fill:'both'}));
+      anims.push(leaf.querySelector('.fb-front .fb-shade').animate([{opacity:0},{opacity:.6}],{duration:640,easing:'ease-in',fill:'both'}));
+    }else{const still=box(0,spreadEl.offsetWidth,vis);still.className='fb-still';still.appendChild(stack(oldL,oldR));layer.appendChild(still);
+      leaf.append(face(stack(fbClone(L),fbClone(R)),false),face(null,true));layer.appendChild(leaf);
+      anims.push(leaf.animate([{transform:'rotateY(-150deg)',opacity:0},{transform:'rotateY(-125deg)',opacity:1,offset:.22},{transform:'rotateY(0deg)',opacity:1}],{duration:820,easing:'cubic-bezier(.3,.05,.2,1)',fill:'both'}));
+      anims.push(leaf.querySelector('.fb-front .fb-shade').animate([{opacity:.6},{opacity:0}],{duration:820,easing:'ease-out',fill:'both'}))}
+  }
+  ui.turning={layer,anims};
+  Promise.all(anims.map(a=>a.finished)).then(()=>{if(sbUi().turning?.layer===layer){layer.remove();sbUi().turning=null;sbFocus()}}).catch(()=>{});
+}
+function sbFocus(){const ui=sbUi();if(!ui.focus)return;const card=document.querySelector(`#sbFnRight [data-sb-card="${CSS.escape(ui.focus)}"]`);ui.focus='';if(!card)return;card.classList.remove('is-clamped');card.classList.add('is-focus','is-open-text');card.scrollIntoView({block:'center',behavior:fbReduced()?'auto':'smooth'});setTimeout(()=>card.classList.remove('is-focus'),2600)}
+
+/* ---------- Interações ---------- */
+function sbWire(){const book=document.getElementById('styleBook');if(!book||sbWire.done)return;sbWire.done=true;
+  book.addEventListener('click',ev=>{const c=current(),ui=sbUi();
+    const go=ev.target.closest('[data-sb-go]');if(go){sbGo(num(go.dataset.sbGo),{focus:go.dataset.sbFocus||''});return}
+    const turn=ev.target.closest('[data-sb-turn]');if(turn){sbGo(sbSpread(c)+num(turn.dataset.sbTurn));return}
+    const jump=ev.target.closest('[data-sb-jump]');if(jump){let lvl=num(jump.dataset.sbJump),tier=null;while(lvl>=1&&!(tier=document.querySelector(`#sbFnRight [data-sb-tier="${lvl}"]`)))lvl--;tier?.scrollIntoView({block:'start',behavior:fbReduced()?'auto':'smooth'});return}
+    const here=ev.target.closest('[data-sb-focus-here]');if(here){ui.type='all';ui.branch='';ui.focus=here.dataset.sbFocusHere;const cls=sbClasses()[sbSpread(c)-1],e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===ui.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id;sbRender();sbFocus();return}
+    const type=ev.target.closest('[data-sb-type]');if(type){ui.type=type.dataset.sbType;sbRender();return}
+    const opt=ev.target.closest('[data-sb-opt]');if(opt){ui.opt[opt.dataset.sbOpt]=opt.dataset.id;const block=opt.closest('.sb-choice'),y=block?.getBoundingClientRect().top;sbRender();const nb=document.querySelector(`#sbFnRight .sb-opt[data-id="${CSS.escape(opt.dataset.id)}"]`)?.closest('.sb-choice');if(nb&&y!=null)window.scrollBy(0,nb.getBoundingClientRect().top-y);return}
+    const more=ev.target.closest('[data-sb-open]');if(more){const key=more.dataset.sbOpen,card=more.closest('.fb-card'),open=!ui.open[key];ui.open[key]=open;if(card.classList.contains('sb-compact'))card.classList.toggle('is-open-text',open);else card.classList.toggle('is-clamped',!open);more.textContent=open?'Recolher':card.classList.contains('sb-compact')?'Ler regra':'Ler tudo';more.setAttribute('aria-expanded',String(open));if(!open){const r=card.getBoundingClientRect();if(r.top<70)card.scrollIntoView({block:'start',behavior:'smooth'})}return}
+  });
+  book.addEventListener('change',ev=>{if(ev.target.id==='sbBranch'){sbUi().branch=ev.target.value;sbRender()}});
+  document.getElementById('sbSearch')?.addEventListener('input',e=>{sbUi().query=e.target.value;sbRenderToc(current())});
+  document.addEventListener('keydown',e=>{if(activePage!=='jobs'||ensureBookState(current()).tab!=='styles'||e.altKey||e.ctrlKey||e.metaKey)return;if(e.target.closest('input,textarea,select,[contenteditable],dialog'))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();sbGo(sbSpread(current())+(e.key==='ArrowRight'?1:-1))}});
+  const sp=document.getElementById('sbSpread');let sw=null;
+  sp?.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.target.closest('input,textarea,select,button'))return;sw={x:e.clientX,y:e.clientY,t:Date.now()}});
+  sp?.addEventListener('pointerup',e=>{if(!sw)return;const dx=e.clientX-sw.x,dy=e.clientY-sw.y,dt=Date.now()-sw.t;sw=null;if(Math.abs(dx)>70&&Math.abs(dy)<55&&dt<700)sbGo(sbSpread(current())+(dx<0?1:-1))});
+  sp?.addEventListener('pointercancel',()=>sw=null);
+  addEventListener('resize',()=>{clearTimeout(sbCheckStick.t);sbCheckStick.t=setTimeout(sbCheckStick,150)});
+  if(window.ResizeObserver){const ro=new ResizeObserver(()=>{clearTimeout(sbCheckStick.r);sbCheckStick.r=setTimeout(sbCheckStick,60)});['sbFnLeft','sbFnRight'].forEach(id=>{const el=document.getElementById(id);if(el)ro.observe(el)})}
+}
+sbWire();if(document.getElementById('styleBook'))sbRender();
 
 
 })();
