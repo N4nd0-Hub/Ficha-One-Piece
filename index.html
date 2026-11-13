@@ -4016,7 +4016,7 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
 .style-symbol{display:inline-block;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;background:currentColor}
 
 /* ---------- Livro de Estilos: peças próprias (o resto vem do Livro de Funções) ---------- */
-#bookPanel-styles.r21-library-layout{display:block!important;padding:0!important;gap:0!important;grid-template-columns:none!important}
+#bookPanel-styles.r21-library-layout:not([hidden]){display:block!important;padding:0!important;gap:0!important;grid-template-columns:none!important}
 #styleBook .fb-turn-label{font:600 14px var(--sans)}
 #styleBook .fb-card-text{font-size:calc(var(--book-read-size,14px) + 2px)}
 #styleBook .fb-card-text p,#styleBook .fb-card-text li{font-size:inherit}
@@ -4146,6 +4146,136 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
   #styleBook .sb-tools{gap:8px}
   #styleBook .sb-seg button{padding:6px 10px}
 }
+
+
+/* ---------- Profissões no livro ---------- */
+:is(#functionBook,#styleBook) .fb-medal>.ui-icon{width:20px;height:20px;background:currentColor}
+:is(#functionBook,#styleBook) .fb-medal-lg>.ui-icon{width:24px;height:24px}
+:is(#functionBook,#styleBook) .fb-medal-xl>.ui-icon{width:40px;height:40px}
+#styleBook .fb-cta>.ui-icon,#styleBook .fb-cta>.function-symbol{width:20px;height:20px;background:currentColor}
+#styleBook .sb-ribbon-prof .ui-icon{width:18px;height:18px;background:currentColor}
+#styleBook .sb-ranks{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:4px 0 14px}
+#styleBook .sb-ranks span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:8px;background:var(--paper-3);box-shadow:inset 0 0 0 1px var(--rule);font:600 12.5px var(--sans);color:var(--muted);text-align:center}
+#styleBook .sb-ranks b{font:800 17px var(--serif)}
+#styleBook .sb-ranks .on{background:var(--acc);color:#fff8ea;box-shadow:none}
+#styleBook .sb-ranks .cur{box-shadow:0 0 0 3px var(--acc-soft)}
+#styleBook .sb-prof-form{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+#styleBook .sb-prof-form select{max-width:260px}
+#styleBook .sb-skills{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+#styleBook .sb-skills legend{margin-bottom:6px;font:600 14px var(--sans);color:var(--ink-2)}
+#styleBook .sb-skills label{position:relative;cursor:pointer}
+#styleBook .sb-skills input{position:absolute;opacity:0;pointer-events:none}
+#styleBook .sb-skills span{display:inline-block;padding:5px 12px;border-radius:99px;border:1.5px solid var(--rule);background:var(--paper-3);font:600 14px var(--sans);color:var(--ink-2);transition:background-color .18s,color .18s,border-color .18s}
+#styleBook .sb-skills input:checked+span{background:var(--acc);border-color:var(--acc);color:#fff8ea}
+#styleBook .sb-skills input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+#styleBook .sb-rank-preview{margin:0 0 14px;padding:12px 14px;border-radius:10px;background:var(--paper-3);border:1px dashed var(--rule);font-size:15px}
+#styleBook .sb-rank-preview h4{margin:0 0 4px}
+#styleBook .sb-plain{margin:0;font:16px/1.55 var(--serif);color:var(--ink)}
+#styleBook .sb-rank-card{padding:12px 16px}
+#styleBook .fb-card>header+.fb-card-text{margin-top:8px}
+
+/* ---------- Funções da tripulação: registro em papel antigo ---------- */
+#bookPanel-crew{--paper:#efe0bd;--paper-2:#e2cd9f;--ink:#2e1f10;--ink-2:#5a4128;--rule:#b99766;--seal:#8f2a1f;
+  --hand:"IM Fell English","Alegreya","Palatino Linotype",Georgia,serif;--serif:"Alegreya","Palatino Linotype",Georgia,serif;--sans:"Alegreya Sans","Segoe UI",system-ui,sans-serif;--sc:"Alegreya SC","Alegreya",Georgia,serif}
+#bookPanel-crew .cr-wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:34px;align-items:start;max-width:1320px;margin:0 auto;padding:34px 26px 40px}
+#bookPanel-crew .cr-paper{position:relative;padding:46px 50px 40px;color:var(--ink);font-family:var(--serif);transform:rotate(-.6deg);
+  background:
+    radial-gradient(60% 40% at 18% 12%,rgba(255,250,235,.55),transparent 70%),
+    radial-gradient(40% 30% at 85% 78%,rgba(120,72,28,.18),transparent 70%),
+    radial-gradient(18% 12% at 72% 22%,rgba(120,72,28,.12),transparent 70%),
+    radial-gradient(120% 120% at 50% 50%,transparent 55%,rgba(96,58,22,.38)),
+    repeating-linear-gradient(0deg,rgba(90,60,25,.025) 0 2px,transparent 2px 5px),
+    var(--paper);
+  box-shadow:0 30px 50px -26px rgba(0,0,0,.8),0 3px 8px rgba(0,0,0,.35);
+  clip-path:polygon(0 1.2%,4% 0,11% .9%,19% .1%,27% 1%,36% .2%,44% 1.1%,53% .3%,61% 1%,70% 0,78% .9%,86% .2%,94% 1%,100% .3%,99.4% 9%,100% 18%,99.3% 28%,100% 39%,99.5% 50%,100% 61%,99.3% 72%,100% 83%,99.5% 92%,100% 99.4%,93% 100%,85% 99.2%,76% 100%,67% 99.3%,58% 100%,49% 99.2%,40% 100%,31% 99.3%,22% 100%,13% 99.2%,5% 100%,0 99.1%,.6% 90%,0 80%,.7% 70%,0 59%,.5% 48%,0 37%,.6% 26%,0 15%)}
+#bookPanel-crew .cr-seal{position:absolute;right:38px;bottom:34px;display:grid;place-items:center;width:78px;height:78px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#c0473a,var(--seal) 60%,#5c150e);color:rgba(255,220,200,.75);transform:rotate(14deg);
+  box-shadow:0 3px 0 rgba(0,0,0,.25),inset 0 -4px 8px rgba(0,0,0,.35),inset 0 0 0 6px rgba(0,0,0,.12)}
+#bookPanel-crew .cr-seal .ui-icon{width:34px;height:34px;background:currentColor}
+#bookPanel-crew .cr-head{text-align:center}
+#bookPanel-crew .cr-kicker{margin:0;font:700 15px var(--sc);letter-spacing:.08em;color:var(--ink-2)}
+#bookPanel-crew .cr-crew{margin:4px 0 0;font:400 40px/1.1 var(--hand);color:var(--ink)}
+#bookPanel-crew .cr-rule{height:12px;margin:12px auto 0;width:70%;background:linear-gradient(var(--ink-2),var(--ink-2)) center 4px/100% 1px no-repeat,linear-gradient(var(--ink-2),var(--ink-2)) center 8px/100% 1px no-repeat;opacity:.55}
+#bookPanel-crew .cr-person{display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:center;margin:28px 0 26px}
+#bookPanel-crew .cr-photo{margin:0;padding:8px 8px 26px;background:#f7efdc;box-shadow:0 8px 16px -8px rgba(40,20,5,.6);transform:rotate(-3deg);position:relative;text-align:center}
+#bookPanel-crew .cr-photo::before{content:"";position:absolute;top:-10px;left:50%;width:56px;height:20px;transform:translateX(-50%) rotate(2deg);background:rgba(210,190,140,.75);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+#bookPanel-crew .cr-photo img,#bookPanel-crew .cr-photo>.ui-icon{display:block;width:134px;height:150px;object-fit:cover;filter:sepia(.55) contrast(1.05) saturate(.85)}
+#bookPanel-crew .cr-photo>.ui-icon{margin:0 auto;background:#b9a27a;-webkit-mask-size:60%;mask-size:60%}
+#bookPanel-crew .cr-photo figcaption{position:absolute;bottom:4px;left:0;right:0;font:italic 13px var(--hand);color:var(--ink-2)}
+#bookPanel-crew .cr-facts{margin:0;display:flex;flex-direction:column;gap:12px}
+#bookPanel-crew .cr-facts div{border-bottom:1px solid rgba(90,65,40,.35);padding-bottom:2px}
+#bookPanel-crew .cr-facts dt{font:700 13px var(--sc);letter-spacing:.06em;color:var(--ink-2)}
+#bookPanel-crew .cr-hand{font-family:var(--hand);font-weight:400;color:#1f1408}
+#bookPanel-crew .cr-facts dd{margin:0;font-size:24px;line-height:1.2}
+#bookPanel-crew .cr-facts .cr-name{font-size:32px}
+#bookPanel-crew .cr-section{margin:0 0 6px;font:700 18px var(--sc);letter-spacing:.06em;color:var(--ink-2);text-align:center}
+#bookPanel-crew .cr-lines{list-style:none;margin:0;padding:0}
+#bookPanel-crew .cr-line{position:relative;display:flex;align-items:baseline;gap:12px;min-height:56px;padding:12px 4px 0;border-bottom:1px solid rgba(90,65,40,.45)}
+#bookPanel-crew .cr-num{font:italic 18px var(--hand);color:var(--ink-2);width:20px}
+#bookPanel-crew .cr-blank{flex:1}
+#bookPanel-crew .cr-role{border:0;background:none;padding:0;cursor:pointer;text-align:left}
+#bookPanel-crew .cr-ink{display:inline-block;font:400 32px/1.1 var(--hand);color:#1d1307;text-shadow:0 0 .6px rgba(29,19,7,.5)}
+#bookPanel-crew .cr-role:hover .cr-ink{color:var(--seal)}
+#bookPanel-crew .cr-group{margin-left:auto;font:700 12.5px var(--sc);letter-spacing:.05em;color:var(--ink-2);opacity:.8}
+#bookPanel-crew .cr-erase{width:30px;height:30px;border:0;border-radius:50%;background:none;color:var(--ink-2);font:16px var(--sans);opacity:0;transition:opacity .2s,background-color .2s;cursor:pointer}
+#bookPanel-crew .cr-line:hover .cr-erase,#bookPanel-crew .cr-erase:focus-visible{opacity:1}
+#bookPanel-crew .cr-erase:hover{background:rgba(143,42,31,.12);color:var(--seal)}
+@keyframes cr-write{from{clip-path:inset(-20% 100% -20% 0)}to{clip-path:inset(-20% -2% -20% 0)}}
+@keyframes cr-blot{0%{opacity:0;transform:scale(.4)}40%{opacity:.5}100%{opacity:0;transform:scale(1.6)}}
+#bookPanel-crew .cr-line.is-new .cr-ink{animation:cr-write 1.1s cubic-bezier(.45,.1,.3,1) both}
+#bookPanel-crew .cr-line.is-new::after{content:"";position:absolute;left:30px;bottom:6px;width:16px;height:16px;border-radius:50%;background:rgba(29,19,7,.5);animation:cr-blot .9s .9s ease-out both;pointer-events:none}
+#bookPanel-crew .cr-line.is-striking .cr-ink{position:relative}
+#bookPanel-crew .cr-line.is-striking .cr-ink::after{content:"";position:absolute;left:-4px;right:-4px;top:55%;height:3px;background:#1d1307;border-radius:2px;transform-origin:left;animation:cr-strike .45s cubic-bezier(.5,.1,.3,1) both}
+@keyframes cr-strike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+#bookPanel-crew .cr-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-top:34px;padding-right:96px}
+#bookPanel-crew .cr-sign{flex:1;max-width:300px;border-top:1px solid var(--ink-2);padding-top:2px;display:flex;flex-direction:column}
+#bookPanel-crew .cr-sign .cr-hand{order:-1;font-size:28px;transform:rotate(-3deg);transform-origin:left;margin-bottom:-4px}
+#bookPanel-crew .cr-sign small{font:italic 13px var(--serif);color:var(--ink-2)}
+#bookPanel-crew .cr-stamp{display:flex;flex-direction:column;align-items:center;padding:6px 14px;border:3px double rgba(143,42,31,.7);border-radius:6px;color:rgba(143,42,31,.85);transform:rotate(-8deg);font-family:var(--sc)}
+#bookPanel-crew .cr-stamp b{font:800 24px/1 var(--serif)}
+#bookPanel-crew .cr-stamp small{font:700 12px var(--sc);letter-spacing:.06em}
+#bookPanel-crew .cr-desk{color:var(--text,#eadfd0);font-family:var(--sans)}
+#bookPanel-crew .cr-desk h3{margin:0;font:800 26px var(--serif);color:var(--text,#f3e6d6)}
+#bookPanel-crew .cr-hint{margin:6px 0 18px;font:15px/1.5 var(--sans);color:var(--muted,#bba)}
+#bookPanel-crew .cr-chip-group{margin-bottom:14px}
+#bookPanel-crew .cr-chip-group h4{margin:0 0 8px;font:700 15px var(--sc);letter-spacing:.04em;color:var(--muted,#bba)}
+#bookPanel-crew .cr-chip-group h4 small{font:500 12.5px var(--sans);letter-spacing:0;margin-left:6px}
+#bookPanel-crew .cr-chip-group>div{display:flex;flex-wrap:wrap;gap:6px}
+#bookPanel-crew .cr-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:6px;border:1px solid color-mix(in srgb,var(--paper) 35%,transparent);background:color-mix(in srgb,var(--paper) 10%,transparent);color:var(--text,#f3e6d6);font:600 14.5px var(--sans);cursor:pointer;transition:background-color .18s,border-color .18s,transform .12s}
+#bookPanel-crew .cr-chip:hover{border-color:var(--paper);background:color-mix(in srgb,var(--paper) 18%,transparent)}
+#bookPanel-crew .cr-chip:active{transform:scale(.97)}
+#bookPanel-crew .cr-chip.is-on{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+#bookPanel-crew .cr-chip.is-reading{box-shadow:0 0 0 2px color-mix(in srgb,var(--paper) 55%,transparent)}
+#bookPanel-crew .cr-detail{margin-top:18px;padding:18px 20px;border-radius:12px;background:color-mix(in srgb,var(--paper) 92%,#000);color:var(--ink);box-shadow:0 14px 26px -18px rgba(0,0,0,.8)}
+#bookPanel-crew .cr-detail header span{font:600 13px var(--sans);color:var(--ink-2)}
+#bookPanel-crew .cr-detail h4{margin:2px 0 8px;font:800 22px var(--serif);color:var(--ink)}
+#bookPanel-crew .cr-detail-text,#bookPanel-crew .cr-detail-text p{font:15.5px/1.6 var(--serif);color:var(--ink)}
+#bookPanel-crew .cr-detail-text p{margin:0 0 .6em}
+#bookPanel-crew .cr-detail-text h4{font:700 15px var(--sc);color:var(--ink-2);margin:.8em 0 .2em}
+#bookPanel-crew .cr-detail-text .r21-link{display:none}
+#bookPanel-crew .cr-detail-text .r21-reference{margin:6px 0;padding:8px 12px;border-radius:8px;background:rgba(255,250,235,.5)}
+#bookPanel-crew .cr-detail-text .r21-reference summary{cursor:pointer;font:600 14px var(--sans);color:var(--ink-2)}
+#bookPanel-crew .cr-link{border:0;background:none;padding:0;font:600 13.5px var(--sans);color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+#bookPanel-crew .cr-more{margin-top:12px;color:var(--text,#eadfd0)}
+#bookPanel-crew .cr-more summary{cursor:pointer;font:600 14.5px var(--sans)}
+#bookPanel-crew .cr-more ul{margin:8px 0 0;padding-left:1.2em;font:14.5px/1.5 var(--sans);color:var(--muted,#bba)}
+#bookPanel-crew .cr-more .cr-detail-text{margin-top:8px;padding:12px;border-radius:10px;background:var(--paper)}
+#bookPanel-crew button:focus-visible{outline:2px solid #f0c98a;outline-offset:2px}
+@media (max-width:980px){
+  #bookPanel-crew .cr-wrap{grid-template-columns:1fr;padding:22px 14px 90px;gap:24px}
+  #bookPanel-crew .cr-paper{padding:34px 22px 30px;transform:none}
+  #bookPanel-crew .cr-person{grid-template-columns:110px 1fr;gap:16px}
+  #bookPanel-crew .cr-photo img,#bookPanel-crew .cr-photo>.ui-icon{width:96px;height:110px}
+  #bookPanel-crew .cr-crew{font-size:30px}
+  #bookPanel-crew .cr-facts .cr-name{font-size:26px}
+  #bookPanel-crew .cr-facts dd{font-size:20px}
+  #bookPanel-crew .cr-ink{font-size:26px}
+  #bookPanel-crew .cr-seal{width:60px;height:60px;right:18px;bottom:22px}
+  #bookPanel-crew .cr-foot{padding-right:70px}
+  #bookPanel-crew .cr-sign .cr-hand{font-size:22px;white-space:nowrap}
+  #bookPanel-crew .cr-erase{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){#bookPanel-crew *{animation:none!important}}
 
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -4759,7 +4889,7 @@ document.addEventListener('change',function(e){
 </section>
       <section class="page r21-page" id="page-jobs" aria-label="Livro e evolução do personagem">
   <header class="r21-masthead"><div class="r21-bookmark" aria-hidden="true"><span class="ui-icon i-scroll"></span></div><div><span class="r21-kicker">OP RPG · Biblioteca do personagem</span><h2>Livro & evolução</h2><p>Consulte seu estilo, escolha seus caminhos e prepare os próximos níveis.</p></div><div id="bookReadingTools"></div></header>
-  <div class="r21-tabs" role="tablist" aria-label="Áreas do livro"><button type="button" role="tab" data-book-tab="styles" id="bookTab-styles" aria-controls="bookPanel-styles" aria-selected="true">Classes & arquétipos</button><button type="button" role="tab" data-book-tab="professions" id="bookTab-professions" aria-controls="bookPanel-professions" aria-selected="false" tabindex="-1">Profissões</button><button type="button" role="tab" data-book-tab="crew" id="bookTab-crew" aria-controls="bookPanel-crew" aria-selected="false" tabindex="-1">Funções da tripulação</button></div>
+  <div class="r21-tabs" role="tablist" aria-label="Áreas do livro"><button type="button" role="tab" data-book-tab="styles" id="bookTab-styles" aria-controls="bookPanel-styles" aria-selected="true">Estilos & profissões</button><button type="button" role="tab" data-book-tab="crew" id="bookTab-crew" aria-controls="bookPanel-crew" aria-selected="false" tabindex="-1">Funções da tripulação</button></div>
   <div id="bookPanel-styles" role="tabpanel" aria-labelledby="bookTab-styles" class="r21-library-layout"><div class="fb sb" id="styleBook">
           <nav class="fb-ribbons" id="sbRibbons" aria-label="Marcadores do livro de estilos"></nav>
           <div class="fb-cover">
@@ -4780,7 +4910,6 @@ document.addEventListener('change',function(e){
           </div>
           <p class="fb-hint">Vire as páginas pelos cantos, pelos marcadores, com as setas do teclado ou deslizando o dedo. Os números de página são os do livro original.</p>
         </div><dialog id="pdStyleCatalog" aria-labelledby="pdStyleCatalogTitle"><header class="pd-dialog-head"><div><span class="pd-kicker">Biblioteca do personagem</span><h3 id="pdStyleCatalogTitle">Encontre seu estilo</h3></div><button type="button" class="pd-btn" data-pd-action="close-styles" aria-label="Fechar catálogo de estilos">×</button></header><div class="pd-dialog-body"><div class="pd-filter-row"><label class="pd-field" for="bookClassSearch"><span>Buscar estilo</span><input class="input" id="bookClassSearch" type="search" placeholder="Nome ou atributo primário…" autocomplete="off"></label><label class="pd-field" for="pdStyleCatalogFilter"><span>Coleção</span><select class="input" id="pdStyleCatalogFilter"><option value="all">Todos os 17 estilos</option><option value="mine">Meus estilos</option><option value="player">Livro do Jogador</option><option value="styles">Estilos exclusivos</option></select></label></div><div id="bookClassIndex"></div><div id="pdStyleCatalogPager"></div></div></dialog></div>
-  <div id="bookPanel-professions" role="tabpanel" aria-labelledby="bookTab-professions" class="r21-section" hidden><div class="r21-section-title"><div><span class="r21-kicker">Ofícios do livro</span><h3>Profissões</h3><p>Escolha um ofício para ver suas habilidades, ferramentas e ganhos por graduação.</p></div><label class="r21-search-label">Buscar profissão<input class="input" id="bookProfessionSearch" type="search" placeholder="Nome ou habilidade…"></label></div><div class="r21-profession-layout"><aside id="bookProfessionList" class="r21-profession-index" aria-label="Profissões do livro"></aside><div id="bookProfessionDetail"></div></div></div>
   <div id="bookPanel-crew" role="tabpanel" aria-labelledby="bookTab-crew" class="r21-section" hidden><div id="bookCrewContent"></div></div>
   <dialog id="bookFormatDialog" class="r21-dialog" aria-labelledby="bookFormatTitle"><header class="r21-dialog-head"><div><span class="r21-kicker">Texto & apresentação</span><h3 id="bookFormatTitle">Personalizar texto</h3></div><button type="button" class="r21-icon-button" data-book-action="close-format" aria-label="Fechar editor">×</button></header><div class="r21-dialog-body"><p>Organize o texto como preferir. A edição fica salva neste personagem; o texto original continua disponível para restaurar.</p><textarea id="bookFormatText" aria-label="Texto da habilidade"></textarea></div><footer class="r21-dialog-footer"><button type="button" class="r21-btn" data-book-action="reset-format">Restaurar original</button><div><button type="button" class="r21-btn" data-book-action="close-format">Cancelar</button> <button type="button" class="r21-btn primary" data-book-action="save-format">Salvar formatação</button></div></footer></dialog>
 <dialog id="bookStyleDialog" class="r21-dialog" aria-labelledby="bookStyleDialogTitle"><form id="bookStyleForm"><header class="r21-dialog-head"><div><span class="r21-kicker">Aplicar à ficha atual</span><h3 id="bookStyleDialogTitle">Definir estilo</h3></div><button class="r21-icon-button" type="button" data-book-action="close-style" aria-label="Fechar">×</button></header><div class="r21-dialog-body" id="bookStyleDialogBody"></div><footer class="r21-dialog-footer"><button class="r21-btn" type="button" data-book-action="close-style">Cancelar</button><button class="r21-btn primary" type="submit">Aplicar escolhas</button></footer></form></dialog>
@@ -7660,13 +7789,13 @@ function renderBookForecast(){sbRequest()}
 /* ---------- Virada de página ---------- */
 function sbFinishTurn(){const t=sbUi().turning;if(!t)return;t.anims.forEach(a=>{try{a.cancel()}catch(_){}});t.layer.remove();sbUi().turning=null}
 function sbGo(target,opts={}){
-  const c=current(),ui=sbUi(),from=sbSpread(c),to=clamp(num(target),0,sbClasses().length);ui.focus=opts.focus||'';
+  const c=current(),ui=sbUi(),from=sbSpread(c),to=clamp(num(target),0,sbTotal());ui.focus=opts.focus||'';
   if(to===from){sbFocus();return}
   sbFinishTurn();
   const book=document.getElementById('styleBook'),spreadEl=document.getElementById('sbSpread'),L=document.getElementById('sbLeft'),R=document.getElementById('sbRight'),top=book.getBoundingClientRect().top;
   if(top<0||(innerWidth>1060&&book.getBoundingClientRect().bottom>innerHeight+4))window.scrollBy(0,top-76);
   const cs=getComputedStyle(book),accVars=['--acc','--acc-ink','--acc-soft'].map(k=>[k,cs.getPropertyValue(k)]),oldL=fbClone(L),oldR=fbClone(R),wide=L.offsetTop===R.offsetTop;[oldL,oldR].forEach(k=>accVars.forEach(([n,v])=>k.style.setProperty(n,v)));
-  ui.spread=to;if(opts.focus){ui.type='all';ui.branch='';const cls=sbClasses()[to-1],e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===opts.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id}
+  ui.spread=to;if(opts.focus){ui.type='all';ui.branch='';const it0=sbItem(to),cls=it0?.type==='style'?it0.cls:null,e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===opts.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id}
   sbRender();saveState();document.querySelectorAll('#styleBook .fb-body').forEach(b=>b.scrollTop=0);
   if(fbReduced()||!spreadEl.animate){spreadEl.animate?.([{opacity:.4},{opacity:1}],{duration:220});sbFocus();return}
   const dir=to>from?1:-1,H=spreadEl.offsetHeight,layer=document.createElement('div');layer.className='fb-turn-layer';spreadEl.appendChild(layer);
@@ -7706,7 +7835,7 @@ function sbWire(){const book=document.getElementById('styleBook');if(!book||sbWi
     const go=ev.target.closest('[data-sb-go]');if(go){sbGo(num(go.dataset.sbGo),{focus:go.dataset.sbFocus||''});return}
     const turn=ev.target.closest('[data-sb-turn]');if(turn){sbGo(sbSpread(c)+num(turn.dataset.sbTurn));return}
     const jump=ev.target.closest('[data-sb-jump]');if(jump){let lvl=num(jump.dataset.sbJump),tier=null;while(lvl>=1&&!(tier=document.querySelector(`#sbFnRight [data-sb-tier="${lvl}"]`)))lvl--;tier?.scrollIntoView({block:'start',behavior:fbReduced()?'auto':'smooth'});return}
-    const here=ev.target.closest('[data-sb-focus-here]');if(here){ui.type='all';ui.branch='';ui.focus=here.dataset.sbFocusHere;const cls=sbClasses()[sbSpread(c)-1],e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===ui.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id;sbRender();sbFocus();return}
+    const here=ev.target.closest('[data-sb-focus-here]');if(here){ui.type='all';ui.branch='';ui.focus=here.dataset.sbFocusHere;const it0=sbItem(sbSpread(c)),cls=it0?.type==='style'?it0.cls:null,e=cls&&[...cls.features,...cls.techniques].find(x=>x.id===ui.focus);if(e&&e.choiceGroup)ui.opt[`${cls.id}|${e.choiceGroup}|${num(e.level)}`]=e.id;sbRender();sbFocus();return}
     const type=ev.target.closest('[data-sb-type]');if(type){ui.type=type.dataset.sbType;sbRender();return}
     const opt=ev.target.closest('[data-sb-opt]');if(opt){ui.opt[opt.dataset.sbOpt]=opt.dataset.id;const block=opt.closest('.sb-choice'),y=block?.getBoundingClientRect().top;sbRender();const nb=document.querySelector(`#sbFnRight .sb-opt[data-id="${CSS.escape(opt.dataset.id)}"]`)?.closest('.sb-choice');if(nb&&y!=null){const d=nb.getBoundingClientRect().top-y,box=nb.closest('.fb-body');if(box&&box.scrollHeight>box.clientHeight)box.scrollTop+=d;else window.scrollBy(0,d)}return}
     const more=ev.target.closest('[data-sb-open]');if(more){const key=more.dataset.sbOpen,card=more.closest('.fb-card'),open=!ui.open[key];ui.open[key]=open;if(card.classList.contains('sb-compact'))card.classList.toggle('is-open-text',open);else card.classList.toggle('is-clamped',!open);more.textContent=open?'Recolher':card.classList.contains('sb-compact')?'Ler regra':'Ler tudo';more.setAttribute('aria-expanded',String(open));if(!open){const r=card.getBoundingClientRect();if(r.top<70)card.scrollIntoView({block:'start',behavior:'smooth'})}return}
@@ -7721,6 +7850,131 @@ function sbWire(){const book=document.getElementById('styleBook');if(!book||sbWi
   addEventListener('resize',()=>{clearTimeout(sbCheckStick.t);sbCheckStick.t=setTimeout(sbCheckStick,150)});
   if(window.ResizeObserver){const ro=new ResizeObserver(()=>{clearTimeout(sbCheckStick.r);sbCheckStick.r=setTimeout(sbCheckStick,60)});['sbFnLeft','sbFnRight'].forEach(id=>{const el=document.getElementById(id);if(el)ro.observe(el)})}
 }
+
+/* ==========================================================================
+   Livro 2.1 — Parte II: Profissões dentro do mesmo livro, e
+   Funções da tripulação como um registro em papel antigo.
+   ========================================================================== */
+function sbProfs(){return BOOK21.professions}
+function sbTotal(){return sbClasses().length+sbProfs().length}
+function sbItem(spread){const S=sbClasses().length;if(spread<=0)return null;if(spread<=S)return {type:'style',cls:sbClasses()[spread-1]};const p=sbProfs()[spread-S-1];return p?{type:'prof',p}:null}
+function sbItemName(spread){const it=sbItem(spread);return !it?'Sumário':it.type==='style'?it.cls.name:it.p.name}
+function sbProfSpread(id){const i=sbProfs().findIndex(p=>p.id===id);return sbClasses().length+1+Math.max(0,i)}
+function sbProfIcons(){return {adestrador:'fn-paw',arqueologo:'fn-map',botanico:'i-drop',cacadorderecompensas:'i-target',carpinteiro:'fn-hammer',cientista:'i-poison',contrabandista:'i-briefcase',cozinheiro:'fn-pan',engenheiro:'i-cog',espiao:'i-eye',farmaceutico:'i-drop',ferreiro:'i-hammer',informante:'i-scroll',inventor:'i-bolt',jornalista:'i-sheet',medico:'i-heart',musico:'fn-music',navegador:'fn-compass',psiquiatra:'i-moon',timoneiro:'i-helm',semprofissao:'i-sail'}}
+function sbProfIcon(p){const k=sbProfIcons()[p.id]||'i-briefcase';return k.startsWith('fn-')?`<span class="function-symbol ${k}"></span>`:`<span class="ui-icon ${k}"></span>`}
+function sbProfOwned(p,c=current()){return ensureBookState(c).professions.find(x=>x.id===p.id)}
+function sbProfIntro(p){const lines=String(p.reference?.[0]?.text||'').split('\n').map(x=>x.trim());let out=[],started=false;for(const l of lines.slice(1)){if(!l){if(out.length)started=true;continue}const heading=l.length<85&&l===l.toUpperCase()&&/[A-ZÀ-Ú]{3}/.test(l);if(heading)break;if(started&&out.length)break;out.push(l)}return out.join(' ').replace(/\s+/g,' ').trim()}
+function sbProfRow(c,p,i){const o=sbProfOwned(p,c),S=sbClasses().length;return `<button type="button" class="fb-toc-row${o?' is-owned':''}" data-sb-go="${S+1+i}" style="--fn-color:#8a6a3c"><span class="fb-medal">${sbProfIcon(p)}</span><span class="fb-toc-name">${esc(p.name)}<small>${p.features.length} benefício${p.features.length===1?'':'s'}</small></span><span class="fb-leader" aria-hidden="true"></span><span class="fb-toc-status">${o?esc(o.grade):''}</span><span class="fb-toc-page">${p.page}</span></button>`}
+
+/* Sumário com as duas partes */
+function sbRenderToc(c){const ui=sbUi(),q=fbNorm(ui.query.trim()),list=sbClasses(),profs=sbProfs(),S=list.length,box=document.getElementById('sbToc');if(!box)return;
+  if(!q){box.innerHTML=[['player','Estilos · Livro do Jogador'],['styles','Estilos exclusivos']].map(([k,l])=>{const items=list.map((x,i)=>[x,i]).filter(([x])=>x.book===k);return items.length?`<section class="fb-toc-group"><h3>${l}</h3>${items.map(([x,i])=>sbTocRow(c,x,i)).join('')}</section>`:''}).join('')+`<section class="fb-toc-group" id="sbTocProfs"><h3>Profissões</h3>${profs.map((p,i)=>sbProfRow(c,p,i)).join('')}</section>`;return}
+  const hits=list.map((x,i)=>[x,i]).filter(([x])=>fbNorm(x.name+' '+x.primary).includes(q)),phits=profs.map((p,i)=>[p,i]).filter(([p])=>fbNorm(p.name).includes(q)),ab=[];
+  list.forEach((x,i)=>[...x.features,...x.techniques].forEach(e=>{if(fbNorm(e.name+' '+e.description).includes(q))ab.push({go:i+1,id:e.id,name:e.name,where:`${x.name}, nível ${num(e.level)}${e.kind==='technique'?' · técnica':''}`,page:num(e.page)||x.page,color:x.color,icon:`<span class="style-symbol st-${x.id}"></span>`})}));
+  profs.forEach((p,i)=>p.features.forEach(f=>{if(fbNorm(f.name+' '+f.description).includes(q))ab.push({go:S+1+i,id:f.id,name:f.name,where:`Profissão ${p.name}`,page:num(f.page)||p.page,color:'#8a6a3c',icon:sbProfIcon(p)})}));
+  const html=(hits.length?`<section class="fb-toc-group"><h3>Estilos</h3>${hits.map(([x,i])=>sbTocRow(c,x,i)).join('')}</section>`:'')+(phits.length?`<section class="fb-toc-group"><h3>Profissões</h3>${phits.map(([p,i])=>sbProfRow(c,p,i)).join('')}</section>`:'')+(ab.length?`<section class="fb-toc-group"><h3>Habilidades e técnicas <small>${ab.length}</small></h3>${ab.slice(0,40).map(h=>`<button type="button" class="fb-toc-row fb-toc-ability" data-sb-go="${h.go}" data-sb-focus="${esc(h.id)}" style="--fn-color:${h.color}"><span class="fb-medal">${h.icon}</span><span class="fb-toc-name">${esc(bookTitle(h.name))}<small>${esc(h.where)}</small></span><span class="fb-leader" aria-hidden="true"></span><span class="fb-toc-page">${h.page}</span></button>`).join('')}</section>`:'');
+  box.innerHTML=html||`<p class="fb-empty">Nada encontrado para “${esc(ui.query.trim())}”.</p>`}
+
+/* Página da esquerda: a profissão */
+function sbRenderProfLeft(c,p){
+  const b=ensureBookState(c),o=sbProfOwned(p,c),ui=bookUI();ui.professionDrafts=ui.professionDrafts||{};
+  const draft=ui.professionDrafts[p.id]||{grade:o?.grade||'Profissional',skills:o?.skills||[]},ranks=BOOK21.professionRanks,gi=Math.max(0,ranks.findIndex(r=>r.name===(o?.grade||''))),rank=ranks.find(r=>r.name===draft.grade);
+  const first=!b.professions.length&&!c.profession,intro=sbProfIntro(p);
+  const track=o?`<div class="sb-ranks" aria-label="Graduação atual">${ranks.map((r,i)=>`<span class="${i<=gi?'on':''}${i===gi?' cur':''}"><b>${['I','II','III','IV'][i]}</b>${esc(r.name)}</span>`).join('')}</div>`:'';
+  return `<header class="fb-fn-head"><span class="fb-medal fb-medal-xl" style="--fn-color:var(--acc)">${sbProfIcon(p)}</span><div><p class="fb-kicker">Profissão · Livro do Jogador 2.1 · p. ${p.page}${p.endPage&&p.endPage!=p.page?'–'+p.endPage:''}</p><h1 class="fb-fn-title">${esc(p.name)}</h1></div></header>
+  ${intro?`<div class="fb-intro"><p>${esc(intro)}</p></div>`:''}
+  <section class="fb-progress${o?' is-owned':''}"><h2 class="fb-h3">${o?'Na sua ficha':'Registrar na ficha'}</h2>${track}
+    <div class="sb-prof-form"><div class="fb-field"><label for="bookProfessionGrade">Graduação</label><select class="fb-input" id="bookProfessionGrade">${ranks.map(r=>`<option ${draft.grade===r.name?'selected':''}>${r.name}</option>`).join('')}</select></div>
+    ${p.skills.length?`<fieldset class="sb-skills"><legend>Perícias iniciais${first?' · escolha 2':''}</legend>${p.skills.map(n=>`<label><input type="checkbox" data-profession-skill value="${esc(n)}" ${draft.skills.includes(n)?'checked':''}><span>${esc(n)}</span></label>`).join('')}</fieldset><select id="bookProfessionSkills" multiple hidden aria-hidden="true">${p.skills.map(n=>`<option value="${esc(n)}" ${draft.skills.includes(n)?'selected':''}>${esc(n)}</option>`).join('')}</select><p class="fb-progress-line" id="bookProfessionSkillCount">${draft.skills.length} de 2 selecionadas</p>`:'<select id="bookProfessionSkills" multiple hidden aria-hidden="true"></select>'}</div>
+    <div class="sb-rank-preview fb-card-text" id="bookProfessionRankPreview"><h4>${esc(draft.grade)}</h4>${rank?bookText(rank.description.split('Livro do Jogador')[0]):''}</div>
+    <button type="button" class="${o?'fb-btn':'fb-cta'}" data-book-action="adopt-profession" data-id="${p.id}">${o?'Atualizar na ficha':`${sbProfIcon(p)}Registrar ${esc(p.name)}`}</button>
+    ${first?'<p class="fb-progress-line">Na primeira profissão você escolhe duas perícias da lista.</p>':''}</section>
+  ${p.skillsText?`<section class="fb-aside"><h2 class="fb-h3"><span class="ui-icon i-training" aria-hidden="true"></span>Perícias</h2><p class="sb-plain">${esc(p.skillsText)}</p></section>`:''}
+  ${p.tools?`<section class="fb-aside"><h2 class="fb-h3"><span class="ui-icon i-bag" aria-hidden="true"></span>Ferramentas iniciais</h2><div class="fb-card-text">${bookText(p.tools)}</div></section>`:''}
+  <details class="sb-details sb-chapter"><summary>Regras de progressão profissional</summary><div class="sb-chapter-body">${bookReferencePages(BOOK21.references.professions)}</div></details>
+  <details class="sb-details"><summary>Ler as páginas originais · ${esc(p.name)}</summary><div class="sb-chapter-body">${bookReferencePages(p.reference)}</div></details>`}
+
+/* Página da direita: benefícios e graduações */
+function sbRenderProfRight(c,p){
+  const ui=sbUi(),o=sbProfOwned(p,c),ranks=BOOK21.professionRanks,gi=o?ranks.findIndex(r=>r.name===o.grade):-1;
+  const cards=p.features.map(f=>{const key=f.id,open=!!ui.open[key],long=String(f.description||'').length>420;return `<article class="fb-card${o?' is-has':''}${long&&!open?' is-clamped':''}" data-sb-card="${esc(f.id)}"><header><h4>${esc(bookTitle(f.name))}</h4>${o?'<span class="fb-stamp">Na ficha</span>':''}</header><div class="fb-card-text">${bookCustomized(f)}</div><footer>${long?`<button type="button" class="fb-more" data-sb-open="${esc(key)}" aria-expanded="${open}">${open?'Recolher':'Ler tudo'}</button>`:'<span class="sb-spacer"></span>'}<button type="button" class="sb-fmt" data-book-action="format-entry" data-id="${esc(f.id)}" title="Personalizar o texto desta regra" aria-label="Personalizar o texto de ${esc(bookTitle(f.name))}"><span class="ui-icon i-scroll" aria-hidden="true"></span></button></footer></article>`}).join('');
+  const rankTiers=ranks.map((r,i)=>`<section class="fb-tier${i<=gi?' is-reached':''}${i===gi?' is-current':''}"><div class="fb-tier-rail"><span class="fb-tier-num">${['I','II','III','IV'][i]}</span></div><div class="fb-tier-body"><header class="fb-tier-head"><h3>${esc(r.name)}</h3><span>${i===gi?'Sua graduação':`Graduação ${i+1}`}</span></header><div class="fb-card sb-rank-card"><div class="fb-card-text">${bookText(r.description.split('Livro do Jogador')[0])}</div></div></div></section>`).join('');
+  return `<header class="fb-tree-head"><h2 class="fb-h1">Benefícios</h2><span class="sb-total">${p.features.length} habilidades</span></header><div class="fb-cards">${cards}</div>
+  <div class="fb-ornament" aria-hidden="true"></div><header class="fb-tree-head"><h2 class="fb-h1">Graduações</h2><span class="sb-total">Somam-se às anteriores</span></header><div class="fb-tree">${rankTiers}</div>`}
+
+/* Render geral do livro, agora com as duas partes */
+function sbSpread(c){const ui=sbUi();if(ui.spread==null){const b=ensureBookState(c),i=sbClasses().findIndex(x=>x.name===c.style);ui.spread=i>=0?i+1:0;if(i>=0)b.browsing=sbClasses()[i].id}return clamp(num(ui.spread),0,sbTotal())}
+function sbRender(){
+  const book=document.getElementById('styleBook');if(!book)return;const c=current(),ui=sbUi(),list=sbClasses(),S=list.length,spread=sbSpread(c),it=sbItem(spread),b=ensureBookState(c);
+  if(it?.type==='style')b.browsing=it.cls.id;if(it?.type==='prof')b.profession=it.p.id;
+  book.style.setProperty('--fn-accent',it?.type==='style'?it.cls.color:it?.type==='prof'?'#8a6a3c':'#7a5a3a');book.dataset.spread=String(spread);
+  const myProf=b.professions[0]?.id,profGo=myProf?sbProfSpread(myProf):S+1,inProf=it?.type==='prof';
+  document.getElementById('sbRibbons').innerHTML=`<button type="button" class="fb-ribbon fb-ribbon-toc${spread===0?' is-active':''}" data-sb-go="0" title="Sumário" aria-label="Sumário"${spread===0?' aria-current="page"':''}><span class="ui-icon i-book"></span></button>`+list.map((x,i)=>{const lv=bookStyleLevel(x,c),on=spread===i+1;return `<button type="button" class="fb-ribbon${on?' is-active':''}${lv?' is-owned':''}" style="--fn-color:${x.color}" data-sb-go="${i+1}" title="${esc(x.name)}${lv?`, nível ${lv}`:''}" aria-label="${esc(x.name)}"${on?' aria-current="page"':''}><span class="style-symbol st-${x.id}"></span>${lv?`<b>${lv}</b>`:''}</button>`}).join('')+`<button type="button" class="fb-ribbon sb-ribbon-prof${inProf?' is-active':''}${myProf?' is-owned':''}" style="--fn-color:#8a6a3c" data-sb-go="${inProf?spread:profGo}" title="Profissões" aria-label="Profissões"${inProf?' aria-current="page"':''}><span class="ui-icon i-briefcase"></span></button>`;
+  book.querySelectorAll('[data-sb-view]').forEach(v=>v.hidden=v.dataset.sbView!==(it?'style':'toc'));
+  if(it?.type==='style'){document.getElementById('sbFnLeft').innerHTML=sbRenderLeft(c,it.cls);document.getElementById('sbFnRight').innerHTML=sbRenderRight(c,it.cls)}
+  else if(it?.type==='prof'){document.getElementById('sbFnLeft').innerHTML=sbRenderProfLeft(c,it.p);document.getElementById('sbFnRight').innerHTML=sbRenderProfRight(c,it.p)}
+  else{document.getElementById('sbTocLeft').innerHTML=sbRenderTocLeftWithProf(c);const s=document.getElementById('sbSearch');if(s&&s.value!==ui.query)s.value=ui.query;sbRenderToc(c)}
+  const pg=it?.type==='style'?[it.cls.page,it.cls.endPage||it.cls.page+1]:it?.type==='prof'?[it.p.page,it.p.endPage&&it.p.endPage!=it.p.page?it.p.endPage:num(it.p.page)+1]:['i','ii'];fbSet('sbFolioL',String(pg[0]));fbSet('sbFolioR',String(pg[1]));
+  const prev=spread>0?sbItemName(spread-1):'',next=spread<sbTotal()?sbItemName(spread+1):'';
+  book.querySelectorAll('.fb-turn-prev').forEach(x=>{x.hidden=!prev;x.setAttribute('aria-label',prev?`Voltar para ${prev}`:'Página anterior')});book.querySelectorAll('.sb-prev-label').forEach(x=>x.textContent=prev);
+  book.querySelectorAll('.fb-turn-next').forEach(x=>{x.hidden=!next;x.setAttribute('aria-label',next?`Avançar para ${next}`:'Próxima página')});book.querySelectorAll('.sb-next-label').forEach(x=>x.textContent=next);
+}
+function renderBookProfessions(){sbRequest()}
+
+/* Mostrar "Sua profissão" no sumário */
+function sbRenderTocLeftWithProf(c){const b=ensureBookState(c),own=b.professions.map(x=>({o:x,p:sbProfs().find(p=>p.id===x.id)})).filter(x=>x.p);
+  return sbRenderTocLeft(c).replace('<h2 class="fb-h2">Como usar</h2>',`<h2 class="fb-h2">Sua profissão <span class="fb-h2-aside">${own.length?'':'Nenhuma registrada'}</span></h2><div class="fb-owned">${own.length?own.map(({o,p})=>`<button type="button" class="fb-own" data-sb-go="${sbProfSpread(p.id)}" style="--fn-color:#8a6a3c"><span class="fb-medal fb-medal-lg">${sbProfIcon(p)}</span><span class="fb-own-body"><b>${esc(p.name)}</b><small>${esc(o.grade)}${o.skills?.length?' · '+esc(o.skills.join(', ')):''}</small></span></button>`).join(''):'<p class="fb-empty">As profissões estão na segunda parte do sumário.</p>'}</div><div class="fb-ornament" aria-hidden="true"></div><h2 class="fb-h2">Como usar</h2>`)}
+
+/* A aba Profissões agora abre o livro na segunda parte */
+function renderBookHub(){
+  if(!document.getElementById('styleBook'))return;const c=current(),b=ensureBookState(c);
+  if(b.tab==='professions'){b.tab='styles';sbUi().spread=sbProfSpread(b.profession)}
+  document.getElementById('page-jobs').style.setProperty('--book-read-size',(b.readSize||14)+'px');
+  document.querySelectorAll('[data-book-tab]').forEach(t=>{const on=t.dataset.bookTab===b.tab;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1});
+  ['styles','crew'].forEach(tab=>{const el=document.getElementById('bookPanel-'+tab);if(el)el.hidden=tab!==b.tab});
+  document.getElementById('bookReadingTools').innerHTML=bookReadingControls();
+  if(b.tab==='styles')sbRequest();else if(b.tab==='crew')renderBookCrew();
+}
+
+/* ---------- Registro da tripulação (papel antigo) ---------- */
+function crUi(){return crUi.s||(crUi.s={fresh:''})}
+function renderBookCrew(){
+  const box=document.getElementById('bookCrewContent');if(!box)return;const c=current(),b=ensureBookState(c),roles=BOOK21.crewRoles,max=b.professions.some(x=>x.id==='semprofissao')?5:3,sel=roles.find(r=>r.id===b.crewBrowsing)||roles[0],ui=crUi();b.crewBrowsing=sel.id;
+  const mine=b.crewRoles.map(id=>roles.find(r=>r.id===id)).filter(Boolean),photo=c.imageData||c.imageUrl,bounty=num(c.bounty);
+  const lines=Array.from({length:max},(_,i)=>{const r=mine[i];return r?`<li class="cr-line has-role${ui.fresh===r.id?' is-new':''}" data-cr-line="${r.id}"><span class="cr-num">${i+1}.</span><button type="button" class="cr-role" data-cr-read="${r.id}" title="Ler a regra de ${esc(r.name)}"><span class="cr-ink">${esc(r.name)}</span></button><small class="cr-group">${esc(r.group)}</small><button type="button" class="cr-erase" data-book-action="crew-role" data-id="${r.id}" aria-label="Riscar ${esc(r.name)} do registro" title="Riscar do registro">✕</button></li>`:`<li class="cr-line"><span class="cr-num">${i+1}.</span><span class="cr-blank" aria-hidden="true"></span></li>`}).join('');
+  ui.fresh='';
+  const chips=['Comando','Combate','Manutenção'].map(g=>`<div class="cr-chip-group"><h4>${g}${g==='Comando'?' <small>apenas 1</small>':''}</h4><div>${roles.filter(r=>r.group===g).map(r=>{const on=b.crewRoles.includes(r.id);return `<button type="button" class="cr-chip${on?' is-on':''}${r.id===sel.id?' is-reading':''}" data-book-action="crew-role" data-id="${r.id}" aria-pressed="${on}">${on?'<span aria-hidden="true">✓</span>':''}${esc(r.name)}</button>`}).join('')}</div></div>`).join('');
+  box.innerHTML=`<div class="cr-wrap">
+  <article class="cr-paper" aria-label="Registro de tripulação de ${esc(c.name||'personagem')}">
+    <div class="cr-seal" aria-hidden="true"><span class="ui-icon i-skull"></span></div>
+    <header class="cr-head"><p class="cr-kicker">Registro de tripulação</p><h2 class="cr-crew">${esc(c.crew||'Tripulação sem nome')}</h2><div class="cr-rule" aria-hidden="true"></div></header>
+    <div class="cr-person">
+      <figure class="cr-photo">${photo?`<img src="${esc(photo)}" alt="">`:'<span class="ui-icon i-skull" aria-hidden="true"></span>'}<figcaption>Retrato</figcaption></figure>
+      <dl class="cr-facts"><div><dt>Nome</dt><dd class="cr-hand cr-name">${esc(c.name||'Sem nome')}</dd></div><div><dt>Epíteto</dt><dd class="cr-hand">${esc(c.epithet||'—')}</dd></div><div><dt>Recompensa</dt><dd class="cr-hand">฿ ${bounty.toLocaleString('pt-BR')}</dd></div></dl>
+    </div>
+    <h3 class="cr-section">Funções a bordo</h3>
+    <ol class="cr-lines">${lines}</ol>
+    <footer class="cr-foot"><div class="cr-sign"><span class="cr-hand">${esc(c.name||'')}</span><small>Assinatura do tripulante</small></div><div class="cr-stamp${mine.length>=max?' is-full':''}"><b>${mine.length}/${max}</b><small>funções</small></div></footer>
+  </article>
+  <aside class="cr-desk">
+    <h3>Funções da tripulação</h3><p class="cr-hint">Toque numa função para escrevê-la no registro; toque de novo para riscar. Até ${max}, com apenas uma de comando.</p>
+    ${chips}
+    <article class="cr-detail"><header><span>${esc(sel.group)} · Livro do Jogador 2.1, p. ${sel.page}</span><h4>${esc(sel.name)}</h4></header><div class="cr-detail-text">${bookCustomized(sel)}</div><footer><button type="button" class="cr-link" data-book-action="format-entry" data-id="${sel.id}">Personalizar texto</button></footer></article>
+    <details class="cr-more"><summary>Limites e acúmulo de funções</summary><ul><li>Até 3 funções por tripulante, sendo apenas 1 de comando.</li><li>Com 2 funções, não é possível treinar durante a viagem.</li><li>Com 3 funções, também não é possível exercer a profissão.</li><li>A escolha “Não ter profissão” permite até 5 funções.</li></ul></details>
+    <details class="cr-more"><summary>Outras regras de tripulação do livro</summary><div class="cr-detail-text">${bookReferencePages(BOOK21.references.crew)}</div></details>
+  </aside></div>`;
+  const fresh=box.querySelector('.cr-line.is-new');if(fresh){const r=fresh.getBoundingClientRect();if(r.top<70||r.bottom>innerHeight-80)fresh.scrollIntoView({block:'center',behavior:fbReduced()?'auto':'smooth'})}}
+function crWire(){const page=document.getElementById('page-jobs');if(!page||crWire.done)return;crWire.done=true;
+  page.addEventListener('click',ev=>{
+    const tab=ev.target.closest('[data-book-tab="professions"]');if(tab){ev.stopPropagation();const b=ensureBookState(current());b.tab='styles';renderBookHub();saveState();sbGo(sbProfSpread(b.profession));return}
+    const read=ev.target.closest('[data-cr-read]');if(read){ev.stopPropagation();ensureBookState(current()).crewBrowsing=read.dataset.crRead;renderBookCrew();document.querySelector('.cr-detail')?.scrollIntoView({block:'nearest',behavior:'smooth'});return}
+    const btn=ev.target.closest('#bookCrewContent [data-book-action="crew-role"]');if(!btn)return;
+    const b=ensureBookState(current()),id=btn.dataset.id,on=b.crewRoles.includes(id);b.crewBrowsing=id;
+    if(!on){crUi().fresh=id;setTimeout(()=>{if(!ensureBookState(current()).crewRoles.includes(id)){crUi().fresh='';renderBookCrew()}},0);return}
+    const line=document.querySelector(`[data-cr-line="${id}"]`);if(line&&!fbReduced()){ev.stopPropagation();line.classList.add('is-striking');setTimeout(()=>toggleBookCrewRole(id),520)}
+  },true);
+}
+crWire();
 sbWire();if(document.getElementById('styleBook'))sbRender();
 
 
