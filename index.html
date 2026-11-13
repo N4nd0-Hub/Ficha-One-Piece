@@ -3723,6 +3723,7 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
   box-shadow:-3px 3px 0 #e4d6b7,-6px 6px 0 #d7c49f,-8px 9px 14px rgba(0,0,0,.25)}
 #functionBook .fb-right{border-radius:0 8px 8px 0;background-image:linear-gradient(to right,rgba(90,58,24,.22),rgba(90,58,24,.05) 4%,transparent 9%),radial-gradient(140% 90% at 50% 40%,transparent 60%,rgba(140,100,50,.10));
   box-shadow:3px 3px 0 #e4d6b7,6px 6px 0 #d7c49f,8px 9px 14px rgba(0,0,0,.25)}
+#functionBook .fb-body{flex:1;display:flex;flex-direction:column}
 #functionBook .fb-view{flex:1;display:flex;flex-direction:column}
 
 /* Canto dobrado ao passar o mouse na seta */
@@ -3912,7 +3913,8 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
 
 #functionBook .fb-card.is-locked.is-clamped .fb-card-text{max-height:4.9em}
 /* Em telas grandes a página da esquerda acompanha a leitura da árvore */
-@media (min-width:1061px) and (min-height:760px){#functionBook #fbFnLeft{position:sticky;top:84px;flex:0 0 auto}}
+#functionBook #fbFnLeft{flex:0 0 auto}
+@media (min-width:1061px){#functionBook #fbFnLeft.fb-stick{position:sticky;top:84px}}
 
 /* Virada de página */
 #functionBook .fb-turn-layer{position:absolute;inset:0;z-index:30;pointer-events:none;perspective:3000px}
@@ -4557,7 +4559,7 @@ document.addEventListener('change',function(e){
           <div class="fb-cover">
             <div class="fb-spread" id="fbSpread">
               <section class="fb-page fb-left" id="fbLeft" aria-live="polite">
-                <div class="fb-view" data-fb-view="toc">
+                <div class="fb-body"><div class="fb-view" data-fb-view="toc">
                   <p class="fb-kicker">One Piece · RPG Nando</p>
                   <h1 class="fb-title"><span class="function-symbol fn-map" id="functionBookTitleIcon" aria-hidden="true"></span>Livro de Funções</h1>
                   <p class="fb-lede">Cada Função é um papel dentro da tripulação. Abra uma no sumário, adquira e suba de nível para liberar os ramos da árvore de habilidades.</p>
@@ -4572,16 +4574,16 @@ document.addEventListener('change',function(e){
                   </div>
                   <div class="fb-chips" id="jobCurrentSkills"></div>
                 </div>
-                <div class="fb-view" data-fb-view="fn" id="fbFnLeft" hidden></div>
+                <div class="fb-view" data-fb-view="fn" id="fbFnLeft" hidden></div></div>
                 <footer class="fb-folio"><button type="button" class="fb-turn fb-turn-prev" data-fb-turn="-1" aria-label="Página anterior"><span aria-hidden="true">‹</span><span class="fb-turn-label fb-prev-label">Anterior</span></button><span class="fb-folio-num" id="fbFolioL">i</span></footer>
               </section>
               <section class="fb-page fb-right" id="fbRight">
-                <div class="fb-view" data-fb-view="toc">
+                <div class="fb-body"><div class="fb-view" data-fb-view="toc">
                   <h2 class="fb-h1">Sumário</h2>
                   <div class="fb-search"><span class="ui-icon i-eye" aria-hidden="true"></span><input class="fb-input" id="fbSearch" type="search" placeholder="Buscar função ou habilidade" aria-label="Buscar função ou habilidade" autocomplete="off"></div>
                   <div class="fb-toc" id="fbToc"></div>
                 </div>
-                <div class="fb-view" data-fb-view="fn" id="fbFnRight" hidden></div>
+                <div class="fb-view" data-fb-view="fn" id="fbFnRight" hidden></div></div>
                 <footer class="fb-folio"><button type="button" class="fb-turn fb-turn-prev fb-narrow-only" data-fb-turn="-1" aria-label="Página anterior"><span aria-hidden="true">‹</span><span class="fb-turn-label fb-prev-label">Anterior</span></button><span class="fb-folio-num" id="fbFolioR">ii</span><button type="button" class="fb-turn fb-turn-next" data-fb-turn="1" aria-label="Próxima página"><span class="fb-turn-label fb-next-label">Próxima</span><span aria-hidden="true">›</span></button></footer>
               </section>
             </div>
@@ -7266,7 +7268,7 @@ function renderJobs(){
   book.style.setProperty('--fn-accent',def.color||'#8d6037');book.dataset.spread=String(spread);
   document.getElementById('fbRibbons').innerHTML=`<button type="button" class="fb-ribbon fb-ribbon-toc${spread===0?' is-active':''}" data-fb-go="0" title="Sumário" aria-label="Sumário"${spread===0?' aria-current="page"':''}><span class="ui-icon i-book"></span></button>`+fns.map((f,i)=>{const p=functionProgress(c,f.name),pend=fbPending(f,p),on=spread===i+1;return `<button type="button" class="fb-ribbon${on?' is-active':''}${p.level?' is-owned':''}" style="--fn-color:${f.color}" data-fb-go="${i+1}" title="${esc(f.name)}${p.level?`, nível ${p.level}`:''}" aria-label="${esc(f.name)}"${on?' aria-current="page"':''}><span class="function-symbol ${f.icon}"></span>${p.level?`<b>${p.level}</b>`:''}${pend?'<i class="fb-dot"></i>':''}</button>`}).join('');
   book.querySelectorAll('[data-fb-view]').forEach(v=>v.hidden=v.dataset.fbView!==(spread?'fn':'toc'));
-  if(spread){const p=functionProgress(c,def.name);document.getElementById('fbFnLeft').innerHTML=fbRenderFnLeft(c,def,p);document.getElementById('fbFnRight').innerHTML=fbRenderFnRight(c,def,p);const notes=document.getElementById('functionProgressNotes');if(notes){notes.value=p.notes||'';notes.oninput=()=>{p.notes=notes.value;saveState()}}}
+  if(spread){const p=functionProgress(c,def.name),fl=document.getElementById('fbFnLeft');fl.classList.remove('fb-stick');fl.innerHTML=fbRenderFnLeft(c,def,p);document.getElementById('fbFnRight').innerHTML=fbRenderFnRight(c,def,p);const notes=document.getElementById('functionProgressNotes');if(notes){notes.value=p.notes||'';notes.oninput=()=>{p.notes=notes.value;saveState()}}}
   else{fbRenderOwned(c);fbRenderToc(c)}
   ui.flash=[];
   const profile=c.jobProfile||(c.jobProfile={grade:'Normal',tools:'',feats:'',notes:''}),select=document.getElementById('jobProfessionSelect'),options=['',...BOOK_PROFESSIONS.map(x=>x.name)];
@@ -7276,8 +7278,11 @@ function renderJobs(){
   const [l,r]=fbFolio(spread);fbSet('fbFolioL',l);fbSet('fbFolioR',r);
   const prev=spread>0?(spread===1?'Sumário':fns[spread-2].name):'',next=spread<fns.length?fns[spread].name:'';
   book.querySelectorAll('.fb-turn-prev').forEach(b=>{b.hidden=!prev;b.setAttribute('aria-label',prev?`Voltar para ${prev}`:'Página anterior')});book.querySelectorAll('.fb-prev-label').forEach(x=>x.textContent=prev);book.querySelectorAll('.fb-turn-next').forEach(b=>{b.hidden=!next;b.setAttribute('aria-label',next?`Avançar para ${next}`:'Próxima página')});book.querySelectorAll('.fb-next-label').forEach(x=>x.textContent=next);
-  renderExclusiveAccess();renderKitchen();
+  fbCheckStick();renderExclusiveAccess();renderKitchen();
 }
+function fbCheckStick(){const fl=document.getElementById('fbFnLeft');if(!fl||fl.hidden)return;fl.classList.remove('fb-stick');const room=window.innerHeight-110,right=document.getElementById('fbFnRight');if(fl.offsetHeight&&fl.offsetHeight<room&&right&&right.offsetHeight>fl.offsetHeight+200)fl.classList.add('fb-stick')}
+addEventListener('resize',()=>{clearTimeout(fbCheckStick.t);fbCheckStick.t=setTimeout(fbCheckStick,150)});
+if(window.ResizeObserver){const ro=new ResizeObserver(()=>{clearTimeout(fbCheckStick.r);fbCheckStick.r=setTimeout(fbCheckStick,60)});['fbFnLeft','fbFnRight'].forEach(id=>{const el=document.getElementById(id);if(el)ro.observe(el)})}
 
 /* ---------- Virada de página ---------- */
 function fbClone(el){const k=el.cloneNode(true);k.removeAttribute('id');k.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));const src=el.querySelectorAll('textarea,input,select'),dst=k.querySelectorAll('textarea,input,select');src.forEach((s,i)=>{if(dst[i])dst[i].value=s.value});k.classList.add('fb-clone');k.setAttribute('aria-hidden','true');k.inert=true;k.style.width=el.offsetWidth+'px';return k}
