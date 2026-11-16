@@ -4277,6 +4277,292 @@ body.clear-sheet[data-theme] [data-roll-mode="auto"][data-auto="adv"]::after{bac
 }
 @media (prefers-reduced-motion:reduce){#bookPanel-crew *{animation:none!important}}
 
+
+/* ==========================================================================
+   Combate 3.0 — painel de batalha
+   ========================================================================== */
+body.clear-sheet[data-theme] #cx{
+  --cx-action:var(--gold);--cx-bonus:color-mix(in srgb,#5d93e0 78%,var(--text));--cx-reaction:color-mix(in srgb,#e4705c 80%,var(--text));
+  --cx-power:color-mix(in srgb,#b88be6 80%,var(--text));--cx-free:color-mix(in srgb,#5fb8a0 78%,var(--text));--cx-other:var(--muted);--cx-passive:color-mix(in srgb,#5fb8a0 78%,var(--text));
+  --cx-surface:color-mix(in srgb,var(--panel) 80%,var(--bg2));--cx-surface-2:color-mix(in srgb,var(--panel2) 70%,var(--panel));--cx-hair:color-mix(in srgb,var(--line) 40%,transparent);
+  --cx-num:var(--r-head,"Alegreya",Georgia,serif);
+  display:flex;flex-direction:column;gap:14px;padding:20px 26px 32px;color:var(--text);font-family:var(--font-ui)}
+#cx *{box-sizing:border-box}
+#cx .ui-icon{background:currentColor}
+#cx button{font:inherit;color:inherit;cursor:pointer}
+#cx [hidden]{display:none!important}
+
+/* HUD */
+#cx .cx-hud{position:relative;display:grid;grid-template-columns:minmax(220px,.9fr) minmax(360px,1.7fr) auto;gap:24px;align-items:center;padding:18px 22px;border-radius:16px;overflow:hidden;
+  background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--gold) 12%,transparent),transparent 55%),var(--cx-surface-2);border:1px solid var(--cx-hair);box-shadow:0 18px 34px -24px rgba(0,0,0,.75)}
+#cx .cx-hud::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 0 transparent;transition:box-shadow .4s}
+#cx.is-bloodied .cx-hud::after{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--red) 60%,transparent),inset 0 0 40px -10px color-mix(in srgb,var(--red) 45%,transparent)}
+#cx.is-down .cx-hud::after{box-shadow:inset 0 0 0 2px var(--red),inset 0 0 60px -10px color-mix(in srgb,var(--red) 60%,transparent)}
+#cx .cx-id{display:flex;align-items:center;gap:14px;min-width:0}
+#cx .cx-portrait{position:relative;flex:0 0 68px;width:68px;height:68px;border-radius:18px;overflow:hidden;background:color-mix(in srgb,var(--gold) 14%,var(--panel));box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 50%,transparent),0 8px 18px -10px rgba(0,0,0,.8)}
+#cx .cx-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#cx .cx-portrait .combat-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--gold);min-height:0!important}
+#cx .cx-portrait .combat-placeholder .ui-icon{width:30px;height:30px}
+#cx .cx-id-text{min-width:0}
+#cx .cx-name{margin:0;font:800 26px/1.05 var(--cx-num);color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cx .cx-meta{margin:4px 0 0;font-size:14px;color:var(--muted)}
+#cx .cx-alert-line{margin:6px 0 0;display:inline-block;padding:2px 10px;border-radius:99px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--red) 22%,transparent);color:color-mix(in srgb,var(--red) 45%,var(--text))}
+#cx .cx-vitals{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px 16px;min-width:0}
+#cx .cx-res-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;gap:8px}
+#cx .cx-res-label{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--muted)}
+#cx .cx-res-label .ui-icon{width:15px;height:15px}
+#cx .cx-hp .cx-res-label{color:color-mix(in srgb,var(--red) 55%,var(--text))}
+#cx .cx-pp .cx-res-label{color:color-mix(in srgb,var(--blue) 60%,var(--text))}
+#cx .cx-amb .cx-res-label{color:var(--gold2)}
+#cx .cx-res-top b{font:800 22px/1 var(--cx-num);font-variant-numeric:tabular-nums lining-nums}
+#cx .cx-hp .cx-res-top b{font-size:28px}
+#cx .cx-bar{position:relative;height:10px;border-radius:99px;overflow:hidden;background:color-mix(in srgb,var(--text) 9%,transparent)}
+#cx .cx-hp .cx-bar{height:14px}
+#cx .cx-bar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),color-mix(in srgb,var(--bg) 55%,transparent) calc(10% - 1px) 10%);pointer-events:none}
+#cx .cx-bar .fill{height:100%;border-radius:99px;transition:width .6s cubic-bezier(.16,1,.3,1)}
+#cx #cxAmbFill{background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 70%,#000),var(--gold))}
+#cx .cx-adjust{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#cx .cx-adjust .input{width:64px;height:34px;text-align:center;font-weight:700;padding:0 6px}
+#cx .cx-adj{height:34px;padding:0 12px;border-radius:10px;border:1px solid var(--cx-hair);background:color-mix(in srgb,var(--text) 4%,transparent);font:600 13px var(--font-ui);display:inline-flex;align-items:center;gap:6px;transition:background-color .15s,border-color .15s,transform .1s}
+#cx .cx-adj:hover{border-color:color-mix(in srgb,var(--gold) 50%,var(--line));background:color-mix(in srgb,var(--text) 8%,transparent)}
+#cx .cx-adj:active{transform:translateY(1px)}
+#cx .cx-adj-dmg{color:color-mix(in srgb,var(--red) 70%,var(--text))}
+#cx .cx-adj-heal{color:color-mix(in srgb,#5fb38a 80%,var(--text))}
+#cx .cx-adj-rest{margin-left:auto}
+#cx .cx-adj-rest .ui-icon{width:16px;height:16px}
+#cx .cx-core{display:grid;grid-template-columns:repeat(3,auto);gap:6px}
+#cx .cx-stat{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:96px;padding:8px 12px;border-radius:12px;background:color-mix(in srgb,var(--bg) 38%,transparent);border:1px solid transparent;text-align:left}
+#cx .cx-stat small{font-size:12px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:4px}
+#cx .cx-stat b{font:800 24px/1.1 var(--cx-num);font-variant-numeric:tabular-nums lining-nums;display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+#cx .cx-stat b i{font-style:normal;color:var(--muted);font-size:16px}
+#cx .cx-stat-cr b{color:var(--gold2)}
+#cx .cx-stat-wide b{font-size:20px}
+#cx .cx-copyable{border-color:color-mix(in srgb,var(--gold) 30%,transparent)}
+#cx .cx-copyable:hover{background:color-mix(in srgb,var(--gold) 14%,transparent)}
+#cx .cx-mini-select{appearance:none;border:0;border-radius:6px;padding:1px 6px;background:color-mix(in srgb,var(--text) 10%,transparent);color:var(--text);font:700 11.5px var(--font-ui);cursor:pointer}
+
+/* Faixa: rodada, alertas, Discord */
+#cx .cx-strip{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:10px 14px;border-radius:12px;border:1px dashed var(--cx-hair);transition:border-color .25s,background-color .25s}
+#cx .cx-strip.is-active{border-style:solid;border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:color-mix(in srgb,var(--gold) 7%,transparent)}
+#cx .cx-round{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted)}
+#cx .cx-round .ui-icon{width:16px;height:16px}
+#cx .cx-strip.is-active .cx-round{color:var(--text)}
+#cx .cx-round b{font:800 20px var(--cx-num);color:var(--gold2)}
+#cx .cx-round-actions{display:inline-flex;gap:6px;margin-left:6px}
+#cx .cx-alerts{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
+#cx .cx-alert{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:99px;background:color-mix(in srgb,var(--text) 7%,transparent)}
+#cx .cx-alert-ok{color:var(--muted);font-weight:500}
+#cx .cx-alert-dis,#cx .cx-alert-stop{background:color-mix(in srgb,var(--red) 20%,transparent);color:color-mix(in srgb,var(--red) 45%,var(--text))}
+#cx .cx-alert-adv{background:color-mix(in srgb,#5fb38a 22%,transparent)}
+#cx .cx-alert-warn{background:color-mix(in srgb,var(--gold) 20%,transparent)}
+#cx .cx-prefix{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+#cx .cx-prefix .ui-icon{width:15px;height:15px}
+#cx .cx-prefix input{width:62px;height:28px;padding:0 8px;border-radius:8px;border:1px solid var(--cx-hair);background:color-mix(in srgb,var(--bg) 40%,transparent);color:var(--text);font:600 13px ui-monospace,Menlo,Consolas,monospace}
+
+/* Em foco */
+#cx .cx-focus{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+#cx .cx-focus-label{display:inline-flex;align-items:center;gap:6px;margin-right:4px;font:700 13px var(--font-ui);color:var(--gold2)}
+#cx .cx-focus-label .ui-icon{width:14px;height:14px}
+#cx .cx-focus-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:99px;border:1px solid var(--cx-hair);background:var(--cx-surface);font:600 13.5px var(--font-ui);transition:border-color .15s,transform .12s}
+#cx .cx-focus-chip:hover{border-color:var(--cx-c,var(--gold));transform:translateY(-1px)}
+#cx .cx-focus-chip i{width:8px;height:8px;border-radius:50%;background:var(--cx-c,var(--muted))}
+#cx .cx-focus-chip small{color:var(--muted);font-weight:600}
+#cx .cx-econ-action{--cx-c:var(--cx-action)}#cx .cx-econ-bonus{--cx-c:var(--cx-bonus)}#cx .cx-econ-reaction{--cx-c:var(--cx-reaction)}#cx .cx-econ-power{--cx-c:var(--cx-power)}#cx .cx-econ-free{--cx-c:var(--cx-free)}#cx .cx-econ-other{--cx-c:var(--cx-other)}#cx .cx-econ-passive{--cx-c:var(--cx-passive)}
+
+/* Grade */
+#cx .cx-jump{display:none}
+#cx .cx-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(290px,.78fr);gap:18px;align-items:start}
+#cx .cx-col{min-width:0;display:flex;flex-direction:column;gap:10px;scroll-margin-top:84px}
+#cx .cx-col-head{display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--cx-hair)}
+#cx .cx-col-head h2{margin:0;font:800 24px var(--cx-num);color:var(--text);letter-spacing:0;text-transform:none}
+#cx .cx-count{font:700 12.5px var(--font-ui);padding:1px 9px;border-radius:99px;background:color-mix(in srgb,var(--text) 9%,transparent);color:var(--muted)}
+#cx .cx-count:empty{display:none}
+#cx .cx-hint{margin-left:auto;font-size:12.5px;color:var(--muted)}
+#cx .cx-col-tools{margin-left:auto;display:flex;gap:6px}
+#cx .cx-tool{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 11px;border-radius:99px;border:1px solid var(--cx-hair);background:transparent;font:600 12.5px var(--font-ui);color:var(--muted);transition:color .15s,border-color .15s}
+#cx .cx-tool:hover{color:var(--text);border-color:color-mix(in srgb,var(--gold) 50%,var(--line))}
+#cx .cx-tool .ui-icon{width:13px;height:13px}
+#cx .cx-empty{margin:4px 0;font-size:13.5px;color:var(--muted)}
+#cx .cx-banner{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--red) 16%,transparent);font-size:13.5px}
+#cx .cx-banner .ui-icon{width:16px;height:16px}
+
+/* Filtros de economia */
+#cx .cx-filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#cx .cx-filters button{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:99px;border:1px solid var(--cx-hair);background:transparent;font:600 12.5px var(--font-ui);color:var(--muted);transition:background-color .15s,color .15s,border-color .15s}
+#cx .cx-filters button span{font-weight:700;opacity:.75}
+#cx .cx-filters button:hover{color:var(--text)}
+#cx .cx-filters button[aria-pressed="true"]{background:var(--cx-c,var(--gold));border-color:var(--cx-c,var(--gold));color:var(--primary-ink,#1a1010)}
+#cx .cx-filters .cx-f-action{--cx-c:var(--cx-action)}#cx .cx-filters .cx-f-bonus{--cx-c:var(--cx-bonus)}#cx .cx-filters .cx-f-reaction{--cx-c:var(--cx-reaction)}#cx .cx-filters .cx-f-power{--cx-c:var(--cx-power)}#cx .cx-filters .cx-f-free{--cx-c:var(--cx-free)}
+#cx .cx-afford{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:12.5px;color:var(--muted);cursor:pointer}
+#cx .cx-afford input{accent-color:var(--gold)}
+
+/* Seções por economia */
+#cx .cx-econ{display:flex;flex-direction:column;gap:6px}
+#cx .cx-econ+.cx-econ{margin-top:8px}
+#cx .cx-econ>h3,#cx .cx-pgroup>h3{display:flex;align-items:center;gap:8px;margin:4px 0 2px;font:700 13px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted)}
+#cx .cx-econ-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border-radius:99px;background:color-mix(in srgb,var(--cx-c) 18%,transparent);color:color-mix(in srgb,var(--cx-c) 75%,var(--text));font:700 13px var(--font-ui)}
+#cx .cx-econ-badge .ui-icon{width:13px;height:13px}
+#cx .cx-econ-count{font-weight:600;opacity:.7}
+
+/* Itens de ação */
+#cx .cx-item{position:relative;display:grid;grid-template-columns:42px minmax(0,1fr) auto auto;align-items:center;gap:6px 12px;padding:10px 12px 10px 14px;border-radius:12px;background:var(--cx-surface);border:1px solid var(--cx-hair);transition:border-color .18s,background-color .18s}
+#cx .cx-item::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:var(--cx-c)}
+#cx .cx-item:hover{border-color:color-mix(in srgb,var(--cx-c) 45%,var(--line))}
+#cx .cx-item.is-stowed,#cx .cx-item.is-short{opacity:.62}
+#cx .cx-item.is-stowed:hover,#cx .cx-item.is-short:hover{opacity:1}
+#cx .cx-lead{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;position:relative;overflow:hidden;background:color-mix(in srgb,var(--cx-c) 15%,transparent);color:color-mix(in srgb,var(--cx-c) 80%,var(--text))}
+#cx .cx-lead .ui-icon{width:21px;height:21px}
+#cx .cx-lead-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#cx .cx-lead-cost{display:flex;flex-direction:column;align-items:center;justify-content:center;background:color-mix(in srgb,var(--blue) 18%,transparent);color:color-mix(in srgb,var(--blue) 60%,var(--text))}
+#cx .cx-lead-cost b{font:800 18px/1 var(--cx-num)}
+#cx .cx-lead-cost small{font:700 10px var(--font-ui)}
+#cx .cx-lead-cost.is-short{background:color-mix(in srgb,var(--text) 7%,transparent);color:var(--muted)}
+#cx .cx-item-main{min-width:0}
+#cx .cx-item-title{display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:0;border:0;background:none;text-align:left}
+#cx .cx-item-title:disabled{cursor:default;opacity:1}
+#cx .cx-item-title b{font:700 16.5px/1.25 var(--cx-num);color:var(--text)}
+#cx .cx-caret{width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s}
+#cx .is-open>.cx-item-main .cx-caret,#cx .is-open>.cx-pass-head .cx-caret{transform:rotate(225deg) translate(-1px,-1px)}
+#cx .cx-item-meta{margin:2px 0 0;font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center}
+#cx .cx-item-meta i{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.5;margin:0 7px}
+#cx .cx-uses-text{color:var(--gold2);font-weight:600}
+#cx .cx-item-nums{display:flex;gap:6px;align-items:center}
+#cx .cx-num{display:flex;flex-direction:column;align-items:flex-end;min-width:58px;padding:4px 9px;border-radius:9px;border:1px solid transparent;background:color-mix(in srgb,var(--bg) 35%,transparent);transition:border-color .15s,background-color .15s}
+#cx button.cx-num:hover{border-color:color-mix(in srgb,var(--gold) 55%,transparent);background:color-mix(in srgb,var(--gold) 10%,transparent)}
+#cx .cx-num small{font-size:11px;font-weight:600;color:var(--muted)}
+#cx .cx-num b{font:800 18px/1.15 var(--cx-num);white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+#cx .cx-num.is-dmg b{color:color-mix(in srgb,var(--red) 60%,var(--text))}
+@keyframes cx-copied{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--gold) 60%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
+#cx .is-copied{animation:cx-copied .5s ease-out}
+#cx .cx-item-tools{display:flex;align-items:center;gap:4px}
+#cx .cx-use{height:32px;padding:0 13px;border-radius:99px;border:0;background:var(--gold);color:var(--primary-ink,#1a1010);font:700 13px var(--font-ui);white-space:nowrap;transition:filter .15s,transform .1s}
+#cx .cx-use:hover{filter:brightness(1.08)}
+#cx .cx-use:active{transform:scale(.96)}
+#cx .cx-use:disabled{opacity:.35;cursor:not-allowed;filter:none}
+#cx .cx-chip-btn{height:30px;padding:0 11px;border-radius:99px;border:1px solid var(--cx-hair);background:transparent;font:600 12.5px var(--font-ui);color:var(--muted);white-space:nowrap;transition:color .15s,border-color .15s,background-color .15s}
+#cx .cx-chip-btn:hover{color:var(--text);border-color:color-mix(in srgb,var(--gold) 50%,var(--line))}
+#cx .cx-chip-btn.is-primary{background:var(--gold);border-color:var(--gold);color:var(--primary-ink,#1a1010)}
+#cx .cx-icon-btn{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;border:0;background:transparent;color:var(--muted);font-size:18px;transition:background-color .15s,color .15s}
+#cx .cx-icon-btn:hover{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text)}
+#cx .cx-icon-btn .ui-icon{width:14px;height:14px}
+#cx .cx-danger:hover{color:var(--red)}
+#cx .cx-pin{width:28px;height:28px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:color-mix(in srgb,var(--muted) 70%,transparent);transition:color .15s,transform .2s}
+#cx .cx-pin .ui-icon{width:14px;height:14px}
+#cx .cx-pin:hover{color:var(--gold2)}
+#cx .cx-pin.is-on{color:var(--gold)}
+#cx .cx-pin.is-on .ui-icon{transform:scale(1.15)}
+#cx .cx-item-desc{grid-column:1/-1;margin:4px 0 2px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--bg) 30%,transparent);font-size:14.5px;line-height:1.6;color:var(--text);max-width:78ch}
+#cx .cx-item-desc p{margin:0 0 .55em}
+#cx .cx-item-desc p:last-child{margin-bottom:0}
+#cx .cx-item-desc .r21-link,#cx .cx-item-desc .r21-source{display:none}
+#cx .cx-item-desc strong.fb-num,#cx .cx-item-desc span.fb-num{color:var(--gold2);font-weight:700}
+#cx .cx-item-desc .fb-note{font-style:italic;color:var(--muted)}
+#cx .cx-item-desc ul{margin:.2em 0 .6em;padding-left:1.2em}
+@keyframes cx-flash{0%,100%{box-shadow:0 0 0 0 transparent}30%{box-shadow:0 0 0 4px color-mix(in srgb,var(--cx-c,var(--gold)) 55%,transparent)}}
+#cx .is-flash{animation:cx-flash 1.2s ease-in-out 2}
+
+/* Passivas */
+#cx .cx-pgroup{display:flex;flex-direction:column;gap:4px}
+#cx .cx-pgroup+.cx-pgroup{margin-top:10px}
+#cx .cx-pgroup>h3 .ui-icon{width:15px;height:15px;color:var(--cx-passive)}
+#cx .cx-pgroup>h3{color:var(--text);font-size:14px}
+#cx .cx-pgroup-train>h3 .ui-icon{color:var(--gold2)}
+#cx .cx-pt-free{margin-left:auto;font-size:12px;font-weight:600;color:var(--muted)}
+#cx .cx-pass{padding:8px 10px 8px 12px;border-radius:10px;background:var(--cx-surface);border:1px solid var(--cx-hair);border-left:3px solid var(--cx-passive);transition:border-color .18s}
+#cx .cx-pgroup-train .cx-pass{border-left-color:var(--gold)}
+#cx .cx-pass:hover{border-color:color-mix(in srgb,var(--cx-passive) 45%,var(--line))}
+#cx .cx-pass-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+#cx .cx-pass-head .cx-item-title{flex:1;min-width:120px}
+#cx .cx-pass-head .cx-item-title b{font-size:15.5px}
+#cx .cx-tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:99px;background:color-mix(in srgb,var(--text) 7%,transparent);color:var(--muted);max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cx .cx-tag-pt{background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold2)}
+#cx .cx-tag-uses{color:var(--gold2)}
+#cx .cx-pass .cx-item-desc{margin-top:8px}
+#cx .cx-counter{display:inline-flex;align-items:center;border-radius:99px;border:1px solid var(--cx-hair);background:color-mix(in srgb,var(--bg) 35%,transparent)}
+#cx .cx-counter button{width:26px;height:26px;border:0;background:transparent;font:700 15px var(--font-ui);color:var(--muted);border-radius:50%}
+#cx .cx-counter button:hover:not(:disabled){color:var(--text);background:color-mix(in srgb,var(--text) 8%,transparent)}
+#cx .cx-counter button:disabled{opacity:.3;cursor:not-allowed}
+#cx .cx-counter b{min-width:34px;text-align:center;font:800 15px var(--cx-num)}
+#cx .cx-counter b small{font:600 11px var(--font-ui);color:var(--muted)}
+
+/* Testes */
+#cx .cx-abilities{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+#cx .cx-abil{display:flex;flex-direction:column;align-items:center;padding:8px 2px 6px;border-radius:10px;border:1px solid var(--cx-hair);background:var(--cx-surface);transition:border-color .15s,transform .1s}
+#cx .cx-abil:hover{border-color:color-mix(in srgb,var(--gold) 55%,var(--line))}
+#cx .cx-abil:active{transform:scale(.97)}
+#cx .cx-abil small{font:700 11px var(--font-ui);color:var(--muted)}
+#cx .cx-abil b{font:800 20px/1.1 var(--cx-num)}
+#cx .cx-abil span{font-size:11.5px;color:var(--muted)}
+#cx .cx-block{padding:12px;border-radius:12px;background:var(--cx-surface);border:1px solid var(--cx-hair)}
+#cx .cx-block>h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 15px var(--cx-num);color:var(--text);letter-spacing:0;text-transform:none}
+#cx .cx-rows{display:flex;flex-direction:column}
+#cx .cx-row{display:flex;align-items:center;gap:10px;width:100%;padding:6px 6px;border:0;border-radius:8px;background:transparent;text-align:left;font-size:14px;color:var(--muted);transition:background-color .12s}
+#cx .cx-row:hover{background:color-mix(in srgb,var(--text) 6%,transparent);color:var(--text)}
+#cx .cx-row span{flex:1;display:flex;align-items:baseline;gap:6px}
+#cx .cx-row span small{font-size:11px;color:var(--muted)}
+#cx .cx-row b{font:800 16px var(--cx-num);color:var(--text);font-variant-numeric:tabular-nums lining-nums}
+#cx .cx-row.is-prof{color:var(--text)}
+#cx .cx-row.is-prof b{color:var(--gold2)}
+#cx .cx-dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--muted) 70%,transparent)}
+#cx .is-prof .cx-dot{background:var(--gold);box-shadow:none}
+#cx .cx-dot.is-bg{background:var(--gold2)}
+#cx .cx-skill-group+.cx-skill-group{margin-top:6px;padding-top:6px;border-top:1px solid var(--cx-hair)}
+#cx .cx-skill-group h4{margin:2px 6px 2px;display:flex;justify-content:space-between;font:700 12px var(--font-ui);color:var(--muted);letter-spacing:0;text-transform:none}
+#cx .cx-cond .active-condition-strip{margin-bottom:8px}
+#cx .cx-hint-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--gold) 9%,transparent);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent);font-size:13.5px}
+#cx .cx-hint-row>span:not(.ui-icon){flex:1;min-width:200px}
+#cx .cx-hint-row .ui-icon{width:18px;height:18px;color:var(--gold2)}
+#cx #combatWeaponList:empty{display:none}
+#cx .cx-form{padding:14px;border-radius:12px;border:1px solid var(--cx-hair);background:var(--cx-surface)}
+
+/* Médias */
+@media (max-width:1320px){
+  #cx .cx-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:"a p" "a c"}
+  #cx #cxColActions{grid-area:a}#cx #cxColPassives{grid-area:p}#cx #cxColChecks{grid-area:c}
+  #cx .cx-hud{grid-template-columns:1fr 1.6fr}
+  #cx .cx-core{grid-column:1/-1;grid-template-columns:repeat(6,minmax(0,1fr))}
+  #cx .cx-stat-wide{grid-column:auto}
+}
+@media (max-width:980px){
+  #cx{padding:14px 12px 96px;gap:12px}
+  #cx .cx-grid{grid-template-columns:1fr;grid-template-areas:none}
+  #cx #cxColActions,#cx #cxColPassives,#cx #cxColChecks{grid-area:auto}
+  #cx .cx-hud{grid-template-columns:1fr;gap:14px;padding:14px}
+  #cx .cx-vitals{grid-template-columns:1fr 1fr}
+  #cx .cx-hp{grid-column:1/-1}
+  #cx .cx-core{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #cx .cx-stat{min-width:0;padding:7px 9px}
+  #cx .cx-stat b{font-size:20px}
+  #cx .cx-adjust{display:grid;grid-template-columns:52px repeat(4,minmax(0,1fr)) 36px;gap:5px}
+  #cx .cx-adjust .input{width:100%}
+  #cx .cx-adj{padding:0 4px;justify-content:center;font-size:12.5px}
+  #cx .cx-adj-rest{margin-left:0}
+  #cx .cx-jump{position:sticky;top:62px;z-index:5;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:12px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(8px);border:1px solid var(--cx-hair)}
+  #cx .cx-jump a{padding:8px 0;border-radius:9px;text-align:center;font:700 13.5px var(--font-ui);color:var(--text);text-decoration:none;background:var(--cx-surface)}
+  #cx .cx-item{grid-template-columns:40px minmax(0,1fr);gap:8px 10px}
+  #cx .cx-item-nums{grid-column:1/-1;justify-content:flex-start}
+  #cx .cx-item-nums .cx-num{align-items:flex-start}
+  #cx .cx-item-tools{grid-column:1/-1;justify-content:flex-end}
+  #cx .cx-use{flex:1}
+  #cx .cx-afford{margin-left:0}
+  #cx .cx-prefix span:not(.ui-icon){display:none}
+  #cx .cx-abilities{grid-template-columns:repeat(3,1fr)}
+}
+
+#cx .cx-excerpt{margin:4px 0 0;font-size:13.5px;line-height:1.45;color:var(--muted);cursor:pointer;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#cx .cx-excerpt[hidden]{display:none}
+#cx .cx-excerpt:hover{color:var(--text)}
+#cx .cx-skills .cx-row{padding:4px 6px}
+@media (max-width:980px){
+  #cx .cx-strip{flex-direction:column;align-items:stretch}
+  #cx .cx-stat-wide{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}
+  #cx .cx-stat-wide small{white-space:nowrap}
+  #cx .cx-round{flex-wrap:wrap}
+  #cx .cx-round-actions{margin-left:auto}
+  #cx .cx-prefix{justify-content:flex-end}
+}
+@media (prefers-reduced-motion:reduce){#cx *{animation:none!important;transition:none!important}}
+
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -4599,118 +4885,81 @@ document.addEventListener('change',function(e){
             </div></div>
       </section>
 
-      <section class="page" id="page-combat"><div class="page-intro-v21" hidden=""><div class="page-intro-icon"><span class="ui-icon i-swords"></span></div><div class="page-intro-copy"><small>Posto de Batalha</small><h2>Central de Combate</h2><p>Acerto, defesas, ataques, técnicas e condições.</p></div><div class="page-intro-metrics" hidden=""><div class="page-intro-metric"><small>Acerto</small><b id="piCombatAttack">—</b></div><div class="page-intro-metric"><small>CR</small><b id="piCombatCr">—</b></div><div class="page-intro-metric"><small>DT</small><b id="piCombatDt">—</b></div><div class="page-intro-metric"><small>Condições</small><b id="piCombatConditions">—</b></div></div></div>
-        <div class="page-feature-hero combat-hero" hidden=""><div><div class="page-feature-kicker">Encontro</div><h2>Convés de Combate</h2><p></p></div><div class="page-feature-metrics"><div class="page-feature-metric"><small>Personagem</small><b id="combatHeroName">—</b></div><div class="page-feature-metric"><small>Estilo</small><b id="combatHeroStyle">—</b></div><div class="page-feature-metric"><small>Condições</small><b id="combatHeroConditions">0</b></div></div></div>
-
-        <div class="cb">
-          <!-- Faixa de estado: quem sou, quanto aguento, como defendo -->
-          <header class="cb-bar">
-            <div class="cb-who">
-              <div class="cb-avatar" id="combatStage"><div class="combat-placeholder"><span class="ui-icon i-skull"></span></div></div>
-              <div class="cb-who-text"><div class="cb-name" id="hudName">Novo Pirata</div><div class="cb-meta" id="hudMeta">Nível 1</div></div>
+      <section class="page" id="page-combat">
+        <div class="cx" id="cx">
+          <header class="cx-hud">
+            <div class="cx-id">
+              <div class="cx-portrait" id="combatStage"><div class="combat-placeholder"><span class="ui-icon i-skull"></span></div></div>
+              <div class="cx-id-text"><h2 class="cx-name" id="hudName">Novo Pirata</h2><p class="cx-meta" id="hudMeta">Nível 1</p><p class="cx-alert-line" id="cxHpAlert" hidden></p></div>
             </div>
-
-            <div class="cb-vitals">
-              <div class="cb-vital cb-hp">
-                <div class="cb-vital-top"><span class="cb-vital-label"><span class="ui-icon i-heart"></span>Vida</span><b id="hudHpText">25 / 25</b></div>
-                <div class="bar"><div class="fill hp-fill" id="hudHpFill"></div></div>
-              </div>
-              <div class="cb-vital cb-pp">
-                <div class="cb-vital-top"><span class="cb-vital-label"><span class="ui-icon i-bolt"></span>Poder</span><b id="hudPpText">10 / 10</b></div>
-                <div class="bar"><div class="fill pp-fill" id="hudPpFill"></div></div>
-              </div>
-              <div class="cb-adjust" role="group" aria-label="Ajustar vida e poder">
+            <div class="cx-vitals">
+              <div class="cx-res cx-hp"><div class="cx-res-top"><span class="cx-res-label"><span class="ui-icon i-heart"></span>Vida</span><b id="hudHpText">0 / 0</b></div><div class="cx-bar"><div class="fill hp-fill" id="hudHpFill"></div></div></div>
+              <div class="cx-res cx-pp"><div class="cx-res-top"><span class="cx-res-label"><span class="ui-icon i-bolt"></span>Poder</span><b id="hudPpText">0 / 0</b></div><div class="cx-bar"><div class="fill pp-fill" id="hudPpFill"></div></div></div>
+              <div class="cx-res cx-amb"><div class="cx-res-top"><span class="cx-res-label"><span class="ui-icon i-flag"></span>Ambição</span><b id="cxAmbText">0 / 0</b></div><div class="cx-bar"><div class="fill" id="cxAmbFill"></div></div></div>
+              <div class="cx-adjust" role="group" aria-label="Ajustar vida e poder">
                 <input class="input" type="number" id="quickAmount" value="5" min="0" aria-label="Quantidade">
-                <button class="cb-adj cb-adj-dmg" id="takeDamage" type="button" title="Receber dano">− Vida</button>
-                <button class="cb-adj cb-adj-heal" id="healHp" type="button" title="Curar">+ Vida</button>
-                <button class="cb-adj" id="spendPp" type="button" title="Gastar Poder">− PP</button>
-                <button class="cb-adj" id="recoverPp" type="button" title="Recuperar Poder">+ PP</button>
-                <button class="cb-adj cb-adj-rest" id="fullRest" type="button" title="Descanso completo: restaura PV, PP e Ambição"><span class="ui-icon i-rest"></span><span class="sr-only">Descanso completo</span></button>
+                <button class="cx-adj cx-adj-dmg" id="takeDamage" type="button" title="Receber dano">− Vida</button>
+                <button class="cx-adj cx-adj-heal" id="healHp" type="button" title="Curar">+ Vida</button>
+                <button class="cx-adj" id="spendPp" type="button" title="Gastar Poder">− PP</button>
+                <button class="cx-adj" id="recoverPp" type="button" title="Recuperar Poder">+ PP</button>
+                <button class="cx-adj cx-adj-rest" id="fullRest" type="button" title="Descanso completo: restaura PV, PP e Ambição"><span class="ui-icon i-rest"></span><span class="sr-only">Descanso completo</span></button>
               </div>
             </div>
-
-            <div class="cb-stats">
-              <div class="cb-stat"><small>CR</small><b id="hudCr">10</b></div>
-              <button class="cb-stat cb-stat-roll" type="button" id="cbInitBtn" title="Rolar iniciativa"><small>Iniciativa</small><b id="cbInit">+0</b></button>
-              <div class="cb-stat"><small>Deslocam.</small><b id="cbMove">9 m</b></div>
-              <div class="cb-stat" title="Bônus de proficiência"><small>Prof.</small><b id="combatProfCore">+2</b></div>
+            <div class="cx-core">
+              <div class="cx-stat cx-stat-cr" title="Classe de Resistência"><small>CR</small><b id="hudCr">10</b></div>
+              <button type="button" class="cx-stat cx-copyable" id="cxInitBtn" title="Copiar a rolagem de iniciativa"><small>Iniciativa</small><b id="cbInit">+0</b></button>
+              <div class="cx-stat"><small>Deslocamento</small><b id="cbMove">9 m</b></div>
+              <div class="cx-stat"><small>Proficiência</small><b id="combatProfCore">+2</b></div>
+              <div class="cx-stat" title="10 + Percepção"><small>Percepção passiva</small><b id="cxPassive">10</b></div>
+              <div class="cx-stat cx-stat-wide"><small>Técnicas <select class="cx-mini-select bind" data-key="combatAbility" id="combatAbilitySelect" aria-label="Atributo das técnicas"><option value="for">FOR</option><option value="des">DES</option><option value="con">CON</option><option value="sab">SAB</option><option value="von">VON</option><option value="pre">PRE</option></select></small><b><span id="combatHitCore">+2</span><i>·</i>DT <span id="combatDtCore">10</span></b></div>
+              <span hidden><b id="combatCrCore"></b></span>
             </div>
           </header>
 
-          <!-- Turnos e efeitos ativos -->
-          <div class="cb-turn" id="cbTurn">
-            <div class="cb-turn-state"><span class="ui-icon i-hourglass"></span><span id="cbTurnLabel">Fora de combate</span></div>
-            <div class="cb-alerts" id="cbAlerts" aria-live="polite"></div>
-            <div class="cb-turn-actions" id="cbTurnActions"></div>
+          <div class="cx-strip" id="cbTurn">
+            <div class="cx-round"><span class="ui-icon i-hourglass"></span><span id="cbTurnLabel">Fora de combate</span><span class="cx-round-actions" id="cbTurnActions"></span></div>
+            <div class="cx-alerts" id="cbAlerts" aria-live="polite"></div>
+            <label class="cx-prefix" title="Texto colocado antes de cada rolagem copiada, como /r ou !r"><span class="ui-icon i-dice"></span><span>Copiar para o Discord com</span><input id="cxPrefix" placeholder="/r" maxlength="12" autocomplete="off" spellcheck="false"></label>
           </div>
 
-          <div class="cb-grid">
-            <main class="cb-main">
-              <div class="cb-param">
-                <label for="combatAbilitySelect">Técnicas usam</label>
-                <select class="input bind" data-key="combatAbility" id="combatAbilitySelect"><option value="for">Força</option><option value="des">Destreza</option><option value="con">Constituição</option><option value="sab">Sabedoria</option><option value="von">Vontade</option><option value="pre">Presença</option></select>
-                <span class="cb-param-out"><span>Acerto <b id="combatHitCore">+2</b></span><span>DT <b id="combatDtCore">10</b></span></span>
-                <span hidden><b id="combatCrCore">10</b></span>
-                <div class="cb-rollmode" role="radiogroup" aria-label="Modo de rolagem do d20">
-                  <button type="button" data-roll-mode="auto" aria-pressed="true" title="Aplica vantagem ou desvantagem conforme suas condições">Auto</button>
-                  <button type="button" data-roll-mode="adv" aria-pressed="false">Vantagem</button>
-                  <button type="button" data-roll-mode="dis" aria-pressed="false">Desvantagem</button>
-                </div>
-              </div>
+          <div class="cx-focus" id="cxPins" aria-label="Em foco"></div>
 
-              <div class="cb-tabs" role="tablist" aria-label="Ações de combate">
-                <button type="button" role="tab" data-cb-tab="attacks" aria-selected="true">Ataques <span id="cbAttackCount"></span></button>
-                <button type="button" role="tab" data-cb-tab="techs" aria-selected="false">Técnicas <span id="combatTechniqueCount"></span></button>
-                <button type="button" role="tab" data-cb-tab="checks" aria-selected="false">Testes</button>
-              </div>
+          <nav class="cx-jump" aria-label="Seções do combate"><a href="#cxColActions">Ações</a><a href="#cxColPassives">Passivas</a><a href="#cxColChecks">Testes</a></nav>
 
-              <section class="cb-pane" data-cb-pane="attacks">
-                <div class="cb-arsenal" id="combatWeaponList"></div>
-                <div class="cb-subhead"><h3>Ataques personalizados</h3><button class="btn small" id="toggleAttackForm" type="button"><span class="ui-icon i-plus"></span> Criar ataque</button></div>
-                <div id="attackForm" class="cb-form" hidden><div class="form-grid"><input class="input full" id="atkName" placeholder="Nome do ataque"><select class="input" id="atkAbility" aria-label="Atributo do acerto"><option value="for">Acerto com Força</option><option value="des">Acerto com Destreza</option><option value="sab">Acerto com Sabedoria</option><option value="von">Acerto com Vontade</option><option value="pre">Acerto com Presença</option><option value="none">Sem atributo</option></select><select class="input" id="atkProf" aria-label="Proficiência"><option value="yes">Com proficiência</option><option value="no">Sem proficiência</option></select><input class="input" id="atkBonus" type="number" value="0" placeholder="Bônus extra" aria-label="Bônus extra no acerto"><input class="input" id="atkDamage" value="1d4" placeholder="Dano (ex.: 1d8)" aria-label="Dano"><select class="input" id="atkDamageAbility" aria-label="Atributo no dano"><option value="for">+ FOR no dano</option><option value="des">+ DES no dano</option><option value="sab">+ SAB no dano</option><option value="von">+ VON no dano</option><option value="pre">+ PRE no dano</option><option value="none">Sem atributo</option></select><input class="input" id="atkType" placeholder="Tipo de dano" value="Contundente" aria-label="Tipo de dano"><input class="input wide" id="atkRange" placeholder="Alcance" value="Corpo a corpo" aria-label="Alcance"><textarea class="input full" id="atkNotes" placeholder="Propriedades, requisitos e observações"></textarea></div><div class="form-actions"><button class="btn" id="cancelAttack" type="button">Cancelar</button><button class="btn primary" id="saveAttack" type="button">Salvar ataque</button></div></div>
-                <div class="cb-attack-list" id="attackList"></div>
-              </section>
+          <div class="cx-grid">
+            <section class="cx-col" id="cxColActions" aria-labelledby="cxActionsTitle">
+              <header class="cx-col-head"><h2 id="cxActionsTitle">Ações</h2><span class="cx-count" id="cbAttackCount"></span>
+                <div class="cx-col-tools"><button type="button" class="cx-tool" data-cx-act="new-weapon"><span class="ui-icon i-plus"></span>Arma</button><button type="button" class="cx-tool" id="toggleAttackForm"><span class="ui-icon i-plus"></span>Ataque</button></div></header>
+              <div class="cx-filters" role="group" aria-label="Filtrar ações" id="cxFilters"></div>
+              <div id="attackForm" class="cx-form" hidden><div class="form-grid"><input class="input full" id="atkName" placeholder="Nome do ataque"><select class="input" id="atkAbility" aria-label="Atributo do acerto"><option value="for">Acerto com Força</option><option value="des">Acerto com Destreza</option><option value="sab">Acerto com Sabedoria</option><option value="von">Acerto com Vontade</option><option value="pre">Acerto com Presença</option><option value="none">Sem atributo</option></select><select class="input" id="atkProf" aria-label="Proficiência"><option value="yes">Com proficiência</option><option value="no">Sem proficiência</option></select><input class="input" id="atkBonus" type="number" value="0" placeholder="Bônus extra" aria-label="Bônus extra no acerto"><input class="input" id="atkDamage" value="1d4" placeholder="Dano (ex.: 1d8)" aria-label="Dano"><select class="input" id="atkDamageAbility" aria-label="Atributo no dano"><option value="for">+ FOR no dano</option><option value="des">+ DES no dano</option><option value="sab">+ SAB no dano</option><option value="von">+ VON no dano</option><option value="pre">+ PRE no dano</option><option value="none">Sem atributo</option></select><input class="input" id="atkType" placeholder="Tipo de dano" value="Contundente" aria-label="Tipo de dano"><input class="input wide" id="atkRange" placeholder="Alcance" value="Corpo a corpo" aria-label="Alcance"><textarea class="input full" id="atkNotes" placeholder="Propriedades, requisitos e observações"></textarea></div><div class="form-actions"><button class="btn" id="cancelAttack" type="button">Cancelar</button><button class="btn primary" id="saveAttack" type="button">Salvar ataque</button></div></div>
+              <div id="combatWeaponList"></div>
+              <div id="cxActionList" class="cx-econ-list"></div>
+              <div hidden><div id="attackList"></div><div id="combatTechniqueList"></div><span id="combatTechniqueCount"></span></div>
+            </section>
 
-              <section class="cb-pane" data-cb-pane="techs" hidden>
-                <div class="cb-filters" role="group" aria-label="Filtrar técnicas">
-                  <button type="button" data-tech-filter="usable" aria-pressed="true">Posso usar</button>
-                  <button type="button" data-tech-filter="all" aria-pressed="false">Todas</button>
-                  <button type="button" data-tech-filter="passive" aria-pressed="false">Passivas</button>
-                </div>
-                <div class="cb-tech-list" id="combatTechniqueList"></div>
-              </section>
+            <section class="cx-col" id="cxColPassives" aria-labelledby="cxPassivesTitle">
+              <header class="cx-col-head"><h2 id="cxPassivesTitle">Passivas</h2><span class="cx-count" id="cxPassiveCount"></span><div class="cx-col-tools"><button type="button" class="cx-tool" data-cx-act="toggle-all" id="cxToggleAll">Abrir tudo</button></div></header>
+              <div id="cxPassiveList"></div>
+            </section>
 
-              <section class="cb-pane" data-cb-pane="checks" hidden>
-                <div class="cb-subhead"><h3>Salvaguardas</h3><span class="cb-hint">Toque para rolar</span></div>
-                <div class="cb-chip-grid" id="combatSaveList"></div>
-                <div class="cb-subhead"><h3>Perícias treinadas</h3></div>
-                <div class="cb-chip-grid" id="combatTrainedSkills"></div>
-              </section>
-            </main>
-
-            <aside class="cb-side">
-              <div class="panel cb-log-panel">
-                <div class="panel-head"><h2>Rolagens</h2><button class="btn small" id="clearRolls" type="button">Limpar</button></div>
-                <div class="panel-body">
-                  <div class="cb-dice" role="group" aria-label="Rolar dados">
-                    <button type="button" data-die="4">d4</button><button type="button" data-die="6">d6</button><button type="button" data-die="8">d8</button><button type="button" data-die="10">d10</button><button type="button" data-die="12">d12</button><button type="button" data-die="20">d20</button>
-                  </div>
-                  <form class="cb-expr" id="cbExprForm"><input class="input" id="cbExpr" placeholder="Ex.: 2d6+3" aria-label="Expressão de dados" autocomplete="off"><button class="btn small" type="submit">Rolar</button></form>
-                  <div class="cb-log" id="diceLog" aria-live="polite"></div>
-                </div>
-              </div>
-
-              <div class="panel cb-cond-panel compact-conditions-panel">
-                <div class="panel-head"><h2>Condições</h2><span class="eyebrow" id="conditionCount">0 ativas</span></div>
-                <div class="panel-body conditions-panel-body">
+            <section class="cx-col" id="cxColChecks" aria-labelledby="cxChecksTitle">
+              <header class="cx-col-head"><h2 id="cxChecksTitle">Testes</h2><span class="cx-hint">Toque para copiar</span></header>
+              <div class="cx-abilities" id="cxAbilities"></div>
+              <div class="cx-block"><h3>Salvaguardas</h3><div class="cx-rows" id="combatSaveList"></div></div>
+              <div class="cx-block"><h3>Perícias</h3><div class="cx-rows cx-skills" id="combatTrainedSkills"></div></div>
+              <div class="cx-block cx-cond compact-conditions-panel">
+                <h3>Condições <span class="cx-count" id="conditionCount">0 ativas</span></h3>
+                <div class="conditions-panel-body">
                   <div class="active-condition-strip" id="activeConditionStrip" aria-live="polite"></div>
                   <details class="conditions-picker"><summary>Aplicar ou remover condição<span class="disclosure-chevron" aria-hidden="true"></span></summary><div class="conditions" id="conditions"></div></details>
                   <div class="condition-info-card" id="conditionInfoCard" hidden><div class="condition-info-head"><div class="condition-info-title" id="conditionInfoTitle">Condição</div><div class="condition-cost" id="conditionInfoCost">—</div></div><div class="condition-info-text" id="conditionInfoText">Selecione uma condição para consultar o efeito.</div></div>
                   <div class="condition-note" id="conditionNoteWrap"><div class="field"><label for="conditionNote">Anotação da condição</label><textarea class="input" id="conditionNote" placeholder="Duração, origem, CD ou observações da mesa…"></textarea></div></div>
                 </div>
               </div>
-            </aside>
+            </section>
           </div>
+
+          <div hidden aria-hidden="true"><div id="diceLog"></div><button type="button" id="clearRolls"></button><form id="cbExprForm"><input id="cbExpr"></form><button id="cbInitBtn" type="button"></button><b id="cbAttackCountOld"></b></div>
         </div>
       </section>
       <section class="page" id="page-techniques"><div class="page-feature-hero techniques-hero"><div><div class="page-feature-kicker">Arsenal pessoal</div><h2>Técnicas &amp; Criação</h2><p>Use técnicas conhecidas, adapte exemplos do livro e construa novas técnicas com custo de PP calculado.</p></div><div class="page-feature-metrics"><div class="page-feature-metric"><small>Conhecidas</small><b id="techHeroCount">0</b></div><div class="page-feature-metric"><small>PP Atual</small><b id="techHeroPp">0 / 0</b></div><div class="page-feature-metric"><small>Grau Máximo</small><b id="techHeroGrade">1º</b></div></div></div><div class="techniques-v202-shell"><div class="panel tech-known-panel"><div class="panel-head"><h2>Técnicas Conhecidas</h2><div class="tech-known-head-actions"><span class="eyebrow" id="techCount">0 técnicas</span><button class="btn small primary" id="newTechniqueBtn" type="button">＋ Nova Técnica</button></div></div><div class="panel-body"><div class="tech-toolbar-v202"><div class="field"><label for="techSearch">Pesquisar técnicas</label><input class="input" id="techSearch" placeholder="Nome, origem, dano ou descrição"></div><div class="field"><label for="techSourceFilter">Origem</label><select class="input" id="techSourceFilter"><option value="">Todas as origens</option></select></div><div class="field"><label for="techGradeFilter">Grau</label><select class="input" id="techGradeFilter"><option value="">Todos</option><option value="1">1º</option><option value="2">2º</option><option value="3">3º</option><option value="4">4º</option><option value="5">5º</option><option value="6">6º</option><option value="7">7º</option><option value="Auxiliar">Auxiliar</option></select></div><button class="btn" id="refreshTechniques" type="button">Atualizar</button></div><div class="tech-list-statusline"><span>As técnicas salvas são carregadas automaticamente ao abrir a página.</span><b id="techListStatus">0 exibidas</b></div><div class="tech-list tech-list-v202" id="techList"></div></div></div><details class="tech-workshop" id="techWorkshop"><summary><span class="ui-icon i-spark" aria-hidden="true"></span><span><b>Criação de técnicas</b><small>Editor, biblioteca e calculadora</small></span><span class="disclosure-chevron" aria-hidden="true"></span></summary><div class="techniques-v202-workspace"><div class="column"><div class="panel"><div class="panel-head"><h2>Biblioteca de Técnicas</h2><span class="eyebrow">Exemplos dos livros</span></div><div class="panel-body">
@@ -7976,6 +8225,165 @@ function crWire(){const page=document.getElementById('page-jobs');if(!page||crWi
 }
 crWire();
 sbWire();if(document.getElementById('styleBook'))sbRender();
+
+/* ==========================================================================
+   Combate 3.0 — painel de batalha para leitura rápida.
+   Ações organizadas pela economia de ação, passivas e treinamentos sempre à
+   vista, perícias completas. Rolagens são copiadas para colar no Discord.
+   Substitui as funções do Combate 2.0 (as chamadas antigas continuam
+   valendo e só pedem um redesenho).
+   ========================================================================== */
+function cxUi(){const c=current(),s=cxUi.s||(cxUi.s={});if(s.cid!==c.id)Object.assign(s,{cid:c.id,filter:'all',afford:false,open:{},allOpen:false});return s}
+function cxRequest(){if(cxRequest.q)return;cxRequest.q=true;queueMicrotask(()=>{cxRequest.q=false;cxRender()})}
+function cxPrefix(){try{return localStorage.getItem('opsheet.rollPrefix')||''}catch(_){return ''}}
+function cxExpr(bonus){const b=num(bonus);return `1d20${b>=0?'+':'-'}${Math.abs(b)}`}
+function cxClean(expr){return String(expr||'').replace(/\s+/g,'')}
+function cxCopy(expr,label){const p=cxPrefix().trim(),text=(p?p+' ':'')+cxClean(expr)+(label?` ${label}`:'');const done=()=>toast(`Copiado: ${text}`);
+  try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done,()=>cxCopyFallback(text,done));return}}catch(_){}cxCopyFallback(text,done)}
+function cxCopyFallback(text,done){const t=document.createElement('textarea');t.value=text;t.setAttribute('readonly','');t.style.cssText='position:fixed;opacity:0;left:-9999px';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove();done()}
+function cxEcon(raw){const s=fbNorm(raw);if(!s)return 'other';if(/passiv/.test(s))return 'passive';if(/bonus/.test(s))return 'bonus';if(/reac|reaction/.test(s))return 'reaction';if(/poderos|complet|complete/.test(s))return 'power';if(/livre|free/.test(s))return 'free';if(/standard|acao|padrao|action/.test(s))return 'action';return 'other'}
+function cxEconInfo(k){return ({action:['Ação','i-swords'],bonus:['Ação bônus','i-bolt'],reaction:['Reação','i-shield'],power:['Ação poderosa','i-star'],free:['Livre','i-move'],other:['Especial','i-spark'],passive:['Passiva','i-aura']})[k]||['Especial','i-spark']}
+function cxRichText(t){if(t.descriptionHtml)return bookSanitize(t.descriptionHtml);const d=String(t.description||'');if(!d.trim())return '';if(t.book21Id||/\*\*|\n\s*[-•]/.test(d))return bookText(d);return d.split(/\n{2,}/).map(p=>`<p>${esc(p).replace(/\n/g,'<br>')}</p>`).join('')}
+function cxPinned(c,key){return valueArray(c.combatPins).includes(key)}
+function cxPinBtn(c,key,name){const on=cxPinned(c,key);return `<button type="button" class="cx-pin${on?' is-on':''}" data-cx-pin="${esc(key)}" aria-pressed="${on}" title="${on?'Tirar de Em foco':'Fixar em Em foco'}" aria-label="${on?'Tirar':'Fixar'} ${esc(name)}"><span class="ui-icon i-star"></span></button>`}
+function cxNum(label,value,copy,copyLabel,cls=''){return copy?`<button type="button" class="cx-num ${cls}" data-cx-copy="${esc(copy)}" data-cx-label="${esc(copyLabel||'')}" title="Copiar ${esc(copy)}"><small>${label}</small><b>${esc(value)}</b></button>`:`<span class="cx-num is-static ${cls}"><small>${label}</small><b>${esc(value)}</b></span>`}
+
+/* ---------- Coleta: tudo que o personagem pode fazer ---------- */
+function cxFunctionAbilities(c){if(isStandard(c)||typeof NEW_FRONTIER_FUNCTIONS==='undefined')return [];const out=[];
+  NEW_FRONTIER_FUNCTIONS.forEach(def=>{const p=functionProgress(c,def.name);for(let lv=1;lv<=p.level;lv++){const d=fbLevelData(def,lv),auto=fbAuto(d,lv);d.abilities.forEach((a,i)=>{if(auto||p.choices[String(lv)]===a.name)out.push({def,lv,i,a})})}});return out}
+function cxActions(c){
+  const items=[],techNames=new Set(valueArray(c.techniques).map(t=>fbNorm(t.name).trim())),e=cbEffects(c),pp=num(c.ppCurrent);
+  valueArray(c.items).filter(i=>i.kind==='weapon').sort((a,b)=>(b.equipped?1:0)-(a.equipped?1:0)).forEach(i=>{const kind=cbWeaponKind(i),bonus=weaponAttackBonus(i,c),dmg=cxClean(weaponDamageExpression(i,c)),src=itemImageSource(i);
+    items.push({key:'w:'+i.id,econ:'action',kind:'attack',name:i.name||'Arma',icon:kind,img:src?`<img src="${esc(src)}" style="${itemImageStyle(i)}" alt="">`:'',meta:[i.range||'Corpo a corpo',i.damageType,i.equipped?'Empunhada':'Guardada'].filter(Boolean),stowed:!i.equipped,
+      nums:cxNum('Acerto',signed(bonus),cxExpr(bonus),`Acerto ${i.name||''}`)+cxNum('Dano',dmg,dmg,`Dano ${i.damageType||''}`,'is-dmg'),
+      tools:`<button type="button" class="cx-chip-btn" data-cx-act="equip" data-id="${esc(i.id)}" aria-pressed="${!!i.equipped}">${i.equipped?'Guardar':'Empunhar'}</button><button type="button" class="cx-icon-btn" data-cx-act="edit-item" data-id="${esc(i.id)}" title="Editar arma" aria-label="Editar ${esc(i.name||'arma')}"><span class="ui-icon i-cog"></span></button>`,desc:i.notes?`<p>${esc(i.notes)}</p>`:''})});
+  if(!valueArray(c.attacks).some(a=>/desarmad/i.test(a.name||''))){const u=cbUnarmed(c),b=attackBonus(u,c),d=cxClean(damageExpression(u,c));items.push({key:'unarmed',econ:'action',kind:'attack',name:'Golpe desarmado',icon:'fist',meta:['Corpo a corpo','Contundente'],nums:cxNum('Acerto',signed(b),cxExpr(b),'Acerto desarmado')+cxNum('Dano',d,d,'Dano Contundente','is-dmg')})}
+  valueArray(c.attacks).forEach(a=>{const b=attackBonus(a,c),d=cxClean(damageExpression(a,c));items.push({key:'a:'+a.id,econ:'action',kind:'attack',name:a.name||'Ataque',icon:cbIsMelee(a.range)?'sword':'target',meta:[a.range,a.type].filter(Boolean),nums:cxNum('Acerto',signed(b),cxExpr(b),`Acerto ${a.name||''}`)+cxNum('Dano',d,d,`Dano ${a.type||''}`,'is-dmg'),tools:`<button type="button" class="cx-icon-btn" data-cx-act="edit-attack" data-id="${esc(a.id)}" title="Editar" aria-label="Editar ${esc(a.name||'ataque')}"><span class="ui-icon i-cog"></span></button><button type="button" class="cx-icon-btn cx-danger" data-cx-act="delete-attack" data-id="${esc(a.id)}" title="Excluir" aria-label="Excluir ${esc(a.name||'ataque')}">×</button>`,desc:a.notes?`<p>${esc(a.notes)}</p>`:''})});
+  valueArray(c.techniques).map(normalizeTechniqueRecord).forEach(t=>{const econ=cxEcon(t.action);if(econ==='passive')return;const info=cbTechInfo(t,c),cost=num(t.cost),grade=t.grade!==''&&t.grade!=null?(String(t.grade).toLowerCase().includes('aux')?'Auxiliar':`${t.grade}º grau`):'';
+    const nums=(info.attack?cxNum('Acerto',signed(info.hit),cxExpr(info.hit),`Acerto ${t.name}`):info.save?cxNum(`DT ${info.save.slice(0,3).toUpperCase()}`,String(info.dt),'',''):'')+(info.dice?cxNum('Dano',info.dice,info.dice,`Dano ${info.type||''}`,'is-dmg'):'');
+    items.push({key:'t:'+t.id,econ,kind:'tech',name:t.name,cost,afford:cost<=pp,blocked:e.noTech.length>0,meta:[grade,t.range,t.source&&t.source!=='Outro'?t.source:''].filter(Boolean),nums,
+      tools:`<button type="button" class="cx-use" data-cx-act="use-tech" data-id="${esc(t.id)}" ${cost<=pp&&!e.noTech.length?'':'disabled'} title="${e.noTech.length?'Técnicas bloqueadas pelas condições':cost<=pp?`Gasta ${cost} PP e copia a rolagem`:'PP insuficiente'}">Usar${cost?` · ${cost} PP`:''}</button><button type="button" class="cx-icon-btn" data-cx-act="edit-tech" data-id="${esc(t.id)}" title="Editar técnica" aria-label="Editar ${esc(t.name)}"><span class="ui-icon i-cog"></span></button>`,desc:t.description?`<p>${esc(t.description).replace(/\n/g,'<br>')}</p>`:''})});
+  valueArray(c.traits).forEach(t=>{const econ=cxEcon(t.action);if(!t.action||econ==='passive')return;items.push({key:'tr:'+t.id,econ,kind:'ability',name:t.name,meta:[t.category,t.source].filter(Boolean),uses:t.uses,desc:cxRichText(t)})});
+  cxFunctionAbilities(c).forEach(({def,lv,i,a})=>{const econ=cxEcon(a.action);if(econ==='passive'||techNames.has(fbNorm(a.name).trim()))return;const cost=num(a.pp);items.push({key:`fn:${def.name}|${lv}|${i}`,econ,kind:cost?'tech':'ability',name:a.name,cost,afford:cost?cost<=pp:undefined,meta:[`${def.name}, nível ${lv}`],tools:cost?`<button type="button" class="cx-use" data-cx-act="spend" data-cost="${cost}" data-name="${esc(a.name)}" ${cost<=pp?'':'disabled'}>Usar · ${cost} PP</button>`:'',desc:fbText(a.description)})});
+  return items}
+function cxPassives(c){
+  const groups=[];const push=(title,icon,list)=>{if(list.length)groups.push({title,icon,list})};
+  push('Características','i-star',valueArray(c.traits).filter(t=>!t.action||cxEcon(t.action)==='passive').map(t=>({key:'tr:'+t.id,name:t.name,tag:t.category&&t.category!=='Característica'?t.category:(t.source||''),uses:t.uses,desc:cxRichText(t)})));
+  push('Funções','i-helm',cxFunctionAbilities(c).filter(x=>cxEcon(x.a.action)==='passive').map(({def,lv,i,a})=>({key:`fn:${def.name}|${lv}|${i}`,name:a.name,tag:`${def.name} · nv ${lv}`,desc:fbText(a.description)})));
+  push('Técnicas passivas','i-spark',valueArray(c.techniques).map(normalizeTechniqueRecord).filter(t=>cxEcon(t.action)==='passive').map(t=>({key:'t:'+t.id,name:t.name,tag:t.source&&t.source!=='Outro'?t.source:'',desc:t.description?`<p>${esc(t.description).replace(/\n/g,'<br>')}</p>`:''})));
+  const haki=[];if(c.haki&&typeof PD_HAKI!=='undefined')PD_HAKI.forEach(([k,label])=>valueArray(c.haki[k]?.talents).forEach((t,i)=>haki.push({key:`hk:${k}:${i}`,name:t.name||'Talento',tag:`${label}${num(t.rank,1)>1?` · grau ${num(t.rank,1)}`:''}`,desc:t.description?`<p>${esc(t.description).replace(/\n/g,'<br>')}</p>`:''})));
+  push('Haki','i-eye',haki);
+  if(c.fruit)push(c.fruit.name?`Akuma no Mi · ${c.fruit.name}`:'Akuma no Mi','i-fruit',valueArray(c.fruit.records).map(r=>pdNormalizeRecord(r)).map(r=>({key:'fr:'+r.id,name:r.name,tag:r.kind,counter:r.maxUses?{cur:r.currentUses,max:r.maxUses,act:`fr:${r.id}`}:null,desc:r.descriptionHtml?bookSanitize(r.descriptionHtml):r.description?`<p>${esc(r.description).replace(/\n/g,'<br>')}</p>`:''})));
+  return groups}
+function cxTrainings(c){const lib=[...(typeof TRAINING_LIBRARY!=='undefined'?TRAINING_LIBRARY:[]),...valueArray(c.training?.custom)];return valueArray(c.training?.learned).map(x=>{const rec=lib.find(r=>r.sourceName===x.name||r.name===x.name)||{};return {key:'tg:'+x.id,name:x.label||trainingDisplayName(rec)||x.name,tag:[x.type||rec.type,x.detail].filter(Boolean).join(' · '),pts:x.points,desc:rec.description?bookText(rec.description):''}})}
+function cxExcerpt(html){const d=document.createElement('div');d.innerHTML=html;const t=(d.textContent||'').replace(/\s+/g,' ').trim();return t.length>170?t.slice(0,168).replace(/\s\S*$/,'')+'…':t}
+function cxParseUses(u){const m=String(u||'').match(/(\d+)\s*\/\s*(\d+)/);return m?{cur:num(m[1]),max:num(m[2])}:null}
+
+/* ---------- Render ---------- */
+function cxItemRow(c,it,open){
+  const econ=cxEconInfo(it.econ),uses=it.uses?cxParseUses(it.uses):null,counter=it.counter||(uses?{...uses,act:it.key}:null);
+  const lead=it.img?`<span class="cx-lead cx-lead-img">${it.img}</span>`:it.kind==='tech'?`<span class="cx-lead cx-lead-cost${it.afford===false?' is-short':''}"><b>${num(it.cost)}</b><small>PP</small></span>`:`<span class="cx-lead"><span class="ui-icon i-${it.icon||econ[1].slice(2)}"></span></span>`;
+  return `<article class="cx-item cx-econ-${it.econ}${it.stowed?' is-stowed':''}${open?' is-open':''}${it.afford===false?' is-short':''}" data-cx-key="${esc(it.key)}">
+    ${lead}<div class="cx-item-main"><button type="button" class="cx-item-title" data-cx-open="${esc(it.key)}" aria-expanded="${open}" ${it.desc?'':'disabled'}><b>${esc(it.name)}</b>${it.desc?'<span class="cx-caret" aria-hidden="true"></span>':''}</button><p class="cx-item-meta">${it.meta.filter(Boolean).map(esc).join('<i></i>')}${it.uses&&!uses?`<i></i><span class="cx-uses-text">${esc(it.uses)}</span>`:''}</p></div>
+    <div class="cx-item-nums">${it.nums||''}${counter?cxCounter(counter):''}</div>
+    <div class="cx-item-tools">${it.tools||''}${cxPinBtn(c,it.key,it.name)}</div>
+    ${it.desc?`<div class="cx-item-desc"${open?'':' hidden'}>${it.desc}</div>`:''}</article>`}
+function cxCounter(k){return `<span class="cx-counter" role="group" aria-label="Usos restantes"><button type="button" data-cx-use="${esc(k.act)}" data-d="-1" aria-label="Gastar um uso" ${k.cur<=0?'disabled':''}>−</button><b>${k.cur}<small>/${k.max}</small></b><button type="button" data-cx-use="${esc(k.act)}" data-d="1" aria-label="Recuperar um uso" ${k.cur>=k.max?'disabled':''}>+</button></span>`}
+function cxRenderActions(c){
+  const ui=cxUi(),all=cxActions(c),order=['action','bonus','reaction','power','free','other'],box=document.getElementById('cxActionList');if(!box)return all;
+  const counts=Object.fromEntries(order.map(k=>[k,all.filter(x=>x.econ===k).length]));
+  document.getElementById('cxFilters').innerHTML=`<button type="button" data-cx-filter="all" aria-pressed="${ui.filter==='all'}">Tudo <span>${all.length}</span></button>`+order.filter(k=>counts[k]).map(k=>`<button type="button" class="cx-f-${k}" data-cx-filter="${k}" aria-pressed="${ui.filter===k}">${cxEconInfo(k)[0]} <span>${counts[k]}</span></button>`).join('')+`<label class="cx-afford"><input type="checkbox" data-cx-afford ${ui.afford?'checked':''}><span>Só o que o PP paga</span></label>`;
+  const list=all.filter(x=>(ui.filter==='all'||x.econ===ui.filter)&&(!ui.afford||x.afford!==false));
+  box.innerHTML=order.map(k=>{const sec=list.filter(x=>x.econ===k);if(!sec.length)return '';const [label,icon]=cxEconInfo(k);return `<section class="cx-econ cx-econ-${k}"><h3><span class="cx-econ-badge"><span class="ui-icon ${icon}"></span>${label}</span><span class="cx-econ-count">${sec.length}</span></h3>${sec.map(it=>cxItemRow(c,it,ui.allOpen||!!ui.open[it.key])).join('')}</section>`}).join('')||'<p class="cx-empty">Nada aqui com esse filtro.</p>';
+  fbSet('cbAttackCount',String(all.length));
+  const e=cbEffects(c);if(e.noTech.length)box.insertAdjacentHTML('afterbegin',`<div class="cx-banner"><span class="ui-icon i-chain"></span>${esc(e.noTech.join(', '))}: Técnicas bloqueadas.</div>`);
+  return all}
+function cxRenderWeaponHints(c){const box=document.getElementById('combatWeaponList');if(!box)return;const dismissed=valueArray(c.combatDismissed),hints=valueArray(c.items).filter(i=>i.kind!=='weapon'&&!dismissed.includes(i.id)&&cbGuessWeapon(i.name));
+  box.innerHTML=hints.map(i=>{const g=cbGuessWeapon(i.name);return `<div class="cx-hint-row" data-cb-item="${esc(i.id)}"><span class="ui-icon i-${cbWeaponKind({name:i.name})}"></span><span><b>${esc(i.name)}</b> parece uma arma. Transformar cria o ataque com ${esc(g.damage)} ${esc(g.damageType.toLowerCase())}.</span><button type="button" class="cx-chip-btn is-primary" data-cx-act="make-weapon" data-id="${esc(i.id)}">Transformar</button><button type="button" class="cx-chip-btn" data-cx-act="dismiss" data-id="${esc(i.id)}">Ignorar</button></div>`}).join('')}
+function cxRenderPassives(c){const ui=cxUi(),groups=cxPassives(c),tr=cxTrainings(c),box=document.getElementById('cxPassiveList');if(!box)return [];
+  const total=groups.reduce((n,g)=>n+g.list.length,0)+tr.length;fbSet('cxPassiveCount',String(total));
+  const row=(it)=>{const open=ui.allOpen||!!ui.open[it.key],uses=it.uses?cxParseUses(it.uses):null,counter=it.counter||(uses?{...uses,act:it.key}:null);return `<article class="cx-pass${open?' is-open':''}" data-cx-key="${esc(it.key)}"><div class="cx-pass-head"><button type="button" class="cx-item-title" data-cx-open="${esc(it.key)}" aria-expanded="${open}" ${it.desc?'':'disabled'}><b>${esc(it.name)}</b>${it.desc?'<span class="cx-caret" aria-hidden="true"></span>':''}</button>${it.pts!=null?`<span class="cx-tag cx-tag-pt">${num(it.pts)} PT</span>`:''}${it.tag?`<span class="cx-tag">${esc(it.tag)}</span>`:''}${it.uses&&!uses?`<span class="cx-tag cx-tag-uses">${esc(it.uses)}</span>`:''}${counter?cxCounter(counter):''}${cxPinBtn(c,it.key,it.name)}</div>${it.desc&&!open?`<p class="cx-excerpt" data-cx-open="${esc(it.key)}">${esc(cxExcerpt(it.desc))}</p>`:''}${it.desc?`<div class="cx-item-desc"${open?'':' hidden'}>${it.desc}</div>`:''}</article>`};
+  const t=trainingTotals(c);
+  const trainHtml=`<section class="cx-pgroup cx-pgroup-train"><h3><span class="ui-icon i-training"></span>Treinamentos<span class="cx-econ-count">${tr.length}</span><span class="cx-pt-free">${t.available} PT livres</span></h3>${tr.length?tr.map(row).join(''):'<p class="cx-empty">Nenhum treinamento aprendido. Eles ficam na página de Poderes.</p>'}</section>`;
+  box.innerHTML=trainHtml+groups.map(g=>`<section class="cx-pgroup"><h3><span class="ui-icon ${g.icon}"></span>${esc(g.title)}<span class="cx-econ-count">${g.list.length}</span></h3>${g.list.map(row).join('')}</section>`).join('')+(groups.length?'':'<p class="cx-empty">Características passivas do Dossiê, de Funções, Haki e Akuma no Mi aparecem aqui.</p>');
+  return [...tr,...groups.flatMap(g=>g.list)]}
+function cxRenderChecks(c){const p=prof(c.level),e=cbEffects(c);
+  document.getElementById('cxAbilities').innerHTML=ABILITIES.map(([k,l])=>{const m=mod(c.abilities[k]);return `<button type="button" class="cx-abil" data-cx-copy="${cxExpr(m)}" data-cx-label="Teste de ${esc(l)}" title="Copiar teste de ${esc(l)}"><small>${esc(l.slice(0,3).toUpperCase())}</small><b>${signed(m)}</b><span>${num(c.abilities[k])}</span></button>`}).join('');
+  document.getElementById('combatSaveList').innerHTML=ABILITIES.map(([k,l])=>{const tr=valueArray(c.saveProficiencies).includes(k),v=mod(c.abilities[k])+(tr?p:0);return `<button type="button" class="cx-row${tr?' is-prof':''}" data-cx-copy="${cxExpr(v)}" data-cx-label="Salvaguarda de ${esc(l)}"><i class="cx-dot" aria-label="${tr?'Treinada':'Sem treino'}"></i><span>${esc(l)}</span><b>${signed(v)}</b></button>`}).join('');
+  const groups=ABILITIES.map(([k,l])=>[k,l,SKILLS.filter(([n,dk])=>skillAbilityKey(c,n,dk)===k)]).filter(g=>g[2].length);const other=SKILLS.filter(([n,dk])=>skillAbilityKey(c,n,dk)==='other');if(other.length)groups.push(['other','Outros',other]);
+  document.getElementById('combatTrainedSkills').innerHTML=groups.map(([k,l,list])=>`<div class="cx-skill-group"><h4>${esc(l)} <span>${k==='other'?'':signed(mod(c.abilities[k]))}</span></h4>${list.map(([n])=>{const pr=valueArray(c.skillProficienciesList).includes(n),bg=c.backgroundSkill===n,v=skillTotal(c,n);return `<button type="button" class="cx-row${pr||bg?' is-prof':''}" data-cx-copy="${cxExpr(v)}" data-cx-label="${esc(n)}"><i class="cx-dot${bg?' is-bg':''}" aria-label="${pr||bg?'Treinada':'Sem treino'}"></i><span>${esc(n)}${bg?'<small>antecedente</small>':''}</span><b>${signed(v)}</b></button>`}).join('')}</div>`).join('');
+  cbSet('cxPassive',String(10+skillTotal(c,'Percepção')))}
+function cxRenderPins(c,all){const pins=valueArray(c.combatPins),box=document.getElementById('cxPins');if(!box)return;const found=pins.map(k=>all.find(x=>x.key===k)).filter(Boolean);
+  box.hidden=!found.length;box.innerHTML=found.length?`<span class="cx-focus-label"><span class="ui-icon i-star"></span>Em foco</span>${found.map(it=>{const n=it.kind==='tech'?`${num(it.cost)} PP`:it.pts!=null?`${num(it.pts)} PT`:'';return `<button type="button" class="cx-focus-chip cx-econ-${it.econ||'passive'}" data-cx-goto="${esc(it.key)}"><i></i>${esc(it.name)}${n?`<small>${n}</small>`:''}</button>`}).join('')}`:''}
+function cxRenderHud(c){const src=c.imageData||c.imageUrl,stage=document.getElementById('combatStage');
+  if(stage){stage.querySelectorAll('img').forEach(x=>x.remove());const ph=stage.querySelector('.combat-placeholder');if(ph)ph.style.display=src?'none':'grid';if(src){const img=document.createElement('img');img.src=src;img.alt='';stage.appendChild(img)}}
+  cbSet('hudName',c.name||'Sem nome');const style=isStandard(c)?c.style:(ensureFunctionBook(c).current&&functionProgress(c,ensureFunctionBook(c).current).level?ensureFunctionBook(c).current:c.style);cbSet('hudMeta',[style,`nível ${num(c.level,1)}`,c.species].filter(Boolean).join(' · '));
+  cbSet('hudCr',String(cr(c)));cbSet('cbInit',signed(mod(c.abilities.des)));cbSet('cbMove',`${fmt(num(c.movement)||num(speciesData(c).move,9))} m`);
+  const key=c.combatAbility||'for',m=mod(c.abilities[key]),p=prof(c.level);cbSet('combatHitCore',signed(m+p));cbSet('combatDtCore',String(8+m+p));cbSet('combatProfCore',signed(p));
+  const sel=document.getElementById('combatAbilitySelect');if(sel&&document.activeElement!==sel)sel.value=key;
+  const amb=Math.max(0,num(c.ambCurrent)),ambMax=Math.max(0,num(c.ambMax));cbSet('cxAmbText',`${fmt(amb)} / ${fmt(ambMax)}`);const af=document.getElementById('cxAmbFill');if(af)af.style.width=pct(amb,ambMax)+'%';
+  document.querySelector('#cx .cx-amb')?.toggleAttribute('hidden',!ambMax);
+  const hp=num(c.hpCurrent),max=num(c.hpMax),alert=document.getElementById('cxHpAlert');document.getElementById('cx')?.classList.toggle('is-bloodied',max>0&&hp/max<=.25&&hp>0);document.getElementById('cx')?.classList.toggle('is-down',max>0&&hp<=0);
+  if(alert){alert.hidden=!(max>0&&hp/max<=.25);alert.textContent=hp<=0?'Caído: 0 PV':'Vida abaixo de 25%'}}
+function cxRenderStrip(c){const t=cbTracker(c),e=cbEffects(c);
+  document.getElementById('cbTurn')?.classList.toggle('is-active',!!t.active);
+  cbSet('cbTurnLabel','');const label=document.getElementById('cbTurnLabel');if(label)label.innerHTML=t.active?`Rodada <b>${num(t.round,1)}</b>`:'Fora de combate';
+  const acts=document.getElementById('cbTurnActions');if(acts)acts.innerHTML=t.active?'<button type="button" class="cx-chip-btn is-primary" data-cb-act="next-round">Próxima rodada</button><button type="button" class="cx-chip-btn" data-cb-act="end-combat">Encerrar</button>':'<button type="button" class="cx-chip-btn is-primary" data-cb-act="start-combat">Iniciar combate</button>';
+  const list=[];if(e.noAct.length)list.push(['stop',`${e.noAct.join(', ')}: sem ações nem reações`]);if(e.atkDis.length)list.push(['dis',`Desvantagem nos ataques (${e.atkDis.join(', ')})`]);if(e.atkAdv.length)list.push(['adv',`Vantagem nos ataques (${e.atkAdv.join(', ')})`]);if(e.noTech.length)list.push(['stop',`Técnicas bloqueadas (${e.noTech.join(', ')})`]);if(e.rage)list.push(['info','Enfurecido: +1d4 no corpo a corpo']);if(e.lethargic)list.push(['info','Letárgico: dano pela metade, exceto armas de fogo']);if(e.burn)list.push(['warn','Queimado: 1d6 de Fogo no primeiro ataque do turno']);if(e.bleed)list.push(['warn','Sangramento: 1d6 Cortante ao se mover']);
+  const al=document.getElementById('cbAlerts');if(al)al.innerHTML=list.map(([k,txt])=>`<span class="cx-alert cx-alert-${k}">${esc(txt)}</span>`).join('')||'<span class="cx-alert cx-alert-ok">Sem penalidades ativas</span>';
+  const pf=document.getElementById('cxPrefix');if(pf&&document.activeElement!==pf)pf.value=cxPrefix()}
+function cxRender(){if(!document.getElementById('cx'))return;const c=current();cxRenderHud(c);cxRenderStrip(c);cxRenderWeaponHints(c);const acts=cxRenderActions(c),pass=cxRenderPassives(c);cxRenderChecks(c);cxRenderPins(c,[...acts,...pass]);const tg=document.getElementById('cxToggleAll');if(tg)tg.textContent=cxUi().allOpen?'Recolher tudo':'Abrir tudo'}
+
+/* As funções antigas do combate agora só pedem um redesenho */
+function renderCombat(){cxRequest()}
+function renderAttacks(){cxRequest()}
+function renderCombatWeapons(){cxRequest()}
+function renderCombatTechniques(){cxRequest()}
+function renderCombatReference(){cxRequest()}
+function cbRenderStatus(){cxRequest()}
+function renderRolls(){}
+function cbFlash(){}
+
+/* ---------- Interações ---------- */
+function cbWire(){const root=document.getElementById('cx');if(!root||cbWire.done)return;cbWire.done=true;
+  root.addEventListener('click',ev=>{const c=current(),ui=cxUi();
+    const cp=ev.target.closest('[data-cx-copy]');if(cp){cxCopy(cp.dataset.cxCopy,'');cp.classList.remove('is-copied');void cp.offsetWidth;cp.classList.add('is-copied');return}
+    if(ev.target.closest('#cxInitBtn')){const t=cbTracker(c);cxCopy(cxExpr(mod(c.abilities.des)),'');return}
+    const op=ev.target.closest('[data-cx-open]');if(op){const k=op.dataset.cxOpen,item=op.closest('[data-cx-key]'),open=!item.classList.contains('is-open');ui.open[k]=open;item.classList.toggle('is-open',open);op.setAttribute('aria-expanded',String(open));const d=item.querySelector('.cx-item-desc');if(d)d.hidden=!open;const ex=item.querySelector('.cx-excerpt');if(ex)ex.hidden=open;else if(!open&&d&&item.classList.contains('cx-pass'))d.insertAdjacentHTML('beforebegin',`<p class="cx-excerpt" data-cx-open="${esc(k)}">${esc(cxExcerpt(d.innerHTML))}</p>`);return}
+    const pin=ev.target.closest('[data-cx-pin]');if(pin){const k=pin.dataset.cxPin;c.combatPins=valueArray(c.combatPins);c.combatPins=c.combatPins.includes(k)?c.combatPins.filter(x=>x!==k):[...c.combatPins,k];saveState();cxRender();return}
+    const go=ev.target.closest('[data-cx-goto]');if(go){const el=root.querySelector(`[data-cx-key="${CSS.escape(go.dataset.cxGoto)}"]`);if(el){if(!el.offsetParent){ui.filter='all';cxRender()}const el2=root.querySelector(`[data-cx-key="${CSS.escape(go.dataset.cxGoto)}"]`);el2.scrollIntoView({block:'center',behavior:fbReduced()?'auto':'smooth'});el2.classList.remove('is-flash');void el2.offsetWidth;el2.classList.add('is-flash')}return}
+    const f=ev.target.closest('[data-cx-filter]');if(f){ui.filter=f.dataset.cxFilter;cxRender();return}
+    const u=ev.target.closest('[data-cx-use]');if(u){cxSpendUse(c,u.dataset.cxUse,num(u.dataset.d));return}
+    const btn=ev.target.closest('[data-cx-act]');if(!btn)return;const id=btn.dataset.id,item=valueArray(c.items).find(i=>i.id===id),atk=valueArray(c.attacks).find(a=>a.id===id),tech=valueArray(c.techniques).find(t=>t.id===id);
+    switch(btn.dataset.cxAct){
+      case 'toggle-all':ui.allOpen=!ui.allOpen;if(!ui.allOpen)ui.open={};cxRender();break;
+      case 'equip':if(item){item.equipped=!item.equipped;saveState();renderInventory();cxRender()}break;
+      case 'edit-item':if(item)openItemEditor(item);break;
+      case 'new-weapon':openItemEditor(null,'weapon');break;
+      case 'edit-attack':if(atk){openAttackEdit(atk);document.getElementById('attackForm')?.scrollIntoView({behavior:'smooth',block:'center'})}break;
+      case 'delete-attack':if(atk){c.attacks=c.attacks.filter(x=>x.id!==atk.id);saveState();cxRender();toast('Ataque excluído.')}break;
+      case 'edit-tech':if(tech)editTechnique(tech);break;
+      case 'use-tech':if(tech)cxUseTech(c,normalizeTechniqueRecord(tech));break;
+      case 'make-weapon':if(item){const g=cbGuessWeapon(item.name)||{};Object.assign(item,{kind:'weapon',equipped:true,proficient:true,extraBonus:num(item.extraBonus),damage:g.damage||'1d6',damageType:g.damageType||'',attackAbility:g.attackAbility||'for',damageAbility:g.attackAbility||'for',range:item.range||g.range||'',updatedAt:Date.now()});saveState();renderInventory();cxRender();toast(`${item.name} agora é uma arma, com ataque pronto.`)}break;
+      case 'spend':{const cost=num(btn.dataset.cost);if(num(c.ppCurrent)<cost){toast('PP insuficiente.');break}c.ppCurrent=num(c.ppCurrent)-cost;saveState();renderResources();renderOverviewSummary();toast(`${btn.dataset.name}: −${cost} PP`);break}
+      case 'dismiss':if(item){c.combatDismissed=[...valueArray(c.combatDismissed),item.id];saveState();cxRender()}break;
+    }});
+  root.addEventListener('click',ev=>{const b=ev.target.closest('[data-cb-act]');if(!b)return;const c=current(),t=cbTracker(c);
+    if(b.dataset.cbAct==='start-combat'){t.active=true;t.round=1;saveState();cxRender();cxCopy(cxExpr(mod(c.abilities.des)),'');}
+    else if(b.dataset.cbAct==='next-round'){t.round=num(t.round,1)+1;saveState();cxRender();const e=cbEffects(c);if(e.bleed||e.burn)toast(`Lembrete: ${[e.burn?'Queimado':'',e.bleed?'Sangramento':''].filter(Boolean).join(' e ')} ainda ativo.`)}
+    else if(b.dataset.cbAct==='end-combat'){t.active=false;t.round=1;saveState();cxRender();toast('Combate encerrado.')}});
+  root.addEventListener('change',ev=>{if(ev.target.matches('[data-cx-afford]')){cxUi().afford=ev.target.checked;cxRender()}if(ev.target.id==='combatAbilitySelect')setTimeout(cxRender,0)});
+  document.getElementById('cxPrefix')?.addEventListener('input',e=>{try{localStorage.setItem('opsheet.rollPrefix',e.target.value)}catch(_){}});
+  const watch=new MutationObserver(()=>cxRequest());['activeConditionStrip'].forEach(id=>{const el=document.getElementById(id);if(el)watch.observe(el,{childList:true,subtree:true})});
+}
+function cxUseTech(c,t){const e=cbEffects(c),cost=Math.max(0,num(t.cost));if(e.noTech.length){toast(`${e.noTech.join(', ')}: Técnicas bloqueadas.`);return}if(num(c.ppCurrent)<cost){toast('PP insuficiente.');return}
+  c.ppCurrent=num(c.ppCurrent)-cost;saveState();renderResources();renderOverviewSummary();const info=cbTechInfo(t,c),expr=info.attack?cxExpr(info.hit):info.dice||'';
+  if(expr)cxCopy(expr,'');else toast(`${t.name}: −${cost} PP`);
+  setTimeout(()=>{if(expr)toast(`${t.name}: −${cost} PP · copiado ${(cxPrefix().trim()?cxPrefix().trim()+' ':'')+expr}`)},40)}
+function cxSpendUse(c,key,d){
+  if(key.startsWith('fr:')){const r=valueArray(c.fruit?.records).find(x=>x.id===key.slice(3));if(r){const max=num(r.maxUses);r.currentUses=clamp(num(r.currentUses)+d,0,max);saveState();cxRender()}return}
+  if(key.startsWith('tr:')){const t=valueArray(c.traits).find(x=>x.id===key.slice(3)),u=t&&cxParseUses(t.uses);if(u){const n=clamp(u.cur+d,0,u.max);t.uses=String(t.uses).replace(/(\d+)(\s*\/\s*\d+)/,`${n}$2`);saveState();cxRender()}}}
+if(document.getElementById('cx')){cbWire();cxRender()}
 
 
 })();
