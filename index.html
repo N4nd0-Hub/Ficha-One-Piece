@@ -4563,6 +4563,41 @@ body.clear-sheet[data-theme] #cx{
 }
 @media (prefers-reduced-motion:reduce){#cx *{animation:none!important;transition:none!important}}
 
+
+/* Colunas com rolagem própria */
+#cx .cx-scroll{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--gold) 38%,transparent) transparent;overscroll-behavior:contain}
+#cx .cx-scroll::-webkit-scrollbar{width:8px}
+#cx .cx-scroll::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--gold) 34%,transparent);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+#cx #cxActionScroll,#cx #cxCheckScroll{display:flex;flex-direction:column;gap:10px}
+#cx #cxPassiveList{display:flex;flex-direction:column}
+@media (min-width:981px){
+  #cx .cx-col{max-height:calc(100dvh - var(--top,64px) - 28px);position:sticky;top:calc(var(--top,64px) + 14px)}
+  #cx .cx-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:6px;margin-right:-6px;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 26px),transparent);padding-bottom:22px}
+}
+@media (min-width:981px) and (max-width:1320px){
+  #cx #cxColPassives,#cx #cxColChecks{position:static;max-height:calc((100dvh - var(--top,64px) - 46px)/1)}
+  #cx #cxColPassives{max-height:min(640px,calc(100dvh - var(--top,64px) - 40px))}
+}
+@media (max-width:980px){
+  #cx #cxPassiveList{max-height:min(72dvh,620px);overflow-y:auto;padding-right:4px;border-radius:12px}
+}
+#cx .cx-search{display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:10px;border:1px solid var(--cx-hair);background:var(--cx-surface);flex:none}
+#cx .cx-search:focus-within{border-color:color-mix(in srgb,var(--gold) 55%,var(--line))}
+#cx .cx-search .ui-icon{width:15px;height:15px;color:var(--muted)}
+#cx .cx-search input{flex:1;min-width:0;border:0;background:transparent;color:var(--text);font:500 14px var(--font-ui);outline:none}
+#cx .cx-pgroup>h3{margin:0}
+#cx .cx-fold{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:8px;flex:1;min-width:0;padding:6px 2px;cursor:pointer;color:inherit;font:inherit;border-radius:8px}
+#cx .cx-fold:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#cx .cx-fold .cx-caret{margin-left:auto;transition:transform .2s}
+#cx .cx-pgroup.is-folded .cx-fold .cx-caret{transform:rotate(-45deg) translate(-1px,-1px)}
+#cx .cx-pgroup>h3{position:sticky;top:0;z-index:2;background:var(--panel);padding:0 2px}
+#cx .cx-pgroup>h3 .cx-pt-free{flex:none}
+#cx .cx-chips{display:flex;flex-wrap:wrap;gap:5px;padding:2px 0 4px}
+#cx .cx-chip{padding:4px 10px;border-radius:99px;border:1px solid var(--cx-hair);border-left:3px solid var(--cx-passive);background:var(--cx-surface);font:600 12.5px var(--font-ui);color:var(--text);cursor:pointer;transition:border-color .15s,transform .15s}
+#cx .cx-pgroup-train .cx-chip{border-left-color:var(--gold)}
+#cx .cx-chip:hover{border-color:color-mix(in srgb,var(--gold) 50%,var(--line));transform:translateY(-1px)}
+#cx .cx-pass.cx-flash{animation:cxFlash .9s ease}
+@keyframes cxFlash{0%,100%{box-shadow:none}35%{box-shadow:0 0 0 2px var(--gold)}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -4932,19 +4967,20 @@ document.addEventListener('change',function(e){
                 <div class="cx-col-tools"><button type="button" class="cx-tool" data-cx-act="new-weapon"><span class="ui-icon i-plus"></span>Arma</button><button type="button" class="cx-tool" id="toggleAttackForm"><span class="ui-icon i-plus"></span>Ataque</button></div></header>
               <div class="cx-filters" role="group" aria-label="Filtrar ações" id="cxFilters"></div>
               <div id="attackForm" class="cx-form" hidden><div class="form-grid"><input class="input full" id="atkName" placeholder="Nome do ataque"><select class="input" id="atkAbility" aria-label="Atributo do acerto"><option value="for">Acerto com Força</option><option value="des">Acerto com Destreza</option><option value="sab">Acerto com Sabedoria</option><option value="von">Acerto com Vontade</option><option value="pre">Acerto com Presença</option><option value="none">Sem atributo</option></select><select class="input" id="atkProf" aria-label="Proficiência"><option value="yes">Com proficiência</option><option value="no">Sem proficiência</option></select><input class="input" id="atkBonus" type="number" value="0" placeholder="Bônus extra" aria-label="Bônus extra no acerto"><input class="input" id="atkDamage" value="1d4" placeholder="Dano (ex.: 1d8)" aria-label="Dano"><select class="input" id="atkDamageAbility" aria-label="Atributo no dano"><option value="for">+ FOR no dano</option><option value="des">+ DES no dano</option><option value="sab">+ SAB no dano</option><option value="von">+ VON no dano</option><option value="pre">+ PRE no dano</option><option value="none">Sem atributo</option></select><input class="input" id="atkType" placeholder="Tipo de dano" value="Contundente" aria-label="Tipo de dano"><input class="input wide" id="atkRange" placeholder="Alcance" value="Corpo a corpo" aria-label="Alcance"><textarea class="input full" id="atkNotes" placeholder="Propriedades, requisitos e observações"></textarea></div><div class="form-actions"><button class="btn" id="cancelAttack" type="button">Cancelar</button><button class="btn primary" id="saveAttack" type="button">Salvar ataque</button></div></div>
-              <div id="combatWeaponList"></div>
-              <div id="cxActionList" class="cx-econ-list"></div>
+              <div class="cx-scroll" id="cxActionScroll"><div id="combatWeaponList"></div>
+              <div id="cxActionList" class="cx-econ-list"></div></div>
               <div hidden><div id="attackList"></div><div id="combatTechniqueList"></div><span id="combatTechniqueCount"></span></div>
             </section>
 
             <section class="cx-col" id="cxColPassives" aria-labelledby="cxPassivesTitle">
-              <header class="cx-col-head"><h2 id="cxPassivesTitle">Passivas</h2><span class="cx-count" id="cxPassiveCount"></span><div class="cx-col-tools"><button type="button" class="cx-tool" data-cx-act="toggle-all" id="cxToggleAll">Abrir tudo</button></div></header>
-              <div id="cxPassiveList"></div>
+              <header class="cx-col-head"><h2 id="cxPassivesTitle">Passivas</h2><span class="cx-count" id="cxPassiveCount"></span><div class="cx-col-tools"><button type="button" class="cx-tool" data-cx-act="fold-all" id="cxFoldAll">Recolher</button><button type="button" class="cx-tool" data-cx-act="toggle-all" id="cxToggleAll">Abrir tudo</button></div></header>
+              <label class="cx-search"><span class="ui-icon i-eye" aria-hidden="true"></span><input id="cxPassiveSearch" type="search" placeholder="Buscar passiva, treino, Haki…" autocomplete="off" aria-label="Buscar passivas"></label>
+              <div id="cxPassiveList" class="cx-scroll"></div>
             </section>
 
             <section class="cx-col" id="cxColChecks" aria-labelledby="cxChecksTitle">
               <header class="cx-col-head"><h2 id="cxChecksTitle">Testes</h2><span class="cx-hint">Toque para copiar</span></header>
-              <div class="cx-abilities" id="cxAbilities"></div>
+              <div class="cx-scroll" id="cxCheckScroll"><div class="cx-abilities" id="cxAbilities"></div>
               <div class="cx-block"><h3>Salvaguardas</h3><div class="cx-rows" id="combatSaveList"></div></div>
               <div class="cx-block"><h3>Perícias</h3><div class="cx-rows cx-skills" id="combatTrainedSkills"></div></div>
               <div class="cx-block cx-cond compact-conditions-panel">
@@ -4955,6 +4991,7 @@ document.addEventListener('change',function(e){
                   <div class="condition-info-card" id="conditionInfoCard" hidden><div class="condition-info-head"><div class="condition-info-title" id="conditionInfoTitle">Condição</div><div class="condition-cost" id="conditionInfoCost">—</div></div><div class="condition-info-text" id="conditionInfoText">Selecione uma condição para consultar o efeito.</div></div>
                   <div class="condition-note" id="conditionNoteWrap"><div class="field"><label for="conditionNote">Anotação da condição</label><textarea class="input" id="conditionNote" placeholder="Duração, origem, CD ou observações da mesa…"></textarea></div></div>
                 </div>
+              </div>
               </div>
             </section>
           </div>
@@ -8300,12 +8337,19 @@ function cxRenderActions(c){
   return all}
 function cxRenderWeaponHints(c){const box=document.getElementById('combatWeaponList');if(!box)return;const dismissed=valueArray(c.combatDismissed),hints=valueArray(c.items).filter(i=>i.kind!=='weapon'&&!dismissed.includes(i.id)&&cbGuessWeapon(i.name));
   box.innerHTML=hints.map(i=>{const g=cbGuessWeapon(i.name);return `<div class="cx-hint-row" data-cb-item="${esc(i.id)}"><span class="ui-icon i-${cbWeaponKind({name:i.name})}"></span><span><b>${esc(i.name)}</b> parece uma arma. Transformar cria o ataque com ${esc(g.damage)} ${esc(g.damageType.toLowerCase())}.</span><button type="button" class="cx-chip-btn is-primary" data-cx-act="make-weapon" data-id="${esc(i.id)}">Transformar</button><button type="button" class="cx-chip-btn" data-cx-act="dismiss" data-id="${esc(i.id)}">Ignorar</button></div>`}).join('')}
+function cxNorm(v){return String(v||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim()}
+function cxFold(){try{return JSON.parse(localStorage.getItem('opsheet.cxFold')||'{}')||{}}catch(e){return {}}}
+function cxSaveFold(f){try{localStorage.setItem('opsheet.cxFold',JSON.stringify(f))}catch(e){}}
+function cxIsFolded(f,key,n){return key in f?!!f[key]:n>5}
 function cxRenderPassives(c){const ui=cxUi(),groups=cxPassives(c),tr=cxTrainings(c),box=document.getElementById('cxPassiveList');if(!box)return [];
   const total=groups.reduce((n,g)=>n+g.list.length,0)+tr.length;fbSet('cxPassiveCount',String(total));
   const row=(it)=>{const open=ui.allOpen||!!ui.open[it.key],uses=it.uses?cxParseUses(it.uses):null,counter=it.counter||(uses?{...uses,act:it.key}:null);return `<article class="cx-pass${open?' is-open':''}" data-cx-key="${esc(it.key)}"><div class="cx-pass-head"><button type="button" class="cx-item-title" data-cx-open="${esc(it.key)}" aria-expanded="${open}" ${it.desc?'':'disabled'}><b>${esc(it.name)}</b>${it.desc?'<span class="cx-caret" aria-hidden="true"></span>':''}</button>${it.pts!=null?`<span class="cx-tag cx-tag-pt">${num(it.pts)} PT</span>`:''}${it.tag?`<span class="cx-tag">${esc(it.tag)}</span>`:''}${it.uses&&!uses?`<span class="cx-tag cx-tag-uses">${esc(it.uses)}</span>`:''}${counter?cxCounter(counter):''}${cxPinBtn(c,it.key,it.name)}</div>${it.desc&&!open?`<p class="cx-excerpt" data-cx-open="${esc(it.key)}">${esc(cxExcerpt(it.desc))}</p>`:''}${it.desc?`<div class="cx-item-desc"${open?'':' hidden'}>${it.desc}</div>`:''}</article>`};
   const t=trainingTotals(c);
-  const trainHtml=`<section class="cx-pgroup cx-pgroup-train"><h3><span class="ui-icon i-training"></span>Treinamentos<span class="cx-econ-count">${tr.length}</span><span class="cx-pt-free">${t.available} PT livres</span></h3>${tr.length?tr.map(row).join(''):'<p class="cx-empty">Nenhum treinamento aprendido. Eles ficam na página de Poderes.</p>'}</section>`;
-  box.innerHTML=trainHtml+groups.map(g=>`<section class="cx-pgroup"><h3><span class="ui-icon ${g.icon}"></span>${esc(g.title)}<span class="cx-econ-count">${g.list.length}</span></h3>${g.list.map(row).join('')}</section>`).join('')+(groups.length?'':'<p class="cx-empty">Características passivas do Dossiê, de Funções, Haki e Akuma no Mi aparecem aqui.</p>');
+  const q=cxNorm(ui.pq||''),hit=it=>!q||cxNorm(it.name+' '+(it.tag||'')+' '+String(it.desc||'').replace(/<[^>]+>/g,' ')).includes(q),fold=cxFold();
+  const group=(key,icon,title,list,extra,cls,empty)=>{const vis=list.filter(hit);if(q&&!vis.length)return '';const folded=!q&&cxIsFolded(fold,key,list.length);
+    return `<section class="cx-pgroup${cls?' '+cls:''}${folded?' is-folded':''}" data-cx-group="${esc(key)}"><h3><button type="button" class="cx-fold" data-cx-fold="${esc(key)}" aria-expanded="${!folded}"><span class="ui-icon ${icon}"></span>${esc(title)}<span class="cx-econ-count">${q?vis.length+'/':''}${list.length}</span><span class="cx-caret" aria-hidden="true"></span></button>${extra||''}</h3>${folded?(list.length?`<div class="cx-chips">${list.map(it=>`<button type="button" class="cx-chip" data-cx-peek="${esc(it.key)}" data-cx-g="${esc(key)}">${esc(it.name)}</button>`).join('')}</div>`:''):(vis.length?vis.map(row).join(''):(empty||''))}</section>`};
+  const html=group('train','i-training','Treinamentos',tr,`<span class="cx-pt-free">${t.available} PT livres</span>`,'cx-pgroup-train','<p class="cx-empty">Nenhum treinamento aprendido. Eles ficam na página de Poderes.</p>')+groups.map(g=>group(g.title,g.icon,g.title,g.list)).join('');
+  box.innerHTML=(html||(q?'<p class="cx-empty">Nada encontrado com essa busca.</p>':''))+(groups.length?'':'<p class="cx-empty">Características passivas do Dossiê, de Funções, Haki e Akuma no Mi aparecem aqui.</p>');
   return [...tr,...groups.flatMap(g=>g.list)]}
 function cxRenderChecks(c){const p=prof(c.level),e=cbEffects(c);
   document.getElementById('cxAbilities').innerHTML=ABILITIES.map(([k,l])=>{const m=mod(c.abilities[k]);return `<button type="button" class="cx-abil" data-cx-copy="${cxExpr(m)}" data-cx-label="Teste de ${esc(l)}" title="Copiar teste de ${esc(l)}"><small>${esc(l.slice(0,3).toUpperCase())}</small><b>${signed(m)}</b><span>${num(c.abilities[k])}</span></button>`}).join('');
@@ -8349,6 +8393,8 @@ function cbWire(){const root=document.getElementById('cx');if(!root||cbWire.done
   root.addEventListener('click',ev=>{const c=current(),ui=cxUi();
     const cp=ev.target.closest('[data-cx-copy]');if(cp){cxCopy(cp.dataset.cxCopy,'');cp.classList.remove('is-copied');void cp.offsetWidth;cp.classList.add('is-copied');return}
     if(ev.target.closest('#cxInitBtn')){const t=cbTracker(c);cxCopy(cxExpr(mod(c.abilities.des)),'');return}
+    const fb=ev.target.closest('[data-cx-fold]');if(fb){const f=cxFold(),k=fb.dataset.cxFold,sec=fb.closest('.cx-pgroup');f[k]=!sec.classList.contains('is-folded');cxSaveFold(f);cxRender();return}
+    const pk=ev.target.closest('[data-cx-peek]');if(pk){const f=cxFold();f[pk.dataset.cxG]=false;cxSaveFold(f);ui.open[pk.dataset.cxPeek]=true;cxRender();requestAnimationFrame(()=>{const el=[...document.querySelectorAll('#cxPassiveList [data-cx-key]')].find(e=>e.dataset.cxKey===pk.dataset.cxPeek);if(el){el.scrollIntoView({block:'nearest',behavior:'smooth'});el.classList.add('cx-flash');setTimeout(()=>el.classList.remove('cx-flash'),900)}});return}
     const op=ev.target.closest('[data-cx-open]');if(op){const k=op.dataset.cxOpen,item=op.closest('[data-cx-key]'),open=!item.classList.contains('is-open');ui.open[k]=open;item.classList.toggle('is-open',open);op.setAttribute('aria-expanded',String(open));const d=item.querySelector('.cx-item-desc');if(d)d.hidden=!open;const ex=item.querySelector('.cx-excerpt');if(ex)ex.hidden=open;else if(!open&&d&&item.classList.contains('cx-pass'))d.insertAdjacentHTML('beforebegin',`<p class="cx-excerpt" data-cx-open="${esc(k)}">${esc(cxExcerpt(d.innerHTML))}</p>`);return}
     const pin=ev.target.closest('[data-cx-pin]');if(pin){const k=pin.dataset.cxPin;c.combatPins=valueArray(c.combatPins);c.combatPins=c.combatPins.includes(k)?c.combatPins.filter(x=>x!==k):[...c.combatPins,k];saveState();cxRender();return}
     const go=ev.target.closest('[data-cx-goto]');if(go){const el=root.querySelector(`[data-cx-key="${CSS.escape(go.dataset.cxGoto)}"]`);if(el){if(!el.offsetParent){ui.filter='all';cxRender()}const el2=root.querySelector(`[data-cx-key="${CSS.escape(go.dataset.cxGoto)}"]`);el2.scrollIntoView({block:'center',behavior:fbReduced()?'auto':'smooth'});el2.classList.remove('is-flash');void el2.offsetWidth;el2.classList.add('is-flash')}return}
@@ -8356,7 +8402,8 @@ function cbWire(){const root=document.getElementById('cx');if(!root||cbWire.done
     const u=ev.target.closest('[data-cx-use]');if(u){cxSpendUse(c,u.dataset.cxUse,num(u.dataset.d));return}
     const btn=ev.target.closest('[data-cx-act]');if(!btn)return;const id=btn.dataset.id,item=valueArray(c.items).find(i=>i.id===id),atk=valueArray(c.attacks).find(a=>a.id===id),tech=valueArray(c.techniques).find(t=>t.id===id);
     switch(btn.dataset.cxAct){
-      case 'toggle-all':ui.allOpen=!ui.allOpen;if(!ui.allOpen)ui.open={};cxRender();break;
+      case 'toggle-all':ui.allOpen=!ui.allOpen;if(!ui.allOpen)ui.open={};if(ui.allOpen){const f=cxFold();document.querySelectorAll('#cxPassiveList [data-cx-group]').forEach(g=>f[g.dataset.cxGroup]=false);cxSaveFold(f)}cxRender();break;
+      case 'fold-all':{const f=cxFold(),secs=[...document.querySelectorAll('#cxPassiveList [data-cx-group]')],allF=secs.every(g=>g.classList.contains('is-folded'));secs.forEach(g=>f[g.dataset.cxGroup]=!allF);ui.allOpen=false;cxSaveFold(f);cxRender();break}
       case 'equip':if(item){item.equipped=!item.equipped;saveState();renderInventory();cxRender()}break;
       case 'edit-item':if(item)openItemEditor(item);break;
       case 'new-weapon':openItemEditor(null,'weapon');break;
@@ -8383,7 +8430,7 @@ function cxUseTech(c,t){const e=cbEffects(c),cost=Math.max(0,num(t.cost));if(e.n
 function cxSpendUse(c,key,d){
   if(key.startsWith('fr:')){const r=valueArray(c.fruit?.records).find(x=>x.id===key.slice(3));if(r){const max=num(r.maxUses);r.currentUses=clamp(num(r.currentUses)+d,0,max);saveState();cxRender()}return}
   if(key.startsWith('tr:')){const t=valueArray(c.traits).find(x=>x.id===key.slice(3)),u=t&&cxParseUses(t.uses);if(u){const n=clamp(u.cur+d,0,u.max);t.uses=String(t.uses).replace(/(\d+)(\s*\/\s*\d+)/,`${n}$2`);saveState();cxRender()}}}
-if(document.getElementById('cx')){cbWire();cxRender()}
+if(document.getElementById('cx')){cbWire();cxRender();const ps=document.getElementById('cxPassiveSearch');if(ps){ps.addEventListener('input',()=>{cxUi().pq=ps.value;cxRenderPassives(current());const b=document.getElementById('cxPassiveList');if(b)b.scrollTop=0});ps.addEventListener('keydown',e=>{if(e.key==='Escape'&&ps.value){ps.value='';cxUi().pq='';cxRenderPassives(current())}})}}
 
 
 })();
