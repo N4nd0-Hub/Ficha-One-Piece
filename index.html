@@ -4608,6 +4608,377 @@ body.clear-sheet[data-theme] #cx{
 .tc-card-actions .tc-combat-toggle[aria-pressed="true"]{border-color:color-mix(in srgb,var(--gold) 60%,var(--line));color:var(--gold2);background:color-mix(in srgb,var(--gold) 12%,transparent)}
 .tc-card-actions .tc-combat-toggle[aria-pressed="false"]{opacity:.75}
 .tc-combat-field span small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+
+/* ---------- Inventário 3.0 · porão da tripulação ---------- */
+#iv{--iv-brass:var(--gold);--iv-brass2:var(--gold2,var(--gold));--iv-ink:var(--text);--iv-mute:var(--muted);--iv-hair:color-mix(in srgb,var(--line) 75%,transparent);
+  --iv-wood:color-mix(in srgb,var(--panel) 82%,#6b4325);--iv-wood2:color-mix(in srgb,var(--panel2,var(--panel)) 86%,#3d2412);
+  --iv-plank:repeating-linear-gradient(180deg,transparent 0 46px,color-mix(in srgb,#000 22%,transparent) 46px 47px,color-mix(in srgb,#fff 4%,transparent) 47px 48px);
+  --iv-grain:repeating-linear-gradient(92deg,transparent 0 9px,color-mix(in srgb,#000 5%,transparent) 9px 10px,transparent 10px 23px);
+  display:flex;flex-direction:column;gap:18px;font-family:var(--font-ui)}
+#iv button{font-family:inherit;cursor:pointer}
+#iv .ui-icon{flex:none}
+
+/* Convés: bolsa, carga, contagem e criação */
+#iv .iv-deck{display:grid;grid-template-columns:minmax(260px,1.15fr) minmax(220px,1fr) auto minmax(260px,1.2fr);gap:14px;align-items:stretch}
+#iv .iv-deck>*{position:relative;border-radius:16px;border:1px solid var(--iv-hair);background:var(--iv-grain),linear-gradient(180deg,var(--iv-wood),var(--iv-wood2));padding:16px 18px;box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 6%,transparent),0 10px 24px -18px #000;overflow:hidden}
+#iv .iv-deck>*::after{content:"";position:absolute;inset:6px;border-radius:11px;border:1px dashed color-mix(in srgb,var(--iv-brass) 18%,transparent);pointer-events:none}
+#iv .iv-purse{display:flex;gap:14px;align-items:center}
+#iv .iv-coin{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;flex:none;color:#3a2606;background:radial-gradient(circle at 35% 30%,#fff3c4,var(--iv-brass) 55%,color-mix(in srgb,var(--iv-brass) 60%,#4b2e05));box-shadow:0 0 0 3px color-mix(in srgb,var(--iv-brass) 35%,transparent),0 8px 18px -8px color-mix(in srgb,var(--iv-brass) 80%,#000);animation:ivCoin 6s ease-in-out infinite}
+#iv .iv-coin .ui-icon{width:28px;height:28px}
+@keyframes ivCoin{0%,86%,100%{transform:rotateY(0)}92%{transform:rotateY(180deg)}}
+#iv .iv-purse-main{min-width:0;flex:1}
+#iv small{color:var(--iv-mute);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+#iv .iv-money{display:block;font:700 clamp(26px,2.6vw,34px)/1.1 var(--r-head,var(--font-ui));color:var(--iv-brass2);letter-spacing:.01em;margin:2px 0 8px;transition:color .3s}
+#iv .iv-money.is-bump{animation:ivBump .5s cubic-bezier(.3,1.6,.5,1)}
+#iv .iv-money.is-up{color:color-mix(in srgb,#7ee08a 70%,var(--iv-brass2))}
+#iv .iv-money.is-down{color:color-mix(in srgb,var(--red) 75%,var(--iv-brass2))}
+@keyframes ivBump{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+#iv .iv-purse-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#iv .iv-money-input{width:120px;height:32px;padding:0 10px;font-size:14px}
+#iv .iv-quick{display:flex;gap:4px;flex-wrap:wrap}
+#iv .iv-quick button{height:30px;padding:0 9px;border-radius:8px;border:1px solid var(--iv-hair);background:color-mix(in srgb,#000 18%,transparent);color:var(--iv-ink);font-size:12.5px;font-weight:700;transition:transform .12s,border-color .15s,background .15s}
+#iv .iv-quick button:hover{border-color:color-mix(in srgb,var(--iv-brass) 55%,var(--line));background:color-mix(in srgb,var(--iv-brass) 12%,transparent)}
+#iv .iv-quick button:active{transform:translateY(1px) scale(.96)}
+
+#iv .iv-load{display:flex;flex-direction:column;justify-content:center;gap:8px}
+#iv .iv-load-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+#iv .iv-load-top b{font:700 18px var(--r-head,var(--font-ui));color:var(--iv-ink)}
+#iv .iv-load-bar{height:16px;border-radius:99px;background:color-mix(in srgb,#000 32%,transparent);box-shadow:inset 0 2px 4px #0008;overflow:hidden;position:relative}
+#iv .iv-load-bar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 2px),color-mix(in srgb,#000 45%,transparent) calc(10% - 2px) 10%);pointer-events:none}
+#iv .iv-load-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#6fbf73,#bfd36a);transition:width .6s cubic-bezier(.2,.8,.2,1),background .3s;max-width:100%}
+#iv .iv-load[data-state="mid"] .iv-load-fill{background:linear-gradient(90deg,#9ccf6a,var(--iv-brass))}
+#iv .iv-load[data-state="heavy"] .iv-load-fill{background:linear-gradient(90deg,var(--iv-brass),#e48a3a)}
+#iv .iv-load[data-state="over"] .iv-load-fill{background:linear-gradient(90deg,#e48a3a,var(--red));animation:ivPulse 1.2s ease-in-out infinite}
+@keyframes ivPulse{50%{filter:brightness(1.35)}}
+#iv .iv-load-state{margin:0;font-size:13px;color:var(--iv-mute)}
+#iv .iv-load[data-state="over"] .iv-load-state{color:var(--red);font-weight:700}
+
+#iv .iv-tally{display:flex;gap:4px;align-items:center;padding:12px 10px}
+#iv .iv-tally>div{display:flex;flex-direction:column;align-items:center;min-width:64px;padding:4px 6px}
+#iv .iv-tally>div+div{border-left:1px solid var(--iv-hair)}
+#iv .iv-tally b{font:700 26px/1 var(--r-head,var(--font-ui));color:var(--iv-ink)}
+#iv .iv-tally small{margin-top:4px;text-transform:none;letter-spacing:0;font-size:12px}
+
+#iv .iv-make{display:flex;flex-direction:column;gap:7px;padding:12px}
+#iv .iv-make-btn{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:11px;border:1px solid var(--iv-hair);background:color-mix(in srgb,#000 16%,transparent);transition:transform .15s,border-color .15s,background .15s;position:relative;z-index:1}
+#iv .iv-make-btn .ui-icon{width:22px;height:22px;color:var(--iv-brass)}
+#iv .iv-make-btn b{display:block;font-size:14px;color:var(--iv-ink)}
+#iv .iv-make-btn small{display:block;text-transform:none;letter-spacing:0;font-weight:500;font-size:12px}
+#iv .iv-make-btn:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--iv-brass) 55%,var(--line));background:color-mix(in srgb,var(--iv-brass) 10%,transparent)}
+#iv .iv-make-btn:focus-visible{outline:2px solid var(--iv-brass);outline-offset:2px}
+#iv .iv-make-btn.is-weapon{background:linear-gradient(90deg,color-mix(in srgb,var(--iv-brass) 22%,transparent),color-mix(in srgb,#000 12%,transparent));border-color:color-mix(in srgb,var(--iv-brass) 45%,var(--line))}
+
+/* Em mãos */
+#iv .iv-rack{border-radius:16px;padding:14px 16px 16px;border:1px solid var(--iv-hair);background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 92%,#000),var(--panel));position:relative}
+#iv .iv-rack::before{content:"";position:absolute;left:16px;right:16px;top:46px;height:6px;border-radius:4px;background:linear-gradient(180deg,color-mix(in srgb,var(--iv-wood) 100%,#000),var(--iv-wood2));box-shadow:0 2px 4px #0007;opacity:.75}
+#iv .iv-rack h2{display:flex;align-items:center;gap:8px;margin:0 0 18px;font:700 17px var(--r-head,var(--font-ui));color:var(--iv-ink)}
+#iv .iv-rack h2 .ui-icon{width:18px;height:18px;color:var(--iv-brass)}
+#iv .iv-rack h2 small{text-transform:none;letter-spacing:0;font-weight:500;font-size:12.5px}
+#iv .iv-rack-slots{display:flex;gap:10px;flex-wrap:wrap;position:relative}
+#iv .iv-slot{display:flex;align-items:stretch;border-radius:12px;border:1px solid color-mix(in srgb,var(--iv-brass) 45%,var(--line));background:color-mix(in srgb,var(--iv-brass) 8%,var(--panel2,var(--panel)));box-shadow:0 8px 16px -12px #000;animation:ivDrop .45s cubic-bezier(.3,1.4,.5,1) both;transform-origin:top center}
+#iv .iv-slot:nth-child(2){animation-delay:.04s}#iv .iv-slot:nth-child(3){animation-delay:.08s}#iv .iv-slot:nth-child(4){animation-delay:.12s}
+@keyframes ivDrop{from{opacity:0;transform:translateY(-8px) rotate(-3deg)}to{opacity:1;transform:none}}
+#iv .iv-slot-main{all:unset;cursor:pointer;display:flex;gap:10px;align-items:center;padding:7px 6px 7px 8px;min-width:0}
+#iv .iv-slot-main:focus-visible{outline:2px solid var(--iv-brass);outline-offset:2px;border-radius:10px}
+#iv .iv-slot-art{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;overflow:hidden;background:color-mix(in srgb,#000 30%,transparent);color:var(--iv-brass)}
+#iv .iv-slot-art .ui-icon{width:22px;height:22px}
+#iv .iv-slot-art img{width:100%;height:100%;object-fit:cover}
+#iv .iv-slot-text b{display:block;font-size:14px;color:var(--iv-ink);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#iv .iv-slot-text small{display:block;text-transform:none;letter-spacing:0;font-weight:600;font-size:12.5px;color:var(--iv-brass2)}
+#iv .iv-slot-x{border:0;background:transparent;color:var(--iv-mute);font-size:18px;padding:0 10px;border-left:1px solid var(--iv-hair);border-radius:0 12px 12px 0}
+#iv .iv-slot-x:hover{color:var(--red);background:color-mix(in srgb,var(--red) 10%,transparent)}
+#iv .iv-rack-empty{display:flex;align-items:center;gap:10px;margin:0;padding:10px 12px;border-radius:12px;border:1px dashed var(--iv-hair);color:var(--iv-mute);font-size:14px}
+#iv .iv-rack-empty .ui-icon{width:20px;height:20px;opacity:.6}
+
+/* Barra de ferramentas */
+#iv .iv-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:calc(var(--top,64px) + 6px);z-index:5;padding:8px;border-radius:14px;background:color-mix(in srgb,var(--panel) 88%,transparent);backdrop-filter:blur(10px);border:1px solid var(--iv-hair)}
+#iv .iv-tabs{display:flex;gap:4px;padding:3px;border-radius:11px;background:color-mix(in srgb,#000 22%,transparent)}
+#iv .iv-tabs button{white-space:nowrap;border:0;background:transparent;color:var(--iv-mute);height:34px;padding:0 12px;border-radius:8px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;transition:background .2s,color .2s}
+#iv .iv-tabs button span{font-size:11.5px;min-width:20px;padding:1px 6px;border-radius:99px;background:color-mix(in srgb,var(--text) 10%,transparent)}
+#iv .iv-tabs button[aria-selected="true"]{background:var(--iv-brass);color:var(--primary-ink,#1b1206)}
+#iv .iv-tabs button[aria-selected="true"] span{background:color-mix(in srgb,#000 18%,transparent)}
+#iv .iv-search{flex:1 1 220px;display:flex;align-items:center;gap:8px;height:38px;padding:0 12px;border-radius:10px;border:1px solid var(--iv-hair);background:color-mix(in srgb,#000 14%,transparent)}
+#iv .iv-search:focus-within{border-color:color-mix(in srgb,var(--iv-brass) 60%,var(--line))}
+#iv .iv-search .ui-icon{width:15px;height:15px;color:var(--iv-mute)}
+#iv .iv-search input,#iv .iv-search input:focus{flex:1;min-width:0;border:0!important;background:transparent!important;color:var(--iv-ink);font:500 14px var(--font-ui);outline:none!important;box-shadow:none!important;padding:0;height:auto}
+#iv .iv-sort select{height:38px;min-width:150px}
+#iv .iv-view{display:flex;border-radius:10px;border:1px solid var(--iv-hair);overflow:hidden}
+#iv .iv-view button{border:0;background:transparent;width:38px;height:36px;display:grid;place-items:center;color:var(--iv-mute)}
+#iv .iv-view button[aria-pressed="true"]{background:color-mix(in srgb,var(--iv-brass) 18%,transparent);color:var(--iv-brass2)}
+#iv .iv-view-grid,#iv .iv-view-list{width:16px;height:16px;display:block;background:currentColor}
+#iv .iv-view-grid{-webkit-mask:conic-gradient(#000 0 0) 0 0/7px 7px,conic-gradient(#000 0 0) 9px 0/7px 7px,conic-gradient(#000 0 0) 0 9px/7px 7px,conic-gradient(#000 0 0) 9px 9px/7px 7px;-webkit-mask-repeat:no-repeat;mask:conic-gradient(#000 0 0) 0 0/7px 7px no-repeat,conic-gradient(#000 0 0) 9px 0/7px 7px no-repeat,conic-gradient(#000 0 0) 0 9px/7px 7px no-repeat,conic-gradient(#000 0 0) 9px 9px/7px 7px no-repeat}
+#iv .iv-view-list{-webkit-mask:repeating-linear-gradient(180deg,#000 0 3px,transparent 3px 6.5px);mask:repeating-linear-gradient(180deg,#000 0 3px,transparent 3px 6.5px)}
+#iv .iv-status{font-size:12.5px;color:var(--iv-mute);margin-left:auto;padding-right:6px}
+
+/* Cartões */
+#iv .iv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.iv-card{--tone:var(--gold);position:relative;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 14px 30px -24px #000;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,border-color .2s;font-family:var(--font-ui);animation:ivIn .35s ease both}
+@keyframes ivIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.iv-card[data-tone="fire"]{--tone:#e0793c}.iv-card[data-tone="fist"]{--tone:#d56b6b}.iv-card[data-tone="special"]{--tone:#6fa8dc}.iv-card[data-tone="consum"]{--tone:#69c08a}.iv-card[data-tone="treasure"]{--tone:#e6c35c}.iv-card[data-tone="item"]{--tone:color-mix(in srgb,var(--muted) 70%,var(--gold))}
+#iv .iv-card:hover{transform:translateY(-3px);box-shadow:0 22px 34px -24px #000;border-color:color-mix(in srgb,var(--tone) 45%,var(--line))}
+.iv-card.is-equipped{border-color:color-mix(in srgb,var(--gold) 70%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--gold) 35%,transparent),0 18px 34px -22px color-mix(in srgb,var(--gold) 60%,#000)}
+.iv-card.is-new{animation:ivNew 1.1s cubic-bezier(.2,.8,.2,1)}
+@keyframes ivNew{0%{transform:scale(.92);box-shadow:0 0 0 0 var(--gold)}35%{transform:scale(1.02);box-shadow:0 0 0 6px color-mix(in srgb,var(--gold) 45%,transparent)}100%{transform:none}}
+.iv-card.is-leaving{animation:ivOut .26s ease forwards}
+@keyframes ivOut{to{opacity:0;transform:scale(.9) rotate(-2deg)}}
+.iv-art{position:relative;height:150px;overflow:hidden;background:radial-gradient(120% 90% at 50% 110%,color-mix(in srgb,var(--tone) 22%,transparent),transparent 60%),repeating-linear-gradient(135deg,color-mix(in srgb,var(--text) 3%,transparent) 0 2px,transparent 2px 9px),linear-gradient(180deg,color-mix(in srgb,var(--panel2,var(--panel)) 80%,#000),var(--panel2,var(--panel)));border-bottom:1px solid var(--line)}
+.iv-art img{position:absolute;inset:0;width:100%;height:100%;transition:transform .35s}
+.iv-emblem{position:absolute;inset:0;display:grid;place-items:center}
+.iv-emblem .ui-icon{width:70px;height:70px;color:color-mix(in srgb,var(--tone) 70%,var(--text));opacity:.55;filter:drop-shadow(0 6px 10px #0009);transition:transform .45s cubic-bezier(.3,1.5,.5,1),opacity .3s}
+#iv .iv-card:hover .iv-emblem .ui-icon{transform:rotate(-12deg) scale(1.08);opacity:.85}
+.iv-tag{position:absolute;left:12px;top:12px;padding:4px 10px 4px 16px;border-radius:4px 8px 8px 4px;background:linear-gradient(180deg,#f4e7c6,#e3cf9e);color:#4a3412;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 3px 8px -3px #000a;transform:rotate(-3deg);transform-origin:left center}
+.iv-tag::before{content:"";position:absolute;left:5px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:color-mix(in srgb,#4a3412 60%,transparent)}
+.iv-equip{white-space:nowrap;position:absolute;right:10px;top:10px;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px 0 9px;border-radius:99px;border:1px solid color-mix(in srgb,var(--text) 22%,transparent);background:color-mix(in srgb,#000 55%,transparent);backdrop-filter:blur(6px);color:var(--text);font-size:12px;font-weight:700;transition:background .2s,border-color .2s,transform .12s}
+.iv-equip:hover{border-color:var(--gold)}
+.iv-equip:active{transform:scale(.95)}
+.iv-dot{width:9px;height:9px;border-radius:50%;background:color-mix(in srgb,var(--text) 35%,transparent);transition:background .2s,box-shadow .2s}
+.iv-card.is-equipped .iv-equip{background:color-mix(in srgb,var(--gold) 85%,#000);border-color:var(--gold);color:var(--primary-ink,#1b1206)}
+.iv-card.is-equipped .iv-dot{background:#fff6d6;box-shadow:0 0 0 3px color-mix(in srgb,#fff 25%,transparent),0 0 10px #fff6d6}
+.iv-body{display:flex;flex-direction:column;gap:10px;padding:14px 14px 12px;flex:1}
+.iv-head{display:flex;flex-direction:column;gap:2px}
+.iv-name{margin:0;font:700 19px/1.2 var(--r-head,var(--font-ui));color:var(--text)}
+.iv-name button{all:unset;cursor:pointer}
+.iv-name button:hover{color:var(--gold2,var(--gold));text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.iv-name button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+.iv-sub{margin:0;font-size:12.5px;color:var(--muted)}
+.iv-stats{display:grid;grid-template-columns:auto 1fr;gap:6px}
+.iv-stat{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:1px;padding:7px 10px;border-radius:10px;border:1px solid var(--line);background:color-mix(in srgb,#000 16%,transparent);min-width:0}
+.iv-stat small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iv-stat b{font:700 18px/1.15 var(--r-head,var(--font-ui));color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+button.iv-stat{cursor:copy;transition:border-color .15s,background .15s,transform .12s}
+button.iv-stat:hover{border-color:color-mix(in srgb,var(--tone) 60%,var(--line));background:color-mix(in srgb,var(--tone) 10%,transparent)}
+button.iv-stat:active{transform:scale(.97)}
+button.iv-stat:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.iv-atk b{color:var(--gold2,var(--gold))}
+.iv-dmg b{color:color-mix(in srgb,var(--tone) 55%,var(--text))}
+.iv-reach{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:8px;padding:5px 10px}
+.iv-reach b{font:600 13.5px var(--font-ui)}
+.iv-props{display:flex;flex-wrap:wrap;gap:5px}
+.iv-prop{padding:3px 9px;border-radius:99px;border:1px solid color-mix(in srgb,var(--tone) 40%,var(--line));background:color-mix(in srgb,var(--tone) 9%,transparent);font-size:12px;font-weight:700;color:var(--text);cursor:help}
+.iv-prop i{font-style:normal;color:var(--muted);font-weight:600}
+.iv-prop.is-custom{border-style:dashed;cursor:default;background:transparent}
+.iv-qty{display:flex;align-items:center;gap:8px}
+.iv-qty button,.iv-qty>span:not(:last-child){width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:color-mix(in srgb,#000 16%,transparent);color:var(--text);font-size:17px;font-weight:700;display:grid;place-items:center;transition:transform .1s,border-color .15s}
+.iv-qty button:hover{border-color:var(--gold)}
+.iv-qty button:active{transform:scale(.9)}
+.iv-qty b{min-width:30px;text-align:center;font:700 19px var(--r-head,var(--font-ui));color:var(--text)}
+.iv-qty b.is-bump{animation:ivBump .35s cubic-bezier(.3,1.6,.5,1)}
+.iv-qty>span:last-child{font-size:12.5px;color:var(--muted)}
+.iv-notes summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);list-style:none;display:flex;align-items:center;gap:6px}
+.iv-notes summary::-webkit-details-marker{display:none}
+.iv-notes summary::before{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+.iv-notes[open] summary::before{transform:rotate(45deg)}
+.iv-notes p{margin:6px 0 0;font-size:13.5px;line-height:1.55;color:var(--text);white-space:pre-wrap}
+.iv-actions{display:flex;gap:6px;margin-top:auto;padding-top:4px;border-top:1px dashed var(--line)}
+.iv-actions button{flex:1;height:32px;margin-top:8px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12.5px;font-weight:700;transition:color .15s,border-color .15s,background .15s}
+.iv-actions button:hover{color:var(--text);border-color:color-mix(in srgb,var(--gold) 50%,var(--line))}
+.iv-actions .iv-del:hover{color:var(--red);border-color:color-mix(in srgb,var(--red) 55%,var(--line))}
+.iv-actions .iv-del.is-armed{background:var(--red);border-color:var(--red);color:#fff;animation:ivShake .3s}
+@keyframes ivShake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+
+/* Lista compacta */
+#iv .iv-grid.is-list{grid-template-columns:1fr;gap:8px}
+#iv .iv-grid.is-list .iv-card{flex-direction:row;align-items:stretch}
+#iv .iv-grid.is-list .iv-art{width:96px;height:auto;min-height:96px;flex:none;border-bottom:0;border-right:1px solid var(--line)}
+#iv .iv-grid.is-list .iv-emblem .ui-icon{width:40px;height:40px}
+#iv .iv-grid.is-list .iv-tag{display:none}
+#iv .iv-grid.is-list .iv-equip{top:auto;bottom:8px;right:50%;transform:translateX(50%);padding:0 8px;font-size:11px;height:24px}
+#iv .iv-grid.is-list .iv-body{display:grid;grid-template-columns:minmax(160px,1.2fr) minmax(220px,2fr) auto;align-items:center;gap:8px 14px;padding:10px 12px}
+#iv .iv-grid.is-list .iv-stats{grid-template-columns:auto auto 1fr}
+#iv .iv-grid.is-list .iv-reach{grid-column:auto}
+#iv .iv-grid.is-list .iv-props,#iv .iv-grid.is-list .iv-notes{grid-column:1/-1}
+#iv .iv-grid.is-list .iv-actions{border:0;padding:0;margin:0;grid-column:3;grid-row:1}
+#iv .iv-grid.is-list .iv-actions button{margin:0;flex:none;padding:0 10px}
+#iv .iv-grid.is-list .iv-qty{grid-column:2}
+
+#iv .iv-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:44px 16px;border-radius:16px;border:1px dashed var(--iv-hair);text-align:center;color:var(--iv-mute)}
+#iv .iv-empty b{font:700 20px var(--r-head,var(--font-ui));color:var(--iv-ink)}
+#iv .iv-empty-chest{width:72px;height:72px;border-radius:18px;display:grid;place-items:center;background:var(--iv-grain),linear-gradient(180deg,var(--iv-wood),var(--iv-wood2));color:var(--iv-brass);animation:ivFloat 3s ease-in-out infinite}
+#iv .iv-empty-chest .ui-icon{width:34px;height:34px}
+#iv .iv-empty .btn{margin-top:8px}
+@keyframes ivFloat{50%{transform:translateY(-5px) rotate(-2deg)}}
+
+@media (max-width:1180px){#iv .iv-deck{grid-template-columns:1fr 1fr}#iv .iv-tally{justify-content:space-around}}
+@media (max-width:700px){
+  #iv .iv-deck{grid-template-columns:1fr}
+  #iv .iv-make{flex-direction:row;flex-wrap:wrap}#iv .iv-make-btn{flex:1 1 140px}#iv .iv-make-btn small{display:none}
+  #iv .iv-toolbar{position:static}
+  #iv .iv-tabs{width:100%;overflow-x:auto}#iv .iv-tabs button{flex:1;justify-content:center;padding:0 8px}
+  #iv .iv-sort select{min-width:0}
+  #iv .iv-grid{grid-template-columns:1fr}
+  #iv .iv-grid.is-list .iv-body{grid-template-columns:1fr}
+  #iv .iv-grid.is-list .iv-actions{grid-column:1;grid-row:auto}
+  #iv .iv-grid.is-list .iv-qty{grid-column:1}
+}
+
+/* ---------- Forja ---------- */
+dialog.fg{--fg-hair:color-mix(in srgb,var(--line) 80%,transparent);width:min(1280px,calc(100vw - 32px));max-height:calc(100dvh - 32px);height:min(860px,calc(100dvh - 32px));padding:0;border:1px solid color-mix(in srgb,var(--gold) 35%,var(--line));border-radius:20px;background:var(--panel);color:var(--text);font-family:var(--font-ui);box-shadow:0 40px 80px -30px #000;overflow:hidden}
+dialog.fg[open]{display:flex;flex-direction:column;animation:fgIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes fgIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+dialog.fg::backdrop{background:color-mix(in srgb,#000 62%,transparent);backdrop-filter:blur(3px)}
+dialog.fg button{font-family:inherit;cursor:pointer}
+dialog.fg small{font-size:11.5px;color:var(--muted)}
+.fg-head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--fg-hair);background:repeating-linear-gradient(92deg,transparent 0 9px,color-mix(in srgb,#000 5%,transparent) 9px 10px,transparent 10px 23px),linear-gradient(180deg,color-mix(in srgb,var(--panel) 80%,#5e3a1d),color-mix(in srgb,var(--panel) 90%,#2d1a0b))}
+.fg-title{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+.fg-anvil{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;background:radial-gradient(circle at 40% 30%,#fff1c7,var(--gold) 60%,color-mix(in srgb,var(--gold) 55%,#3b2306));color:#3a2606;box-shadow:0 6px 16px -8px var(--gold)}
+.fg-anvil .ui-icon{width:24px;height:24px}
+dialog.fg.is-striking .fg-anvil{animation:fgStrike .4s ease}
+@keyframes fgStrike{30%{transform:rotate(-24deg) scale(1.1)}60%{transform:rotate(8deg)}}
+.fg-title small{text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.fg-title h2{margin:0;font:700 22px/1.1 var(--r-head,var(--font-ui))}
+.fg-kind{display:flex;padding:3px;border-radius:12px;background:color-mix(in srgb,#000 28%,transparent)}
+.fg-kind button{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-weight:700;font-size:14px}
+.fg-kind button .ui-icon{width:16px;height:16px}
+.fg-kind button[aria-pressed="true"]{background:var(--gold);color:var(--primary-ink,#1b1206)}
+.fg-x{width:38px;height:38px;border-radius:10px;border:1px solid var(--fg-hair);background:transparent;color:var(--text);font-size:22px;line-height:1}
+.fg-x:hover{border-color:var(--red);color:var(--red)}
+.fg-body{flex:1;min-height:0;display:grid;grid-template-columns:320px minmax(0,1fr) 330px}
+.fg-body>*{min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--gold) 35%,transparent) transparent}
+dialog.fg.is-item .fg-body{grid-template-columns:minmax(0,1fr) 330px}
+dialog.fg.is-item .fg-arsenal,dialog.fg.is-item .fg-w{display:none}
+
+.fg-arsenal{border-right:1px solid var(--fg-hair);background:linear-gradient(180deg,color-mix(in srgb,#000 10%,var(--panel)),var(--panel))}
+.fg-arsenal-toggle{display:none}
+.fg-arsenal-inner{padding:16px;display:flex;flex-direction:column;gap:10px}
+.fg-arsenal h3{margin:0;font:700 18px var(--r-head,var(--font-ui))}
+.fg-arsenal-sub{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+.fg-ars-tabs{display:flex;flex-wrap:wrap;gap:4px}
+.fg-ars-tabs button{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 10px;border-radius:8px;border:1px solid var(--fg-hair);background:transparent;color:var(--muted);font-size:12.5px;font-weight:700}
+.fg-ars-tabs .ui-icon{width:14px;height:14px}
+.fg-ars-tabs button[aria-selected="true"]{background:color-mix(in srgb,var(--gold) 18%,transparent);border-color:color-mix(in srgb,var(--gold) 55%,var(--line));color:var(--text)}
+.fg-search{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--fg-hair);background:color-mix(in srgb,#000 14%,transparent)}
+.fg-search .ui-icon{width:14px;height:14px;color:var(--muted)}
+.fg-search input,.fg-search input:focus{flex:1;min-width:0;border:0!important;background:transparent!important;color:var(--text);font:500 14px var(--font-ui);outline:none!important;box-shadow:none!important;padding:0;height:auto}
+.fg-search:focus-within{border-color:color-mix(in srgb,var(--gold) 60%,var(--line))}
+.fg-ars-list{display:flex;flex-direction:column;gap:6px}
+.fg-ars-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;grid-template-areas:"i m d" "i p d";align-items:center;gap:0 10px;padding:8px 10px;border-radius:11px;border:1px solid var(--fg-hair);background:color-mix(in srgb,#000 10%,transparent);color:var(--text);text-align:left;transition:transform .15s,border-color .15s,background .15s}
+.fg-ars-row:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--gold) 55%,var(--line));background:color-mix(in srgb,var(--gold) 9%,transparent)}
+.fg-ars-row:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.fg-ars-icon{grid-area:i;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:color-mix(in srgb,var(--gold) 14%,transparent);color:var(--gold)}
+.fg-ars-icon .ui-icon{width:18px;height:18px}
+.fg-ars-main{grid-area:m;min-width:0}
+.fg-ars-main b{display:block;font-size:14px}
+.fg-ars-main small{display:block;font-size:11.5px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fg-ars-dmg{grid-area:d;text-align:right}
+.fg-ars-dmg b{display:block;font:700 15px var(--r-head,var(--font-ui));color:var(--gold2,var(--gold))}
+.fg-ars-dmg small{font-size:11px}
+.fg-ars-price{grid-area:p;font-size:11.5px;color:var(--muted)}
+.fg-ars-empty{margin:8px 0;color:var(--muted);font-size:13px}
+
+.fg-form{padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px}
+.fg-sec{border:1px solid var(--fg-hair);border-radius:14px;padding:14px 16px;background:color-mix(in srgb,#000 6%,transparent);display:flex;flex-direction:column;gap:10px}
+.fg-sec h3{margin:0;display:flex;align-items:center;gap:9px;font:700 16px var(--r-head,var(--font-ui))}
+.fg-num{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--primary-ink,#1b1206);font:800 12.5px var(--font-ui)}
+.fg-num-alt{background:color-mix(in srgb,var(--text) 18%,transparent);color:var(--text)}
+.fg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.fg-wide{grid-column:1/-1}
+.fg-field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fg-field>span{font-size:12.5px;font-weight:700;color:var(--muted)}
+.fg-field>span em{font-style:normal;font-weight:500}
+.fg-field .input{height:38px}
+.fg-field textarea.input{height:auto;min-height:76px;resize:vertical}
+.fg-inline{display:flex;gap:6px}.fg-inline .input{flex:1;min-width:0}
+.fg-step{display:flex;align-items:center;gap:4px}
+.fg-step button{width:34px;height:38px;flex:none;border-radius:9px;border:1px solid var(--fg-hair);background:color-mix(in srgb,#000 14%,transparent);color:var(--text);font-size:18px;font-weight:700}
+.fg-step button:hover{border-color:var(--gold)}
+.fg-step .input{text-align:center;min-width:0;flex:1}
+.fg-switch{display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:14px}
+.fg-switch{position:relative}
+.fg-switch input{position:absolute!important;left:0;top:0;width:1px!important;height:1px!important;margin:0!important;opacity:0;pointer-events:none}
+.fg-switch-ui{width:42px;height:24px;border-radius:99px;flex:none;background:color-mix(in srgb,#000 35%,transparent);border:1px solid var(--fg-hair);position:relative;transition:background .2s}
+.fg-switch-ui::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:transform .22s cubic-bezier(.3,1.4,.5,1),background .2s}
+.fg-switch input:checked+.fg-switch-ui{background:color-mix(in srgb,var(--gold) 70%,#000)}
+.fg-switch input:checked+.fg-switch-ui::after{transform:translateX(18px);background:#fff6d6}
+.fg-switch input:focus-visible+.fg-switch-ui{outline:2px solid var(--gold);outline-offset:2px}
+.fg-switch small{display:block;font-weight:500}
+.fg-hint{margin:0;font-size:12.5px;color:var(--muted)}
+.fg-hint code{font-size:12px;padding:1px 5px;border-radius:5px;background:color-mix(in srgb,#000 25%,transparent)}
+.fg-dice{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.fg-dice-n b{min-width:34px;text-align:center;font:700 22px var(--r-head,var(--font-ui))}
+.fg-dies{display:flex;gap:6px;flex-wrap:wrap}
+.fg-dies button{display:flex;flex-direction:column;align-items:center;gap:3px;width:52px;padding:6px 0 5px;border-radius:10px;border:1px solid var(--fg-hair);background:color-mix(in srgb,#000 14%,transparent);color:var(--muted);font-size:12px;font-weight:800;transition:transform .15s,border-color .15s,color .15s}
+.fg-dies button:hover{transform:translateY(-2px);color:var(--text)}
+.fg-dies button[aria-pressed="true"]{border-color:var(--gold);color:var(--text);background:color-mix(in srgb,var(--gold) 16%,transparent)}
+.fg-dies button.is-rolled .fg-die-shape{animation:fgRoll .45s ease}
+@keyframes fgRoll{to{transform:rotate(360deg)}}
+.fg-die-shape{width:22px;height:22px;background:currentColor;display:block}
+.fg-dies button[aria-pressed="true"] .fg-die-shape{background:var(--gold)}
+.fg-die-shape.d4{clip-path:polygon(50% 4%,96% 92%,4% 92%)}
+.fg-die-shape.d6{clip-path:inset(10% round 3px)}
+.fg-die-shape.d8{clip-path:polygon(50% 0,96% 50%,50% 100%,4% 50%)}
+.fg-die-shape.d10{clip-path:polygon(50% 0,96% 40%,80% 92%,20% 92%,4% 40%)}
+.fg-die-shape.d12{clip-path:polygon(50% 0,90% 22%,98% 66%,72% 98%,28% 98%,2% 66%,10% 22%)}
+.fg-die-shape.d20{clip-path:polygon(50% 0,94% 25%,94% 75%,50% 100%,6% 75%,6% 25%)}
+.fg-dmg-text{flex:1 1 140px}
+.fg-chips{display:flex;flex-wrap:wrap;gap:5px}
+.fg-chip{height:30px;padding:0 12px;border-radius:99px;border:1px solid var(--fg-hair);background:transparent;color:var(--muted);font-size:13px;font-weight:700;transition:all .15s}
+.fg-chip:hover{color:var(--text)}
+.fg-chip[aria-pressed="true"]{background:color-mix(in srgb,var(--gold) 20%,transparent);border-color:var(--gold);color:var(--text)}
+.fg-row-label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.fg-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;cursor:pointer}
+.fg-abs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.fg-ab{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0;border-radius:10px;border:1px solid var(--fg-hair);background:color-mix(in srgb,#000 12%,transparent);color:var(--text);transition:all .15s}
+.fg-ab b{font-size:12.5px;letter-spacing:.05em}
+.fg-ab small{font-size:12px;font-weight:700}
+.fg-ab:hover{border-color:color-mix(in srgb,var(--gold) 60%,var(--line))}
+.fg-ab[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--primary-ink,#1b1206);transform:translateY(-1px)}
+.fg-ab[aria-pressed="true"] small{color:inherit}
+.fg-abs.is-linked{opacity:.55}
+.fg-props{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:7px}
+.fg-prop{border:1px solid var(--fg-hair);border-radius:11px;padding:7px 9px;display:flex;flex-direction:column;gap:5px;transition:border-color .15s,background .15s}
+.fg-prop>button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.fg-prop>button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.fg-prop-check{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--muted);display:grid;place-items:center;flex:none;transition:all .15s}
+.fg-prop.is-on{border-color:color-mix(in srgb,var(--gold) 60%,var(--line));background:color-mix(in srgb,var(--gold) 10%,transparent)}
+.fg-prop.is-on .fg-prop-check{background:var(--gold);border-color:var(--gold)}
+.fg-prop.is-on .fg-prop-check::after{content:"";width:4px;height:8px;border:solid var(--primary-ink,#1b1206);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.fg-prop p{margin:0;font-size:11.5px;line-height:1.35;color:var(--muted)}
+.fg-prop .input{height:30px;font-size:13px}
+.fg-img{display:grid;gap:8px}
+.fg-img-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.fg-img-tools .fg-field{flex:1 1 120px}
+.fg-img-tools .btn .ui-icon{width:14px;height:14px}
+.fg-shake{animation:ivShake .3s 2;border-color:var(--red)!important}
+
+.fg-preview{border-left:1px solid var(--fg-hair);padding:16px;display:flex;flex-direction:column;gap:12px;background:radial-gradient(90% 60% at 50% 0,color-mix(in srgb,var(--gold) 8%,transparent),transparent),var(--panel)}
+.fg-preview-label{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fg-preview-card .iv-card{animation:none}
+.fg-preview-card .iv-card.is-forged{animation:fgForge .6s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes fgForge{0%{transform:scale(.94) rotate(-1.5deg);filter:brightness(1.8) saturate(.4)}45%{transform:scale(1.03);filter:brightness(1.25)}100%{transform:none;filter:none}}
+.fg-preview-card .iv-art{cursor:grab}
+.fg-preview.is-dragging .iv-art,.fg-preview-card.is-dragging .iv-art{cursor:grabbing}
+.fg-combat{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;padding:12px;border-radius:12px;border:1px dashed var(--fg-hair)}
+.fg-combat div{display:flex;flex-direction:column}
+.fg-combat small{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
+.fg-combat b{font:700 18px var(--r-head,var(--font-ui));color:var(--gold2,var(--gold))}
+.fg-combat span{font-size:12px;color:var(--muted)}
+.fg-combat p{grid-column:1/-1;margin:0;font-size:12.5px;color:var(--muted)}
+.fg-foot{display:flex;align-items:center;gap:8px;padding:12px 18px;border-top:1px solid var(--fg-hair);background:color-mix(in srgb,#000 10%,var(--panel))}
+.fg-foot-note{flex:1;font-size:12.5px;color:var(--muted)}
+.fg-save{min-width:150px}
+
+@media (max-width:1100px){.fg-body{grid-template-columns:280px minmax(0,1fr)}.fg-preview{grid-column:1/-1;border-left:0;border-top:1px solid var(--fg-hair);display:grid;grid-template-columns:minmax(0,320px) 1fr;align-items:start;overflow:visible}.fg-preview-label{grid-column:1/-1}dialog.fg.is-item .fg-body{grid-template-columns:1fr}.fg-body{overflow-y:auto;display:grid}.fg-body>*{overflow:visible}}
+@media (max-width:900px){
+  dialog.fg{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:0;border:0}
+  .fg-head{padding:10px 12px;gap:8px;flex-wrap:wrap}.fg-title h2{font-size:19px}.fg-anvil{width:38px;height:38px}
+  .fg-kind{order:3;width:100%}.fg-kind button{flex:1;justify-content:center}
+  .fg-body{grid-template-columns:1fr;display:block;overflow-y:auto}
+  .fg-arsenal{border-right:0;border-bottom:1px solid var(--fg-hair)}
+  .fg-arsenal-toggle{display:flex;align-items:center;gap:8px;width:100%;padding:12px 16px;border:0;background:transparent;color:var(--text);font-weight:800;font-size:15px}
+  .fg-arsenal-toggle .ui-icon{width:18px;height:18px;color:var(--gold)}
+  .fg-caret{margin-left:auto;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s}
+  dialog.fg.ars-open .fg-caret{transform:rotate(-135deg)}
+  .fg-arsenal-inner{display:none;padding-top:0}
+  dialog.fg.ars-open .fg-arsenal-inner{display:flex}
+  .fg-arsenal-inner h3{display:none}
+  .fg-form{padding:12px}
+  .fg-preview{display:flex;border-top:1px solid var(--fg-hair)}
+  .fg-abs{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .fg-props{grid-template-columns:1fr 1fr}
+  .fg-prop p{display:none}
+  .fg-foot-note{display:none}.fg-foot .btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){#iv *,dialog.fg *{animation:none!important;transition:none!important}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -5226,23 +5597,46 @@ document.addEventListener('change',function(e){
             <div class="page-feature-metric"><small>Carga</small><b id="inventoryHeroLoad">0 / 0</b></div>
           </div>
         </div>
-        <div class="inventory-v202-shell">
-          <aside class="inventory-v202-side">
-            <div class="panel inventory-ledger-panel"><div class="panel-head"><h2>Caixa da Tripulação</h2><span class="eyebrow">Bellys</span></div><div class="panel-body"><div class="money" id="moneyDisplay">฿ 0</div><div class="field" style="margin-top:10px"><label for="sheet-field-89">Saldo atual</label><input class="input bind" data-key="money" type="number" min="0" id="sheet-field-89"></div></div></div>
-            <div class="panel inventory-load-panel"><div class="panel-head"><h2>Carga Pessoal</h2><span class="eyebrow">Força × 10</span></div><div class="panel-body"><div class="resource"><div class="resource-top"><b><span class="icon-label"><span class="ui-icon i-bag"></span><span>Peso transportado</span></span></b><span id="loadText">0 / 100 kg</span></div><div class="bar"><div class="fill load-fill" id="loadFill"></div></div></div><div class="helper" style="margin-top:8px">Quantidade × peso unitário. A barra fica em alerta quando a carga passa do limite.</div></div></div>
-            <div class="panel inventory-create-panel"><div class="panel-head"><h2>Forja Rápida</h2><span class="eyebrow">Novo registro</span></div><div class="panel-body"><button class="inventory-create-button" type="button" id="addItem"><span class="ui-icon i-bag"></span><span><b>Criar Item</b><small>Consumíveis, ferramentas e equipamentos</small></span></button><button class="inventory-create-button weapon" type="button" id="addWeapon"><span class="ui-icon i-swords"></span><span><b>Criar Arma</b><small>Acerto e dano calculados automaticamente</small></span></button></div></div>
-          </aside>
-          <div class="inventory-v202-main">
-            <div class="panel inventory-catalog-panel"><div class="panel-head"><div><h2>Catálogo de Equipamentos</h2><span class="inventory-panel-sub">Os registros salvos aparecem imediatamente nesta área.</span></div><span class="eyebrow" id="inventoryListStatus">0 exibidos</span></div><div class="panel-body">
-              <div class="inventory-toolbar-v202">
-                <div class="field inventory-search-field"><label for="inventorySearch">Pesquisar</label><input class="input" id="inventorySearch" placeholder="Nome, descrição, dano ou alcance"></div>
-                <div class="field"><label for="inventoryKindFilter">Mostrar</label><select class="input" id="inventoryKindFilter"><option value="">Tudo</option><option value="item">Somente itens</option><option value="weapon">Somente armas</option><option value="equipped">Equipados</option></select></div>
-                <div class="field"><label for="inventorySort">Organizar</label><select class="input" id="inventorySort"><option value="recent">Mais recentes</option><option value="name">Nome</option><option value="weight">Maior peso</option></select></div>
-                <button class="btn inventory-refresh-btn" type="button" id="refreshInventory">Atualizar</button>
+        <div class="iv" id="iv">
+          <header class="iv-deck">
+            <div class="iv-purse">
+              <span class="iv-coin" aria-hidden="true"><span class="ui-icon i-coin"></span></span>
+              <div class="iv-purse-main"><small>Bolsa de Bellys</small><b class="iv-money" id="moneyDisplay">฿ 0</b>
+                <div class="iv-purse-tools"><label class="sr-only" for="sheet-field-89">Saldo atual</label><input class="input bind iv-money-input" data-key="money" type="number" min="0" id="sheet-field-89" aria-label="Saldo atual">
+                  <span class="iv-quick"><button type="button" data-iv-money="-10000">−10k</button><button type="button" data-iv-money="-1000">−1k</button><button type="button" data-iv-money="1000">+1k</button><button type="button" data-iv-money="10000">+10k</button></span></div>
               </div>
-              <div class="inventory-card-list inventory-card-grid-v202" id="itemList"></div>
-            </div></div>
+            </div>
+            <div class="iv-load">
+              <div class="iv-load-top"><small>Carga pessoal</small><b id="loadText">0 / 0 kg</b></div>
+              <div class="iv-load-bar"><div class="iv-load-fill load-fill" id="loadFill"></div></div>
+              <p class="iv-load-state" id="ivLoadState">Leve</p>
+            </div>
+            <div class="iv-tally" aria-label="Resumo">
+              <div><b id="ivCountW">0</b><small>armas</small></div>
+              <div><b id="ivCountI">0</b><small>itens</small></div>
+              <div><b id="ivCountE">0</b><small>em mãos</small></div>
+            </div>
+            <div class="iv-make">
+              <button type="button" class="iv-make-btn is-weapon" id="addWeapon"><span class="ui-icon i-hammer"></span><span><b>Forjar arma</b><small>Monte do zero com dados e propriedades</small></span></button>
+              <button type="button" class="iv-make-btn is-book" id="ivArsenalBtn"><span class="ui-icon i-book"></span><span><b>Arsenal do livro</b><small>Pegue uma arma pronta e edite</small></span></button>
+              <button type="button" class="iv-make-btn" id="addItem"><span class="ui-icon i-bag"></span><span><b>Novo item</b><small>Consumíveis, ferramentas e tesouros</small></span></button>
+            </div>
+          </header>
+
+          <section class="iv-rack" aria-labelledby="ivRackTitle">
+            <h2 id="ivRackTitle"><span class="ui-icon i-swords"></span>Em mãos <small>o que estiver equipado aparece no combate</small></h2>
+            <div class="iv-rack-slots" id="ivRack"></div>
+          </section>
+
+          <div class="iv-toolbar">
+            <div class="iv-tabs" role="tablist" aria-label="Filtrar inventário" id="ivTabs"></div>
+            <label class="iv-search"><span class="ui-icon i-eye" aria-hidden="true"></span><input id="inventorySearch" type="search" placeholder="Buscar por nome, dano, propriedade…" autocomplete="off" aria-label="Buscar no inventário"></label>
+            <label class="iv-sort"><span class="sr-only">Organizar</span><select class="input" id="inventorySort" aria-label="Organizar"><option value="recent">Mais recentes</option><option value="name">Nome</option><option value="weight">Mais pesados</option><option value="price">Mais caros</option></select></label>
+            <div class="iv-view" role="group" aria-label="Visualização"><button type="button" data-iv-view="grid" title="Cartões"><span class="iv-view-grid" aria-hidden="true"></span><span class="sr-only">Cartões</span></button><button type="button" data-iv-view="list" title="Lista"><span class="iv-view-list" aria-hidden="true"></span><span class="sr-only">Lista</span></button></div>
+            <span class="iv-status" id="inventoryListStatus" role="status"></span>
           </div>
+          <div class="iv-grid" id="itemList"></div>
+          <div hidden aria-hidden="true"><select id="inventoryKindFilter"><option value=""></option></select><button type="button" id="refreshInventory"></button></div>
         </div>
       </section>
 
@@ -5366,6 +5760,92 @@ document.addEventListener('change',function(e){
 </div>
 
 <div class="modal-backdrop" id="itemModal"><div class="modal item-editor-modal"><div class="modal-head"><b id="itemModalTitle">Criar Item</b><button class="btn small" id="closeItemModal">✕</button></div><div class="modal-body"><div class="item-editor-grid"><div><div class="item-editor-fields"><div class="field full"><label for="itemEditName">Nome</label><input class="input" id="itemEditName" placeholder="Nome do item ou arma"></div><div class="field"><label for="itemEditKind">Tipo</label><select class="input" id="itemEditKind"><option value="item">Item</option><option value="weapon">Arma</option></select></div><div class="field"><label for="itemEditQty">Quantidade</label><input class="input" id="itemEditQty" type="number" min="0" value="1"></div><div class="field"><label for="itemEditWeight">Peso unitário</label><input class="input" id="itemEditWeight" type="number" min="0" step="0.1" value="0"></div><div class="field"><label for="itemEditEquipped">Equipado</label><select class="input" id="itemEditEquipped"><option value="no">Não</option><option value="yes">Sim</option></select></div><div class="field full"><label for="itemEditNotes">Descrição</label><textarea class="input" id="itemEditNotes" placeholder="Descrição, propriedades, qualidade, origem..."></textarea></div></div><div class="weapon-fields" id="itemWeaponFields" hidden><h3>Dados da Arma</h3><div class="item-editor-fields"><div class="field"><label for="itemWeaponAbility">Atributo de Acerto</label><select class="input" id="itemWeaponAbility"><option value="for">Força</option><option value="des">Destreza</option><option value="sab">Sabedoria</option><option value="von">Vontade</option><option value="pre">Presença</option><option value="none">Nenhum</option></select></div><div class="field"><label for="itemWeaponProf">Proficiência</label><select class="input" id="itemWeaponProf"><option value="yes">Com proficiência</option><option value="no">Sem proficiência</option></select></div><div class="field"><label for="itemWeaponBonus">Bônus extra no acerto</label><input class="input" id="itemWeaponBonus" type="number" value="0"></div><div class="field"><label for="itemWeaponDamage">Dano Base</label><input class="input" id="itemWeaponDamage" value="1d6"></div><div class="field"><label for="itemWeaponDamageAbility">Atributo no dano</label><select class="input" id="itemWeaponDamageAbility"><option value="for">Força</option><option value="des">Destreza</option><option value="sab">Sabedoria</option><option value="von">Vontade</option><option value="pre">Presença</option><option value="none">Nenhum</option></select></div><div class="field"><label for="itemWeaponDamageType">Tipo de dano</label><input class="input" id="itemWeaponDamageType" placeholder="Cortante, Perfurante..."></div><div class="field full"><label for="itemWeaponRange">Alcance / Propriedades</label><input class="input" id="itemWeaponRange" placeholder="Corpo a corpo, 18/72 m..."></div></div></div></div><div><div class="item-image-preview" id="itemImagePreview"><div class="inventory-image-empty">Sem imagem</div></div><div class="item-image-controls"><div class="field full"><label>URL da imagem</label><div style="display:flex;gap:6px"><input class="input" id="itemImageUrl" placeholder="https://..."><button class="btn" id="applyItemImageUrl">Aplicar</button></div></div><button class="btn" id="uploadItemImage">Enviar imagem</button><button class="btn" id="resetItemImage">Centralizar</button><div class="field"><label for="itemImageZoom">Zoom</label><input id="itemImageZoom" type="range" min="0.5" max="3" step="0.05" value="1"></div><div class="field"><label for="itemImageFit">Ajuste</label><select class="input" id="itemImageFit"><option value="contain">Mostrar inteira</option><option value="cover">Preencher quadro</option></select></div><div class="field"><label for="itemImageX">Horizontal</label><input id="itemImageX" type="range" min="-60" max="60" step="1" value="0"></div><div class="field"><label for="itemImageY">Vertical</label><input id="itemImageY" type="range" min="-60" max="60" step="1" value="0"></div></div><input type="file" id="itemImageInput" accept="image/*" hidden></div></div><div class="form-actions" style="margin-top:14px"><button class="btn" id="cancelItemEdit">Cancelar</button><button class="btn primary" id="saveItemEdit">Salvar Item</button></div></div></div></div>
+<dialog id="forge" class="fg" aria-labelledby="fgTitle">
+  <header class="fg-head">
+    <div class="fg-title"><span class="fg-anvil" aria-hidden="true"><span class="ui-icon i-hammer"></span></span><div><small id="fgKicker">Forja da tripulação</small><h2 id="fgTitle">Forjar arma</h2></div></div>
+    <div class="fg-kind" role="group" aria-label="Tipo de registro"><button type="button" data-fg-kind="weapon"><span class="ui-icon i-sword"></span>Arma</button><button type="button" data-fg-kind="item"><span class="ui-icon i-bag"></span>Item</button></div>
+    <button type="button" class="fg-x" data-fg="close" aria-label="Fechar a forja">×</button>
+  </header>
+  <div class="fg-body">
+    <aside class="fg-arsenal" id="fgArsenal" aria-labelledby="fgArsTitle">
+      <button type="button" class="fg-arsenal-toggle" data-fg="arsenal" aria-expanded="false"><span class="ui-icon i-book"></span>Arsenal do livro<span class="fg-caret" aria-hidden="true"></span></button>
+      <div class="fg-arsenal-inner">
+        <h3 id="fgArsTitle">Arsenal do livro</h3>
+        <p class="fg-arsenal-sub">Escolha um modelo pronto. Ele vai para a bigorna e você edita o que quiser.</p>
+        <div class="fg-ars-tabs" id="fgArsTabs" role="tablist" aria-label="Categorias do arsenal"></div>
+        <label class="fg-search"><span class="ui-icon i-eye" aria-hidden="true"></span><input id="fgArsSearch" type="search" placeholder="Buscar no arsenal…" autocomplete="off" aria-label="Buscar no arsenal"></label>
+        <div class="fg-ars-list" id="fgArsList"></div>
+      </div>
+    </aside>
+
+    <div class="fg-form" id="fgForm">
+      <section class="fg-sec">
+        <h3><span class="fg-num">1</span>Identidade</h3>
+        <div class="fg-grid">
+          <label class="fg-field fg-wide"><span>Nome</span><input class="input" id="fgName" placeholder="Nome da arma ou do item" autocomplete="off"></label>
+          <label class="fg-field"><span>Categoria</span><select class="input" id="fgCategory"></select></label>
+          <div class="fg-field"><span>Quantidade</span><div class="fg-step"><button type="button" data-fg-step="fgQty" data-d="-1" aria-label="Menos">−</button><input class="input" id="fgQty" type="number" min="0" value="1" aria-label="Quantidade"><button type="button" data-fg-step="fgQty" data-d="1" aria-label="Mais">+</button></div></div>
+          <label class="fg-field"><span>Peso por unidade (kg)</span><input class="input" id="fgWeight" type="number" min="0" step="0.1" value="0"></label>
+          <label class="fg-field"><span>Preço (฿)</span><input class="input" id="fgPrice" type="number" min="0" step="500" value="0"></label>
+          <label class="fg-switch fg-wide"><input type="checkbox" id="fgEquipped"><span class="fg-switch-ui" aria-hidden="true"></span><span>Equipado <small>Armas equipadas aparecem no combate</small></span></label>
+        </div>
+      </section>
+
+      <section class="fg-sec fg-w">
+        <h3><span class="fg-num">2</span>Dano</h3>
+        <div class="fg-dice">
+          <div class="fg-step fg-dice-n"><button type="button" data-fg-dn="-1" aria-label="Menos dados">−</button><b id="fgDiceN">1</b><button type="button" data-fg-dn="1" aria-label="Mais dados">+</button></div>
+          <div class="fg-dies" id="fgDies" role="group" aria-label="Dado de dano"></div>
+          <label class="fg-field fg-dmg-text"><span>Fórmula</span><input class="input" id="fgDamage" value="1d6" autocomplete="off" spellcheck="false"></label>
+        </div>
+        <p class="fg-hint">Clique num dado ou escreva combinações como <code>3d10 + 2d6</code>.</p>
+        <div class="fg-chips" id="fgTypes" role="group" aria-label="Tipo de dano"></div>
+        <label class="fg-field"><span>Tipo de dano</span><input class="input" id="fgDamageType" placeholder="Cortante, Perfurante, Concussão…" autocomplete="off"></label>
+      </section>
+
+      <section class="fg-sec fg-w">
+        <h3><span class="fg-num">3</span>Acerto</h3>
+        <div class="fg-row-label">Atributo do ataque</div>
+        <div class="fg-abs" id="fgAbs" role="group" aria-label="Atributo do ataque"></div>
+        <div class="fg-row-label">Atributo no dano <label class="fg-link"><input type="checkbox" id="fgLink" checked>igual ao ataque</label></div>
+        <div class="fg-abs" id="fgDabs" role="group" aria-label="Atributo no dano"></div>
+        <div class="fg-grid">
+          <label class="fg-switch"><input type="checkbox" id="fgProf" checked><span class="fg-switch-ui" aria-hidden="true"></span><span>Proficiente</span></label>
+          <div class="fg-field"><span>Bônus mágico / extra</span><div class="fg-step"><button type="button" data-fg-step="fgBonus" data-d="-1" aria-label="Menos">−</button><input class="input" id="fgBonus" type="number" value="0" aria-label="Bônus extra"><button type="button" data-fg-step="fgBonus" data-d="1" aria-label="Mais">+</button></div></div>
+        </div>
+      </section>
+
+      <section class="fg-sec fg-w">
+        <h3><span class="fg-num">4</span>Propriedades &amp; alcance</h3>
+        <div class="fg-props" id="fgProps"></div>
+        <div class="fg-grid">
+          <label class="fg-field fg-wide"><span>Outras propriedades</span><input class="input" id="fgCustom" placeholder="Anti-Akuma no Mi, Kairoseki, Meito…" autocomplete="off"></label>
+          <label class="fg-field fg-wide"><span>Alcance <em id="fgReachAuto"></em></span><input class="input" id="fgReach" placeholder="Automático pelas propriedades" autocomplete="off"></label>
+        </div>
+      </section>
+
+      <section class="fg-sec">
+        <h3><span class="fg-num fg-num-alt">✎</span>Descrição &amp; imagem</h3>
+        <label class="fg-field"><span>Descrição</span><textarea class="input" id="fgNotes" rows="3" placeholder="História, efeitos especiais, quem forjou…"></textarea></label>
+        <div class="fg-img">
+          <label class="fg-field fg-wide"><span>Imagem (link)</span><div class="fg-inline"><input class="input" id="fgImgUrl" placeholder="https://…" autocomplete="off"><button type="button" class="btn" data-fg="img-url">Usar</button></div></label>
+          <div class="fg-img-tools"><button type="button" class="btn" data-fg="img-upload"><span class="ui-icon i-plus"></span>Enviar imagem</button><button type="button" class="btn" data-fg="img-clear">Tirar imagem</button>
+            <label class="fg-field"><span>Ajuste</span><select class="input" id="fgImgFit"><option value="contain">Mostrar inteira</option><option value="cover">Preencher</option></select></label>
+            <label class="fg-field"><span>Zoom</span><input type="range" id="fgImgZoom" min="0.5" max="3" step="0.05" value="1"></label></div>
+          <p class="fg-hint">Arraste a imagem na prévia para enquadrar.</p>
+          <input type="file" id="fgImgFile" accept="image/*" hidden>
+        </div>
+      </section>
+    </div>
+
+    <aside class="fg-preview" aria-label="Prévia">
+      <div class="fg-preview-label">Prévia na ficha</div>
+      <div class="fg-preview-card" id="fgPreview"></div>
+      <div class="fg-combat" id="fgCombat"></div>
+    </aside>
+  </div>
+  <footer class="fg-foot"><span class="fg-foot-note" id="fgNote"></span><button type="button" class="btn" data-fg="close">Cancelar</button><button type="button" class="btn primary fg-save" data-fg="save" id="fgSave">Forjar arma</button></footer>
+</dialog>
 
 <dialog id="imageExportReview" class="ds-dialog ds-export-dialog" aria-labelledby="imageExportTitle"><header class="ds-dialog-head"><div><span class="ds-eyebrow">Cópia da ficha</span><h3 id="imageExportTitle">Revisar imagens da exportação</h3></div><button class="ds-icon-btn" type="button" data-export-review="cancel" aria-label="Fechar revisão">×</button></header><div class="ds-export-body"><p id="imageExportSummary"></p><p>Você pode reenviar essas fotos pela opção “Enviar imagem” e exportar novamente. Se continuar agora, os links disponíveis serão preservados.</p><ul id="imageExportIssues"></ul></div><footer class="ds-dialog-footer"><button class="ds-btn" type="button" data-export-review="cancel">Voltar à ficha</button><button class="ds-btn primary" type="button" data-export-review="download">Baixar mesmo assim</button></footer></dialog>
 
@@ -5845,7 +6325,7 @@ function valueArray(value){
 }
 function textArray(value){if(Array.isArray(value))return value.filter(v=>v!==null&&v!==undefined).map(String);if(typeof value==='string')return value.split(/[,;\n]/).map(x=>x.trim()).filter(Boolean);return []}
 function mergeRecordArrays(...sources){const out=[],seen=new Set();sources.flatMap(valueArray).forEach(record=>{if(!record||typeof record!=='object')return;const key=String(record.id||record.uid||record.name||record.title||'').trim().toLowerCase();if(key&&seen.has(key))return;if(key)seen.add(key);out.push(record)});return out}
-function normalizeItemRecord(raw){const i=raw&&typeof raw==='object'?raw:{};const kindText=String(i.kind??i.type??i.category??'item').toLowerCase();const kind=kindText.includes('weapon')||kindText.includes('arma')?'weapon':'item';return {id:i.id||i.uid||uid(),name:String(i.name??i.title??'Item'),kind,qty:Math.max(0,num(i.qty??i.quantity??1,1)),weight:Math.max(0,num(i.weight??i.unitWeight??i.peso??0,0)),equipped:!!(i.equipped??i.isEquipped),notes:String(i.notes??i.description??i.desc??''),imageUrl:String(i.imageUrl??i.imageURL??i.photoUrl??i.thumbnailUrl??''),imageData:String(i.imageData??i.photoData??i.dataUrl??i.imageBase64??i.image??i.photo??''),imageZoom:clamp(num(i.imageZoom,1),.5,3),imageX:clamp(num(i.imageX,0),-60,60),imageY:clamp(num(i.imageY,0),-60,60),imageFit:['contain','cover'].includes(i.imageFit)?i.imageFit:'contain',attackAbility:i.attackAbility||i.ability||'for',proficient:i.proficient!==false,extraBonus:num(i.extraBonus??i.attackBonus??0),damage:String(i.damage??i.damageDice??'1d6'),damageAbility:i.damageAbility||i.attackAbility||'for',damageType:String(i.damageType??i.typeDamage??''),range:String(i.range??i.reach??''),createdAt:num(i.createdAt??i.updatedAt??Date.now()),updatedAt:num(i.updatedAt??i.createdAt??Date.now())}}
+function normalizeItemRecord(raw){const i=raw&&typeof raw==='object'?raw:{};const kindText=String(i.kind??i.type??i.category??'item').toLowerCase();const kind=kindText.includes('weapon')||kindText.includes('arma')?'weapon':'item';return {id:i.id||i.uid||uid(),name:String(i.name??i.title??'Item'),kind,qty:Math.max(0,num(i.qty??i.quantity??1,1)),weight:Math.max(0,num(i.weight??i.unitWeight??i.peso??0,0)),equipped:!!(i.equipped??i.isEquipped),notes:String(i.notes??i.description??i.desc??''),imageUrl:String(i.imageUrl??i.imageURL??i.photoUrl??i.thumbnailUrl??''),imageData:String(i.imageData??i.photoData??i.dataUrl??i.imageBase64??i.image??i.photo??''),imageZoom:clamp(num(i.imageZoom,1),.5,3),imageX:clamp(num(i.imageX,0),-60,60),imageY:clamp(num(i.imageY,0),-60,60),imageFit:['contain','cover'].includes(i.imageFit)?i.imageFit:'contain',attackAbility:i.attackAbility||i.ability||'for',proficient:i.proficient!==false,extraBonus:num(i.extraBonus??i.attackBonus??0),damage:String(i.damage??i.damageDice??'1d6'),damageAbility:i.damageAbility||i.attackAbility||'for',damageType:String(i.damageType??i.typeDamage??''),range:String(i.range??i.reach??''),createdAt:num(i.createdAt??i.updatedAt??Date.now()),updatedAt:num(i.updatedAt??i.createdAt??Date.now()),category:String(i.category||''),price:Math.max(0,num(i.price,0)),props:i.props&&typeof i.props==='object'&&!Array.isArray(i.props)?{...i.props}:null,reachText:String(i.reachText||''),customProps:String(i.customProps||''),bookId:String(i.bookId||'')}}
 function itemImageSource(item){if(!item||typeof item!=='object')return '';return String(item.imageData||item.imageUrl||'')}
 function itemImageStyle(item){const fit=['contain','cover'].includes(item?.imageFit)?item.imageFit:'contain',zoom=clamp(num(item?.imageZoom,1),.5,3),x=clamp(num(item?.imageX,0),-60,60),y=clamp(num(item?.imageY,0),-60,60);return `object-fit:${fit};transform:translate(${x}%, ${y}%) scale(${zoom});`}
 function normalizeTechniqueRecord(raw){const t=raw&&typeof raw==='object'?raw:{};return {id:t.id||t.uid||uid(),book21Id:String(t.book21Id||''),name:String(t.name??t.title??'Técnica'),source:String(t.source??t.origin??t.type??'Outro'),grade:t.grade??t.level??'',cost:Math.max(0,num(t.cost??t.pp??t.ppCost??0)),ability:t.ability||t.attribute||'none',action:String(t.action??t.activation??''),range:String(t.range??t.reach??''),damage:String(t.damage??t.effectShort??''),description:String(t.description??t.desc??t.effect??''),descriptionHtml:bookSanitize(t.descriptionHtml||''),textSize:clamp(num(t.textSize,14),11,26),createdAt:num(t.createdAt??t.updatedAt??Date.now()),updatedAt:num(t.updatedAt??t.createdAt??Date.now())}}
@@ -8446,6 +8926,319 @@ function cxUseTech(c,t){const e=cbEffects(c),cost=Math.max(0,num(t.cost));if(e.n
 function cxSpendUse(c,key,d){
   if(key.startsWith('fr:')){const r=valueArray(c.fruit?.records).find(x=>x.id===key.slice(3));if(r){const max=num(r.maxUses);r.currentUses=clamp(num(r.currentUses)+d,0,max);saveState();cxRender()}return}
   if(key.startsWith('tr:')){const t=valueArray(c.traits).find(x=>x.id===key.slice(3)),u=t&&cxParseUses(t.uses);if(u){const n=clamp(u.cur+d,0,u.max);t.uses=String(t.uses).replace(/(\d+)(\s*\/\s*\d+)/,`${n}$2`);saveState();cxRender()}}}
+
+/* ==========================================================================
+   Inventário 3.0 — porão da tripulação, arsenal do livro e forja de armas
+   ========================================================================== */
+function ivS(){return ivS.s||(ivS.s={tab:'all',view:(()=>{try{return localStorage.getItem('opsheet.ivView')||'grid'}catch(e){return 'grid'}})(),del:null,flash:null})}
+function ivProps(){return {
+  acuidade:{label:'Acuidade',tip:'Use Força ou Destreza no ataque e no dano (o mesmo atributo nos dois).'},
+  alcance:{label:'Alcance',tip:'Soma 1,5 m ao seu alcance corpo a corpo.'},
+  arremesso:{label:'Arremesso',param:'6/15 m',tip:'Pode ser arremessada como ataque à distância, usando o mesmo atributo do corpo a corpo. Alcance normal/máximo entre parênteses.'},
+  distancia:{label:'Distância',param:'18/24 m',tip:'Alcance normal/máximo. Além do normal, o ataque tem desvantagem; além do máximo, não é possível atacar.'},
+  duas:{label:'Duas Mãos',tip:'Precisa das duas mãos para atacar.'},
+  versatil:{label:'Versátil',param:'1d8',tip:'Pode ser usada com uma ou duas mãos. Com as duas, usa o dano entre parênteses.'},
+  municao:{label:'Munição',tip:'Cada ataque gasta uma munição. Depois da luta, dá para recuperar metade das flechas procurando por um minuto.'},
+  recarga:{label:'Recarga',tip:'Só dispara uma vez por rodada, não importa quantos ataques você tenha.'},
+  pesada:{label:'Pesada',tip:'Criaturas pequenas atacam com desvantagem usando esta arma.'},
+  cerco:{label:'Arma de Cerco',tip:'Causa dano dobrado contra construções e estruturas.'}
+}}
+function ivPropKeys(){return ['acuidade','alcance','arremesso','distancia','duas','versatil','municao','recarga','pesada','cerco']}
+function ivParseRange(text){
+  const out={reach:'',props:{},custom:[]},defs=ivProps();
+  String(text||'').replace(/\.\s*$/,'').split(/\s*[,;]\s*/).map(s=>s.trim()).filter(Boolean).forEach(tok=>{
+    const n=cxNorm(tok);let hit=false;
+    for(const k of ivPropKeys()){const ln=cxNorm(defs[k].label);if(n===ln||n.startsWith(ln+' ')||n.startsWith(ln+'(')||(k==='cerco'&&n==='cerco')){const m=tok.match(/\(([^)]*)\)/);out.props[k]=m?m[1].trim():true;hit=true;break}}
+    if(hit)return;
+    if(!out.reach&&/(corpo|toque|adjacente|\d\s*m\b|metros?|\d+\s*\/\s*\d+|cone|linha|raio)/i.test(tok))out.reach=tok.replace(/^corpo a corpo · /i,'Corpo a corpo · ');
+    else out.custom.push(tok);
+  });
+  return out;
+}
+function ivAutoReach(props){const p=props||{};if(p.distancia)return p.distancia===true?'À distância':String(p.distancia);return p.alcance?'Corpo a corpo · 3 m':'Corpo a corpo · 1,5 m'}
+function ivItemProps(i){
+  if(i&&i.props&&typeof i.props==='object'&&!Array.isArray(i.props))return {reach:String(i.reachText||''),props:{...i.props},custom:String(i.customProps||'').split(',').map(s=>s.trim()).filter(Boolean)};
+  return ivParseRange(i?.range);
+}
+function ivCompose(reach,props,custom){
+  const parts=[reach||ivAutoReach(props)];
+  ivPropKeys().forEach(k=>{const v=props[k];if(!v)return;if(k==='distancia'&&!reach)return;parts.push(ivProps()[k].label+(v!==true?` (${v})`:''))});
+  return [...parts,...custom].filter(Boolean).join(', ');
+}
+function ivWeaponIcon(i){const n=String(i.name||'').toLowerCase();if(/escudo/.test(n))return 'i-shield';if(/canh|bazuca|metralhad/.test(n))return 'i-cannon';if(/dinamite|bomba|explosiv/.test(n))return 'i-fire';const k=cbWeaponKind(i);return ({gun:'i-gun',bow:'i-bow',fist:'i-fist'})[k]||(/martelo|clava|tacape|bast|mangual|nunchaku|tonfa/.test(n)?'i-hammer':/lan[çc]a|tridente|arp/.test(n)?'i-anchor':'i-sword')}
+function ivIcon(i){if(i.kind==='weapon')return ivWeaponIcon(i);return ({'Consumível':'i-drop','Ferramenta':'i-cog','Munição':'i-target','Equipamento':'i-briefcase','Vestimenta':'i-shield','Tesouro':'i-coin','Documento':'i-scroll','Comida':'i-chef'})[i.category]||'i-bag'}
+function ivCategories(kind){return kind==='weapon'?['Arma cortante','Arma de fogo','Arma especial','Arma marcial','Arremesso','Outra arma']:['Consumível','Ferramenta','Munição','Equipamento','Vestimenta','Comida','Tesouro','Documento','Outro']}
+function ivCat(i){if(i.category)return i.category;if(i.kind!=='weapon')return 'Item';return ({gun:'Arma de fogo',bow:'Arma especial',fist:'Arma marcial'})[cbWeaponKind(i)]||'Arma'}
+function ivTone(i){const c=ivCat(i);return /fogo/i.test(c)?'fire':/marcial/i.test(c)?'fist':/especial|arremesso/i.test(c)?'special':i.kind==='weapon'?'blade':/consum|comida/i.test(c)?'consum':/tesouro/i.test(c)?'treasure':'item'}
+
+/* ---------- Arsenal do livro (Capítulo 8 — Equipamentos) ---------- */
+function ivArsenal(){
+  const W=(n,p,d,t,props={},extra={})=>({n,p,d,t,props,kind:'weapon',...extra});
+  return [
+    {id:'cortante',title:'Cortantes',icon:'i-sword',cat:'Arma cortante',list:[
+      W('Adaga / Kunai',20000,'1d4','Perfurante',{acuidade:true,arremesso:'6/15 m'},{note:'Causa dano cortante ou perfurante.'}),
+      W('Daito',80000,'1d6','Cortante',{acuidade:true,versatil:'1d8'}),
+      W('Katana',70000,'1d6','Cortante',{acuidade:true}),
+      W('Kogatana',30000,'1d4','Cortante',{acuidade:true}),
+      W('Machado',55000,'1d6','Cortante',{arremesso:'6/15 m'}),
+      W('Machado Grande',90000,'1d12','Cortante',{alcance:true,duas:true,pesada:true}),
+      W('Nodachi',100000,'1d8','Cortante',{alcance:true,duas:true,pesada:true}),
+      W('Rapieira',70000,'1d6','Perfurante',{acuidade:true},{note:'Causa dano cortante ou perfurante.'}),
+      W('Sabre',70000,'1d6','Cortante'),
+      W('Shikomizue',75000,'1d6','Cortante',{acuidade:true},{note:'Lâmina escondida dentro de uma bengala.'})]},
+    {id:'fogo',title:'De fogo',icon:'i-gun',cat:'Arma de fogo',list:[
+      W('Pistola',70000,'1d6','Perfurante',{distancia:'9/15 m',municao:true},{note:'O dano vem da munição (aqui, Munição Perfurante 1d6).'}),
+      W('Mosquete',100000,'1d6','Perfurante',{distancia:'18/24 m',municao:true,duas:true},{note:'O dano vem da munição (aqui, Munição Perfurante 1d6).'}),
+      W('Escopeta',150000,'3d6','Concussão',{duas:true,municao:true,recarga:true},{reach:'Cone de 9 m',note:'Dano em área no cone.'}),
+      W('Metralhadora',380000,'2d6','Perfurante',{municao:true,duas:true},{reach:'Cone de 12 m',note:'Dano em área no cone.'})]},
+    {id:'especial',title:'Especiais',icon:'i-bow',cat:'Arma especial',list:[
+      W('Arco',22500,'1d6','Perfurante',{distancia:'18/24 m',duas:true,municao:true},{note:'O dano vem da flecha (1d6).'}),
+      W('Chicote',7500,'1d6','Cortante',{alcance:true}),
+      W('Foice',50000,'1d8','Cortante',{alcance:true,duas:true}),
+      W('Lança',70000,'1d8','Perfurante',{alcance:true,duas:true,arremesso:'6/12 m'},{note:'O livro também lista 1d6 de concussão como alternativa.'}),
+      W('Tridente',70000,'1d10','Perfurante',{alcance:true,duas:true},{note:'O livro também lista 1d6 de concussão como alternativa.'}),
+      W('Mangual',30000,'1d10','Perfurante',{cerco:true,pesada:true}),
+      W('Martelo de Guerra',80000,'1d12','Concussão',{cerco:true,duas:true,pesada:true}),
+      W('Espada Montante',150000,'2d6','Cortante',{alcance:true,cerco:true,duas:true,pesada:true}),
+      W('Escudo de Ferro',50000,'1d4','Concussão',{},{custom:'+2 na CR',note:'Enquanto empunhado, concede +2 na CR.'}),
+      W('Lançador de Arpão',300000,'2d10','Perfurante',{distancia:'30/54 m',duas:true,municao:true,pesada:true,recarga:true}),
+      W('Bazuca',350000,'3d10','Concussão',{distancia:'18/24 m',duas:true,municao:true,pesada:true,recarga:true},{note:'O dano vem da munição (aqui, Bola de Chumbo 3d10).'}),
+      W('Canhão de Mão',350000,'3d10','Concussão',{distancia:'21/30 m',duas:true,municao:true,pesada:true,recarga:true},{note:'O dano vem da munição (aqui, Bola de Chumbo 3d10).'}),
+      W('Zarabatana',8000,'1d4','Perfurante',{distancia:'6/9 m'},{note:'O livro não lista dano fixo; o dardo e seus efeitos ficam a critério do Narrador.'})]},
+    {id:'marcial',title:'Marciais',icon:'i-fist',cat:'Arma marcial',list:[
+      W('Clava / Tacape',60000,'unarmed','Concussão',{cerco:true,duas:true,pesada:true},{note:'Armas marciais causam o mesmo dano do seu ataque desarmado.'}),
+      W('Bastão',40000,'unarmed','Concussão',{alcance:true,duas:true},{note:'Armas marciais causam o mesmo dano do seu ataque desarmado.'}),
+      W('Luva de Espinhos',20000,'unarmed','Perfurante',{},{note:'Armas marciais causam o mesmo dano do seu ataque desarmado.'}),
+      W('Nunchaku',25000,'unarmed','Concussão',{acuidade:true},{note:'Armas marciais causam o mesmo dano do seu ataque desarmado.'}),
+      W('Par de Tonfas',42000,'unarmed','Concussão',{duas:true},{note:'Armas marciais causam o mesmo dano do seu ataque desarmado.'})]},
+    {id:'municao',title:'Munição',icon:'i-target',cat:'Munição',list:[
+      W('Shuriken',500,'1d4','Perfurante',{arremesso:'6/12 m'},{qty:10,cat:'Arremesso',note:'Preço por unidade.'}),
+      W('Dinamite',15000,'3d6','Concussão',{arremesso:'6 m'},{qty:3,cat:'Arremesso',note:'Dano em área ao explodir.'}),
+      {n:'Flecha',p:500,d:'1d6',t:'Perfurante',kind:'item',qty:20,note:'Munição de arco. Preço por unidade.'},
+      {n:'Munição Esférica',p:500,d:'1d6',t:'Concussão',kind:'item',qty:20,note:'Para pistolas e mosquetes. Preço por unidade.'},
+      {n:'Munição Perfurante',p:2000,d:'1d6',t:'Perfurante',kind:'item',qty:20,note:'Para pistolas e mosquetes. Preço por unidade.'},
+      {n:'Munição de Kairoseki',p:1000000,d:'1d8',t:'Perfurante',kind:'item',qty:1,note:'Anula os poderes de Akuma no Mi do alvo atingido. Preço por unidade.'},
+      {n:'Bola de Chumbo',p:15000,d:'3d10',t:'Concussão',kind:'item',qty:5,note:'Munição de canhão e bazuca. Arma de Cerco, Pesada.'},
+      {n:'Bola Explosiva',p:32000,d:'3d10 + 2d6',t:'Concussão + Fogo',kind:'item',qty:3,note:'Explode num raio de 6 m: 3d10 de concussão e 2d6 de fogo.'}]}
+  ];
+}
+function ivPresetDamage(pr,c){return pr.d==='unarmed'?(cbUnarmed(c).damage||'1d4'):pr.d}
+
+/* ---------- Render do inventário ---------- */
+function ivPropChips(p,{preview=false}={}){
+  const defs=ivProps(),chips=ivPropKeys().filter(k=>p.props[k]).map(k=>{const v=p.props[k];return `<span class="iv-prop" tabindex="0" title="${esc(defs[k].tip)}">${esc(defs[k].label)}${v!==true?` <i>${esc(v)}</i>`:''}</span>`});
+  p.custom.forEach(x=>chips.push(`<span class="iv-prop is-custom">${esc(x)}</span>`));
+  return chips.length?`<div class="iv-props">${chips.join('')}</div>`:'';
+}
+function ivCard(i,c,opt={}){
+  const w=i.kind==='weapon',src=itemImageSource(i),p=w?ivItemProps(i):null,pv=!!opt.preview,qty=num(i.qty,1);
+  const atk=w?signed(weaponAttackBonus(i,c)):'',dmg=w?weaponDamageExpression(i,c):'';
+  const Btn=(attrs,inner,cls='')=>pv?`<span class="${cls}">${inner}</span>`:`<button type="button" class="${cls}" ${attrs}>${inner}</button>`;
+  const sub=[!w||qty===1?'':`×${fmt(qty)}`,num(i.weight)?`${fmt(qty*num(i.weight))} kg`:'',num(i.price)?money(i.price):''].filter(Boolean).join(' · ');
+  return `<article class="iv-card${w?' is-weapon':''}${i.equipped?' is-equipped':''}" data-iv-id="${esc(i.id)}" data-tone="${ivTone(i)}">
+    <div class="iv-art">${src?`<img src="${esc(src)}" style="${itemImageStyle(i)}" alt="" draggable="false">`:`<span class="iv-emblem" aria-hidden="true"><span class="ui-icon ${ivIcon(i)}"></span></span>`}
+      <span class="iv-tag">${esc(ivCat(i))}</span>
+      ${Btn(`data-iv="equip" aria-pressed="${!!i.equipped}" title="${i.equipped?'Desequipar':'Equipar'}"`,`<span class="iv-dot"></span>${i.equipped?'Em mãos':'Equipar'}`,'iv-equip')}
+    </div>
+    <div class="iv-body">
+      <div class="iv-head"><h3 class="iv-name">${Btn('data-iv="edit"',esc(i.name||'Item'))}</h3>${sub?`<p class="iv-sub">${esc(sub)}</p>`:''}</div>
+      ${w?`<div class="iv-stats">${Btn('data-iv="copy-atk" title="Copiar rolagem de acerto"',`<small>Acerto</small><b>${esc(atk)}</b>`,'iv-stat iv-atk')}${Btn('data-iv="copy-dmg" title="Copiar rolagem de dano"',`<small>Dano${i.damageType?' · '+esc(i.damageType):''}</small><b>${esc(dmg)}</b>`,'iv-stat iv-dmg')}<span class="iv-stat iv-reach"><small>Alcance</small><b>${esc(p.reach||ivAutoReach(p.props))}</b></span></div>${ivPropChips(p,{preview:pv})}`:''}
+      ${!w||qty!==1?`<div class="iv-qty">${Btn('data-iv="qty" data-d="-1" aria-label="Usar ou tirar um"','−')}<b>${fmt(qty)}</b>${Btn('data-iv="qty" data-d="1" aria-label="Adicionar um"','+')}<span>${num(i.weight)?fmt(i.weight)+' kg cada':'sem peso'}</span></div>`:''}
+      ${i.notes?`<details class="iv-notes"${pv?' open':''}><summary>Descrição</summary><p>${esc(i.notes)}</p></details>`:''}
+      ${pv?'':`<div class="iv-actions"><button type="button" data-iv="edit">Editar</button><button type="button" data-iv="dup">Duplicar</button><button type="button" data-iv="del" class="iv-del">Excluir</button></div>`}
+    </div></article>`;
+}
+function ivLoadState(used,cap){if(!cap)return ['Sem limite definido','ok'];const r=used/cap;return r>1?['Sobrecarregado! Você está carregando mais do que aguenta.','over']:r>=.75?['Pesado. Perto do limite.','heavy']:r>=.4?['Carregado na medida.','mid']:['Leve como uma pena.','ok']}
+function renderInventory(){
+  const c=current();c.items=valueArray(c.items).map(normalizeItemRecord);const box=document.getElementById('itemList');if(!box)return;
+  const s=ivS(),used=itemWeight(c),cap=carry(c),q=cxNorm(document.getElementById('inventorySearch')?.value||''),sort=document.getElementById('inventorySort')?.value||'recent';
+  const md=document.getElementById('moneyDisplay');if(md){const old=num(md.dataset.v,NaN),nv=num(c.money);md.dataset.v=nv;if(Number.isFinite(old)&&old!==nv){md.classList.remove('is-bump');void md.offsetWidth;md.classList.add('is-bump',nv>old?'is-up':'is-down');md.classList.toggle('is-up',nv>old);md.classList.toggle('is-down',nv<old)}md.textContent=money(nv)}
+  const mi=document.getElementById('sheet-field-89');if(mi&&document.activeElement!==mi)mi.value=num(c.money);
+  document.getElementById('loadText').textContent=`${fmt(used)} / ${fmt(cap)} kg`;
+  const fill=document.getElementById('loadFill');if(fill){fill.style.width=(cap?Math.min(100,pct(used,cap)):0)+'%';fill.classList.toggle('overloaded',used>cap&&cap>0)}
+  const [ls,lk]=ivLoadState(used,cap),le=document.getElementById('ivLoadState');if(le){le.textContent=ls;le.dataset.state=lk}document.querySelector('#iv .iv-load')?.setAttribute('data-state',lk);
+  const W=c.items.filter(i=>i.kind==='weapon'),I=c.items.filter(i=>i.kind!=='weapon'),E=c.items.filter(i=>i.equipped);
+  [['ivCountW',W.length],['ivCountI',I.length],['ivCountE',E.length]].forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.textContent=v});
+  const tabs=[['all','Tudo',c.items.length],['weapon','Armas',W.length],['item','Itens',I.length],['equipped','Em mãos',E.length]];
+  const tb=document.getElementById('ivTabs');if(tb)tb.innerHTML=tabs.map(([k,l,n])=>`<button type="button" role="tab" data-iv-tab="${k}" aria-selected="${s.tab===k}">${l}<span>${n}</span></button>`).join('');
+  document.querySelectorAll('#iv [data-iv-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ivView===s.view)));
+  box.classList.toggle('is-list',s.view==='list');
+  const rack=document.getElementById('ivRack');
+  if(rack)rack.innerHTML=E.length?E.map(i=>{const w=i.kind==='weapon',src=itemImageSource(i);return `<div class="iv-slot${w?' is-weapon':''}" data-iv-id="${esc(i.id)}" data-tone="${ivTone(i)}"><button type="button" class="iv-slot-main" data-iv="edit"><span class="iv-slot-art">${src?`<img src="${esc(src)}" style="${itemImageStyle(i)}" alt="">`:`<span class="ui-icon ${ivIcon(i)}"></span>`}</span><span class="iv-slot-text"><b>${esc(i.name)}</b><small>${w?`${esc(signed(weaponAttackBonus(i,c)))} · ${esc(weaponDamageExpression(i,c))}${i.damageType?' '+esc(i.damageType):''}`:esc(ivCat(i))}</small></span></button><button type="button" class="iv-slot-x" data-iv="equip" aria-label="Desequipar ${esc(i.name)}" title="Desequipar">×</button></div>`}).join(''):`<p class="iv-rack-empty"><span class="ui-icon i-sword"></span>Mãos vazias. Equipe uma arma para ela aparecer aqui e no combate.</p>`;
+  let list=c.items.filter(i=>{if(s.tab==='weapon'&&i.kind!=='weapon')return false;if(s.tab==='item'&&i.kind==='weapon')return false;if(s.tab==='equipped'&&!i.equipped)return false;if(q&&!cxNorm(`${i.name} ${i.notes} ${i.damage} ${i.damageType} ${i.range} ${ivCat(i)} ${i.customProps||''} ${i.props?Object.keys(i.props).map(k=>ivProps()[k]?.label||'').join(' '):''}`).includes(q))return false;return true});
+  if(sort==='name')list.sort((a,b)=>String(a.name).localeCompare(String(b.name),'pt-BR'));else if(sort==='weight')list.sort((a,b)=>num(b.qty)*num(b.weight)-num(a.qty)*num(a.weight));else if(sort==='price')list.sort((a,b)=>num(b.price)-num(a.price));else list.sort((a,b)=>num(b.updatedAt??b.createdAt)-num(a.updatedAt??a.createdAt));
+  list.sort((a,b)=>(b.equipped?1:0)-(a.equipped?1:0));
+  const st=document.getElementById('inventoryListStatus');if(st)st.textContent=`${list.length} de ${c.items.length}`;
+  if(!list.length){box.innerHTML=`<div class="iv-empty"><span class="iv-empty-chest" aria-hidden="true"><span class="ui-icon i-bag"></span></span><b>${c.items.length?'Nada encontrado com esse filtro.':'O porão está vazio.'}</b><span>${c.items.length?'Limpe a busca ou troque a aba.':'Forje uma arma, pegue uma pronta no Arsenal do livro ou crie um item.'}</span>${c.items.length?'':'<button type="button" class="btn primary" data-iv="arsenal">Abrir o Arsenal do livro</button>'}</div>`}
+  else box.innerHTML=list.map(i=>ivCard(i,c)).join('');
+  if(s.flash){const el=[...box.querySelectorAll('[data-iv-id]')].find(e=>e.dataset.ivId===s.flash);s.flash=null;if(el){el.classList.add('is-new');el.scrollIntoView({block:'nearest',behavior:'smooth'})}}
+  box.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{const art=img.closest('.iv-art');img.remove();if(art&&!art.querySelector('.iv-emblem'))art.insertAdjacentHTML('afterbegin','<span class="iv-emblem"><span class="ui-icon i-bag"></span></span>')},{once:true}));
+  renderCombatWeapons();
+}
+function ivItem(id){return valueArray(current().items).find(x=>x.id===id)}
+function ivWire(){
+  const root=document.getElementById('iv');if(!root||root.dataset.wired)return;root.dataset.wired='1';
+  root.addEventListener('click',ev=>{
+    const c=current(),s=ivS();
+    const tab=ev.target.closest('[data-iv-tab]');if(tab){s.tab=tab.dataset.ivTab;renderInventory();return}
+    const vw=ev.target.closest('[data-iv-view]');if(vw){s.view=vw.dataset.ivView;try{localStorage.setItem('opsheet.ivView',s.view)}catch(e){}renderInventory();return}
+    const mon=ev.target.closest('[data-iv-money]');if(mon){c.money=Math.max(0,num(c.money)+num(mon.dataset.ivMoney));renderInventory();renderHeader?.();saveState();return}
+    if(ev.target.closest('#ivArsenalBtn')||ev.target.closest('[data-iv="arsenal"]')){fgOpen(null,'weapon',{arsenal:true});return}
+    const b=ev.target.closest('[data-iv]');if(!b)return;const host=b.closest('[data-iv-id]'),it=host&&ivItem(host.dataset.ivId);if(!it)return;
+    switch(b.dataset.iv){
+      case 'equip':it.equipped=!it.equipped;it.updatedAt=Date.now();saveState();renderInventory();toast(it.equipped?`${it.name} em mãos.`:`${it.name} guardado.`);break;
+      case 'edit':openItemEditor(it);break;
+      case 'dup':{const copy=normalizeItemRecord({...clone(it),id:uid(),name:`${it.name} (cópia)`,equipped:false,createdAt:Date.now(),updatedAt:Date.now()});c.items.push(copy);s.flash=copy.id;saveState();renderInventory();toast('Duplicado.');break}
+      case 'del':{if(s.del!==it.id){s.del=it.id;b.classList.add('is-armed');b.textContent='Confirmar?';clearTimeout(ivWire.t);ivWire.t=setTimeout(()=>{s.del=null;if(b.isConnected){b.classList.remove('is-armed');b.textContent='Excluir'}},2600);break}
+        s.del=null;const card=b.closest('.iv-card');const go=()=>{c.items=c.items.filter(x=>x.id!==it.id);saveState();renderInventory();toast(`${it.name} jogado ao mar.`)};if(card&&!matchMedia('(prefers-reduced-motion: reduce)').matches){card.classList.add('is-leaving');setTimeout(go,260)}else go();break}
+      case 'qty':{it.qty=Math.max(0,num(it.qty,1)+num(b.dataset.d));it.updatedAt=Date.now();saveState();renderInventory();const el=[...document.querySelectorAll('#itemList [data-iv-id]')].find(e=>e.dataset.ivId===it.id)?.querySelector('.iv-qty b');if(el){el.classList.add('is-bump')}if(!it.qty)toast(`Acabou: ${it.name}.`);break}
+      case 'copy-atk':cxCopy(cxExpr(weaponAttackBonus(it,c)),it.name);break;
+      case 'copy-dmg':cxCopy(weaponDamageExpression(it,c),`${it.name}${it.damageType?' '+it.damageType:''}`);break;
+    }
+  });
+  document.getElementById('inventorySearch')?.addEventListener('input',renderInventory);
+  document.getElementById('inventorySort')?.addEventListener('change',renderInventory);
+  document.getElementById('sheet-field-89')?.addEventListener('change',()=>requestAnimationFrame(renderInventory));
+}
+
+/* ---------- Forja ---------- */
+function fgS(){return fgS.s||(fgS.s={draft:null,editing:null,arsTab:'cortante',arsQ:'',arsOpen:false})}
+function fgAbList(){return [['for','FOR'],['des','DES'],['con','CON'],['sab','SAB'],['von','VON'],['pre','PRE'],['none','—']]}
+function fgBestFinesse(c){return mod(c.abilities?.des)>mod(c.abilities?.for)?'des':'for'}
+function openItemEditor(item=null,presetKind='item'){fgOpen(item,presetKind)}
+function closeItemEditor(){fgClose()}
+function saveItemEditor(){fgSave()}
+function fgOpen(item=null,kind='item',{arsenal=false}={}){
+  const dlg=document.getElementById('forge');if(!dlg)return;const s=fgS(),c=current();
+  s.editing=item?.id||null;
+  const base=item?normalizeItemRecord(clone(item)):normalizeItemRecord(defaultItemDraft(kind));
+  if(!item){base.name=kind==='weapon'?'':'';base.damage='1d6';base.damageType=kind==='weapon'?'Cortante':'';base.attackAbility='for';base.damageAbility='for'}
+  const p=ivItemProps(base);base.props=p.props;base.reachText=p.reach&&p.reach!==ivAutoReach(p.props)?p.reach:'';base.customProps=p.custom.join(', ');
+  s.draft=base;s.linked=base.damageAbility===base.attackAbility;
+  s.arsOpen=arsenal;dlg.classList.toggle('ars-open',arsenal);
+  fgFill();
+  if(!dlg.open)dlg.showModal();
+  requestAnimationFrame(()=>{if(arsenal)document.getElementById('fgArsSearch')?.focus();else document.getElementById('fgName')?.focus()});
+}
+function fgClose(){const dlg=document.getElementById('forge');if(dlg?.open)dlg.close();const s=fgS();s.draft=null;s.editing=null}
+function fgKind(k){const s=fgS(),d=s.draft;if(!d)return;d.kind=k;if(!ivCategories(k).includes(d.category))d.category='';fgFill()}
+function fgFill(){
+  const s=fgS(),d=s.draft,c=current();if(!d)return;const w=d.kind==='weapon',dlg=document.getElementById('forge');
+  dlg.classList.toggle('is-item',!w);
+  dlg.querySelectorAll('[data-fg-kind]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fgKind===d.kind)));
+  document.getElementById('fgTitle').textContent=s.editing?(w?'Reforjar arma':'Editar item'):(w?'Forjar arma':'Novo item');
+  document.getElementById('fgKicker').textContent=s.editing?'Bigorna · editando':'Forja da tripulação';
+  document.getElementById('fgSave').textContent=s.editing?'Guardar mudanças':(w?'Forjar arma':'Guardar item');
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v};
+  set('fgName',d.name||'');set('fgQty',num(d.qty,1));set('fgWeight',num(d.weight));set('fgPrice',num(d.price));set('fgDamage',d.damage||'1d6');set('fgDamageType',d.damageType||'');set('fgBonus',num(d.extraBonus));set('fgCustom',d.customProps||'');set('fgReach',d.reachText||'');set('fgNotes',d.notes||'');set('fgImgUrl',d.imageUrl||'');set('fgImgFit',d.imageFit||'contain');set('fgImgZoom',num(d.imageZoom,1));
+  document.getElementById('fgEquipped').checked=!!d.equipped;document.getElementById('fgProf').checked=d.proficient!==false;document.getElementById('fgLink').checked=!!s.linked;
+  const cat=document.getElementById('fgCategory');const cats=ivCategories(d.kind);cat.innerHTML=`<option value="">Automática</option>`+cats.map(x=>`<option${x===d.category?' selected':''}>${esc(x)}</option>`).join('');
+  fgRenderParts();fgRenderArsenal();fgPreview();
+}
+function fgRenderParts(){
+  const s=fgS(),d=s.draft,c=current();if(!d)return;
+  const m=String(d.damage||'').trim().match(/^(\d+)d(\d+)$/i),n=m?num(m[1]):null,die=m?num(m[2]):null;
+  document.getElementById('fgDiceN').textContent=n||'—';
+  document.getElementById('fgDies').innerHTML=[4,6,8,10,12,20].map(f=>`<button type="button" data-fg-die="${f}" aria-pressed="${die===f}"><span class="fg-die-shape d${f}" aria-hidden="true"></span>d${f}</button>`).join('');
+  const types=['Cortante','Perfurante','Concussão','Fogo','Elétrico','Gelo','Veneno'];
+  document.getElementById('fgTypes').innerHTML=types.map(t=>`<button type="button" class="fg-chip" data-fg-type="${t}" aria-pressed="${cxNorm(d.damageType)===cxNorm(t)}">${t}</button>`).join('');
+  const abBtn=(attr,key,sel)=>fgAbList().map(([k,l])=>`<button type="button" class="fg-ab" ${attr}="${k}" aria-pressed="${sel===k}"><b>${l}</b><small>${k==='none'?'nada':signed(mod(c.abilities?.[k]))}</small></button>`).join('');
+  document.getElementById('fgAbs').innerHTML=abBtn('data-fg-ab','',d.attackAbility||'for');
+  document.getElementById('fgDabs').innerHTML=abBtn('data-fg-dab','',d.damageAbility||'for');
+  document.getElementById('fgDabs').classList.toggle('is-linked',!!s.linked);
+  const defs=ivProps();
+  document.getElementById('fgProps').innerHTML=ivPropKeys().map(k=>{const on=!!d.props[k],def=defs[k];return `<div class="fg-prop${on?' is-on':''}"><button type="button" data-fg-prop="${k}" aria-pressed="${on}" title="${esc(def.tip)}"><span class="fg-prop-check" aria-hidden="true"></span>${esc(def.label)}</button>${def.param&&on?`<input class="input" data-fg-param="${k}" value="${esc(d.props[k]===true?def.param:d.props[k])}" aria-label="${esc(def.label)}: valor" placeholder="${esc(def.param)}">`:''}<p>${esc(def.tip)}</p></div>`}).join('');
+  document.getElementById('fgReachAuto').textContent='· automático: '+ivAutoReach(d.props);
+}
+function fgSync(){
+  const s=fgS(),d=s.draft;if(!d)return;const v=id=>document.getElementById(id)?.value??'';
+  d.name=v('fgName').trim();d.category=v('fgCategory');d.qty=Math.max(0,num(v('fgQty'),1));d.weight=Math.max(0,num(v('fgWeight')));d.price=Math.max(0,num(v('fgPrice')));
+  d.damage=v('fgDamage').trim()||'1d6';d.damageType=v('fgDamageType').trim();d.extraBonus=num(v('fgBonus'));d.customProps=v('fgCustom').trim();d.reachText=v('fgReach').trim();d.notes=v('fgNotes');
+  d.imageFit=v('fgImgFit')||'contain';d.imageZoom=clamp(num(v('fgImgZoom'),1),.5,3);
+  d.equipped=document.getElementById('fgEquipped').checked;d.proficient=document.getElementById('fgProf').checked;s.linked=document.getElementById('fgLink').checked;
+  if(s.linked)d.damageAbility=d.attackAbility;
+  document.querySelectorAll('#fgProps [data-fg-param]').forEach(inp=>{const k=inp.dataset.fgParam;if(d.props[k])d.props[k]=inp.value.trim()||true});
+  d.range=d.kind==='weapon'?ivCompose(d.reachText,d.props,d.customProps.split(',').map(x=>x.trim()).filter(Boolean)):'';
+}
+function fgPreview(){
+  const s=fgS(),d=s.draft,c=current();if(!d)return;const view={...d,name:d.name||(d.kind==='weapon'?'Arma sem nome':'Item sem nome'),range:d.kind==='weapon'?ivCompose(d.reachText,d.props,String(d.customProps||'').split(',').map(x=>x.trim()).filter(Boolean)):''};
+  document.getElementById('fgPreview').innerHTML=ivCard(view,c,{preview:true});
+  const w=d.kind==='weapon';
+  document.getElementById('fgCombat').innerHTML=w?`<div><small>No combate</small><b>${esc(cxExpr(weaponAttackBonus(view,c)))}</b><span>para acertar</span></div><div><small>Dano</small><b>${esc(weaponDamageExpression(view,c))}</b><span>${esc(d.damageType||'sem tipo')}</span></div>${d.props.versatil?`<div><small>Duas mãos</small><b>${esc(weaponDamageExpression({...view,damage:d.props.versatil===true?'1d8':d.props.versatil},c))}</b><span>versátil</span></div>`:''}<p>${d.equipped?'Equipada: aparece nas Ações do combate.':'Marque “Equipado” para levar ao combate.'}</p>`:`<p>Total: <b>${fmt(num(d.qty)*num(d.weight))} kg</b>${num(d.price)?` · vale <b>${money(num(d.price)*Math.max(1,num(d.qty)))}</b>`:''}</p>`;
+  const note=document.getElementById('fgNote');if(note)note.textContent=d.bookId?'Modelo do livro: ajuste o que quiser antes de forjar.':'';
+}
+function fgUpdate(){fgSync();fgPreview()}
+function fgRenderArsenal(){
+  const s=fgS(),c=current(),groups=ivArsenal(),q=cxNorm(s.arsQ);
+  document.getElementById('fgArsTabs').innerHTML=groups.map(g=>`<button type="button" role="tab" data-fg-ars="${g.id}" aria-selected="${!q&&s.arsTab===g.id}"><span class="ui-icon ${g.icon}"></span>${esc(g.title)}</button>`).join('');
+  const rows=(q?groups.flatMap(g=>g.list.map(x=>({...x,g}))).filter(x=>cxNorm(`${x.n} ${x.t} ${Object.keys(x.props||{}).join(' ')}`).includes(q)):(groups.find(g=>g.id===s.arsTab)||groups[0]).list.map(x=>({...x,g:groups.find(g=>g.id===s.arsTab)||groups[0]})));
+  const defs=ivProps();
+  document.getElementById('fgArsList').innerHTML=rows.length?rows.map(x=>{const dmg=ivPresetDamage(x,c),props=Object.entries(x.props||{}).map(([k,v])=>defs[k].label+(v!==true?` ${v}`:''));if(x.reach)props.unshift(x.reach);return `<button type="button" class="fg-ars-row" data-fg-preset="${esc(x.g.id)}::${esc(x.n)}"><span class="fg-ars-icon"><span class="ui-icon ${x.kind==='item'?'i-target':ivWeaponIcon({name:x.n,damageType:x.t})}"></span></span><span class="fg-ars-main"><b>${esc(x.n)}</b><small>${esc(props.join(' · ')||(x.kind==='item'?'Munição':'Sem propriedades'))}</small></span><span class="fg-ars-dmg"><b>${esc(dmg)}</b><small>${esc(x.t)}</small></span><span class="fg-ars-price">${money(x.p)}</span></button>`}).join(''):'<p class="fg-ars-empty">Nada no arsenal com esse nome.</p>';
+}
+function fgApplyPreset(key){
+  const [gid,name]=key.split('::'),g=ivArsenal().find(x=>x.id===gid),pr=g?.list.find(x=>x.n===name);if(!pr)return;const s=fgS(),d=s.draft,c=current();
+  const w=pr.kind!=='item',props={...(pr.props||{})},ranged=!!props.distancia||/fogo/.test(g.cat);
+  const ab=props.acuidade?fgBestFinesse(c):ranged?'des':'for';
+  Object.assign(d,{kind:w?'weapon':'item',name:pr.n,category:w?(pr.cat||g.cat):'Munição',damage:ivPresetDamage(pr,c),damageType:pr.t,props:w?props:{},reachText:pr.reach||'',customProps:pr.custom||'',price:pr.p,qty:pr.qty||num(d.qty,1)||1,attackAbility:ab,damageAbility:ab,proficient:true,bookId:`${gid}:${pr.n}`,notes:[pr.note,w?'':`Dano: ${pr.d} ${pr.t}.`].filter(Boolean).join(' ')});
+  s.linked=true;
+  if(pr.d==='unarmed')d.notes=(d.notes?d.notes+' ':'')+`Dano atual do seu desarmado: ${d.damage}.`;
+  fgFill();
+  const pv=document.querySelector('#fgPreview .iv-card');if(pv){pv.classList.remove('is-forged');void pv.offsetWidth;pv.classList.add('is-forged')}
+  const dlg=document.getElementById('forge');if(matchMedia('(max-width: 900px)').matches){dlg.classList.remove('ars-open');s.arsOpen=false;document.querySelector('#forge .fg-arsenal-toggle')?.setAttribute('aria-expanded','false');document.getElementById('fgForm')?.scrollIntoView({block:'start',behavior:'smooth'})}
+  toast(`${pr.n} na bigorna. Edite à vontade.`);
+}
+function fgSave(){
+  const s=fgS();if(!s.draft){toast('Abra a forja novamente.');return}
+  try{
+    fgSync();const d=s.draft,c=current();if(!d.name){document.getElementById('fgName').focus();document.getElementById('fgName').classList.add('fg-shake');setTimeout(()=>document.getElementById('fgName')?.classList.remove('fg-shake'),500);toast('Dê um nome antes de forjar.');return}
+    if(d.kind!=='weapon'){d.props=null;d.reachText='';d.range=''}
+    c.items=valueArray(c.items).map(normalizeItemRecord);d.updatedAt=Date.now();d.createdAt=d.createdAt||Date.now();
+    const rec=normalizeItemRecord(d),idx=s.editing?c.items.findIndex(x=>x.id===s.editing):-1;if(idx>=0)c.items[idx]=rec;else c.items.push(rec);
+    ivS().flash=rec.id;const wasEdit=idx>=0,isW=rec.kind==='weapon';
+    const pv=document.querySelector('#fgPreview .iv-card');
+    const finish=()=>{fgClose();saveState();renderInventory();toast(wasEdit?'Mudanças guardadas.':isW?`${rec.name} forjada!`:`${rec.name} guardado no porão.`)};
+    if(pv&&!wasEdit&&!matchMedia('(prefers-reduced-motion: reduce)').matches){pv.classList.remove('is-forged');void pv.offsetWidth;pv.classList.add('is-forged');document.getElementById('forge').classList.add('is-striking');setTimeout(()=>{document.getElementById('forge')?.classList.remove('is-striking');finish()},420)}else finish();
+  }catch(error){console.error('Falha ao salvar item:',error);toast('Não foi possível salvar. Os dados continuam na forja.')}
+}
+function fgWire(){
+  const dlg=document.getElementById('forge');if(!dlg||dlg.dataset.wired)return;dlg.dataset.wired='1';
+  dlg.addEventListener('close',()=>{fgS().draft=null;fgS().editing=null});
+  dlg.addEventListener('click',ev=>{
+    const s=fgS(),d=s.draft;if(ev.target===dlg){fgClose();return}if(!d)return;
+    const t=ev.target;let b;
+    if((b=t.closest('[data-fg]'))){const a=b.dataset.fg;
+      if(a==='close'){fgClose();return}
+      if(a==='save'){fgSave();return}
+      if(a==='arsenal'){s.arsOpen=!s.arsOpen;dlg.classList.toggle('ars-open',s.arsOpen);b.setAttribute('aria-expanded',String(s.arsOpen));return}
+      if(a==='img-url'){d.imageUrl=document.getElementById('fgImgUrl').value.trim();d.imageData='';d.imageX=0;d.imageY=0;fgUpdate();return}
+      if(a==='img-upload'){document.getElementById('fgImgFile').click();return}
+      if(a==='img-clear'){d.imageUrl='';d.imageData='';document.getElementById('fgImgUrl').value='';fgUpdate();return}
+    }
+    if((b=t.closest('[data-fg-kind]'))){fgSync();fgKind(b.dataset.fgKind);return}
+    if((b=t.closest('[data-fg-ars]'))){s.arsTab=b.dataset.fgArs;s.arsQ='';document.getElementById('fgArsSearch').value='';fgRenderArsenal();return}
+    if((b=t.closest('[data-fg-preset]'))){fgSync();fgApplyPreset(b.dataset.fgPreset);return}
+    if((b=t.closest('[data-fg-step]'))){const inp=document.getElementById(b.dataset.fgStep);inp.value=Math.max(inp.min!==''?num(inp.min):-99,num(inp.value)+num(b.dataset.d));fgUpdate();return}
+    if((b=t.closest('[data-fg-dn]'))){fgSync();const m=String(d.damage).trim().match(/^(\d+)d(\d+)$/i),n=clamp((m?num(m[1]):1)+num(b.dataset.fgDn),1,20),f=m?num(m[2]):6;d.damage=`${n}d${f}`;document.getElementById('fgDamage').value=d.damage;fgRenderParts();fgPreview();return}
+    if((b=t.closest('[data-fg-die]'))){fgSync();const m=String(d.damage).trim().match(/^(\d+)d(\d+)$/i),n=m?num(m[1]):1;d.damage=`${n}d${b.dataset.fgDie}`;document.getElementById('fgDamage').value=d.damage;fgRenderParts();fgPreview();b=document.querySelector(`#fgDies [data-fg-die="${b.dataset.fgDie}"]`);b?.classList.add('is-rolled');return}
+    if((b=t.closest('[data-fg-type]'))){document.getElementById('fgDamageType').value=b.dataset.fgType;fgSync();fgRenderParts();fgPreview();return}
+    if((b=t.closest('[data-fg-ab]'))){fgSync();d.attackAbility=b.dataset.fgAb;if(s.linked)d.damageAbility=d.attackAbility;fgRenderParts();fgPreview();return}
+    if((b=t.closest('[data-fg-dab]'))){fgSync();d.damageAbility=b.dataset.fgDab;s.linked=d.damageAbility===d.attackAbility;document.getElementById('fgLink').checked=s.linked;fgRenderParts();fgPreview();return}
+    if((b=t.closest('[data-fg-prop]'))){fgSync();const k=b.dataset.fgProp;if(d.props[k])delete d.props[k];else{d.props[k]=ivProps()[k].param||true;if(k==='acuidade'){const best=fgBestFinesse(current());d.attackAbility=best;if(s.linked)d.damageAbility=best}if(k==='distancia'&&d.props.alcance)delete d.props.alcance;if(k==='alcance'&&d.props.distancia)delete d.props.distancia}fgRenderParts();fgPreview();const inp=document.querySelector(`#fgProps [data-fg-param="${k}"]`);if(inp){inp.focus();inp.select()}return}
+  });
+  dlg.addEventListener('input',ev=>{
+    const t=ev.target;if(t.id==='fgArsSearch'){fgS().arsQ=t.value;fgRenderArsenal();return}
+    if(t.id==='fgImgFile')return;
+    fgSync();if(t.id==='fgDamage'||t.id==='fgDamageType'||t.id==='fgLink'){if(t.id==='fgLink'&&fgS().linked)fgS().draft.damageAbility=fgS().draft.attackAbility;fgRenderParts()}fgPreview();
+  });
+  dlg.addEventListener('change',ev=>{if(ev.target.id==='fgCategory'||ev.target.type==='checkbox'||ev.target.tagName==='SELECT'){fgUpdate()}});
+  document.getElementById('fgImgFile').addEventListener('change',async e=>{const f=e.target.files?.[0],d=fgS().draft;if(!f||!d){e.target.value='';return}try{d.imageData=await compressItemImage(f);d.imageUrl='';d.imageZoom=1;d.imageX=0;d.imageY=0;d.imageFit='cover';document.getElementById('fgImgFit').value='cover';document.getElementById('fgImgZoom').value=1;fgPreview();toast('Imagem carregada. Arraste na prévia para enquadrar.')}catch(err){console.error(err);toast('Não foi possível carregar essa imagem.')}finally{e.target.value=''}});
+  const pv=document.getElementById('fgPreview');let drag=null;
+  pv.addEventListener('pointerdown',e=>{const d=fgS().draft,art=e.target.closest('.iv-art');if(!d||!art||!itemImageSource(d))return;const r=art.getBoundingClientRect();drag={x:e.clientX,y:e.clientY,bx:num(d.imageX),by:num(d.imageY),w:r.width,h:r.height};pv.setPointerCapture?.(e.pointerId);pv.classList.add('is-dragging');e.preventDefault()});
+  pv.addEventListener('pointermove',e=>{const d=fgS().draft;if(!drag||!d)return;d.imageX=clamp(drag.bx+(e.clientX-drag.x)/Math.max(1,drag.w)*100,-60,60);d.imageY=clamp(drag.by+(e.clientY-drag.y)/Math.max(1,drag.h)*100,-60,60);const img=pv.querySelector('.iv-art img');if(img)img.setAttribute('style',itemImageStyle(d))});
+  const end=()=>{drag=null;pv.classList.remove('is-dragging')};pv.addEventListener('pointerup',end);pv.addEventListener('pointercancel',end);
+}
+
+if(document.getElementById('iv')){ivWire();fgWire();renderInventory()}
 if(document.getElementById('cx')){cbWire();cxRender();const ps=document.getElementById('cxPassiveSearch');if(ps){ps.addEventListener('input',()=>{cxUi().pq=ps.value;cxRenderPassives(current());const b=document.getElementById('cxPassiveList');if(b)b.scrollTop=0});ps.addEventListener('keydown',e=>{if(e.key==='Escape'&&ps.value){ps.value='';cxUi().pq='';cxRenderPassives(current())}})}}
 
 
