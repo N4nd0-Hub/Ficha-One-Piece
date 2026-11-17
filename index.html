@@ -3176,7 +3176,7 @@ dialog.tc-dialog{width:min(920px,calc(100vw - 28px));max-height:91svh;padding:0;
 
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..700&family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;600;700;800&family=IM+Fell+English&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..700&family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;600;700;800&family=IM+Fell+English&family=Caveat:wght@400..700&family=Patrick+Hand&family=Homemade+Apple&family=Special+Elite&display=swap">
 <style id="refined-layer">
 /* ==========================================================================
    Camada de refinamento — tipografia, ritmo, menos ornamento, movimento
@@ -4979,6 +4979,180 @@ dialog.fg.is-item .fg-arsenal,dialog.fg.is-item .fg-w{display:none}
   .fg-foot-note{display:none}.fg-foot .btn{flex:1}
 }
 @media (prefers-reduced-motion:reduce){#iv *,dialog.fg *{animation:none!important;transition:none!important}}
+
+/* ---------- Dossiê em papel ---------- */
+#page-story{--dp-paper:#efe2c2;--dp-paper2:#e6d3a8;--dp-rule:rgba(70,92,140,.28);--dp-margin:rgba(190,60,60,.45);--dp-ink:#211b15;--dp-type:'Special Elite','Courier New',monospace;--dp-lh:34px}
+/* Capa do dossiê (pasta) */
+#page-story .ds-masthead{background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 40%),repeating-linear-gradient(90deg,rgba(0,0,0,.025) 0 2px,transparent 2px 5px),#c9a46a;border:0;border-radius:4px 14px 0 0;color:#3b2a14;box-shadow:inset 0 -10px 18px -12px rgba(0,0,0,.4),0 10px 30px -18px #000;padding:26px 30px 30px}
+#page-story .ds-masthead::after{content:"DOSSIÊ";position:absolute;right:210px;top:50%;transform:translateY(-50%) rotate(-8deg);font:700 46px var(--dp-type);letter-spacing:.2em;color:rgba(122,28,24,.16);border:5px double rgba(122,28,24,.18);padding:2px 18px;border-radius:6px;pointer-events:none}
+#page-story .ds-masthead h2{color:#2a1c0c;font-family:var(--dp-type);letter-spacing:.02em}
+#page-story .ds-masthead p,#page-story .ds-masthead .ds-eyebrow{color:#5b4424}
+#page-story .ds-crest{background:#e9d4a2;border-color:rgba(59,42,20,.35);color:#5b3a16}
+#page-story .ds-passport-stamp{color:#7a1c18;border-color:rgba(122,28,24,.55);background:transparent;font-family:var(--dp-type)}
+#page-story .ds-passport-stamp b{color:#7a1c18}
+#page-story .ds-tabs{background:transparent;border:0;gap:6px;padding:0 14px;border-radius:0;margin-top:-1px;display:flex}
+#page-story .ds-tabs [role=tab]{flex:1;border:0!important;border-radius:0 0 12px 12px;background:#b38d55;color:#3b2a14;font-family:var(--dp-type);font-size:14px;letter-spacing:.03em;padding:12px 10px;box-shadow:inset 0 8px 10px -8px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+#page-story .ds-tabs [role=tab]:hover{transform:translateY(3px)}
+#page-story .ds-tabs [role=tab][aria-selected=true]{background:#c9a46a;transform:translateY(5px);box-shadow:0 8px 14px -10px #000}
+#page-story .ds-tabs [role=tab]::after{display:none!important}
+#page-story .ds-tabs [role=tab] span{border-color:rgba(59,42,20,.4);color:#3b2a14;background:rgba(255,255,255,.25)}
+@media(max-width:760px){#page-story .ds-masthead::after{display:none}#page-story .ds-tabs{padding:0 6px;gap:4px;overflow-x:auto}#page-story .ds-tabs [role=tab]{font-size:12.5px;padding:10px 8px;white-space:nowrap}}
+@media(max-width:560px){#page-story .ds-tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding:0 8px}#page-story .ds-tabs [role=tab]{white-space:normal;border-radius:0 0 10px 10px}}
+.dp-bounty-fmt{font:12px var(--dp-type);color:rgba(122,28,24,.75);letter-spacing:.04em}
+
+/* Galerias como polaroides */
+#page-story .ds-gallery{gap:26px 22px}
+#page-story .ds-card{background:#f6f1e4;border:0;border-radius:3px;padding:12px 12px 6px;box-shadow:0 14px 26px -16px #000,0 2px 0 rgba(0,0,0,.08);transform:rotate(-1.2deg);transition:transform .25s cubic-bezier(.2,.9,.3,1.2),box-shadow .25s;position:relative;overflow:visible}
+#page-story .ds-card:nth-child(2n){transform:rotate(1.3deg)}#page-story .ds-card:nth-child(3n){transform:rotate(-.4deg)}
+#page-story .ds-card::before{content:"";position:absolute;left:50%;top:-10px;width:86px;height:22px;margin-left:-43px;background:rgba(240,226,180,.75);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:2}
+#page-story .ds-card:hover{transform:rotate(0) translateY(-4px) scale(1.02);box-shadow:0 24px 34px -18px #000}
+#page-story .ds-card .ds-card-media{border-radius:1px;background:#1d1a17}
+#page-story .ds-card .ds-card-caption{color:#2b2218;padding:10px 4px 6px}
+#page-story .ds-card h4{font-family:'Caveat','Segoe Print',cursive;font-size:26px;color:#211b15;line-height:1.05}
+#page-story .ds-card .ds-card-kicker,#page-story .ds-card .ds-card-excerpt{color:#5f5242}
+#page-story .ds-card .ds-card-kicker b{color:#7a1c18}
+#page-story .ds-card .ds-card-bounty{color:#211b15;font-family:var(--dp-type)}
+#page-story .ds-card .ds-link{color:#6b3e1c}
+
+/* Mesa */
+.dp-desk{margin-top:18px;padding:18px;border-radius:16px;background:radial-gradient(120% 80% at 20% 0,rgba(255,255,255,.04),transparent 60%),repeating-linear-gradient(92deg,rgba(0,0,0,.08) 0 3px,transparent 3px 11px,rgba(255,255,255,.015) 11px 12px,transparent 12px 27px),color-mix(in srgb,var(--panel) 80%,#3a2614);border:1px solid var(--line);box-shadow:inset 0 2px 30px rgba(0,0,0,.35)}
+.dp-desk[data-paper=ivory]{--dp-paper:#faf6ea;--dp-paper2:#f0e9d6}
+.dp-desk[data-paper=kraft]{--dp-paper:#d9bc8c;--dp-paper2:#c9a873;--dp-rule:rgba(80,50,20,.28)}
+.dp-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding:10px 14px;margin-bottom:22px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.06)}
+.dp-tool{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dp-tool-label{font:600 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dp-pens,.dp-inks,.dp-papers{display:flex;gap:5px;flex-wrap:wrap}
+.dp-pens button,.dp-papers button{height:34px;padding:0 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);font-size:18px;cursor:pointer;transition:all .15s}
+.dp-papers button{font:600 13px var(--font-ui)}
+.dp-pens button:hover,.dp-papers button:hover{border-color:var(--gold)}
+.dp-pens button[aria-pressed=true],.dp-papers button[aria-pressed=true]{background:#efe2c2;color:#211b15;border-color:#efe2c2}
+.dp-papers .dp-tone-ivory[aria-pressed=true]{background:#faf6ea}.dp-papers .dp-tone-kraft[aria-pressed=true]{background:#d9bc8c}
+.dp-inks button{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:var(--sw);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.dp-inks button:hover{transform:scale(1.12)}
+.dp-inks button[aria-pressed=true]{box-shadow:0 0 0 3px var(--panel),0 0 0 5px #efe2c2}
+.dp-saved{margin-left:auto;font:italic 500 13px var(--font-ui);color:var(--muted);display:flex;align-items:center;gap:6px}
+.dp-saved::before{content:"";width:7px;height:7px;border-radius:50%;background:#6fbf73}
+.dp-saved.is-writing::before{background:var(--gold);animation:dpBlink .6s infinite alternate}
+@keyframes dpBlink{to{opacity:.3}}
+
+.dp-board{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-areas:"id portrait" "notes notes" "rel rel" "journal journal";gap:30px 28px;align-items:start}
+.dp-id{grid-area:id}.dp-notebook{grid-area:portrait}.dp-notes{grid-area:notes}.dp-relations{grid-area:rel}.dp-journal{grid-area:journal}
+
+/* Folha base */
+.dp-sheet{position:relative;color:var(--dp-ink);padding:26px 28px 28px;border-radius:2px;background:radial-gradient(circle at 88% 12%,rgba(140,90,30,.13),transparent 16%),radial-gradient(circle at 12% 92%,rgba(140,90,30,.1),transparent 22%),radial-gradient(140% 120% at 50% 40%,transparent 60%,rgba(110,70,20,.22)),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2));box-shadow:0 1px 1px rgba(0,0,0,.2),0 18px 30px -18px rgba(0,0,0,.9),inset 0 0 0 1px rgba(90,60,20,.12);transform:rotate(var(--tilt,0deg));transition:transform .35s cubic-bezier(.2,.9,.3,1.15),box-shadow .35s}
+.dp-desk[data-paper=ivory] .dp-sheet{background:radial-gradient(140% 120% at 50% 40%,transparent 70%,rgba(110,90,50,.12)),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
+.dp-sheet:focus-within{transform:rotate(0) translateY(-3px);box-shadow:0 2px 2px rgba(0,0,0,.2),0 28px 44px -20px rgba(0,0,0,.95),inset 0 0 0 1px rgba(90,60,20,.12);z-index:2}
+.dp-sheet.is-rewrite .dp-ink{animation:dpRewrite .5s ease}
+@keyframes dpRewrite{0%{opacity:0;filter:blur(2px);clip-path:inset(0 100% 0 0)}100%{opacity:1;filter:none;clip-path:inset(0 0 0 0)}}
+.dp-sheet-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;border-bottom:2px solid rgba(60,40,20,.25);padding-bottom:6px}
+.dp-sheet-head h3{margin:0;flex:1;font:400 20px var(--dp-type);letter-spacing:.08em;text-transform:uppercase;color:rgba(40,28,14,.82)}
+.dp-pen-btn{flex:none;width:30px;height:30px;border-radius:50%;border:1px dashed rgba(60,40,20,.4);background:transparent;color:rgba(60,40,20,.7);font-size:15px;cursor:pointer;transition:transform .2s,background .2s}
+.dp-pen-btn:hover{transform:rotate(-20deg) scale(1.1);background:rgba(60,40,20,.08)}
+.dp-count{font:12px var(--dp-type);color:rgba(60,40,20,.6)}
+
+/* Tinta e escrita */
+#dpDesk .dp-ink{appearance:none;display:block;width:100%;min-width:0;margin:0;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:none!important;padding:0 2px;color:var(--dp-ink)!important;caret-color:var(--dp-ink);font-family:var(--dp-font)!important;font-size:calc(23px*var(--dp-fs,1))!important;line-height:1.3;font-weight:400;resize:none;-webkit-text-fill-color:var(--dp-ink)}
+#dpDesk .dp-ink::placeholder{color:var(--dp-ink);opacity:.3;-webkit-text-fill-color:color-mix(in srgb,var(--dp-ink) 32%,transparent)}
+#dpDesk .dp-ink::selection{background:rgba(255,214,90,.55)}
+#dpDesk [data-pen=type] .dp-ink,#dpDesk[data-pen=type] .dp-ink{letter-spacing:.01em}
+#dpDesk textarea.dp-lined{line-height:var(--dp-lh)!important;min-height:calc(var(--dp-lh)*3 + 6px);padding:2px 4px 6px!important;background:repeating-linear-gradient(180deg,transparent 0 calc(var(--dp-lh) - 1px),var(--dp-rule) calc(var(--dp-lh) - 1px) var(--dp-lh))!important;background-attachment:local!important;background-position:0 2px!important;overflow:hidden}
+.dp-label{font:400 12px var(--dp-type);letter-spacing:.12em;text-transform:uppercase;color:rgba(50,34,16,.62);white-space:nowrap}
+.dp-hand-label{display:block;font:400 13px var(--dp-type);letter-spacing:.1em;text-transform:uppercase;color:rgba(50,34,16,.6);margin:6px 0 2px}
+
+/* Ficha de identificação */
+.dp-id{padding-top:22px}
+.dp-id-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:0 0 8px 70px;border-bottom:2px solid rgba(60,40,20,.3)}
+.dp-type{font:400 13px var(--dp-type);letter-spacing:.12em;color:rgba(40,28,14,.75)}
+.dp-type b{color:#7a1c18;font-weight:400}
+.dp-id-body{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px}
+.dp-polaroid{position:relative;margin:0;padding:9px 9px 32px;background:#fbf9f3;box-shadow:0 8px 14px -8px rgba(0,0,0,.6);transform:rotate(-3.5deg);align-self:start;transition:transform .3s}
+.dp-polaroid:hover{transform:rotate(1deg) scale(1.04)}
+.dp-photo-img{aspect-ratio:4/5;background:#2a2620;overflow:hidden;display:grid;place-items:center}
+.dp-photo-img img{width:100%;height:100%;object-fit:cover;filter:sepia(.25) contrast(1.05) saturate(.9)}
+.dp-photo-empty{display:flex;flex-direction:column;align-items:center;gap:4px;color:rgba(240,230,210,.6);font:16px 'Caveat','Segoe Print',cursive;text-align:center;padding:8px}
+.dp-photo-empty small{font:10px var(--dp-type);letter-spacing:.06em;opacity:.8}
+.dp-polaroid figcaption{position:absolute;left:8px;right:8px;bottom:5px;text-align:center;font:19px 'Caveat','Segoe Print',cursive;color:#2b2218;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dp-clip{position:absolute;left:34px;top:-14px;width:22px;height:62px;border:3px solid #9aa3ad;border-radius:12px;z-index:3;box-shadow:1px 1px 0 rgba(0,0,0,.25);transform:rotate(-8deg)}
+.dp-clip::after{content:"";position:absolute;left:3px;right:3px;top:8px;bottom:-1px;border:3px solid #b9c1ca;border-top:0;border-radius:0 0 8px 8px}
+.dp-id-fields{display:flex;flex-direction:column;gap:8px;min-width:0}
+.dp-line{display:flex;align-items:baseline;gap:10px;border-bottom:1.5px dotted rgba(60,40,20,.45);padding-bottom:1px;min-width:0}
+.dp-line .dp-ink{flex:1}
+.dp-name b{display:block;flex:1;font:400 calc(30px*var(--dp-fs,1)) var(--dp-font);color:var(--dp-ink);line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dp-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dp-id-foot{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 22px;align-items:end;margin-top:18px;padding-top:12px;border-top:2px solid rgba(60,40,20,.3)}
+.dp-bounty{display:flex;flex-direction:column;gap:2px}
+.dp-bounty-val{display:flex;align-items:baseline;gap:4px;border-bottom:2px solid rgba(60,40,20,.5)}
+.dp-bounty-val i{font:400 26px var(--dp-type);font-style:normal;color:#7a1c18}
+#dpDesk .dp-bounty .dp-ink{font-size:calc(30px*var(--dp-fs,1))!important;width:170px;-moz-appearance:textfield}
+#dpDesk .dp-bounty .dp-ink::-webkit-inner-spin-button,#dpDesk .dp-bounty .dp-ink::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.dp-stamp{position:absolute;right:26px;bottom:92px;padding:6px 14px;border:4px double rgba(160,30,26,.78);border-radius:6px;background:transparent;color:rgba(160,30,26,.82);font:400 20px var(--dp-type);letter-spacing:.14em;transform:rotate(-12deg);cursor:pointer;mix-blend-mode:multiply;-webkit-mask:radial-gradient(circle at 30% 40%,#000 55%,rgba(0,0,0,.75) 70%) ,linear-gradient(#000,#000);opacity:.88;transition:opacity .2s}
+.dp-stamp:hover{opacity:1}
+.dp-stamp[data-kind="4"],.dp-stamp[data-kind="3"]{border-color:rgba(30,60,130,.75);color:rgba(30,60,130,.85)}
+.dp-stamp[data-kind="5"]{border-color:rgba(20,100,70,.75);color:rgba(20,100,70,.85)}
+.dp-stamp.is-blank{border-style:dashed;border-width:2px;color:rgba(60,40,20,.35);border-color:rgba(60,40,20,.3);font-size:13px}
+.dp-stamp.is-thump{animation:dpThump .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes dpThump{0%{transform:rotate(-12deg) scale(1.9);opacity:0}60%{transform:rotate(-12deg) scale(.94);opacity:1}100%{transform:rotate(-12deg) scale(1)}}
+
+/* Caderno / retrato */
+.dp-notebook{padding-left:62px;background-image:linear-gradient(90deg,transparent 46px,var(--dp-margin) 46px 48px,transparent 48px),radial-gradient(circle at 88% 12%,rgba(140,90,30,.1),transparent 16%),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
+.dp-notebook::before{content:"";position:absolute;left:16px;top:30px;bottom:30px;width:14px;background:radial-gradient(circle,rgba(0,0,0,.5) 0 5px,transparent 6px) 0 0/14px 64px repeat-y;opacity:.55}
+.dp-tape{position:absolute;top:-12px;left:40%;width:110px;height:26px;background:rgba(236,224,180,.72);transform:rotate(-4deg);box-shadow:0 1px 3px rgba(0,0,0,.2);clip-path:polygon(2% 0,98% 4%,100% 50%,97% 100%,3% 96%,0 50%)}
+.dp-tape-r{left:auto;right:30px;transform:rotate(5deg)}
+.dp-write{display:block;margin-bottom:6px}
+.dp-quote{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:10px;padding:8px 12px;background:rgba(255,255,255,.28);border-left:4px solid rgba(122,28,24,.5)}
+.dp-quote .dp-hand-label{width:100%;margin:0}
+.dp-quote-mark{font:400 44px/0 'IM Fell English',serif;color:rgba(122,28,24,.6);transform:translateY(16px)}
+.dp-quote .dp-ink{flex:1;font-style:italic}
+
+/* Notas */
+.dp-notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding:6px 6px 0}
+.dp-postit,.dp-card{position:relative;display:flex;flex-direction:column;gap:4px;min-height:170px;padding:16px 16px 18px;color:var(--dp-ink);background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 30%),var(--pc,#fbe38b);box-shadow:0 1px 1px rgba(0,0,0,.15),0 16px 18px -14px rgba(0,0,0,.75);transform:rotate(var(--tilt,0deg));transition:transform .3s cubic-bezier(.2,.9,.3,1.2),box-shadow .3s;cursor:text}
+.dp-postit::after{content:"";position:absolute;right:0;bottom:0;width:26px;height:26px;background:linear-gradient(135deg,rgba(0,0,0,.12),rgba(0,0,0,0) 50%,var(--desk-bg,#2a2018) 50%);opacity:.0}
+.dp-postit:hover,.dp-postit:focus-within,.dp-card:hover,.dp-card:focus-within{transform:rotate(0) translateY(-4px) scale(1.02);box-shadow:0 2px 2px rgba(0,0,0,.15),0 26px 26px -16px rgba(0,0,0,.8);z-index:2}
+.dp-postit-title{font:400 12px var(--dp-type);letter-spacing:.12em;text-transform:uppercase;color:rgba(40,28,14,.65)}
+.dp-card{background:linear-gradient(180deg,transparent 30px,rgba(200,60,60,.45) 30px 31.5px,transparent 31.5px),repeating-linear-gradient(180deg,transparent 0 27px,rgba(70,92,140,.22) 27px 28px),#fbf8ef}
+.dp-pin{position:absolute;top:-9px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a7a,#b3261e 60%,#6d120c);box-shadow:2px 3px 3px rgba(0,0,0,.4)}
+
+/* Laços */
+.dp-rel-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin:8px 0 14px}
+.dp-rel{position:relative;padding:30px 14px 12px;background:repeating-linear-gradient(180deg,transparent 0 27px,rgba(70,92,140,.18) 27px 28px) 0 30px/100% 100% no-repeat,#fbf8ef;border-top:6px solid var(--rk);box-shadow:0 10px 16px -10px rgba(0,0,0,.6);transform:rotate(var(--tilt));transition:transform .3s,opacity .35s}
+.dp-rel:hover,.dp-rel:focus-within{transform:rotate(0) translateY(-3px)}
+.dp-rel.is-new{animation:dpDeal .45s cubic-bezier(.2,1.3,.4,1)}
+@keyframes dpDeal{from{opacity:0;transform:translateY(-20px) rotate(-8deg)}}
+.dp-rel.is-struck{opacity:0;transform:rotate(6deg) translateY(10px)}
+.dp-rel.is-struck .dp-rel-name{text-decoration:line-through}
+.dp-rel-kind{position:absolute;left:10px;top:6px;padding:2px 10px;border-radius:99px;border:0;background:var(--rk);color:#fff;font:400 11px var(--dp-type);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.dp-rel-x{position:absolute;right:6px;top:2px;border:0;background:transparent;color:rgba(60,40,20,.45);font-size:20px;cursor:pointer;line-height:1}
+.dp-rel-x:hover{color:#b3261e}
+#dpDesk .dp-rel-name{font-size:calc(25px*var(--dp-fs,1))!important}
+#dpDesk .dp-rel-note{font-size:calc(19px*var(--dp-fs,1))!important;line-height:28px;min-height:56px}
+.dp-rel-empty{grid-column:1/-1;margin:4px 0;font:20px 'Caveat','Segoe Print',cursive;color:rgba(60,40,20,.55)}
+.dp-rel-add{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1.5px dotted rgba(60,40,20,.4);padding-top:10px}
+.dp-rel-add .dp-ink{flex:1 1 220px;border-bottom:1.5px solid rgba(60,40,20,.4)!important}
+.dp-rel-add select{height:34px;border-radius:6px;border:1px solid rgba(60,40,20,.35);background:rgba(255,255,255,.4);color:#2b2218;font:13px var(--dp-type);padding:0 8px}
+.dp-btn{height:34px;padding:0 16px;border-radius:6px;border:2px solid rgba(60,40,20,.65);background:transparent;color:#2b2218;font:400 14px var(--dp-type);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .15s,transform .1s}
+.dp-btn:hover{background:rgba(60,40,20,.1)}
+.dp-btn:active{transform:scale(.96)}
+
+/* Diário */
+.dp-journal{padding-left:74px;background-image:linear-gradient(90deg,transparent 56px,var(--dp-margin) 56px 58px,transparent 58px),radial-gradient(circle at 92% 8%,rgba(140,90,30,.12),transparent 14%),radial-gradient(140% 120% at 50% 40%,transparent 62%,rgba(110,70,20,.2)),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
+#dpDesk .dp-journal-text{min-height:calc(var(--dp-lh)*12)}
+.dp-journal::after{content:"";position:absolute;right:46px;bottom:34px;width:90px;height:90px;border-radius:50%;border:7px solid rgba(110,70,20,.08);border-left-color:transparent;transform:rotate(30deg);pointer-events:none}
+
+@media(max-width:1100px){.dp-notes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.dp-board{grid-template-columns:1fr;grid-template-areas:"id" "portrait" "notes" "rel" "journal"}}
+@media(max-width:560px){
+  .dp-desk{padding:10px;margin-top:12px}.dp-tools{gap:8px 12px;padding:8px}.dp-saved{width:100%;margin:0}
+  .dp-sheet{padding:22px 16px 20px}.dp-notebook{padding-left:42px;background-image:linear-gradient(90deg,transparent 30px,var(--dp-margin) 30px 32px,transparent 32px),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}.dp-notebook::before{left:8px;width:12px}
+  .dp-journal{padding-left:44px;background-image:linear-gradient(90deg,transparent 32px,var(--dp-margin) 32px 34px,transparent 34px),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
+  .dp-id-head{padding-left:46px}.dp-clip{left:16px}
+  .dp-id-body{grid-template-columns:1fr}.dp-polaroid{width:150px;justify-self:center}
+  .dp-stamp{top:auto;bottom:118px;right:10px;font-size:15px}
+  .dp-id-foot{grid-template-columns:1fr}
+  .dp-notes{grid-template-columns:1fr 1fr;gap:14px}.dp-postit,.dp-card{min-height:140px;padding:12px}
+  #dpDesk .dp-ink{font-size:calc(21px*var(--dp-fs,1))!important}
+}
+@media (prefers-reduced-motion:reduce){.dp-sheet,.dp-postit,.dp-card,.dp-rel{transition:none}.dp-stamp.is-thump,.dp-rel.is-new,.dp-sheet.is-rewrite .dp-ink{animation:none}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -5643,10 +5817,70 @@ document.addEventListener('change',function(e){
       <section class="page dossier-page" id="page-story" aria-label="Dossiê do personagem">
         <header class="ds-masthead"><div class="ds-crest"><span class="ui-icon i-scroll" aria-hidden="true"></span></div><div><span class="ds-eyebrow">Memórias da travessia</span><h2 id="dossierCharacterName">Dossiê do personagem</h2><p>Histórias, conquistas e todas as versões de quem você já foi.</p></div><div class="ds-passport-stamp"><span>DIÁRIO DE BORDO</span><b id="dossierTotalCount">0 registros</b></div></header>
         <div class="ds-tabs" role="tablist" aria-label="Seções do dossiê"><button type="button" role="tab" id="dossierTab-profile" data-dossier-view="profile" aria-controls="dossierProfilePanel" aria-selected="true">Perfil &amp; história</button><button type="button" role="tab" id="dossierTab-trophy" data-dossier-view="trophy" aria-controls="dossierGalleryPanel" aria-selected="false" tabindex="-1">Sala de Troféus <span id="dossierTrophyCount">0</span></button><button type="button" role="tab" id="dossierTab-poster" data-dossier-view="poster" aria-controls="dossierGalleryPanel" aria-selected="false" tabindex="-1">Cartazes <span id="dossierPosterCount">0</span></button><button type="button" role="tab" id="dossierTab-look" data-dossier-view="look" aria-controls="dossierGalleryPanel" aria-selected="false" tabindex="-1">Visuais <span id="dossierLookCount">0</span></button></div>
-        <div id="dossierProfilePanel" role="tabpanel" aria-labelledby="dossierTab-profile" class="ds-profile">        <div class="story-layout">
-          <div class="panel"><div class="panel-head"><h2>Perfil</h2><span class="eyebrow">Interpretação</span></div><div class="panel-body"><div class="field"><label for="sheet-field-93">Aparência</label><textarea class="input bind" data-key="appearance" id="sheet-field-93"></textarea></div><div class="field" style="margin-top:9px"><label for="sheet-field-94">Personalidade</label><textarea class="input bind" data-key="personality" id="sheet-field-94"></textarea></div></div></div>
-          <div class="panel"><div class="panel-head"><h2>Jornada</h2><span class="eyebrow">Campanha</span></div><div class="panel-body"><div class="field"><label for="sheet-field-95">Tripulação</label><input class="input bind" data-key="crew" id="sheet-field-95"></div><div class="field" style="margin-top:9px"><label for="sheet-field-96">Ilha / Localização Atual</label><input class="input bind" data-key="location" id="sheet-field-96"></div><div class="field" style="margin-top:9px"><label for="sheet-field-97">Recompensa Atual</label><input class="input bind" data-key="bounty" type="number" min="0" placeholder="0" id="sheet-field-97"></div><div class="field" style="margin-top:9px"><label for="sheet-field-98">Objetivo Atual</label><textarea class="input bind" data-key="currentGoal" id="sheet-field-98"></textarea></div></div></div>
-          <div class="panel full"><div class="panel-head"><h2>História &amp; Anotações</h2><span class="eyebrow">Livre</span></div><div class="panel-body"><textarea class="input bind" data-key="history" style="min-height:280px" placeholder="Passado do personagem, relações, eventos importantes, contatos, promessas, inimigos..."></textarea></div></div>
+        <div id="dossierProfilePanel" role="tabpanel" aria-labelledby="dossierTab-profile" class="ds-profile"><div class="dp-desk" id="dpDesk" data-paper="aged">
+          <div class="dp-tools" role="toolbar" aria-label="Caneta, tinta e papel">
+            <div class="dp-tool"><span class="dp-tool-label">Caneta</span><div class="dp-pens" id="dpPens"></div></div>
+            <div class="dp-tool"><span class="dp-tool-label">Tinta</span><div class="dp-inks" id="dpInks"></div></div>
+            <div class="dp-tool"><span class="dp-tool-label">Papel</span><div class="dp-papers" id="dpPapers"></div></div>
+            <span class="dp-saved" id="dpSaved" aria-live="polite">Tudo anotado</span>
+          </div>
+
+          <div class="dp-board">
+            <article class="dp-sheet dp-id" data-dp-sheet="id" style="--tilt:-.8deg">
+              <span class="dp-clip" aria-hidden="true"></span>
+              <header class="dp-id-head"><span class="dp-type">REGISTRO DE TRIPULANTE · Nº <b id="dpFileNo">000</b></span><button type="button" class="dp-pen-btn" data-dp-cycle="id" title="Trocar a letra desta folha">✒</button></header>
+              <div class="dp-id-body">
+                <figure class="dp-polaroid" id="dpPhoto"><div class="dp-photo-img" id="dpPhotoImg"></div><figcaption id="dpPhotoCap">retrato</figcaption></figure>
+                <div class="dp-id-fields">
+                  <div class="dp-line dp-name"><span class="dp-label">Nome</span><b class="dp-ink" id="dpName">—</b></div>
+                  <label class="dp-line"><span class="dp-label">Alcunha</span><input class="dp-ink bind" data-key="epithet" placeholder="“o Sem-Nome”" autocomplete="off"></label>
+                  <div class="dp-row">
+                    <label class="dp-line"><span class="dp-label">Idade</span><input class="dp-ink bind" data-key="dossier.paper.age" placeholder="?" autocomplete="off"></label>
+                    <label class="dp-line"><span class="dp-label">Altura</span><input class="dp-ink bind" data-key="dossier.paper.height" placeholder="?" autocomplete="off"></label>
+                  </div>
+                  <label class="dp-line"><span class="dp-label">Terra natal</span><input class="dp-ink bind" data-key="dossier.paper.birthplace" placeholder="ilha, mar…" autocomplete="off"></label>
+                  <label class="dp-line"><span class="dp-label">Tripulação</span><input class="dp-ink bind" data-key="crew" placeholder="sem bandeira" autocomplete="off"></label>
+                  <label class="dp-line"><span class="dp-label">Onde está</span><input class="dp-ink bind" data-key="location" placeholder="paradeiro desconhecido" autocomplete="off"></label>
+                </div>
+              </div>
+              <div class="dp-id-foot">
+                <label class="dp-bounty"><span class="dp-label">Recompensa</span><span class="dp-bounty-val"><i>฿</i><input class="dp-ink bind" data-key="bounty" type="number" min="0" placeholder="0"></span><small class="dp-bounty-fmt" id="dpBountyFmt"></small></label>
+                <label class="dp-line dp-dream"><span class="dp-label">Sonho</span><input class="dp-ink bind" data-key="dream" placeholder="o que move este pirata?" autocomplete="off"></label>
+              </div>
+              <button type="button" class="dp-stamp" id="dpStamp" title="Clique para trocar o carimbo"><span id="dpStampText">CONFIDENCIAL</span></button>
+            </article>
+
+            <article class="dp-sheet dp-notebook" data-dp-sheet="portrait" style="--tilt:.6deg">
+              <span class="dp-tape" aria-hidden="true"></span>
+              <header class="dp-sheet-head"><h3>Retrato falado</h3><button type="button" class="dp-pen-btn" data-dp-cycle="portrait" title="Trocar a letra desta folha">✒</button></header>
+              <label class="dp-write"><span class="dp-hand-label">Aparência</span><textarea class="dp-ink dp-lined bind" data-key="appearance" rows="4" placeholder="Cicatriz no olho, chapéu de palha, sempre descalço…"></textarea></label>
+              <label class="dp-write"><span class="dp-hand-label">Personalidade</span><textarea class="dp-ink dp-lined bind" data-key="personality" rows="4" placeholder="Teimoso, leal até o fim, ri nas piores horas…"></textarea></label>
+              <label class="dp-quote"><span class="dp-hand-label">Frase marcante</span><span class="dp-quote-mark" aria-hidden="true">“</span><input class="dp-ink bind" data-key="dossier.paper.quote" placeholder="Eu vou ser…" autocomplete="off"></label>
+            </article>
+
+            <div class="dp-notes" aria-label="Notas rápidas">
+              <label class="dp-postit" style="--pc:#fbe38b;--tilt:-2.5deg"><span class="dp-postit-title">Gosta de</span><textarea class="dp-ink bind" data-key="dossier.paper.likes" rows="3" placeholder="carne, música, mapas…"></textarea></label>
+              <label class="dp-postit" style="--pc:#f7b9c4;--tilt:1.8deg"><span class="dp-postit-title">Não suporta</span><textarea class="dp-ink bind" data-key="dossier.paper.dislikes" rows="3" placeholder="injustiça, Marinha…"></textarea></label>
+              <label class="dp-postit" style="--pc:#b9e3c6;--tilt:-1deg"><span class="dp-postit-title">Medos &amp; segredos</span><textarea class="dp-ink bind" data-key="dossier.paper.secrets" rows="3" placeholder="o que ninguém sabe…"></textarea></label>
+              <label class="dp-card dp-goal" style="--tilt:1.4deg"><span class="dp-pin" aria-hidden="true"></span><span class="dp-postit-title">Objetivo atual</span><textarea class="dp-ink bind" data-key="currentGoal" rows="3" placeholder="o próximo passo da jornada…"></textarea></label>
+            </div>
+
+            <section class="dp-sheet dp-relations" data-dp-sheet="relations" style="--tilt:-.4deg">
+              <header class="dp-sheet-head"><h3>Laços &amp; desafetos</h3><button type="button" class="dp-pen-btn" data-dp-cycle="relations" title="Trocar a letra desta folha">✒</button></header>
+              <div class="dp-rel-list" id="dpRelList"></div>
+              <form class="dp-rel-add" id="dpRelForm" autocomplete="off">
+                <input class="dp-ink" id="dpRelName" placeholder="Nome de alguém importante…" maxlength="80" aria-label="Nome">
+                <select id="dpRelKind" aria-label="Tipo de laço"></select>
+                <button type="submit" class="dp-btn">Anotar</button>
+              </form>
+            </section>
+
+            <article class="dp-sheet dp-journal" data-dp-sheet="journal" style="--tilt:.25deg">
+              <span class="dp-tape dp-tape-r" aria-hidden="true"></span>
+              <header class="dp-sheet-head"><h3>Diário de bordo</h3><span class="dp-count" id="dpWords">0 palavras</span><button type="button" class="dp-pen-btn" data-dp-cycle="journal" title="Trocar a letra desta folha">✒</button></header>
+              <textarea class="dp-ink dp-lined dp-journal-text bind" data-key="history" rows="12" placeholder="Passado, promessas, contatos, inimigos, segredos… Escreva a história de quem você é."></textarea>
+            </article>
+          </div>
         </div></div>
         <section id="dossierGalleryPanel" role="tabpanel" aria-labelledby="dossierTab-trophy" class="ds-gallery-panel" hidden>
           <div class="ds-section-head"><div><span class="ds-eyebrow" id="dossierGalleryEyebrow">O caminho percorrido</span><h3 id="dossierGalleryTitle">Sala de Troféus</h3><p id="dossierGalleryDescription"></p></div><div class="ds-actions"><button class="ds-btn" type="button" data-dossier-action="capture" id="dossierCapture" hidden>Guardar cartaz atual</button><button class="ds-btn primary" type="button" data-dossier-action="new" id="dossierAdd">Adicionar ilha ou lugar</button></div></div>
@@ -7668,7 +7902,7 @@ function renderDossier(){
   ['trophy','poster','look'].forEach(kind=>dossierSet('dossier'+kind[0].toUpperCase()+kind.slice(1)+'Count',d.records.filter(r=>r.kind===kind).length));
   document.querySelectorAll('#page-story [data-dossier-view]').forEach(b=>{const active=b.dataset.dossierView===d.view;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1});
   document.getElementById('dossierProfilePanel').hidden=gallery;document.getElementById('dossierGalleryPanel').hidden=!gallery;
-  if(!gallery)return;document.getElementById('dossierGalleryPanel').setAttribute('aria-labelledby',`dossierTab-${d.view}`);
+  if(!gallery){if(typeof dpRender==='function')dpRender();return}document.getElementById('dossierGalleryPanel').setAttribute('aria-labelledby',`dossierTab-${d.view}`);
   const info=DOSSIER_INFO[d.view];dossierSet('dossierGalleryTitle',info.title);dossierSet('dossierGalleryEyebrow',info.eyebrow);dossierSet('dossierGalleryDescription',info.description);dossierSet('dossierAdd',info.add);
   const capture=document.getElementById('dossierCapture');capture.hidden=d.view==='trophy';capture.textContent=d.view==='poster'?'Guardar cartaz atual':'Guardar foto atual';
   const select=document.getElementById('dossierFilter'),options=d.view==='trophy'?[['all','Todas as passagens'],['visited','Visitadas'],['conquered','Conquistadas / vitórias']]:d.view==='poster'?[['all','Todos os cartazes'],['current','Cartaz atual'],['past','Cartazes antigos']]:[['all','Todos os visuais']];
@@ -9238,7 +9472,92 @@ function fgWire(){
   const end=()=>{drag=null;pv.classList.remove('is-dragging')};pv.addEventListener('pointerup',end);pv.addEventListener('pointercancel',end);
 }
 
+
+/* ==========================================================================
+   Dossiê em papel — ficha de identificação, retrato, notas, laços e diário
+   ========================================================================== */
+function dpFonts(){return [
+  {id:'caveat',label:'Caneta',css:"'Caveat','Segoe Print','Bradley Hand',cursive",size:1.18},
+  {id:'patrick',label:'Lápis',css:"'Patrick Hand','Comic Neue','Segoe Print',cursive",size:1.04},
+  {id:'apple',label:'Cursiva',css:"'Homemade Apple','Brush Script MT',cursive",size:.86},
+  {id:'fell',label:'Pena',css:"'IM Fell English','Alegreya',Georgia,serif",size:1.02},
+  {id:'type',label:'Máquina',css:"'Special Elite','Courier New',monospace",size:.92}
+]}
+function dpInks(){return [['nanquim','Nanquim','#211b15'],['azul','Azul real','#1f3f8f'],['sepia','Sépia','#6b3e1c'],['vermelho','Carmim','#9e1b1b'],['verde','Verde-mar','#0e5c55']]}
+function dpPapers(){return [['aged','Envelhecido'],['ivory','Marfim'],['kraft','Kraft']]}
+function dpRelKinds(){return [['ally','Aliado','#3f8f5a'],['family','Família','#3b6fb6'],['love','Afeto','#c2577f'],['contact','Contato','#7b7365'],['rival','Rival','#d27a26'],['enemy','Inimigo','#b3261e']]}
+function dpStamps(){return ['CONFIDENCIAL','PROCURADO','PERIGOSO','ARQUIVO VIVO','DESAPARECIDO','ALIADO DA COROA','SEM CARIMBO']}
+function dpPaper(c=current()){
+  const d=ensureDossier(c);if(!d.paper||typeof d.paper!=='object')d.paper={};const p=d.paper;
+  if(!dpFonts().some(f=>f.id===p.pen))p.pen='caveat';
+  if(!dpInks().some(i=>i[0]===p.ink))p.ink='nanquim';
+  if(!dpPapers().some(x=>x[0]===p.tone))p.tone='aged';
+  if(!p.pens||typeof p.pens!=='object')p.pens={};
+  if(!Array.isArray(p.relations))p.relations=[];
+  p.relations=p.relations.filter(r=>r&&typeof r==='object').map(r=>({id:r.id||uid(),name:String(r.name||''),kind:dpRelKinds().some(k=>k[0]===r.kind)?r.kind:'ally',note:String(r.note||'')}));
+  if(!Number.isInteger(p.stamp))p.stamp=num(c.bounty)>0?1:0;
+  return p;
+}
+function dpFont(id){return dpFonts().find(f=>f.id===id)||dpFonts()[0]}
+function dpFileNo(c){let h=0;for(const ch of String(c.id||c.name||'x'))h=(h*31+ch.charCodeAt(0))>>>0;return String(h%1000).padStart(3,'0')}
+function dpAutosize(el){if(!el||el.tagName!=='TEXTAREA')return;el.style.height='auto';el.style.height=Math.max(el.scrollHeight+2,parseFloat(getComputedStyle(el).minHeight)||0)+'px'}
+function dpWords(t){const m=String(t||'').trim().match(/\S+/g);return m?m.length:0}
+function dpRender(){
+  const desk=document.getElementById('dpDesk');if(!desk)return;const c=current(),p=dpPaper(c),ink=dpInks().find(i=>i[0]===p.ink);
+  desk.dataset.paper=p.tone;desk.style.setProperty('--dp-ink',ink[2]);
+  const apply=(el,id)=>{const f=dpFont(id);el.style.setProperty('--dp-font',f.css);el.style.setProperty('--dp-fs',f.size);el.dataset.pen=f.id};
+  apply(desk,p.pen);
+  desk.querySelectorAll('[data-dp-sheet]').forEach(sh=>{const k=sh.dataset.dpSheet,o=p.pens[k];if(o){apply(sh,o)}else{sh.style.removeProperty('--dp-font');sh.style.removeProperty('--dp-fs');delete sh.dataset.pen}const b=sh.querySelector('[data-dp-cycle]');if(b)b.title=`Letra desta folha: ${dpFont(o||p.pen).label}${o?'':' (padrão)'} · clique para trocar`});
+  document.getElementById('dpPens').innerHTML=dpFonts().map(f=>`<button type="button" data-dp-pen="${f.id}" aria-pressed="${p.pen===f.id}" style="font-family:${f.css.replace(/"/g,'&quot;')}">${f.label}</button>`).join('');
+  document.getElementById('dpInks').innerHTML=dpInks().map(([k,l,col])=>`<button type="button" data-dp-ink="${k}" aria-pressed="${p.ink===k}" title="${l}" style="--sw:${col}"><span class="sr-only">${l}</span></button>`).join('');
+  document.getElementById('dpPapers').innerHTML=dpPapers().map(([k,l])=>`<button type="button" data-dp-tone="${k}" aria-pressed="${p.tone===k}" class="dp-tone-${k}">${l}</button>`).join('');
+  document.getElementById('dpName').textContent=c.name||'Sem nome';
+  document.getElementById('dpFileNo').textContent=dpFileNo(c);dpBountyFmt(c.bounty);
+  const src=c.imageData||c.imageUrl,img=document.getElementById('dpPhotoImg');
+  img.innerHTML=src?`<img src="${esc(src)}" alt="Retrato de ${esc(c.name||'personagem')}">`:`<span class="dp-photo-empty">sem retrato<small>adicione na aba Ficha</small></span>`;
+  img.querySelector('img')?.addEventListener('error',()=>{img.innerHTML='<span class="dp-photo-empty">retrato perdido</span>'},{once:true});
+  document.getElementById('dpPhotoCap').textContent=c.epithet?`“${c.epithet}”`:(c.name||'retrato');
+  const st=dpStamps()[p.stamp%dpStamps().length],stamp=document.getElementById('dpStamp');document.getElementById('dpStampText').textContent=st;stamp.classList.toggle('is-blank',st==='SEM CARIMBO');stamp.dataset.kind=p.stamp%dpStamps().length;
+  const sel=document.getElementById('dpRelKind');if(sel&&!sel.options.length)sel.innerHTML=dpRelKinds().map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
+  dpRenderRelations();
+  const j=desk.querySelector('.dp-journal-text');document.getElementById('dpWords').textContent=`${dpWords(c.history)} ${dpWords(c.history)===1?'palavra':'palavras'}`;
+  requestAnimationFrame(()=>desk.querySelectorAll('textarea').forEach(dpAutosize));
+}
+function dpRenderRelations(){
+  const box=document.getElementById('dpRelList');if(!box)return;const p=dpPaper(),kinds=dpRelKinds();
+  box.innerHTML=p.relations.length?p.relations.map((r,i)=>{const k=kinds.find(x=>x[0]===r.kind)||kinds[0];return `<div class="dp-rel" data-dp-rel="${esc(r.id)}" style="--rk:${k[2]};--tilt:${[-1.2,.8,-.5,1.1,-.9,.4][i%6]}deg"><button type="button" class="dp-rel-kind" data-dp-relkind title="Clique para mudar o tipo de laço">${esc(k[1])}</button><button type="button" class="dp-rel-x" data-dp-reldel aria-label="Riscar ${esc(r.name)}" title="Riscar do dossiê">×</button><input class="dp-ink dp-rel-name" data-dp-relfield="name" value="${esc(r.name)}" aria-label="Nome" maxlength="80"><textarea class="dp-ink dp-rel-note" data-dp-relfield="note" rows="2" placeholder="como se conheceram, o que devem um ao outro…" aria-label="Anotação">${esc(r.note)}</textarea></div>`}).join(''):'<p class="dp-rel-empty">Ninguém anotado ainda. Amigos de infância, rivais, a Marinha que te persegue…</p>';
+  requestAnimationFrame(()=>box.querySelectorAll('textarea').forEach(dpAutosize));
+}
+function dpBountyFmt(v){const el=document.getElementById('dpBountyFmt');if(!el)return;const n=num(v);el.textContent=n?money(n):'nenhuma, por enquanto'}
+function dpSaved(){const el=document.getElementById('dpSaved');if(!el)return;el.textContent='Anotando…';el.classList.add('is-writing');clearTimeout(dpSaved.t);dpSaved.t=setTimeout(()=>{el.textContent='Tudo anotado';el.classList.remove('is-writing')},700)}
+function dpWire(){
+  const desk=document.getElementById('dpDesk');if(!desk||desk.dataset.wired)return;desk.dataset.wired='1';
+  desk.addEventListener('click',e=>{
+    const c=current(),p=dpPaper(c);let b;
+    if((b=e.target.closest('[data-dp-pen]'))){p.pen=b.dataset.dpPen;saveState();dpRender();return}
+    if((b=e.target.closest('[data-dp-ink]'))){p.ink=b.dataset.dpInk;saveState();dpRender();return}
+    if((b=e.target.closest('[data-dp-tone]'))){p.tone=b.dataset.dpTone;saveState();dpRender();return}
+    if((b=e.target.closest('[data-dp-cycle]'))){const k=b.dataset.dpCycle,ids=dpFonts().map(f=>f.id),cur=p.pens[k]||p.pen,next=ids[(ids.indexOf(cur)+1)%ids.length];if(next===p.pen)delete p.pens[k];else p.pens[k]=next;saveState();dpRender();const sh=b.closest('[data-dp-sheet]');sh?.classList.remove('is-rewrite');void sh?.offsetWidth;sh?.classList.add('is-rewrite');toast(`Letra: ${dpFont(next).label}`);return}
+    if(e.target.closest('#dpStamp')){p.stamp=(p.stamp+1)%dpStamps().length;saveState();dpRender();const s=document.getElementById('dpStamp');s.classList.remove('is-thump');void s.offsetWidth;s.classList.add('is-thump');return}
+    const rel=e.target.closest('[data-dp-rel]');
+    if(rel&&e.target.closest('[data-dp-relkind]')){const r=p.relations.find(x=>x.id===rel.dataset.dpRel),ks=dpRelKinds().map(k=>k[0]);if(r){r.kind=ks[(ks.indexOf(r.kind)+1)%ks.length];saveState();dpRenderRelations()}return}
+    if(rel&&e.target.closest('[data-dp-reldel]')){const r=p.relations.find(x=>x.id===rel.dataset.dpRel);rel.classList.add('is-struck');setTimeout(()=>{p.relations=p.relations.filter(x=>x!==r);saveState();dpRenderRelations();toast(`${r?.name||'Laço'} riscado do dossiê.`)},380);return}
+  });
+  desk.addEventListener('input',e=>{
+    const t=e.target;if(t.tagName==='TEXTAREA')dpAutosize(t);
+    const rel=t.closest('[data-dp-rel]');if(rel&&t.dataset.dpRelfield){const r=dpPaper().relations.find(x=>x.id===rel.dataset.dpRel);if(r){r[t.dataset.dpRelfield]=t.value;saveState()}}
+    if(t.dataset.key==='bounty')dpBountyFmt(t.value);
+    if(t.dataset.key==='history'){const n=dpWords(t.value);document.getElementById('dpWords').textContent=`${n} ${n===1?'palavra':'palavras'}`}
+    if(t.dataset.key==='epithet'){const c=current();document.getElementById('dpPhotoCap').textContent=t.value?`“${t.value}”`:(c.name||'retrato')}
+    dpSaved();
+  });
+  document.getElementById('dpRelForm').addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('dpRelName'),name=n.value.trim();if(!name){n.focus();return}const p=dpPaper();p.relations.push({id:uid(),name,kind:document.getElementById('dpRelKind').value,note:''});n.value='';saveState();dpRenderRelations();const last=document.querySelector('#dpRelList .dp-rel:last-child');last?.classList.add('is-new');last?.querySelector('.dp-rel-note')?.focus()});
+  document.addEventListener('click',e=>{if(e.target.closest('[data-page="story"],[data-dossier-view="profile"]'))setTimeout(()=>desk.querySelectorAll('textarea').forEach(dpAutosize),60)});
+  addEventListener('resize',()=>{if(document.getElementById('page-story')?.classList.contains('active'))desk.querySelectorAll('textarea').forEach(dpAutosize)});
+}
+
 if(document.getElementById('iv')){ivWire();fgWire();renderInventory()}
+if(document.getElementById('dpDesk')){dpWire();dpRender()}
 if(document.getElementById('cx')){cbWire();cxRender();const ps=document.getElementById('cxPassiveSearch');if(ps){ps.addEventListener('input',()=>{cxUi().pq=ps.value;cxRenderPassives(current());const b=document.getElementById('cxPassiveList');if(b)b.scrollTop=0});ps.addEventListener('keydown',e=>{if(e.key==='Escape'&&ps.value){ps.value='';cxUi().pq='';cxRenderPassives(current())}})}}
 
 
