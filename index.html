@@ -5321,6 +5321,56 @@ button.cp-stat:hover{border-color:var(--cp-acc)}
 
 @media(max-width:900px){.cp-grid{grid-template-columns:1fr}.cp-head{grid-template-columns:auto minmax(0,1fr)}.cp-rules{grid-column:1/-1;justify-self:start}.cp-vitals{grid-template-columns:1fr 1fr}.cp-hp{grid-column:1/-1}}
 @media(max-width:560px){.cp,.cp-invite{padding:14px}.cp-portrait{width:66px;height:66px}.cp-name{font-size:22px}.cp-abils{grid-template-columns:repeat(3,minmax(0,1fr))}.cp-attack-main{grid-template-columns:1fr 1fr}.cp-attack-main>div{grid-column:1/-1}.cp-atk-row{grid-template-columns:1fr 1fr;}.cp-atk-row>input:first-child{grid-column:1/-1}.cp-mini{flex-wrap:wrap}.cp-mini-main{flex-basis:calc(100% - 90px)}}
+
+/* Companheiro do Domador (aba própria) */
+body.clear-sheet.mobile-only-build .mobile-nav:has([data-page=animal]:not([hidden])),.mobile-nav:has([data-page=animal]:not([hidden])){grid-template-columns:repeat(6,minmax(0,1fr))!important}
+.mobile-nav:has([data-page=animal]:not([hidden])) .mobile-tab{flex:1 1 0!important;min-width:0!important;padding-left:2px!important;padding-right:2px!important;font-size:10.5px!important}
+.ui-icon.i-paw{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 13c-2.6 0-5 2.4-5 4.6 0 1.5 1.2 2.4 2.6 2.4.9 0 1.6-.4 2.4-.4s1.5.4 2.4.4c1.4 0 2.6-.9 2.6-2.4 0-2.2-2.4-4.6-5-4.6z'/%3E%3Cellipse cx='5.5' cy='10.5' rx='1.8' ry='2.3'/%3E%3Cellipse cx='18.5' cy='10.5' rx='1.8' ry='2.3'/%3E%3Cellipse cx='9' cy='5.8' rx='1.8' ry='2.4'/%3E%3Cellipse cx='15' cy='5.8' rx='1.8' ry='2.4'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 13c-2.6 0-5 2.4-5 4.6 0 1.5 1.2 2.4 2.6 2.4.9 0 1.6-.4 2.4-.4s1.5.4 2.4.4c1.4 0 2.6-.9 2.6-2.4 0-2.2-2.4-4.6-5-4.6z'/%3E%3Cellipse cx='5.5' cy='10.5' rx='1.8' ry='2.3'/%3E%3Cellipse cx='18.5' cy='10.5' rx='1.8' ry='2.3'/%3E%3Cellipse cx='9' cy='5.8' rx='1.8' ry='2.4'/%3E%3Cellipse cx='15' cy='5.8' rx='1.8' ry='2.4'/%3E%3C/svg%3E")}
+#page-animal .cp-wrap{margin-top:0}
+.cp-animal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:4px 0 16px}
+.cp-animal-head h2{margin:2px 0 0;font:700 30px var(--r-head,var(--font-ui));color:var(--text)}
+.cp-animal-head p{margin:4px 0 0;color:var(--muted);font-size:14px;max-width:70ch}
+.cp.is-domador .cp-head{grid-template-columns:auto minmax(0,1fr) auto}
+.cp-level{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border-radius:12px;border:1px solid color-mix(in srgb,var(--cp-acc) 45%,var(--line));background:color-mix(in srgb,var(--cp-acc) 10%,transparent)}
+.cp-level small{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cp-level .cp-step b{font-size:24px;min-width:28px}
+.cp-pp-top{margin-top:6px}
+.cp-pp-top .ui-icon{color:#7fb6ff!important}
+.cp-bar.is-pp i{background:linear-gradient(90deg,#3a86ff,#7fb6ff)}
+.cp-mod em{font-style:normal;font-size:11px;color:var(--muted)}
+.cp-skills,.cp-ups{border-radius:14px;border:1px solid var(--cp-hair);padding:14px;background:color-mix(in srgb,#000 10%,transparent);display:flex;flex-direction:column;gap:8px}
+.cp-skills header,.cp-ups header{display:flex;justify-content:space-between;align-items:baseline}
+.cp-skills h3,.cp-ups h3{margin:0;font:700 17px var(--r-head,var(--font-ui))}
+.cp-skill-list,.cp-up-list{display:flex;flex-direction:column;gap:7px}
+.cp-skill,.cp-up{border-radius:11px;border:1px solid var(--cp-hair);border-left:3px solid var(--k,var(--cp-acc));padding:8px 10px;background:var(--panel)}
+.cp-skill.k-passive{--k:#3fb3a5}.cp-skill.k-action{--k:var(--gold)}.cp-skill.k-bonus{--k:#5b9cf0}.cp-skill.k-reaction{--k:#e0794b}.cp-skill.k-free{--k:#9aa3ad}
+.cp-up{--k:#b07cf0}
+.cp-skill-top,.cp-up-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cp-skill-name{all:unset;cursor:pointer;flex:1;min-width:120px;font-weight:700;font-size:14.5px;color:var(--text)}
+.cp-skill-name:hover{text-decoration:underline;text-underline-offset:3px}
+.cp-skill-name:focus-visible{outline:2px solid var(--cp-acc);outline-offset:2px;border-radius:4px}
+.cp-kind,.cp-cost,.cp-uses,.cp-up-eff{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;background:color-mix(in srgb,var(--k,var(--cp-acc)) 18%,transparent);color:var(--text);white-space:nowrap}
+.cp-cost{background:color-mix(in srgb,#3a86ff 22%,transparent)}
+.cp-up-eff{background:color-mix(in srgb,#b07cf0 22%,transparent)}
+.cp-use{height:26px;padding:0 11px;border-radius:7px;border:0;background:var(--gold);color:var(--primary-ink,#151007);font:800 12px var(--font-ui);cursor:pointer}
+.cp-use:active{transform:scale(.95)}
+.cp-skill-desc{margin:5px 0 0;font-size:13px;line-height:1.5;color:var(--muted);white-space:pre-wrap}
+.cp-skill-edit{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.cp-skill-edit>input:first-child,.cp-skill-edit textarea,.cp-skill-edit .cp-skill-foot{grid-column:1/-1}
+.cp-skill-edit label{display:flex;flex-direction:column;gap:2px}
+.cp-skill-edit small{font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--muted)}
+.cp-skill-edit .input{height:34px}
+.cp-skill-edit textarea.input{height:auto;resize:vertical}
+.cp-skill-foot{display:flex;justify-content:space-between;align-items:center}
+.cp-up-presets{display:flex;flex-wrap:wrap;gap:5px}
+.cp-up-presets button{height:28px;padding:0 10px;border-radius:99px;border:1px dashed color-mix(in srgb,#b07cf0 50%,var(--line));background:transparent;color:var(--text);font:600 12px var(--font-ui);cursor:pointer;transition:background .15s}
+.cp-up-presets button:hover{background:color-mix(in srgb,#b07cf0 15%,transparent)}
+.cp-mini-skills{flex-basis:100%;display:flex;flex-wrap:wrap;gap:5px}
+.cp-mini-skills button{height:26px;padding:0 10px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--text);font:600 12px var(--font-ui);cursor:pointer}
+.cp-mini-skills button:hover{border-color:var(--gold)}
+.cp-mini{flex-wrap:wrap}
+.cp-mini-main b em{font-style:normal;font-size:11.5px;color:var(--muted);font-weight:600}
+@media(max-width:560px){.cp.is-domador .cp-head{grid-template-columns:auto minmax(0,1fr)}.cp-level{grid-column:1/-1;flex-direction:row;justify-content:space-between}.cp-animal-head h2{font-size:24px}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -5411,6 +5461,7 @@ document.addEventListener('change',function(e){
             <span class="tab-group-label">Jogo</span>
             <div class="tab-group-buttons">
               <button class="tab active" data-page="overview"><span class="ui-icon i-sheet"></span>Ficha</button>
+              <button class="tab" data-page="animal" data-access="animal" hidden><span class="ui-icon i-paw"></span>Animal</button>
               <button class="tab" data-page="combat"><span class="ui-icon i-swords"></span>Combate</button>
               <button class="tab" data-page="techniques"><span class="ui-icon i-spark"></span>Técnicas</button>
               <button class="tab" data-page="powers"><span class="ui-icon i-fruit"></span>Poderes</button>
@@ -5521,6 +5572,10 @@ document.addEventListener('change',function(e){
           </div>
         </div>
         <section class="cp-wrap" id="companionSheet" aria-label="Companheiro animal" hidden></section>
+      </section>
+      <section class="page" id="page-animal" aria-labelledby="animalPageTitle">
+        <header class="cp-animal-head"><div><span class="cp-eyebrow">Função Domador · Animal Heroico</span><h2 id="animalPageTitle">Companheiro Animal</h2><p>A base vem da tabela de animais do sistema. Nível, habilidades e melhorias do seu companheiro ficam todos aqui.</p></div></header>
+        <section class="cp-wrap" id="animalSheet" aria-label="Ficha do companheiro animal"></section>
       </section>
 
       <section class="page" id="page-config"><div class="page-intro-v21"><div class="page-intro-icon"><span class="ui-icon i-cog"></span></div><div class="page-intro-copy"><small>Mesa de Criação</small><h2>Configuração</h2><p>Espécie, estilo, antecedentes, atributos e cálculos.</p></div><div class="page-intro-metrics" hidden=""><div class="page-intro-metric"><small>Espécie</small><b id="piSpecies">—</b></div><div class="page-intro-metric"><small>Estilo</small><b id="piStyle">—</b></div><div class="page-intro-metric"><small>Nível</small><b id="piConfigLevel">—</b></div><div class="page-intro-metric"><small>XP</small><b id="piConfigXp">—</b></div></div></div>
@@ -6145,7 +6200,7 @@ document.addEventListener('change',function(e){
 
 <div class="mobile-more-panel" id="mobileMorePanel" hidden><div class="mobile-more-head"><b>Mais páginas</b><button class="btn small" type="button" id="closeMobileMore" aria-label="Fechar mais páginas">✕</button></div><div class="mobile-more-grid"><button class="mobile-tab" data-page="powers"><span class="ui-icon i-fruit"></span>Poderes</button><button class="mobile-tab" data-page="kitchen" data-access="kitchen" hidden><span class="ui-icon i-chef"></span>Cozinha</button><button class="mobile-tab" data-page="story"><span class="ui-icon i-scroll"></span>Dossiê</button><button class="mobile-tab" data-page="functions" data-access="frontier"><span class="ui-icon i-helm"></span>Funções</button><button class="mobile-tab" data-page="ship" data-access="ship" hidden><span class="ui-icon i-ship"></span>Navio</button><button class="mobile-tab" data-page="jobs"><span class="ui-icon i-book"></span><span class="book-nav-label">Livro &amp; funções</span></button><button class="mobile-tab" data-page="config"><span class="ui-icon i-cog"></span>Config.</button>
 </div></div><nav class="mobile-nav" id="mobileNav" aria-label="Páginas da ficha no celular">
-  <button class="mobile-tab active" data-page="overview"><span class="ui-icon i-sheet"></span>Ficha</button><button class="mobile-tab" data-page="combat"><span class="ui-icon i-swords"></span>Combate</button><button class="mobile-tab" data-page="techniques"><span class="ui-icon i-spark"></span>Técnicas</button><button class="mobile-tab" data-page="inventory"><span class="ui-icon i-bag"></span>Itens</button><button class="mobile-tab" id="mobileMoreBtn" type="button" aria-controls="mobileMorePanel" aria-expanded="false"><span class="ui-icon i-scroll" aria-hidden="true"></span>Mais</button></nav>
+  <button class="mobile-tab active" data-page="overview"><span class="ui-icon i-sheet"></span>Ficha</button><button class="mobile-tab" data-page="animal" data-access="animal" hidden><span class="ui-icon i-paw"></span>Animal</button><button class="mobile-tab" data-page="combat"><span class="ui-icon i-swords"></span>Combate</button><button class="mobile-tab" data-page="techniques"><span class="ui-icon i-spark"></span>Técnicas</button><button class="mobile-tab" data-page="inventory"><span class="ui-icon i-bag"></span>Itens</button><button class="mobile-tab" id="mobileMoreBtn" type="button" aria-controls="mobileMorePanel" aria-expanded="false"><span class="ui-icon i-scroll" aria-hidden="true"></span>Mais</button></nav>
 
 <div class="modal-backdrop" id="themeModal" role="dialog" aria-modal="true" aria-labelledby="themeStudioTitle">
   <div class="modal theme-studio">
@@ -6811,7 +6866,7 @@ function skillTotal(c,name){const row=SKILLS.find(x=>x[0]===name);if(!row)return
 function trainingPoints(c){return trainingTotals(c).available}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1800)}
 function scheduleSave(){saveState()}
-function switchPage(page,forced=false){if(!forced&&page==='ship'&&!canAccessShip()){toast(isStandard()?'A página de Navio exige a profissão Carpinteiro.':'A página de Navio exige a Função Carpinteiro ou Engenheiro Bélico.');return}if(!forced&&page==='functions'&&isStandard()){toast('As Funções personalizadas pertencem ao RPG Nando.');return}if(!forced&&page==='kitchen'&&!canAccessKitchen()){toast('A página de Cozinha exige a Função Cozinheiro.');return}activePage=page;document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${page}`));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));syncCleanNavigation(page);if(page==='functions')requestAnimationFrame(renderJobs);if(page==='jobs')requestAnimationFrame(renderBookHub);if(page==='ship')requestAnimationFrame(isStandard()?renderStandardShip:renderShip);if(page==='story')requestAnimationFrame(renderDossier);if(page==='inventory')requestAnimationFrame(renderInventory);if(page==='techniques')requestAnimationFrame(()=>{renderTechniques();renderTechniqueTemplateSelect();renderTechniqueCalculator()});if(page==='combat')requestAnimationFrame(()=>{renderCombat();renderCombatTechniques();renderCombatWeapons()});window.scrollTo({top:0,behavior:'smooth'});if(innerWidth<850)document.getElementById('app').classList.remove('drawer-open')}
+function switchPage(page,forced=false){if(!forced&&page==='ship'&&!canAccessShip()){toast(isStandard()?'A página de Navio exige a profissão Carpinteiro.':'A página de Navio exige a Função Carpinteiro ou Engenheiro Bélico.');return}if(!forced&&page==='functions'&&isStandard()){toast('As Funções personalizadas pertencem ao RPG Nando.');return}if(!forced&&page==='animal'&&!(typeof cpIsDomador==='function'&&!isStandard()&&cpIsDomador(current()))){toast('A ficha do Companheiro Animal exige a Função Domador.');return}if(!forced&&page==='kitchen'&&!canAccessKitchen()){toast('A página de Cozinha exige a Função Cozinheiro.');return}activePage=page;document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${page}`));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));syncCleanNavigation(page);if(page==='functions')requestAnimationFrame(renderJobs);if(page==='jobs')requestAnimationFrame(renderBookHub);if(page==='ship')requestAnimationFrame(isStandard()?renderStandardShip:renderShip);if(page==='story')requestAnimationFrame(renderDossier);if(page==='animal'&&typeof cpRender==='function')requestAnimationFrame(cpRender);if(page==='inventory')requestAnimationFrame(renderInventory);if(page==='techniques')requestAnimationFrame(()=>{renderTechniques();renderTechniqueTemplateSelect();renderTechniqueCalculator()});if(page==='combat')requestAnimationFrame(()=>{renderCombat();renderCombatTechniques();renderCombatWeapons()});window.scrollTo({top:0,behavior:'smooth'});if(innerWidth<850)document.getElementById('app').classList.remove('drawer-open')}
 function renderOverviewSummary(){
   const c=current();
   const sp=speciesData(c), bg=c.background||'Sem antecedente';
@@ -7004,7 +7059,7 @@ function bindTrainingEvents(){['trainingSearch','trainingTypeFilter','trainingDi
 function hasFunction(name){return functionProgress(current(),name).level>0}
 function canAccessShip(c=current()){if(isStandard(c))return (c.book21?.professions||[]).some(p=>(typeof p==='string'?p:p?.id)==='carpinteiro')||bookNormalize(c.profession).split(/[,;/•]/).some(name=>name.trim()==='carpinteiro');return functionProgress(c,'Carpinteiro').level>0||functionProgress(c,'Engenheiro Bélico').level>0}
 function canAccessKitchen(){return !isStandard()&&hasFunction('Cozinheiro')}
-function renderExclusiveAccess(){const shipOk=canAccessShip(),kitchenOk=canAccessKitchen();document.querySelectorAll('[data-access="frontier"]').forEach(el=>el.hidden=isStandard());if(activePage==='functions'&&isStandard())switchPage('jobs',true);document.querySelectorAll('[data-access="ship"]').forEach(el=>el.hidden=!shipOk);document.querySelectorAll('[data-access="kitchen"]').forEach(el=>el.hidden=!kitchenOk);if(activePage==='ship'&&!shipOk)switchPage('overview',true);if(activePage==='kitchen'&&!kitchenOk)switchPage('overview',true)}
+function renderExclusiveAccess(){const shipOk=canAccessShip(),kitchenOk=canAccessKitchen();document.querySelectorAll('[data-access="frontier"]').forEach(el=>el.hidden=isStandard());if(activePage==='functions'&&isStandard())switchPage('jobs',true);document.querySelectorAll('[data-access="ship"]').forEach(el=>el.hidden=!shipOk);document.querySelectorAll('[data-access="kitchen"]').forEach(el=>el.hidden=!kitchenOk);if(activePage==='ship'&&!shipOk)switchPage('overview',true);if(activePage==='kitchen'&&!kitchenOk)switchPage('overview',true);if(typeof cpRenderAccess==='function')cpRenderAccess()}
 function ensureKitchen(c){ensure(c);return c.kitchen}
 function kitchenFunctionState(){const c=current(),p=functionProgress(c,'Cozinheiro');return {level:p.level,choice:p.choices?.['2']||'',p}}
 function kitchenBonuses(d){const proteins=clamp(num(d.proteins),0,3),carbs=clamp(num(d.carbs),0,6),veg=clamp(num(d.vegetables),0,3),sauce=!!d.sauce,spaces=proteins+carbs*.5+veg+(sauce?1:0),damage=proteins>=3?5:proteins>=2?2:proteins>=1?1:0,save=carbs>=6?2:carbs>=1?1:0,skill=veg>=3?2:veg>=1?1:0;return {proteins,carbs,veg,sauce,spaces,damage,save,skill}}
@@ -9729,7 +9784,7 @@ if(document.getElementById('iv')){ivWire();fgWire();renderInventory()}
 if(document.getElementById('dpDesk')){dpWire();dpRender()}
 
 /* ==========================================================================
-   Companheiro Animal — Animal Vinculado (Adestrador 2.1) e ficha livre (Domador)
+   Companheiro Animal — Animal Vinculado (Adestrador 2.1) e Companheiro do Domador (RPG Nando)
    ========================================================================== */
 function cpTable(){return [
   {id:'ave',label:'Águia / Falcão',species:['Águia','Falcão'],for:16,des:20,con:10,size:'Pequeno',walk:6,fly:12,swim:6},
@@ -9740,8 +9795,10 @@ function cpTable(){return [
   {id:'colosso',label:'Gorila / Panda / Touro / Urso',species:['Gorila','Panda','Touro','Urso'],for:20,des:10,con:16,size:'Grande',walk:7.5,fly:0,swim:7.5},
   {id:'custom',label:'Outro (aprovado pelo Narrador)',species:[],for:12,des:12,con:12,size:'Médio',walk:9,fly:0,swim:6}
 ]}
-function cpSizes(){return ['Miúdo','Pequeno','Médio','Grande','Enorme']}
-function cpDice(){return ['1d4','1d6','1d8','1d10','1d12','2d6']}
+function cpSizes(){return ['Miúdo','Pequeno','Médio','Grande','Enorme','Colossal']}
+function cpDice(){return ['1d4','1d6','1d8','1d10','1d12','2d6','2d8','2d10','2d12']}
+function cpAbil(){return ['for','des','con','sab','von','pre']}
+function cpAbLabel(k){return {for:'FOR',des:'DES',con:'CON',sab:'SAB',von:'VON',pre:'PRE'}[k]||k}
 function cpTrainDefs(){return [
   {id:'bruto',label:'Poder Bruto',tip:'Dano do animal sobe um passo: 1d4 → 1d6 → 1d8 → 1d10 → 1d12 → 2d6.',max:5},
   {id:'nutricao',label:'Super Nutrição',tip:'Sobe uma categoria de tamanho, até Enorme.',max:4},
@@ -9749,141 +9806,196 @@ function cpTrainDefs(){return [
   {id:'voo',label:'Velocidade de Voo',tip:'Alternativa do Treino de Velocidade: +1,5 m de voo (máx. 15 m).',max:6,needsFly:true},
   {id:'potencial',label:'Melhorar Potencial',tip:'2 Traços Comuns ou 1 Traço Específico das Zoan, aprovados pelo Narrador.',max:6}
 ]}
-function cpIsAdestrador(c){return valueArray(c.traits).some(t=>String(t.book21Id||'').startsWith('profession-adestrador')||/profiss[aã]o adestrador/i.test(String(t.source||'')))||/adestrador/i.test(String(c.profession||''))}
+function cpUpTypes(){return [
+  ['attr','Atributo','+N em um atributo'],['hp','Vida','+N PV máximos'],['pp','Poder','+N PP máximos'],['cr','Defesa','+N na CR'],
+  ['hit','Precisão','+N no acerto'],['dmg','Força bruta','+N passos no dado de dano'],['size','Porte','+N categorias de tamanho'],['speed','Velocidade','+N metros de deslocamento'],['other','Outro','Efeito descrito, sem cálculo']]}
+function cpUpPresets(){return [
+  {name:'Poder Bruto',type:'dmg',value:1,desc:'O dano do animal sobe um passo.'},
+  {name:'Super Nutrição',type:'size',value:1,desc:'O animal cresce uma categoria de tamanho.'},
+  {name:'Treino de Velocidade',type:'speed',attr:'walk',value:3,desc:'+3 m de deslocamento terrestre.'},
+  {name:'Couro Grosso',type:'cr',value:1,desc:'+1 na CR do animal.'},
+  {name:'Vigor Selvagem',type:'hp',value:5,desc:'+5 PV máximos.'},
+  {name:'Instinto Afiado',type:'hit',value:1,desc:'+1 no acerto dos ataques.'},
+  {name:'Treino de Força',type:'attr',attr:'for',value:2,desc:'+2 de Força.'},
+  {name:'Fôlego de Caça',type:'pp',value:2,desc:'+2 PP máximos.'}
+]}
+function cpAbilKinds(){return [['passive','Passiva'],['action','Ação'],['bonus','Ação Bônus'],['reaction','Reação'],['free','Livre']]}
+function cpIsAdestrador(c){return valueArray(c.traits).some(t=>String(t.book21Id||'').startsWith('profession-adestrador')||/profiss[aã]o adestrador/i.test(String(t.source||'')))||/adestrador/i.test(String(c.profession||''))||valueArray(c.book21?.professions).some(p=>/adestrador/i.test(typeof p==='string'?p:(p?.id||p?.name||'')))}
 function cpIsDomador(c){try{return !isStandard(c)&&functionProgress(c,'Domador').level>0}catch(e){return false}}
-function cpEligible(c){return cpIsAdestrador(c)||cpIsDomador(c)}
+function cpEligible(c){return isStandard(c)?cpIsAdestrador(c):cpIsDomador(c)}
+function cpMode(c){return isStandard(c)?'adestrador':'domador'}
 function cpGet(c=current()){
   const p=c.companion;if(!p||typeof p!=='object')return null;
-  p.rules=p.rules==='livre'?'livre':'adestrador';
+  p.rules=cpMode(c);
   if(!cpTable().some(r=>r.id===p.group))p.group='fera';
   if(!p.train||typeof p.train!=='object')p.train={};cpTrainDefs().forEach(d=>p.train[d.id]=Math.max(0,Math.floor(num(p.train[d.id]))));
   if(!p.custom||typeof p.custom!=='object'){const r=cpTable().find(x=>x.id==='custom');p.custom={for:r.for,des:r.des,con:r.con,size:r.size,walk:r.walk,fly:r.fly,swim:r.swim}}
-  if(!p.free||typeof p.free!=='object')p.free={};const f=p.free;
-  if(f.hpMax==null)f.hpMax=12;if(f.walk==null)f.walk=9;
-  if(!f.abilities||typeof f.abilities!=='object')f.abilities={for:12,des:12,con:12,sab:10,von:10,pre:8};
-  if(!Array.isArray(f.attacks))f.attacks=[{id:uid(),name:'Mordida',hit:'+4',dmg:'1d6+2',type:'Perfurante'}];
-  ['for','des','con','sab','von','pre'].includes(p.attackAbility)||(p.attackAbility='');
+  if(!cpAbil().includes(p.attackAbility))p.attackAbility='';
+  p.level=clamp(Math.floor(num(p.level,1)),1,20);
+  if(!Array.isArray(p.skillsList))p.skillsList=[];
+  p.skillsList=p.skillsList.filter(x=>x&&typeof x==='object').map(x=>({id:x.id||uid(),name:String(x.name||''),kind:cpAbilKinds().some(k=>k[0]===x.kind)?x.kind:'action',pp:Math.max(0,num(x.pp)),usesMax:Math.max(0,Math.floor(num(x.usesMax))),uses:Math.max(0,Math.floor(num(x.uses))),desc:String(x.desc||'')}));
+  if(!Array.isArray(p.upgrades))p.upgrades=[];
+  p.upgrades=p.upgrades.filter(x=>x&&typeof x==='object').map(x=>({id:x.id||uid(),name:String(x.name||''),type:cpUpTypes().some(t=>t[0]===x.type)?x.type:'other',attr:String(x.attr||''),value:num(x.value),desc:String(x.desc||'')}));
+  if(!Array.isArray(p.extraAttacks))p.extraAttacks=[];
+  // migração da antiga "ficha livre"
+  if(p.free&&typeof p.free==='object'&&!p.migratedFree){(p.free.attacks||[]).forEach(a=>{if(a&&a.name)p.extraAttacks.push({id:a.id||uid(),name:a.name,hit:a.hit,dmg:a.dmg,type:a.type})});if(num(p.free.ppMax))p.ppBase=num(p.free.ppMax);p.migratedFree=true}
+  p.extraAttacks=p.extraAttacks.filter(a=>a&&typeof a==='object').map(a=>({id:a.id||uid(),name:String(a.name||''),hit:String(a.hit??'+0'),dmg:String(a.dmg||'1d4'),type:String(a.type||'')}));
+  if(!cpAbil().includes(p.extraAbility))p.extraAbility='';
   return p;
 }
-function cpCreate(c,group){const r=cpTable().find(x=>x.id===group)||cpTable()[1];c.companion={rules:cpIsDomador(c)&&!cpIsAdestrador(c)?'livre':'adestrador',group:r.id,name:'',species:r.species[0]||'',damageType:r.id==='ave'||r.id==='noturno'?'Cortante':'Perfurante',train:{},notes:'',traits:'',hpCurrent:null,createdAt:Date.now()};const p=cpGet(c);p.hpCurrent=cpStats(c,p).hpMax;return p}
+function cpCreate(c,group){const r=cpTable().find(x=>x.id===group)||cpTable()[1];c.companion={group:r.id,name:'',species:r.species[0]||'',damageType:r.id==='ave'||r.id==='noturno'?'Cortante':'Perfurante',train:{},notes:'',traits:'',hpCurrent:null,ppCurrent:null,level:1,ppBase:cpMode(c)==='domador'?4:0,createdAt:Date.now()};const p=cpGet(c);const s=cpStats(c,p);p.hpCurrent=s.hpMax;p.ppCurrent=s.ppMax;return p}
+function cpUp(p,type,attr){return p.upgrades.filter(u=>u.type===type&&(attr==null||u.attr===attr)).reduce((a,u)=>a+num(u.value),0)}
 function cpStats(c,p=cpGet(c)){
-  const PB=prof(c.level);
-  if(p.rules==='livre'){const f=p.free,ab=f.abilities,hpMax=Math.max(1,num(f.hpMax,10));const atkKey=p.attackAbility||(mod(ab.for)>=mod(ab.des)?'for':'des');
-    return {free:true,PB,abilities:ab,hpMax,ppMax:Math.max(0,num(f.ppMax)),cr:num(f.cr,10),init:signed(mod(ab.des)),size:f.size||'Médio',speeds:[['Terrestre',f.walk],['Voo',f.fly],['Nado',f.swim]].filter(x=>num(x[1])>0),atkKey}}
-  const r=cpTable().find(x=>x.id===p.group),base=p.group==='custom'?p.custom:r,t=p.train;
-  const ab={for:num(base.for,10),des:num(base.des,10),con:num(base.con,10),sab:num(c.abilities.sab,10),von:num(c.abilities.von,10),pre:num(c.abilities.pre,10)};
-  const sizes=cpSizes(),si=sizes.indexOf(base.size);const size=sizes[clamp((si<0?2:si)+t.nutricao,0,sizes.length-1)];
+  const PB=prof(c.level),dom=p.rules==='domador',r=cpTable().find(x=>x.id===p.group),base=p.group==='custom'?p.custom:r,t=p.train;
+  const up=(type,attr)=>dom?cpUp(p,type,attr):0;
+  const ab={};cpAbil().forEach(k=>{const b=['for','des','con'].includes(k)?num(base[k],10):num(c.abilities[k],10);ab[k]=b+up('attr',k)});
+  const sizes=cpSizes(),si=sizes.indexOf(base.size),grow=dom?up('size'):t.nutricao;const size=sizes[clamp((si<0?2:si)+grow,0,dom?sizes.length-1:4)];
   const hasFly=num(base.fly)>0;
-  const walk=num(base.walk)?Math.min(18,num(base.walk)+3*t.velocidade):0,swim=num(base.swim)?Math.min(18,num(base.swim)+3*t.velocidade):0,fly=hasFly?Math.min(15,num(base.fly)+1.5*t.voo):0;
+  let walk,swim,fly;
+  if(dom){walk=num(base.walk)+up('speed','walk');swim=num(base.swim)?num(base.swim)+up('speed','swim'):up('speed','swim');fly=num(base.fly)?num(base.fly)+up('speed','fly'):up('speed','fly')}
+  else{walk=num(base.walk)?Math.min(18,num(base.walk)+3*t.velocidade):0;swim=num(base.swim)?Math.min(18,num(base.swim)+3*t.velocidade):0;fly=hasFly?Math.min(15,num(base.fly)+1.5*t.voo):0}
   const atkKey=p.attackAbility||(['for','des','con'].reduce((a,k)=>mod(ab[k])>mod(ab[a])?k:a,'for'));
-  const die=cpDice()[clamp(t.bruto,0,5)],m=mod(ab[atkKey]);
+  const steps=dom?up('dmg'):t.bruto,die=cpDice()[clamp(steps,0,cpDice().length-1)],m=mod(ab[atkKey]);
+  const hit=m+PB+up('hit');
+  const hpMax=Math.max(1,Math.floor(num(c.hpMax)/2)+up('hp')),ppMax=dom?Math.max(0,num(p.ppBase)+up('pp')):0;
   const avail=Math.min(6,2*Math.floor(num(c.level,1)/2)),used=cpTrainDefs().reduce((s,d)=>s+t[d.id],0);
-  return {free:false,PB,abilities:ab,hpMax:Math.max(1,Math.floor(num(c.hpMax)/2)),cr:cr(c),init:signed(mod(c.abilities.des)),size,speeds:[['Terrestre',walk],['Voo',fly],['Nado',swim]].filter(x=>x[1]>0),hasFly,atkKey,hit:m+PB,dmg:`${die}${m?signed(m):''}`,die,avail,used}
+  return {dom,PB,abilities:ab,hpMax,ppMax,cr:cr(c)+up('cr'),init:signed(mod(c.abilities.des)),size,speeds:[['Terrestre',walk],['Voo',fly],['Nado',swim]].filter(x=>x[1]>0),hasFly,atkKey,hit,dmg:`${die}${m?signed(m):''}`,die,avail,used}
 }
 function cpCheck(c,p,s,k){
-  if(s.free){const m=mod(s.abilities[k]);return {test:m,save:m}}
   if(['for','des','con'].includes(k)){const v=mod(s.abilities[k])+s.PB;return {test:v,save:v}}
-  const m=mod(c.abilities[k]),tr=valueArray(c.saveProficiencies).includes(k);return {test:m,save:m+(tr?prof(c.level):0)}
+  const extra=s.dom?cpUp(p,'attr',k):0,m=mod(num(c.abilities[k],10)+extra),tr=valueArray(c.saveProficiencies).includes(k);return {test:m,save:m+(tr?prof(c.level):0)}
 }
 function cpPaw(){return '<svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="42" rx="14" ry="12"/><ellipse cx="15" cy="27" rx="6" ry="8" transform="rotate(-20 15 27)"/><ellipse cx="49" cy="27" rx="6" ry="8" transform="rotate(20 49 27)"/><ellipse cx="25" cy="15" rx="5.5" ry="7.5"/><ellipse cx="39" cy="15" rx="5.5" ry="7.5"/></svg>'}
-function cpTitle(c){return cpIsDomador(c)&&!cpIsAdestrador(c)?'Companheiro Animal':'Animal Vinculado'}
+function cpTitle(c){return isStandard(c)?'Animal Vinculado':'Companheiro Animal'}
+function cpHost(c){return document.getElementById(isStandard(c)?'companionSheet':'animalSheet')}
+function cpS(){return cpS.s||(cpS.s={amt:5,openSkill:{},openUp:{}})}
 function cpRender(){if(cpRender.busy)return;cpRender.busy=true;try{cpRenderNow()}finally{cpRender.busy=false}}
 function cpRenderNow(){
-  const box=document.getElementById('companionSheet');if(!box)return;const c=current(),p=cpGet(c),elig=cpEligible(c);
-  box.hidden=!(elig||p);if(box.hidden){box.innerHTML='';cpRenderCombat();return}
-  if(!p){box.innerHTML=`<div class="cp-invite"><div class="cp-invite-head"><span class="cp-paw">${cpPaw()}</span><div><span class="cp-eyebrow">${cpIsAdestrador(c)?'Profissão Adestrador · Vínculo Animal':'Função Domador'}</span><h2>Escolha seu ${cpTitle(c)}</h2><p>${cpIsAdestrador(c)?'Escolha uma criatura da tabela. Força, Destreza, Constituição, tamanho e deslocamentos vêm dela; o resto é calculado a partir de você.':'Domadores podem ter um animal Heroico com ficha própria de criatura. Escolha uma base ou comece livre.'}</p></div></div>
-    <div class="cp-pick">${cpTable().map(r=>`<button type="button" class="cp-pick-card" data-cp-create="${r.id}"><b>${esc(r.label)}</b>${r.id==='custom'?'<small>Você define os valores</small>':`<span class="cp-pick-stats"><i>FOR ${r.for}</i><i>DES ${r.des}</i><i>CON ${r.con}</i></span><small>${r.size} · ${fmt(r.walk)} m${r.fly?` · voo ${fmt(r.fly)} m`:''}${r.swim?` · nado ${fmt(r.swim)} m`:''}</small>`}</button>`).join('')}${cpIsDomador(c)?'<button type="button" class="cp-pick-card is-free" data-cp-create="livre"><b>Ficha livre de criatura</b><small>Atributos, PV, PP e ataques definidos com o Mestre</small></button>':''}</div></div>`;cpRenderCombat();return}
+  const c=current(),p=cpGet(c),elig=cpEligible(c),fichaBox=document.getElementById('companionSheet'),animalBox=document.getElementById('animalSheet');
+  const std=isStandard(c);
+  if(fichaBox){fichaBox.hidden=!std||!(elig||p);if(!std||fichaBox.hidden)fichaBox.innerHTML=''}
+  if(animalBox&&std)animalBox.innerHTML='';
+  const box=cpHost(c);if(!box||(std&&box.hidden)){cpRenderCombat();return}
+  if(!p){box.innerHTML=`<div class="cp-invite"><div class="cp-invite-head"><span class="cp-paw">${cpPaw()}</span><div><span class="cp-eyebrow">${std?'Profissão Adestrador · Vínculo Animal':'Função Domador · Animal Heroico'}</span><h2>Escolha seu ${cpTitle(c)}</h2><p>${std?'Escolha uma criatura da tabela. Força, Destreza, Constituição, tamanho e deslocamentos vêm dela; o resto é calculado a partir de você.':'A base vem da tabela de animais do sistema. Depois, o seu companheiro ganha nível, habilidades e melhorias próprias nesta ficha.'}</p></div></div>
+    <div class="cp-pick">${cpTable().map(r=>`<button type="button" class="cp-pick-card" data-cp-create="${r.id}"><b>${esc(r.label)}</b>${r.id==='custom'?'<small>Você define os valores com o Narrador</small>':`<span class="cp-pick-stats"><i>FOR ${r.for}</i><i>DES ${r.des}</i><i>CON ${r.con}</i></span><small>${r.size} · ${fmt(r.walk)} m${r.fly?` · voo ${fmt(r.fly)} m`:''}${r.swim?` · nado ${fmt(r.swim)} m`:''}</small>`}</button>`).join('')}</div></div>`;cpRenderCombat();return}
   const s=cpStats(c,p),r=cpTable().find(x=>x.id===p.group),src=p.imageData||p.imageUrl||'';
   if(p.hpCurrent==null)p.hpCurrent=s.hpMax;p.hpCurrent=clamp(num(p.hpCurrent),0,s.hpMax);
-  const abil=['for','des','con','sab','von','pre'],labels={for:'FOR',des:'DES',con:'CON',sab:'SAB',von:'VON',pre:'PRE'};
+  if(s.dom){if(p.ppCurrent==null)p.ppCurrent=s.ppMax;p.ppCurrent=clamp(num(p.ppCurrent),0,s.ppMax)}
+  const abil=cpAbil();
   const head=`<header class="cp-head">
     <div class="cp-portrait">${src?`<img src="${esc(src)}" alt="">`:`<span class="cp-paw">${cpPaw()}</span>`}<label class="cp-photo-btn" title="Trocar a foto"><input type="file" accept="image/*" data-cp-photo hidden><span class="ui-icon i-plus"></span></label></div>
     <div class="cp-id">
       <span class="cp-eyebrow">${esc(cpTitle(c))} de ${esc(c.name||'—')}</span>
       <input class="cp-name" data-cp="name" value="${esc(p.name||'')}" placeholder="Nome do animal" aria-label="Nome do animal" autocomplete="off">
       <div class="cp-id-row">
-        ${p.rules==='adestrador'?`<select class="input cp-select" data-cp="group" aria-label="Tipo de animal">${cpTable().map(x=>`<option value="${x.id}"${x.id===p.group?' selected':''}>${esc(x.label)}</option>`).join('')}</select>`:''}
+        <select class="input cp-select" data-cp="group" aria-label="Base do animal">${cpTable().map(x=>`<option value="${x.id}"${x.id===p.group?' selected':''}>${esc(x.label)}</option>`).join('')}</select>
         <input class="input cp-species" data-cp="species" list="cpSpeciesList" value="${esc(p.species||'')}" placeholder="Espécie" aria-label="Espécie"><datalist id="cpSpeciesList">${(r?.species||[]).map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
         <span class="cp-chip">${esc(s.size)}</span>
       </div>
     </div>
-    <div class="cp-rules" role="group" aria-label="Regras da ficha"><button type="button" data-cp-rules="adestrador" aria-pressed="${p.rules==='adestrador'}">Adestrador 2.1</button><button type="button" data-cp-rules="livre" aria-pressed="${p.rules==='livre'}">Ficha livre</button></div>
+    ${s.dom?`<div class="cp-level"><small>Nível</small><div class="cp-step"><button type="button" data-cp-lv="-1" aria-label="Diminuir nível">−</button><b>${p.level}</b><button type="button" data-cp-lv="1" aria-label="Aumentar nível">+</button></div></div>`:''}
   </header>`;
   const vit=`<div class="cp-vitals">
     <div class="cp-hp"><div class="cp-hp-top"><span><span class="ui-icon i-heart"></span>Vida</span><b>${p.hpCurrent} / ${s.hpMax}</b></div><div class="cp-bar"><i style="width:${pct(p.hpCurrent,s.hpMax)}%"></i></div>
-      <div class="cp-hp-tools"><input class="input" type="number" min="0" value="${num(cpS().amt,5)}" data-cp-amt aria-label="Quantidade"><button type="button" data-cp-hp="-1" class="is-dmg">− Dano</button><button type="button" data-cp-hp="1" class="is-heal">+ Cura</button><button type="button" data-cp-hp="rest" title="Descanso longo: recupera todos os PV">Descanso</button></div>
-      ${s.free?'':'<small class="cp-hint">Metade do seu PV máximo · recupera tudo no descanso longo</small>'}</div>
-    ${s.free&&s.ppMax?`<div class="cp-stat"><small>PP</small><b><input class="cp-inline" type="number" min="0" data-cp="free.ppCurrent" value="${num(p.free.ppCurrent,s.ppMax)}" aria-label="PP atual"> / ${s.ppMax}</b></div>`:''}
-    <div class="cp-stat"><small>CR</small><b>${s.cr}</b>${s.free?'':'<span>igual à sua</span>'}</div>
-    <button type="button" class="cp-stat cp-copy" data-cp-copy="${cxExpr(mod(s.free?s.abilities.des:c.abilities.des))}" data-cp-label="Iniciativa"><small>Iniciativa</small><b>${s.init}</b>${s.free?'':'<span>a mesma sua</span>'}</button>
+      ${s.dom?`<div class="cp-hp-top cp-pp-top"><span><span class="ui-icon i-bolt"></span>Poder</span><b>${p.ppCurrent} / ${s.ppMax}</b></div><div class="cp-bar is-pp"><i style="width:${pct(p.ppCurrent,s.ppMax)}%"></i></div>`:''}
+      <div class="cp-hp-tools"><input class="input" type="number" min="0" value="${num(cpS().amt,5)}" data-cp-amt aria-label="Quantidade"><button type="button" data-cp-hp="-1" class="is-dmg">− Vida</button><button type="button" data-cp-hp="1" class="is-heal">+ Vida</button>${s.dom?'<button type="button" data-cp-pp="-1">− PP</button><button type="button" data-cp-pp="1">+ PP</button>':''}<button type="button" data-cp-hp="rest" title="Descanso longo: recupera tudo">Descanso</button></div>
+      <small class="cp-hint">${s.dom?`Vida base: metade da sua (${Math.floor(num(c.hpMax)/2)})${cpUp(p,'hp')?` + ${cpUp(p,'hp')} das melhorias`:''} · PP base <input class="cp-inline" type="number" min="0" data-cp="ppBase" value="${num(p.ppBase)}" aria-label="PP base">${cpUp(p,'pp')?` + ${cpUp(p,'pp')}`:''}`:'Metade do seu PV máximo · recupera tudo no descanso longo'}</small></div>
+    <div class="cp-stat"><small>CR</small><b>${s.cr}</b><span>${s.dom&&cpUp(p,'cr')?`sua CR + ${cpUp(p,'cr')}`:'igual à sua'}</span></div>
+    <button type="button" class="cp-stat cp-copy" data-cp-copy="${cxExpr(mod(c.abilities.des))}" data-cp-label="Iniciativa"><small>Iniciativa</small><b>${s.init}</b><span>a mesma sua</span></button>
     <div class="cp-stat cp-move"><small>Deslocamento</small><b>${s.speeds.map(([l,v])=>`<i>${l==='Terrestre'?'':l+' '}${fmt(v)} m</i>`).join('')||'—'}</b></div>
   </div>`;
-  const abilHtml=`<div class="cp-abils">${abil.map(k=>{const ck=cpCheck(c,p,s,k),own=!s.free&&['sab','von','pre'].includes(k);return `<div class="cp-abil${own?' is-own':''}"><small>${labels[k]}</small>${s.free?`<input class="cp-inline cp-score" type="number" min="1" max="30" data-cp="free.abilities.${k}" value="${num(s.abilities[k],10)}" aria-label="${labels[k]}">`:p.group==='custom'&&!own?`<input class="cp-inline cp-score" type="number" min="1" max="30" data-cp="custom.${k}" value="${num(s.abilities[k],10)}" aria-label="${labels[k]}">`:`<b class="cp-score">${num(s.abilities[k],10)}</b>`}<span class="cp-mod">${signed(mod(s.abilities[k]))}</span><div class="cp-abil-rolls"><button type="button" data-cp-copy="${cxExpr(ck.test)}" data-cp-label="Teste de ${labels[k]}" title="Teste">T ${signed(ck.test)}</button><button type="button" data-cp-copy="${cxExpr(ck.save)}" data-cp-label="Salvaguarda de ${labels[k]}" title="Salvaguarda">S ${signed(ck.save)}</button></div></div>`}).join('')}</div>
-    ${s.free?'':'<p class="cp-hint">FOR, DES e CON vêm da tabela e sempre somam o seu Bônus de Proficiência. SAB, VON e PRE usam os seus valores.</p>'}`;
+  const abilHtml=`<div class="cp-abils">${abil.map(k=>{const ck=cpCheck(c,p,s,k),own=['sab','von','pre'].includes(k),bonus=s.dom?cpUp(p,'attr',k):0;return `<div class="cp-abil${own?' is-own':''}"><small>${cpAbLabel(k)}</small>${p.group==='custom'&&!own?`<input class="cp-inline cp-score" type="number" min="1" max="30" data-cp="custom.${k}" value="${num(p.custom[k],10)}" aria-label="${cpAbLabel(k)}">`:`<b class="cp-score">${num(s.abilities[k],10)}</b>`}<span class="cp-mod">${signed(mod(s.abilities[k]))}${bonus?` <em>(+${bonus})</em>`:''}</span><div class="cp-abil-rolls"><button type="button" data-cp-copy="${cxExpr(ck.test)}" data-cp-label="Teste de ${cpAbLabel(k)}" title="Teste">T ${signed(ck.test)}</button><button type="button" data-cp-copy="${cxExpr(ck.save)}" data-cp-label="Salvaguarda de ${cpAbLabel(k)}" title="Salvaguarda">S ${signed(ck.save)}</button></div></div>`}).join('')}</div>
+    <p class="cp-hint">FOR, DES e CON vêm da base e sempre somam o seu Bônus de Proficiência. SAB, VON e PRE usam os seus valores${s.dom?' (mais as melhorias)':''}.</p>`;
   const types=['Perfurante','Cortante','Contundente'];
-  const atk=s.free?`<div class="cp-attacks">${p.free.attacks.map(a=>`<div class="cp-atk-row" data-cp-atk="${esc(a.id)}"><input class="input" data-cp-af="name" value="${esc(a.name)}" placeholder="Ataque" aria-label="Nome do ataque"><label><small>Acerto</small><input class="input" data-cp-af="hit" value="${esc(a.hit)}" placeholder="+4" aria-label="Acerto"></label><label><small>Dano</small><input class="input" data-cp-af="dmg" value="${esc(a.dmg)}" placeholder="1d6+2" aria-label="Dano"></label><input class="input" data-cp-af="type" value="${esc(a.type)}" placeholder="Tipo" aria-label="Tipo de dano"><button type="button" class="cp-roll" data-cp-copy="${esc(cxExpr(num(String(a.hit).replace(/[^\d-]/g,''))))}" data-cp-label="${esc(a.name)}">Acerto</button><button type="button" class="cp-roll" data-cp-copy="${esc(a.dmg)}" data-cp-label="${esc(a.name)} ${esc(a.type)}">Dano</button><button type="button" class="cp-x" data-cp-atkdel aria-label="Remover ataque">×</button></div>`).join('')}<button type="button" class="cp-add" data-cp-atkadd><span class="ui-icon i-plus"></span>Ataque</button></div>`
-    :`<div class="cp-attack">
+  const atk=`<div class="cp-attack">
       <div class="cp-attack-main"><div><span class="cp-eyebrow">Ação Atacar · duas jogadas de ataque</span><h3>Ataque ${p.name?'de '+esc(p.name):'do animal'}</h3></div>
         <button type="button" class="cp-big" data-cp-copy="${cxExpr(s.hit)}" data-cp-label="Ataque do animal"><small>Acerto</small><b>${signed(s.hit)}</b></button>
         <button type="button" class="cp-big" data-cp-copy="${esc(s.dmg)}" data-cp-label="Dano do animal ${esc(p.damageType||'')}"><small>Dano</small><b>${esc(s.dmg)}</b><span>${esc(p.damageType||'')}</span></button></div>
-      <div class="cp-attack-opts"><span>Atributo</span>${abil.map(k=>`<button type="button" data-cp-atkab="${k}" aria-pressed="${s.atkKey===k}">${labels[k]} ${signed(mod(s.abilities[k]))}</button>`).join('')}</div>
+      <div class="cp-attack-opts"><span>Atributo</span>${abil.map(k=>`<button type="button" data-cp-atkab="${k}" aria-pressed="${s.atkKey===k}">${cpAbLabel(k)} ${signed(mod(s.abilities[k]))}</button>`).join('')}</div>
       <div class="cp-attack-opts"><span>Tipo</span>${types.map(t=>`<button type="button" data-cp-dtype="${t}" aria-pressed="${p.damageType===t}">${t}</button>`).join('')}</div>
-      <p class="cp-hint">Acerto = atributo escolhido + seu Bônus de Proficiência (${signed(s.PB)}). Dano = ${s.die} + o mesmo atributo.</p>
+      <p class="cp-hint">Acerto = atributo + seu Bônus de Proficiência (${signed(s.PB)})${s.dom&&cpUp(p,'hit')?` + ${cpUp(p,'hit')} das melhorias`:''}. Dano = ${s.die} + o mesmo atributo.</p>
+      ${s.dom?`<div class="cp-attacks"><span class="cp-eyebrow">Outros ataques</span>${p.extraAttacks.map(a=>`<div class="cp-atk-row" data-cp-atk="${esc(a.id)}"><input class="input" data-cp-af="name" value="${esc(a.name)}" placeholder="Ataque (ex.: Investida)" aria-label="Nome do ataque"><label><small>Acerto</small><input class="input" data-cp-af="hit" value="${esc(a.hit)}" placeholder="+4" aria-label="Acerto"></label><label><small>Dano</small><input class="input" data-cp-af="dmg" value="${esc(a.dmg)}" placeholder="2d6+3" aria-label="Dano"></label><input class="input" data-cp-af="type" value="${esc(a.type)}" placeholder="Tipo" aria-label="Tipo de dano"><button type="button" class="cp-roll" data-cp-copy="${esc(cxExpr(num(String(a.hit).replace(/[^\d-]/g,''))))}" data-cp-label="${esc(a.name)}">Acerto</button><button type="button" class="cp-roll" data-cp-copy="${esc(a.dmg)}" data-cp-label="${esc(a.name)} ${esc(a.type)}">Dano</button><button type="button" class="cp-x" data-cp-atkdel aria-label="Remover ataque">×</button></div>`).join('')}<button type="button" class="cp-add" data-cp-atkadd><span class="ui-icon i-plus"></span>Ataque</button></div>`:''}
     </div>`;
-  const acts=`<div class="cp-actions"><span class="cp-eyebrow">Ações do animal</span><div>${(s.free?['Atacar','Defender','Auxiliar']:['Atacar (2 ataques)','Disparada','Esconder','Procurar']).map(a=>`<span class="cp-act">${a}</span>`).join('')}</div><p class="cp-hint">${s.free?'Use “Comando de Treinamento” (ação bônus) para o Companheiro Atacar, Defender (+2 de CR) ou Auxiliar.':'Age na sua iniciativa e se desloca no seu turno. Se você cair inconsciente, ele fica de guarda te protegendo.'}</p></div>`;
-  const train=s.free?'':`<section class="cp-train"><header><h3>Treinamento Animal</h3><span class="cp-train-count${s.used>s.avail?' is-over':''}">${s.used} / ${s.avail} treinos</span></header><p class="cp-hint">Duas escolhas a cada nível par, até 6 por animal. Se o animal for trocado, os treinos não passam para o novo.</p>
+  const acts=`<div class="cp-actions"><span class="cp-eyebrow">${s.dom?'Comando de Treinamento (sua ação bônus)':'Ações do animal'}</span><div>${(s.dom?['Atacar','Defender (+2 CR)','Auxiliar (Segunda Chance)']:['Atacar (2 ataques)','Disparada','Esconder','Procurar']).map(a=>`<span class="cp-act">${a}</span>`).join('')}</div><p class="cp-hint">${s.dom?'Com a ação bônus, mesmo fora do seu turno, o companheiro Ataca sem sofrer ataques de oportunidade, Defende um aliado ou Auxilia um teste.':'Age na sua iniciativa e se desloca no seu turno. Se você cair inconsciente, ele fica de guarda te protegendo.'}</p></div>`;
+  const kinds=cpAbilKinds(),skills=s.dom?`<section class="cp-skills"><header><h3>Habilidades</h3><span class="cp-train-count">${p.skillsList.length}</span></header>
+    ${p.skillsList.length?'':'<p class="cp-hint">Truques e habilidades que o seu companheiro aprendeu: um rugido, uma investida, um faro especial… Cada uma pode ter custo de PP ou usos por descanso.</p>'}
+    <div class="cp-skill-list">${p.skillsList.map(k=>{const open=!!cpS().openSkill[k.id],kl=(kinds.find(x=>x[0]===k.kind)||kinds[1])[1];return `<article class="cp-skill k-${k.kind}${open?' is-open':''}" data-cp-skill="${esc(k.id)}">
+      <div class="cp-skill-top"><button type="button" class="cp-skill-name" data-cp-skopen>${esc(k.name||'Nova habilidade')}</button><span class="cp-kind">${kl}</span>${k.pp?`<span class="cp-cost">${k.pp} PP</span>`:''}${k.usesMax?`<span class="cp-uses">${k.usesMax-k.uses}/${k.usesMax}</span>`:''}${k.kind!=='passive'&&(k.pp||k.usesMax)?`<button type="button" class="cp-use" data-cp-skuse>Usar</button>`:''}</div>
+      ${open?`<div class="cp-skill-edit"><input class="input" data-cp-sk="name" value="${esc(k.name)}" placeholder="Nome da habilidade" aria-label="Nome"><select class="input" data-cp-sk="kind" aria-label="Tipo">${kinds.map(([v,l])=>`<option value="${v}"${v===k.kind?' selected':''}>${l}</option>`).join('')}</select><label><small>Custo PP</small><input class="input" type="number" min="0" data-cp-sk="pp" value="${k.pp}"></label><label><small>Usos por descanso</small><input class="input" type="number" min="0" data-cp-sk="usesMax" value="${k.usesMax}"></label><textarea class="input" data-cp-sk="desc" rows="3" placeholder="O que a habilidade faz…">${esc(k.desc)}</textarea><div class="cp-skill-foot"><button type="button" class="cp-release" data-cp-skdel>Apagar habilidade</button><button type="button" class="cp-add" data-cp-skopen>Pronto</button></div></div>`:(k.desc?`<p class="cp-skill-desc">${esc(k.desc)}</p>`:'')}
+    </article>`}).join('')}</div>
+    <button type="button" class="cp-add" data-cp-skadd><span class="ui-icon i-plus"></span>Habilidade</button></section>`:'';
+  const ups=s.dom?`<section class="cp-ups"><header><h3>Melhorias</h3><span class="cp-train-count">${p.upgrades.length}</span></header>
+    <p class="cp-hint">Treinos, evoluções e presentes do Mestre. As melhorias com número já entram nos cálculos da ficha.</p>
+    <div class="cp-up-presets">${cpUpPresets().map((u,i)=>`<button type="button" data-cp-uppreset="${i}" title="${esc(u.desc)}">+ ${esc(u.name)}</button>`).join('')}<button type="button" data-cp-upadd>+ Personalizada</button></div>
+    <div class="cp-up-list">${p.upgrades.map(u=>{const tl=cpUpTypes().find(t=>t[0]===u.type),eff=u.type==='other'?'':u.type==='attr'?`${signed(u.value)} ${cpAbLabel(u.attr)}`:u.type==='speed'?`${signed(u.value)} m ${({walk:'terrestre',fly:'voo',swim:'nado'})[u.attr]||'terrestre'}`:u.type==='dmg'?`${signed(u.value)} passo${Math.abs(u.value)===1?'':'s'} de dano`:u.type==='size'?`${signed(u.value)} tamanho`:`${signed(u.value)} ${({hp:'PV',pp:'PP',cr:'CR',hit:'acerto'})[u.type]}`;const open=!!cpS().openUp[u.id];return `<article class="cp-up${open?' is-open':''}" data-cp-upid="${esc(u.id)}"><div class="cp-up-top"><button type="button" class="cp-skill-name" data-cp-upopen>${esc(u.name||'Melhoria')}</button>${eff?`<span class="cp-up-eff">${esc(eff)}</span>`:`<span class="cp-kind">${esc(tl[1])}</span>`}</div>
+      ${open?`<div class="cp-skill-edit"><input class="input" data-cp-upf="name" value="${esc(u.name)}" placeholder="Nome da melhoria" aria-label="Nome"><select class="input" data-cp-upf="type" aria-label="Efeito">${cpUpTypes().map(([v,l,d])=>`<option value="${v}"${v===u.type?' selected':''}>${l} · ${d}</option>`).join('')}</select>${u.type==='attr'?`<select class="input" data-cp-upf="attr" aria-label="Atributo">${cpAbil().map(k=>`<option value="${k}"${k===u.attr?' selected':''}>${cpAbLabel(k)}</option>`).join('')}</select>`:u.type==='speed'?`<select class="input" data-cp-upf="attr" aria-label="Tipo de deslocamento"><option value="walk"${u.attr==='walk'||!u.attr?' selected':''}>Terrestre</option><option value="fly"${u.attr==='fly'?' selected':''}>Voo</option><option value="swim"${u.attr==='swim'?' selected':''}>Nado</option></select>`:''}${u.type!=='other'?`<label><small>Valor</small><input class="input" type="number" step="${u.type==='speed'?1.5:1}" data-cp-upf="value" value="${num(u.value)}"></label>`:''}<textarea class="input" data-cp-upf="desc" rows="2" placeholder="Descrição">${esc(u.desc)}</textarea><div class="cp-skill-foot"><button type="button" class="cp-release" data-cp-updel>Apagar melhoria</button><button type="button" class="cp-add" data-cp-upopen>Pronto</button></div></div>`:(u.desc?`<p class="cp-skill-desc">${esc(u.desc)}</p>`:'')}</article>`}).join('')}</div></section>`:'';
+  const train=s.dom?'':`<section class="cp-train"><header><h3>Treinamento Animal</h3><span class="cp-train-count${s.used>s.avail?' is-over':''}">${s.used} / ${s.avail} treinos</span></header><p class="cp-hint">Duas escolhas a cada nível par, até 6 por animal. Se o animal for trocado, os treinos não passam para o novo.</p>
     <div class="cp-train-list">${cpTrainDefs().filter(d=>!d.needsFly||s.hasFly).map(d=>`<div class="cp-tr"><div><b>${d.label}</b><small>${d.tip}</small></div><div class="cp-step"><button type="button" data-cp-tr="${d.id}" data-d="-1" aria-label="Menos">−</button><b>${p.train[d.id]}</b><button type="button" data-cp-tr="${d.id}" data-d="1" aria-label="Mais" ${s.used>=s.avail||p.train[d.id]>=d.max?'disabled':''}>+</button></div></div>`).join('')}</div>
     ${p.train.potencial?`<label class="cp-field"><span>Traços aprendidos (Melhorar Potencial)</span><textarea class="input" data-cp="traits" rows="2" placeholder="Ex.: Faro aguçado, Pele grossa…">${esc(p.traits||'')}</textarea></label>`:''}</section>`;
-  const custom=!s.free&&p.group==='custom'?`<div class="cp-custom"><span class="cp-eyebrow">Valores combinados com o Narrador</span><label>Tamanho<select class="input" data-cp="custom.size">${cpSizes().map(z=>`<option${z===p.custom.size?' selected':''}>${z}</option>`).join('')}</select></label><label>Terrestre (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.walk" value="${num(p.custom.walk)}"></label><label>Voo (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.fly" value="${num(p.custom.fly)}"></label><label>Nado (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.swim" value="${num(p.custom.swim)}"></label></div>`:'';
-  const free=s.free?`<div class="cp-custom"><span class="cp-eyebrow">Ficha de criatura</span><label>PV máx.<input class="input" type="number" min="1" data-cp="free.hpMax" value="${s.hpMax}"></label><label>PP máx.<input class="input" type="number" min="0" data-cp="free.ppMax" value="${s.ppMax}"></label><label>CR<input class="input" type="number" min="0" data-cp="free.cr" value="${s.cr}"></label><label>Tamanho<select class="input" data-cp="free.size">${cpSizes().map(z=>`<option${z===s.size?' selected':''}>${z}</option>`).join('')}</select></label><label>Terrestre (m)<input class="input" type="number" step="1.5" min="0" data-cp="free.walk" value="${num(p.free.walk)}"></label><label>Voo (m)<input class="input" type="number" step="1.5" min="0" data-cp="free.fly" value="${num(p.free.fly)}"></label><label>Nado (m)<input class="input" type="number" step="1.5" min="0" data-cp="free.swim" value="${num(p.free.swim)}"></label></div>`:'';
-  const rules=s.free?'':`<details class="cp-rulebox"><summary>Regras do Vínculo Animal</summary><ul><li>Você pode montar o animal sem penalidade se ele for do seu tamanho ou maior, mesmo sem proficiência em montarias.</li><li>Salvaguardas de Destreza para continuar montado têm vantagem, mesmo sem sela.</li><li>Se o animal morrer, pode ser substituído por outro da tabela (ou trocado com aprovação do Narrador).</li><li>Enquanto tiver o animal, seus gastos de alimentação e hospedagem são dobrados.</li></ul></details>`;
-  const notes=`<label class="cp-field"><span>${s.free?'Truques, habilidades e anotações':'Anotações'}</span><textarea class="input" data-cp="notes" rows="3" placeholder="Personalidade, truques aprendidos, onde dorme, do que gosta…">${esc(p.notes||'')}</textarea></label>
-    <div class="cp-danger"><button type="button" class="cp-release" data-cp-release>${s.free?'Remover ficha do companheiro':'Trocar ou libertar o animal'}</button></div>`;
-  const focus=document.activeElement&&box.contains(document.activeElement)?document.activeElement.dataset.cp||document.activeElement.dataset.cpAf:null;
-  box.innerHTML=`<div class="cp">${head}${vit}<div class="cp-grid"><div class="cp-col">${abilHtml}${custom}${free}${atk}${acts}</div><div class="cp-col">${train}${rules}${notes}</div></div></div>`;
+  const custom=p.group==='custom'?`<div class="cp-custom"><span class="cp-eyebrow">Valores combinados com o Narrador</span><label>Tamanho<select class="input" data-cp="custom.size">${cpSizes().slice(0,5).map(z=>`<option${z===p.custom.size?' selected':''}>${z}</option>`).join('')}</select></label><label>Terrestre (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.walk" value="${num(p.custom.walk)}"></label><label>Voo (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.fly" value="${num(p.custom.fly)}"></label><label>Nado (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.swim" value="${num(p.custom.swim)}"></label></div>`:'';
+  const rules=s.dom?'':`<details class="cp-rulebox"><summary>Regras do Vínculo Animal</summary><ul><li>Você pode montar o animal sem penalidade se ele for do seu tamanho ou maior, mesmo sem proficiência em montarias.</li><li>Salvaguardas de Destreza para continuar montado têm vantagem, mesmo sem sela.</li><li>Se o animal morrer, pode ser substituído por outro da tabela (ou trocado com aprovação do Narrador).</li><li>Enquanto tiver o animal, seus gastos de alimentação e hospedagem são dobrados.</li></ul></details>`;
+  const notes=`<label class="cp-field"><span>Anotações</span><textarea class="input" data-cp="notes" rows="3" placeholder="Personalidade, como se conheceram, do que gosta, onde dorme…">${esc(p.notes||'')}</textarea></label>
+    <div class="cp-danger"><button type="button" class="cp-release" data-cp-release>Trocar ou libertar o animal</button></div>`;
+  box.innerHTML=`<div class="cp${s.dom?' is-domador':''}">${head}${vit}<div class="cp-grid"><div class="cp-col">${abilHtml}${custom}${atk}${acts}</div><div class="cp-col">${skills}${ups}${train}${rules}${notes}</div></div></div>`;
   cpRenderCombat();
 }
-function cpS(){return cpS.s||(cpS.s={amt:5})}
 function cpRenderCombat(){
-  const host=document.getElementById('cxPet');if(!host)return;const c=current(),p=cpGet(c);if(!p){host.innerHTML='';host.hidden=true;return}
+  const host=document.getElementById('cxPet');if(!host)return;const c=current(),p=cpGet(c);if(!p||!cpEligible(c)&&!p){host.innerHTML='';host.hidden=true;return}
   const s=cpStats(c,p);host.hidden=false;const hp=clamp(num(p.hpCurrent??s.hpMax),0,s.hpMax);
-  const atk=s.free?(p.free.attacks[0]||null):null;
-  host.innerHTML=`<div class="cp-mini"><span class="cp-mini-paw">${p.imageData||p.imageUrl?`<img src="${esc(p.imageData||p.imageUrl)}" alt="">`:cpPaw()}</span><div class="cp-mini-main"><b>${esc(p.name||p.species||'Animal')}</b><div class="cp-bar"><i style="width:${pct(hp,s.hpMax)}%"></i></div><small>${hp}/${s.hpMax} PV · CR ${s.cr} · ${s.speeds.map(x=>fmt(x[1])+' m').join(' / ')||'—'}</small></div>
+  const actives=s.dom?p.skillsList.filter(k=>k.kind!=='passive'):[];
+  host.innerHTML=`<div class="cp-mini"><span class="cp-mini-paw">${p.imageData||p.imageUrl?`<img src="${esc(p.imageData||p.imageUrl)}" alt="">`:cpPaw()}</span><div class="cp-mini-main"><b>${esc(p.name||p.species||'Animal')}${s.dom?` <em>nv ${p.level}</em>`:''}</b><div class="cp-bar"><i style="width:${pct(hp,s.hpMax)}%"></i></div><small>${hp}/${s.hpMax} PV${s.dom?` · ${num(p.ppCurrent)}/${s.ppMax} PP`:''} · CR ${s.cr} · ${s.speeds.map(x=>fmt(x[1])+' m').join(' / ')||'—'}</small></div>
     <div class="cp-mini-hp"><button type="button" data-cp-hp="-1" title="Dano (usa o valor do ajuste rápido)">−</button><button type="button" data-cp-hp="1" title="Cura">+</button></div>
-    ${s.free?(atk?`<button type="button" class="cp-big" data-cp-copy="${esc(cxExpr(num(String(atk.hit).replace(/[^\d-]/g,''))))}" data-cp-label="${esc(atk.name)}"><small>${esc(atk.name)}</small><b>${esc(atk.hit)}</b></button><button type="button" class="cp-big" data-cp-copy="${esc(atk.dmg)}" data-cp-label="${esc(atk.name)}"><small>Dano</small><b>${esc(atk.dmg)}</b></button>`:''):`<button type="button" class="cp-big" data-cp-copy="${cxExpr(s.hit)}" data-cp-label="Ataque do animal"><small>Acerto ×2</small><b>${signed(s.hit)}</b></button><button type="button" class="cp-big" data-cp-copy="${esc(s.dmg)}" data-cp-label="Dano do animal ${esc(p.damageType||'')}"><small>Dano</small><b>${esc(s.dmg)}</b></button>`}</div>`;
+    <button type="button" class="cp-big" data-cp-copy="${cxExpr(s.hit)}" data-cp-label="Ataque do animal"><small>Acerto ×2</small><b>${signed(s.hit)}</b></button><button type="button" class="cp-big" data-cp-copy="${esc(s.dmg)}" data-cp-label="Dano do animal ${esc(p.damageType||'')}"><small>Dano</small><b>${esc(s.dmg)}</b></button>
+    ${actives.length?`<div class="cp-mini-skills">${actives.map(k=>`<button type="button" data-cp-skill="${esc(k.id)}" data-cp-skuse title="${esc(k.desc)}">${esc(k.name||'Habilidade')}${k.pp?` · ${k.pp} PP`:''}${k.usesMax?` · ${k.usesMax-k.uses}/${k.usesMax}`:''}</button>`).join('')}</div>`:''}</div>`;
 }
-function cpHp(c,p,how,amt){const s=cpStats(c,p);if(how==='rest')p.hpCurrent=s.hpMax;else p.hpCurrent=clamp(num(p.hpCurrent??s.hpMax)+num(how)*Math.max(0,num(amt)),0,s.hpMax);saveState();cpRender();if(!p.hpCurrent)toast(`${p.name||'O animal'} caiu!`)}
+function cpHp(c,p,how,amt){const s=cpStats(c,p);if(how==='rest'){p.hpCurrent=s.hpMax;if(s.dom){p.ppCurrent=s.ppMax;p.skillsList.forEach(k=>k.uses=0)}}else p.hpCurrent=clamp(num(p.hpCurrent??s.hpMax)+num(how)*Math.max(0,num(amt)),0,s.hpMax);saveState();cpRender();if(!p.hpCurrent)toast(`${p.name||'O animal'} caiu!`)}
+function cpRenderAccess(){const c=current(),ok=!isStandard(c)&&cpIsDomador(c);document.querySelectorAll('[data-access="animal"]').forEach(el=>el.hidden=!ok);if(activePage==='animal'&&!ok)switchPage('overview',true)}
 function cpWire(){
   if(cpWire.done)return;cpWire.done=true;
   const onClick=e=>{
     const t=e.target,c=current();let b;
-    if((b=t.closest('[data-cp-create]'))){const g=b.dataset.cpCreate;const p=cpCreate(c,g==='livre'?'fera':g);if(g==='livre'){p.rules='livre';p.species='';p.hpCurrent=cpStats(c,p).hpMax}saveState();cpRender();toast('Animal vinculado! Dê um nome a ele.');setTimeout(()=>document.querySelector('#companionSheet .cp-name')?.focus(),50);return}
-    const p=cpGet(c);if(!p)return;
+    if((b=t.closest('[data-cp-create]'))){cpCreate(c,b.dataset.cpCreate);saveState();cpRender();toast(isStandard(c)?'Animal vinculado! Dê um nome a ele.':'Companheiro escolhido! Dê um nome a ele.');setTimeout(()=>cpHost(c)?.querySelector('.cp-name')?.focus(),50);return}
+    const p=cpGet(c);if(!p)return;const s=()=>cpStats(c,p);
     if((b=t.closest('[data-cp-copy]'))){cxCopy(b.dataset.cpCopy,b.dataset.cpLabel||'');return}
-    if((b=t.closest('[data-cp-hp]'))){const inside=b.closest('#cxPet');const amt=inside?num(document.getElementById('quickAmount')?.value,1):num(document.querySelector('#companionSheet [data-cp-amt]')?.value,cpS().amt);cpHp(c,p,b.dataset.cpHp,amt);return}
-    if((b=t.closest('[data-cp-rules]'))){p.rules=b.dataset.cpRules;p.hpCurrent=Math.min(num(p.hpCurrent),cpStats(c,p).hpMax);saveState();cpRender();return}
+    const amount=()=>b.closest('#cxPet')?num(document.getElementById('quickAmount')?.value,1):num(cpHost(c)?.querySelector('[data-cp-amt]')?.value,cpS().amt);
+    if((b=t.closest('[data-cp-hp]'))){cpHp(c,p,b.dataset.cpHp,amount());return}
+    if((b=t.closest('[data-cp-pp]'))){p.ppCurrent=clamp(num(p.ppCurrent)+num(b.dataset.cpPp)*amount(),0,s().ppMax);saveState();cpRender();return}
+    if((b=t.closest('[data-cp-lv]'))){p.level=clamp(p.level+num(b.dataset.cpLv),1,20);saveState();cpRender();return}
     if((b=t.closest('[data-cp-atkab]'))){p.attackAbility=b.dataset.cpAtkab;saveState();cpRender();return}
     if((b=t.closest('[data-cp-dtype]'))){p.damageType=b.dataset.cpDtype;saveState();cpRender();return}
-    if((b=t.closest('[data-cp-tr]'))){const d=cpTrainDefs().find(x=>x.id===b.dataset.cpTr),s=cpStats(c,p),delta=num(b.dataset.d);if(delta>0&&(s.used>=s.avail||p.train[d.id]>=d.max))return;p.train[d.id]=Math.max(0,p.train[d.id]+delta);saveState();cpRender();return}
-    if(t.closest('[data-cp-atkadd]')){p.free.attacks.push({id:uid(),name:'',hit:'+0',dmg:'1d4',type:''});saveState();cpRender();document.querySelector('#companionSheet .cp-atk-row:last-child input')?.focus();return}
-    if((b=t.closest('[data-cp-atkdel]'))){const id=b.closest('[data-cp-atk]').dataset.cpAtk;p.free.attacks=p.free.attacks.filter(a=>a.id!==id);saveState();cpRender();return}
+    if((b=t.closest('[data-cp-tr]'))){const d=cpTrainDefs().find(x=>x.id===b.dataset.cpTr),st=s(),delta=num(b.dataset.d);if(delta>0&&(st.used>=st.avail||p.train[d.id]>=d.max))return;p.train[d.id]=Math.max(0,p.train[d.id]+delta);saveState();cpRender();return}
+    if(t.closest('[data-cp-atkadd]')){p.extraAttacks.push({id:uid(),name:'',hit:signed(s().hit),dmg:'1d6',type:p.damageType||''});saveState();cpRender();cpHost(c)?.querySelector('.cp-atk-row:last-of-type input')?.focus();return}
+    if((b=t.closest('[data-cp-atkdel]'))){const id=b.closest('[data-cp-atk]').dataset.cpAtk;p.extraAttacks=p.extraAttacks.filter(a=>a.id!==id);saveState();cpRender();return}
+    if(t.closest('[data-cp-skadd]')){const k={id:uid(),name:'',kind:'action',pp:0,usesMax:0,uses:0,desc:''};p.skillsList.push(k);cpS().openSkill[k.id]=true;saveState();cpRender();cpHost(c)?.querySelector(`[data-cp-skill="${k.id}"] [data-cp-sk="name"]`)?.focus();return}
+    const sk=t.closest('[data-cp-skill]');
+    if(sk&&t.closest('[data-cp-skuse]')){const k=p.skillsList.find(x=>x.id===sk.dataset.cpSkill);if(!k)return;if(k.usesMax&&k.uses>=k.usesMax){toast(`${k.name}: sem usos até o descanso.`);return}if(k.pp&&num(p.ppCurrent)<k.pp){toast(`${p.name||'O animal'} não tem PP suficiente.`);return}if(k.pp)p.ppCurrent=num(p.ppCurrent)-k.pp;if(k.usesMax)k.uses++;saveState();cpRender();toast(`${p.name||'Animal'} usou ${k.name}${k.pp?` (−${k.pp} PP)`:''}.`);return}
+    if(sk&&t.closest('[data-cp-skopen]')){cpS().openSkill[sk.dataset.cpSkill]=!cpS().openSkill[sk.dataset.cpSkill];cpRender();return}
+    if(sk&&t.closest('[data-cp-skdel]')){p.skillsList=p.skillsList.filter(x=>x.id!==sk.dataset.cpSkill);saveState();cpRender();return}
+    if((b=t.closest('[data-cp-uppreset]'))){const u={...cpUpPresets()[num(b.dataset.cpUppreset)],id:uid()};u.attr=u.attr||'';p.upgrades.push(u);saveState();cpRender();toast(`Melhoria: ${u.name}.`);return}
+    if(t.closest('[data-cp-upadd]')){const u={id:uid(),name:'',type:'attr',attr:'for',value:1,desc:''};p.upgrades.push(u);cpS().openUp[u.id]=true;saveState();cpRender();cpHost(c)?.querySelector(`[data-cp-upid="${u.id}"] [data-cp-upf="name"]`)?.focus();return}
+    const up=t.closest('[data-cp-upid]');
+    if(up&&t.closest('[data-cp-upopen]')){cpS().openUp[up.dataset.cpUpid]=!cpS().openUp[up.dataset.cpUpid];cpRender();return}
+    if(up&&t.closest('[data-cp-updel]')){p.upgrades=p.upgrades.filter(x=>x.id!==up.dataset.cpUpid);saveState();cpRender();return}
     if((b=t.closest('[data-cp-release]'))){if(b.dataset.armed!=='1'){b.dataset.armed='1';b.textContent='Clique de novo para confirmar';setTimeout(()=>{if(b.isConnected){b.dataset.armed='';b.textContent='Trocar ou libertar o animal'}},2800);return}delete c.companion;saveState();cpRender();toast('O animal seguiu seu caminho.');return}
   };
-  document.getElementById('companionSheet')?.addEventListener('click',onClick);
-  document.getElementById('cxPet')?.addEventListener('click',onClick);
-  const sheet=document.getElementById('companionSheet');
-  sheet?.addEventListener('change',async e=>{
+  const onChange=async e=>{
     const t=e.target,c=current(),p=cpGet(c);if(!p)return;
     if(t.matches('[data-cp-photo]')){const f=t.files?.[0];if(!f)return;try{p.imageData=await compressItemImage(f);p.imageUrl='';saveState();cpRender()}catch(err){toast('Não foi possível carregar a imagem.')}return}
-    if(t.dataset.cp){const key=t.dataset.cp,val=t.type==='number'?num(t.value):t.value;setPath(p,key,val);if(key==='group'){const r=cpTable().find(x=>x.id===val);if(r&&r.species.length&&!r.species.includes(p.species))p.species=r.species[0];p.hpCurrent=Math.min(num(p.hpCurrent),cpStats(c,p).hpMax)}saveState();if(t.tagName==='SELECT'||t.type==='number')requestAnimationFrame(cpRender);return}
-    if(t.dataset.cpAf){const id=t.closest('[data-cp-atk]').dataset.cpAtk,a=p.free.attacks.find(x=>x.id===id);if(a){a[t.dataset.cpAf]=t.value;saveState();requestAnimationFrame(cpRender)}return}
+    if(t.dataset.cp){const key=t.dataset.cp,val=t.type==='number'?num(t.value):t.value;setPath(p,key,val);if(key==='group'){const r=cpTable().find(x=>x.id===val);if(r&&r.species.length&&!r.species.includes(p.species))p.species=r.species[0]}saveState();if(t.tagName==='SELECT'||t.type==='number')requestAnimationFrame(cpRender);return}
+    if(t.dataset.cpAf){const id=t.closest('[data-cp-atk]').dataset.cpAtk,a=p.extraAttacks.find(x=>x.id===id);if(a){a[t.dataset.cpAf]=t.value;saveState();requestAnimationFrame(cpRender)}return}
+    if(t.dataset.cpSk){const k=p.skillsList.find(x=>x.id===t.closest('[data-cp-skill]').dataset.cpSkill);if(k){k[t.dataset.cpSk]=t.type==='number'?Math.max(0,num(t.value)):t.value;saveState();if(t.tagName==='SELECT'||t.type==='number')requestAnimationFrame(cpRender)}return}
+    if(t.dataset.cpUpf){const u=p.upgrades.find(x=>x.id===t.closest('[data-cp-upid]').dataset.cpUpid);if(u){u[t.dataset.cpUpf]=t.type==='number'?num(t.value):t.value;if(t.dataset.cpUpf==='type'){u.attr=u.type==='attr'?'for':u.type==='speed'?'walk':''}saveState();requestAnimationFrame(cpRender)}return}
     if(t.matches('[data-cp-amt]'))cpS().amt=num(t.value,5);
-  });
-  sheet?.addEventListener('input',e=>{const t=e.target,p=cpGet();if(!p)return;if(t.dataset.cp&&t.type!=='number'&&t.tagName!=='SELECT'){setPath(p,t.dataset.cp,t.value);saveState();if(t.dataset.cp==='name')cpRenderCombat()}});
-  document.addEventListener('click',e=>{if(e.target.closest('#fullRest')){const c=current(),p=cpGet(c);if(p){p.hpCurrent=cpStats(c,p).hpMax;setTimeout(()=>{saveState();cpRender()},0)}}},true);
+  };
+  const onInput=e=>{const t=e.target,p=cpGet();if(!p)return;
+    if(t.dataset.cp&&t.type!=='number'&&t.tagName!=='SELECT'){setPath(p,t.dataset.cp,t.value);saveState();if(t.dataset.cp==='name')cpRenderCombat();return}
+    if(t.dataset.cpSk&&t.type!=='number'&&t.tagName!=='SELECT'){const k=p.skillsList.find(x=>x.id===t.closest('[data-cp-skill]').dataset.cpSkill);if(k){k[t.dataset.cpSk]=t.value;saveState()}return}
+    if(t.dataset.cpUpf&&t.type!=='number'&&t.tagName!=='SELECT'){const u=p.upgrades.find(x=>x.id===t.closest('[data-cp-upid]').dataset.cpUpid);if(u){u[t.dataset.cpUpf]=t.value;saveState()}}};
+  ['companionSheet','animalSheet','cxPet'].forEach(id=>{const el=document.getElementById(id);if(!el)return;el.addEventListener('click',onClick);el.addEventListener('change',onChange);el.addEventListener('input',onInput)});
+  document.addEventListener('click',e=>{if(e.target.closest('#fullRest')){const c=current(),p=cpGet(c);if(p){setTimeout(()=>cpHp(c,p,'rest',0),0)}}},true);
 }
 
-if(document.getElementById('companionSheet')){cpWire();cpRender()}
+if(document.getElementById('companionSheet')){cpWire();cpRenderAccess();cpRender()}
 if(document.getElementById('cx')){cbWire();cxRender();const ps=document.getElementById('cxPassiveSearch');if(ps){ps.addEventListener('input',()=>{cxUi().pq=ps.value;cxRenderPassives(current());const b=document.getElementById('cxPassiveList');if(b)b.scrollTop=0});ps.addEventListener('keydown',e=>{if(e.key==='Escape'&&ps.value){ps.value='';cxUi().pq='';cxRenderPassives(current())}})}}
 
 
