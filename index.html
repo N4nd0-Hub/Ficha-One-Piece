@@ -5173,6 +5173,154 @@ dialog.fg.is-item .fg-arsenal,dialog.fg.is-item .fg-w{display:none}
   #dpDesk .dp-ink{font-size:calc(21px*var(--dp-fs,1))!important}
 }
 @media (prefers-reduced-motion:reduce){.dp-sheet,.dp-postit,.dp-card,.dp-rel{transition:none}.dp-stamp.is-thump,.dp-rel.is-new,.dp-sheet.is-rewrite .dp-ink,.dp-saved::before{animation:none}}
+
+/* ---------- Companheiro Animal ---------- */
+.cp-wrap{margin-top:22px;--cp-acc:color-mix(in srgb,var(--gold) 70%,#6fbf73);--cp-hair:color-mix(in srgb,var(--line) 80%,transparent);font-family:var(--font-ui)}
+.cp-wrap[hidden]{display:none}
+.cp-paw svg{width:100%;height:100%;fill:currentColor}
+.cp-eyebrow{display:block;font:700 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cp-hint{margin:6px 0 0;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.cp-invite,.cp{position:relative;border-radius:18px;border:1px solid var(--cp-hair);background:radial-gradient(90% 120% at 0 0,color-mix(in srgb,var(--cp-acc) 12%,transparent),transparent 55%),var(--panel);box-shadow:0 18px 40px -30px #000;padding:20px 22px}
+.cp-invite-head{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+.cp-invite-head .cp-paw{width:58px;height:58px;flex:none;color:var(--cp-acc);opacity:.8}
+.cp-invite h2{margin:2px 0 4px;font:700 24px var(--r-head,var(--font-ui));color:var(--text)}
+.cp-invite p{margin:0;color:var(--muted);font-size:14px;line-height:1.5;max-width:70ch}
+.cp-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.cp-pick-card{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;padding:12px 14px;border-radius:12px;border:1px solid var(--cp-hair);background:color-mix(in srgb,#000 12%,transparent);color:var(--text);cursor:pointer;font-family:inherit;transition:transform .15s,border-color .15s,background .15s}
+.cp-pick-card:hover{transform:translateY(-2px);border-color:var(--cp-acc);background:color-mix(in srgb,var(--cp-acc) 10%,transparent)}
+.cp-pick-card b{font-size:14.5px}
+.cp-pick-card small{font-size:12.5px;color:var(--muted)}
+.cp-pick-stats{display:flex;gap:6px}
+.cp-pick-stats i{font-style:normal;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:99px;background:color-mix(in srgb,var(--text) 9%,transparent)}
+.cp-pick-card.is-free{border-style:dashed}
+
+.cp-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--cp-hair)}
+.cp-portrait{position:relative;width:86px;height:86px;border-radius:50%;overflow:hidden;background:color-mix(in srgb,#000 30%,var(--panel2,var(--panel)));display:grid;place-items:center;box-shadow:0 0 0 3px color-mix(in srgb,var(--cp-acc) 55%,transparent),0 10px 20px -12px #000}
+.cp-portrait img{width:100%;height:100%;object-fit:cover}
+.cp-portrait .cp-paw{width:46px;height:46px;color:var(--cp-acc);opacity:.7}
+.cp-photo-btn{position:absolute;inset:auto 0 0 0;height:28px;display:grid;place-items:center;background:color-mix(in srgb,#000 60%,transparent);color:#fff;cursor:pointer;opacity:0;transition:opacity .2s}
+.cp-portrait:hover .cp-photo-btn,.cp-photo-btn:focus-within{opacity:1}
+.cp-photo-btn .ui-icon{width:15px;height:15px}
+.cp-id{min-width:0;display:flex;flex-direction:column;gap:6px}
+.cp-name{all:unset;box-sizing:border-box;width:100%;font:700 28px/1.15 var(--r-head,var(--font-ui));color:var(--text);border-bottom:1px dashed transparent;padding:2px 0}
+.cp-name:hover{border-bottom-color:var(--cp-hair)}
+.cp-name:focus{border-bottom-color:var(--cp-acc)}
+.cp-name::placeholder{color:color-mix(in srgb,var(--text) 35%,transparent)}
+.cp-id-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cp-select{height:34px;max-width:280px}
+.cp-species{height:34px;width:150px}
+.cp-chip{padding:5px 11px;border-radius:99px;border:1px solid var(--cp-hair);font-size:12.5px;font-weight:700;color:var(--text)}
+.cp-rules{display:flex;padding:3px;border-radius:10px;background:color-mix(in srgb,#000 22%,transparent)}
+.cp-rules button{border:0;background:transparent;color:var(--muted);height:32px;padding:0 12px;border-radius:7px;font:700 12.5px var(--font-ui);cursor:pointer;white-space:nowrap}
+.cp-rules button[aria-pressed=true]{background:var(--cp-acc);color:var(--primary-ink,#151007)}
+
+.cp-vitals{display:grid;grid-template-columns:minmax(260px,2fr) repeat(auto-fit,minmax(110px,1fr));gap:10px;padding:16px 0}
+.cp-hp,.cp-stat{border-radius:12px;border:1px solid var(--cp-hair);background:color-mix(in srgb,#000 12%,transparent);padding:10px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.cp-hp-top{display:flex;justify-content:space-between;align-items:baseline}
+.cp-hp-top span{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.cp-hp-top .ui-icon{width:14px;height:14px;color:#e2665d}
+.cp-hp-top b{font:700 20px var(--r-head,var(--font-ui));color:var(--text)}
+.cp-bar{height:9px;border-radius:99px;background:color-mix(in srgb,#000 35%,transparent);overflow:hidden}
+.cp-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#d9534f,#ef8a5a);transition:width .4s}
+.cp-hp-tools{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
+.cp-hp-tools .input{width:64px;height:30px;padding:0 8px}
+.cp-hp-tools button{height:30px;padding:0 10px;border-radius:8px;border:1px solid var(--cp-hair);background:transparent;color:var(--text);font:700 12.5px var(--font-ui);cursor:pointer}
+.cp-hp-tools .is-dmg:hover{border-color:var(--red);color:var(--red)}
+.cp-hp-tools .is-heal:hover{border-color:#6fbf73;color:#8fd493}
+.cp-stat small{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.cp-stat b{font:700 22px var(--r-head,var(--font-ui));color:var(--text);display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.cp-stat span{font-size:11.5px;color:var(--muted)}
+.cp-move b{font-size:17px}.cp-move i{font-style:normal}.cp-move i+i::before{content:"·";margin-right:8px;color:var(--muted)}
+button.cp-stat{cursor:copy;text-align:left;font-family:inherit;color:inherit}
+button.cp-stat:hover{border-color:var(--cp-acc)}
+.cp-inline{all:unset;box-sizing:border-box;width:3.2ch;text-align:center;border-bottom:1px dashed var(--cp-hair);color:var(--text)}
+.cp-inline:focus{border-bottom-color:var(--cp-acc)}
+
+.cp-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px}
+.cp-col{display:flex;flex-direction:column;gap:14px;min-width:0}
+.cp-abils{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.cp-abil{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px 6px;border-radius:12px;border:1px solid var(--cp-hair);background:color-mix(in srgb,#000 12%,transparent)}
+.cp-abil.is-own{border-style:dashed}
+.cp-abil small{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.cp-score{font:700 22px var(--r-head,var(--font-ui));color:var(--text);width:3ch;text-align:center}
+.cp-mod{font-size:12.5px;font-weight:700;color:var(--cp-acc)}
+.cp-abil-rolls{display:flex;flex-direction:column;gap:3px;width:100%;margin-top:4px}
+.cp-abil-rolls button{border:0;border-radius:6px;background:color-mix(in srgb,var(--text) 7%,transparent);color:var(--text);font:700 11.5px var(--font-ui);padding:3px 0;cursor:copy}
+.cp-abil-rolls button:hover{background:color-mix(in srgb,var(--cp-acc) 22%,transparent)}
+
+.cp-attack{border-radius:14px;border:1px solid color-mix(in srgb,var(--cp-acc) 40%,var(--line));background:linear-gradient(135deg,color-mix(in srgb,var(--cp-acc) 10%,transparent),transparent 60%);padding:14px;display:flex;flex-direction:column;gap:10px}
+.cp-attack-main{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
+.cp-attack-main h3{margin:2px 0 0;font:700 18px var(--r-head,var(--font-ui))}
+.cp-big{display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:92px;padding:8px 12px;border-radius:11px;border:1px solid var(--cp-hair);background:color-mix(in srgb,#000 18%,transparent);color:var(--text);cursor:copy;font-family:inherit;transition:border-color .15s,transform .1s}
+.cp-big:hover{border-color:var(--cp-acc)}
+.cp-big:active{transform:scale(.97)}
+.cp-big small{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.cp-big b{font:700 21px var(--r-head,var(--font-ui));white-space:nowrap}
+.cp-big span{font-size:11.5px;color:var(--muted)}
+.cp-attack-opts{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.cp-attack-opts>span{font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:4px;min-width:62px}
+.cp-attack-opts button{height:28px;padding:0 10px;border-radius:99px;border:1px solid var(--cp-hair);background:transparent;color:var(--muted);font:700 12px var(--font-ui);cursor:pointer}
+.cp-attack-opts button[aria-pressed=true]{background:color-mix(in srgb,var(--cp-acc) 22%,transparent);border-color:var(--cp-acc);color:var(--text)}
+.cp-attacks{display:flex;flex-direction:column;gap:8px}
+.cp-atk-row{display:grid;grid-template-columns:minmax(110px,1.4fr) 70px 90px minmax(80px,1fr) auto auto auto;gap:6px;align-items:end}
+.cp-atk-row label{display:flex;flex-direction:column;gap:2px}
+.cp-atk-row small{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase}
+.cp-atk-row .input{height:34px;padding:0 8px}
+.cp-roll{height:34px;padding:0 10px;border-radius:8px;border:1px solid var(--cp-hair);background:transparent;color:var(--text);font:700 12px var(--font-ui);cursor:copy}
+.cp-roll:hover{border-color:var(--cp-acc)}
+.cp-x{height:34px;width:30px;border:0;background:transparent;color:var(--muted);font-size:18px;cursor:pointer}
+.cp-x:hover{color:var(--red)}
+.cp-add{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:8px;border:1px dashed var(--cp-hair);background:transparent;color:var(--text);font:700 12.5px var(--font-ui);cursor:pointer}
+.cp-add .ui-icon{width:13px;height:13px}
+.cp-actions>div{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.cp-act{padding:5px 11px;border-radius:8px;background:color-mix(in srgb,var(--gold) 12%,transparent);border:1px solid color-mix(in srgb,var(--gold) 35%,var(--line));font-size:13px;font-weight:700;color:var(--text)}
+.cp-custom{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;padding:12px;border-radius:12px;border:1px dashed var(--cp-hair)}
+.cp-custom .cp-eyebrow{grid-column:1/-1}
+.cp-custom label{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:700;color:var(--muted)}
+.cp-custom .input{height:34px}
+
+.cp-train{border-radius:14px;border:1px solid var(--cp-hair);padding:14px;background:color-mix(in srgb,#000 10%,transparent)}
+.cp-train header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.cp-train h3{margin:0;font:700 17px var(--r-head,var(--font-ui))}
+.cp-train-count{font-size:12.5px;font-weight:800;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--cp-acc) 20%,transparent);color:var(--text)}
+.cp-train-count.is-over{background:color-mix(in srgb,var(--red) 25%,transparent)}
+.cp-train-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.cp-tr{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;border:1px solid var(--cp-hair)}
+.cp-tr b{display:block;font-size:13.5px;color:var(--text)}
+.cp-tr small{display:block;font-size:12px;color:var(--muted);line-height:1.35}
+.cp-step{display:flex;align-items:center;gap:6px;flex:none}
+.cp-step button{width:28px;height:28px;border-radius:8px;border:1px solid var(--cp-hair);background:transparent;color:var(--text);font-size:16px;font-weight:700;cursor:pointer}
+.cp-step button:hover:not(:disabled){border-color:var(--cp-acc)}
+.cp-step button:disabled{opacity:.35;cursor:not-allowed}
+.cp-step b{min-width:16px;text-align:center;font:700 17px var(--r-head,var(--font-ui))}
+.cp-field{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.cp-field span{font-size:12.5px;font-weight:700;color:var(--muted)}
+.cp-field textarea{resize:vertical}
+.cp-rulebox{border-radius:12px;border:1px solid var(--cp-hair);padding:10px 12px}
+.cp-rulebox summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--text)}
+.cp-rulebox ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.5}
+.cp-danger{display:flex;justify-content:flex-end}
+.cp-release{border:0;background:transparent;color:var(--muted);font:600 12.5px var(--font-ui);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.cp-release:hover,.cp-release[data-armed="1"]{color:var(--red)}
+
+/* No combate */
+#cxPet{margin-bottom:10px}
+#cxPet[hidden]{display:none}
+.cp-mini{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;border:1px solid color-mix(in srgb,var(--gold) 35%,var(--line));background:linear-gradient(90deg,color-mix(in srgb,#6fbf73 10%,transparent),transparent 70%)}
+.cp-mini-paw{width:40px;height:40px;flex:none;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:color-mix(in srgb,#000 25%,transparent);color:#8fd493}
+.cp-mini-paw svg{width:22px;height:22px;fill:currentColor}
+.cp-mini-paw img{width:100%;height:100%;object-fit:cover}
+.cp-mini-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.cp-mini-main b{font-size:14px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cp-mini-main small{font-size:11.5px;color:var(--muted)}
+.cp-mini .cp-bar{height:6px}
+.cp-mini-hp{display:flex;flex-direction:column;gap:3px}
+.cp-mini-hp button{width:26px;height:22px;border-radius:6px;border:1px solid var(--cp-hair,var(--line));background:transparent;color:var(--text);font-weight:700;cursor:pointer}
+.cp-mini .cp-big{min-width:0;padding:5px 9px}
+.cp-mini .cp-big b{font-size:16px}
+
+@media(max-width:900px){.cp-grid{grid-template-columns:1fr}.cp-head{grid-template-columns:auto minmax(0,1fr)}.cp-rules{grid-column:1/-1;justify-self:start}.cp-vitals{grid-template-columns:1fr 1fr}.cp-hp{grid-column:1/-1}}
+@media(max-width:560px){.cp,.cp-invite{padding:14px}.cp-portrait{width:66px;height:66px}.cp-name{font-size:22px}.cp-abils{grid-template-columns:repeat(3,minmax(0,1fr))}.cp-attack-main{grid-template-columns:1fr 1fr}.cp-attack-main>div{grid-column:1/-1}.cp-atk-row{grid-template-columns:1fr 1fr;}.cp-atk-row>input:first-child{grid-column:1/-1}.cp-mini{flex-wrap:wrap}.cp-mini-main{flex-basis:calc(100% - 90px)}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -5372,6 +5520,7 @@ document.addEventListener('change',function(e){
             </div>
           </div>
         </div>
+        <section class="cp-wrap" id="companionSheet" aria-label="Companheiro animal" hidden></section>
       </section>
 
       <section class="page" id="page-config"><div class="page-intro-v21"><div class="page-intro-icon"><span class="ui-icon i-cog"></span></div><div class="page-intro-copy"><small>Mesa de Criação</small><h2>Configuração</h2><p>Espécie, estilo, antecedentes, atributos e cálculos.</p></div><div class="page-intro-metrics" hidden=""><div class="page-intro-metric"><small>Espécie</small><b id="piSpecies">—</b></div><div class="page-intro-metric"><small>Estilo</small><b id="piStyle">—</b></div><div class="page-intro-metric"><small>Nível</small><b id="piConfigLevel">—</b></div><div class="page-intro-metric"><small>XP</small><b id="piConfigXp">—</b></div></div></div>
@@ -5540,7 +5689,7 @@ document.addEventListener('change',function(e){
             <section class="cx-col" id="cxColActions" aria-labelledby="cxActionsTitle">
               <header class="cx-col-head"><h2 id="cxActionsTitle">Ações</h2><span class="cx-count" id="cbAttackCount"></span>
                 <div class="cx-col-tools"><button type="button" class="cx-tool" data-cx-act="new-weapon"><span class="ui-icon i-plus"></span>Arma</button><button type="button" class="cx-tool" id="toggleAttackForm"><span class="ui-icon i-plus"></span>Ataque</button></div></header>
-              <div class="cx-filters" role="group" aria-label="Filtrar ações" id="cxFilters"></div>
+              <div id="cxPet" hidden></div><div class="cx-filters" role="group" aria-label="Filtrar ações" id="cxFilters"></div>
               <div id="attackForm" class="cx-form" hidden><div class="form-grid"><input class="input full" id="atkName" placeholder="Nome do ataque"><select class="input" id="atkAbility" aria-label="Atributo do acerto"><option value="for">Acerto com Força</option><option value="des">Acerto com Destreza</option><option value="sab">Acerto com Sabedoria</option><option value="von">Acerto com Vontade</option><option value="pre">Acerto com Presença</option><option value="none">Sem atributo</option></select><select class="input" id="atkProf" aria-label="Proficiência"><option value="yes">Com proficiência</option><option value="no">Sem proficiência</option></select><input class="input" id="atkBonus" type="number" value="0" placeholder="Bônus extra" aria-label="Bônus extra no acerto"><input class="input" id="atkDamage" value="1d4" placeholder="Dano (ex.: 1d8)" aria-label="Dano"><select class="input" id="atkDamageAbility" aria-label="Atributo no dano"><option value="for">+ FOR no dano</option><option value="des">+ DES no dano</option><option value="sab">+ SAB no dano</option><option value="von">+ VON no dano</option><option value="pre">+ PRE no dano</option><option value="none">Sem atributo</option></select><input class="input" id="atkType" placeholder="Tipo de dano" value="Contundente" aria-label="Tipo de dano"><input class="input wide" id="atkRange" placeholder="Alcance" value="Corpo a corpo" aria-label="Alcance"><textarea class="input full" id="atkNotes" placeholder="Propriedades, requisitos e observações"></textarea></div><div class="form-actions"><button class="btn" id="cancelAttack" type="button">Cancelar</button><button class="btn primary" id="saveAttack" type="button">Salvar ataque</button></div></div>
               <div class="cx-scroll" id="cxActionScroll"><div id="combatWeaponList"></div>
               <div id="cxActionList" class="cx-econ-list"></div></div>
@@ -7514,7 +7663,7 @@ function bindUpgradeEvents(){
   document.addEventListener('input',()=>{bootUserChanged=true},{capture:true});document.addEventListener('change',()=>{bootUserChanged=true},{capture:true});
 }
 
-function renderAll(){renderRulesMode();renderTheme();renderAppearance();renderDrawer();renderHeader();renderSelectOptions();renderBindFields();renderPortrait();recalcAbilities(current(),true);renderProgression();renderHpModifiers();renderSpeciesOrigin();renderAbilities();renderSkills();renderResources();renderCore();renderSaves();renderCombat();renderCombatReference();renderCombatWeapons();renderAttacks();renderConditions();renderRolls();renderTechniqueTemplateSelect();renderTechniqueConditionSelects();renderTechniqueCalculator();renderTechniques();renderCombatTechniques();renderHaki();renderTraits();renderInventory();renderJobs();renderTrainingHub();renderKitchen();renderExclusiveAccess();renderOverviewSummary();renderAbilityCompendium();renderPageHeroes();renderShip();renderUpgradeMetrics();renderDossier();renderBookHub();renderStandardShip()}
+function renderAll(){if(typeof cpRender==='function')queueMicrotask(()=>{try{cpRender()}catch(e){console.error(e)}});renderRulesMode();renderTheme();renderAppearance();renderDrawer();renderHeader();renderSelectOptions();renderBindFields();renderPortrait();recalcAbilities(current(),true);renderProgression();renderHpModifiers();renderSpeciesOrigin();renderAbilities();renderSkills();renderResources();renderCore();renderSaves();renderCombat();renderCombatReference();renderCombatWeapons();renderAttacks();renderConditions();renderRolls();renderTechniqueTemplateSelect();renderTechniqueConditionSelects();renderTechniqueCalculator();renderTechniques();renderCombatTechniques();renderHaki();renderTraits();renderInventory();renderJobs();renderTrainingHub();renderKitchen();renderExclusiveAccess();renderOverviewSummary();renderAbilityCompendium();renderPageHeroes();renderShip();renderUpgradeMetrics();renderDossier();renderBookHub();renderStandardShip()}
 function renderTheme(){
  ensureThemeProfiles(state);const v=characterTheme(),palette=characterPalette();state.theme=v.preset;document.body.dataset.theme=v.preset;document.body.dataset.sheetEdges=v.edges;document.body.dataset.sheetTexture=v.texture;document.body.dataset.sheetDepth=v.depth;
  for(const [key,value] of Object.entries(palette))document.body.style.setProperty('--'+key,value);
@@ -9125,7 +9274,7 @@ function cxRenderStrip(c){const t=cbTracker(c),e=cbEffects(c);
   const list=[];if(e.noAct.length)list.push(['stop',`${e.noAct.join(', ')}: sem ações nem reações`]);if(e.atkDis.length)list.push(['dis',`Desvantagem nos ataques (${e.atkDis.join(', ')})`]);if(e.atkAdv.length)list.push(['adv',`Vantagem nos ataques (${e.atkAdv.join(', ')})`]);if(e.noTech.length)list.push(['stop',`Técnicas bloqueadas (${e.noTech.join(', ')})`]);if(e.rage)list.push(['info','Enfurecido: +1d4 no corpo a corpo']);if(e.lethargic)list.push(['info','Letárgico: dano pela metade, exceto armas de fogo']);if(e.burn)list.push(['warn','Queimado: 1d6 de Fogo no primeiro ataque do turno']);if(e.bleed)list.push(['warn','Sangramento: 1d6 Cortante ao se mover']);
   const al=document.getElementById('cbAlerts');if(al)al.innerHTML=list.map(([k,txt])=>`<span class="cx-alert cx-alert-${k}">${esc(txt)}</span>`).join('')||'<span class="cx-alert cx-alert-ok">Sem penalidades ativas</span>';
   const pf=document.getElementById('cxPrefix');if(pf&&document.activeElement!==pf)pf.value=cxPrefix()}
-function cxRender(){if(!document.getElementById('cx'))return;const c=current();cxRenderHud(c);cxRenderStrip(c);cxRenderWeaponHints(c);const acts=cxRenderActions(c),pass=cxRenderPassives(c);cxRenderChecks(c);cxRenderPins(c,[...acts,...pass]);const tg=document.getElementById('cxToggleAll');if(tg)tg.textContent=cxUi().allOpen?'Recolher tudo':'Abrir tudo'}
+function cxRender(){if(!document.getElementById('cx'))return;const c=current();cxRenderHud(c);cxRenderStrip(c);cxRenderWeaponHints(c);const acts=cxRenderActions(c),pass=cxRenderPassives(c);cxRenderChecks(c);cxRenderPins(c,[...acts,...pass]);if(typeof cpRenderCombat==='function')cpRenderCombat();const tg=document.getElementById('cxToggleAll');if(tg)tg.textContent=cxUi().allOpen?'Recolher tudo':'Abrir tudo'}
 
 /* As funções antigas do combate agora só pedem um redesenho */
 function renderCombat(){cxRequest()}
@@ -9578,6 +9727,163 @@ function dpWire(){
 
 if(document.getElementById('iv')){ivWire();fgWire();renderInventory()}
 if(document.getElementById('dpDesk')){dpWire();dpRender()}
+
+/* ==========================================================================
+   Companheiro Animal — Animal Vinculado (Adestrador 2.1) e ficha livre (Domador)
+   ========================================================================== */
+function cpTable(){return [
+  {id:'ave',label:'Águia / Falcão',species:['Águia','Falcão'],for:16,des:20,con:10,size:'Pequeno',walk:6,fly:12,swim:6},
+  {id:'fera',label:'Crocodilo / Leão / Lobo / Macaco',species:['Crocodilo','Leão','Lobo','Macaco'],for:20,des:14,con:12,size:'Médio',walk:9,fly:0,swim:9},
+  {id:'agil',label:'Cachorro / Cobra / Gato / Raposa',species:['Cachorro','Cobra','Gato','Raposa'],for:12,des:20,con:14,size:'Pequeno',walk:12,fly:0,swim:9},
+  {id:'cavalo',label:'Cavalo',species:['Cavalo'],for:16,des:10,con:20,size:'Grande',walk:12,fly:0,swim:3},
+  {id:'noturno',label:'Coruja / Pombo / Morcego',species:['Coruja','Pombo','Morcego'],for:10,des:20,con:16,size:'Miúdo',walk:9,fly:9,swim:6},
+  {id:'colosso',label:'Gorila / Panda / Touro / Urso',species:['Gorila','Panda','Touro','Urso'],for:20,des:10,con:16,size:'Grande',walk:7.5,fly:0,swim:7.5},
+  {id:'custom',label:'Outro (aprovado pelo Narrador)',species:[],for:12,des:12,con:12,size:'Médio',walk:9,fly:0,swim:6}
+]}
+function cpSizes(){return ['Miúdo','Pequeno','Médio','Grande','Enorme']}
+function cpDice(){return ['1d4','1d6','1d8','1d10','1d12','2d6']}
+function cpTrainDefs(){return [
+  {id:'bruto',label:'Poder Bruto',tip:'Dano do animal sobe um passo: 1d4 → 1d6 → 1d8 → 1d10 → 1d12 → 2d6.',max:5},
+  {id:'nutricao',label:'Super Nutrição',tip:'Sobe uma categoria de tamanho, até Enorme.',max:4},
+  {id:'velocidade',label:'Treino de Velocidade',tip:'+3 m no deslocamento terrestre e de nado (máx. 18 m).',max:6},
+  {id:'voo',label:'Velocidade de Voo',tip:'Alternativa do Treino de Velocidade: +1,5 m de voo (máx. 15 m).',max:6,needsFly:true},
+  {id:'potencial',label:'Melhorar Potencial',tip:'2 Traços Comuns ou 1 Traço Específico das Zoan, aprovados pelo Narrador.',max:6}
+]}
+function cpIsAdestrador(c){return valueArray(c.traits).some(t=>String(t.book21Id||'').startsWith('profession-adestrador')||/profiss[aã]o adestrador/i.test(String(t.source||'')))||/adestrador/i.test(String(c.profession||''))}
+function cpIsDomador(c){try{return !isStandard(c)&&functionProgress(c,'Domador').level>0}catch(e){return false}}
+function cpEligible(c){return cpIsAdestrador(c)||cpIsDomador(c)}
+function cpGet(c=current()){
+  const p=c.companion;if(!p||typeof p!=='object')return null;
+  p.rules=p.rules==='livre'?'livre':'adestrador';
+  if(!cpTable().some(r=>r.id===p.group))p.group='fera';
+  if(!p.train||typeof p.train!=='object')p.train={};cpTrainDefs().forEach(d=>p.train[d.id]=Math.max(0,Math.floor(num(p.train[d.id]))));
+  if(!p.custom||typeof p.custom!=='object'){const r=cpTable().find(x=>x.id==='custom');p.custom={for:r.for,des:r.des,con:r.con,size:r.size,walk:r.walk,fly:r.fly,swim:r.swim}}
+  if(!p.free||typeof p.free!=='object')p.free={};const f=p.free;
+  if(f.hpMax==null)f.hpMax=12;if(f.walk==null)f.walk=9;
+  if(!f.abilities||typeof f.abilities!=='object')f.abilities={for:12,des:12,con:12,sab:10,von:10,pre:8};
+  if(!Array.isArray(f.attacks))f.attacks=[{id:uid(),name:'Mordida',hit:'+4',dmg:'1d6+2',type:'Perfurante'}];
+  ['for','des','con','sab','von','pre'].includes(p.attackAbility)||(p.attackAbility='');
+  return p;
+}
+function cpCreate(c,group){const r=cpTable().find(x=>x.id===group)||cpTable()[1];c.companion={rules:cpIsDomador(c)&&!cpIsAdestrador(c)?'livre':'adestrador',group:r.id,name:'',species:r.species[0]||'',damageType:r.id==='ave'||r.id==='noturno'?'Cortante':'Perfurante',train:{},notes:'',traits:'',hpCurrent:null,createdAt:Date.now()};const p=cpGet(c);p.hpCurrent=cpStats(c,p).hpMax;return p}
+function cpStats(c,p=cpGet(c)){
+  const PB=prof(c.level);
+  if(p.rules==='livre'){const f=p.free,ab=f.abilities,hpMax=Math.max(1,num(f.hpMax,10));const atkKey=p.attackAbility||(mod(ab.for)>=mod(ab.des)?'for':'des');
+    return {free:true,PB,abilities:ab,hpMax,ppMax:Math.max(0,num(f.ppMax)),cr:num(f.cr,10),init:signed(mod(ab.des)),size:f.size||'Médio',speeds:[['Terrestre',f.walk],['Voo',f.fly],['Nado',f.swim]].filter(x=>num(x[1])>0),atkKey}}
+  const r=cpTable().find(x=>x.id===p.group),base=p.group==='custom'?p.custom:r,t=p.train;
+  const ab={for:num(base.for,10),des:num(base.des,10),con:num(base.con,10),sab:num(c.abilities.sab,10),von:num(c.abilities.von,10),pre:num(c.abilities.pre,10)};
+  const sizes=cpSizes(),si=sizes.indexOf(base.size);const size=sizes[clamp((si<0?2:si)+t.nutricao,0,sizes.length-1)];
+  const hasFly=num(base.fly)>0;
+  const walk=num(base.walk)?Math.min(18,num(base.walk)+3*t.velocidade):0,swim=num(base.swim)?Math.min(18,num(base.swim)+3*t.velocidade):0,fly=hasFly?Math.min(15,num(base.fly)+1.5*t.voo):0;
+  const atkKey=p.attackAbility||(['for','des','con'].reduce((a,k)=>mod(ab[k])>mod(ab[a])?k:a,'for'));
+  const die=cpDice()[clamp(t.bruto,0,5)],m=mod(ab[atkKey]);
+  const avail=Math.min(6,2*Math.floor(num(c.level,1)/2)),used=cpTrainDefs().reduce((s,d)=>s+t[d.id],0);
+  return {free:false,PB,abilities:ab,hpMax:Math.max(1,Math.floor(num(c.hpMax)/2)),cr:cr(c),init:signed(mod(c.abilities.des)),size,speeds:[['Terrestre',walk],['Voo',fly],['Nado',swim]].filter(x=>x[1]>0),hasFly,atkKey,hit:m+PB,dmg:`${die}${m?signed(m):''}`,die,avail,used}
+}
+function cpCheck(c,p,s,k){
+  if(s.free){const m=mod(s.abilities[k]);return {test:m,save:m}}
+  if(['for','des','con'].includes(k)){const v=mod(s.abilities[k])+s.PB;return {test:v,save:v}}
+  const m=mod(c.abilities[k]),tr=valueArray(c.saveProficiencies).includes(k);return {test:m,save:m+(tr?prof(c.level):0)}
+}
+function cpPaw(){return '<svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="42" rx="14" ry="12"/><ellipse cx="15" cy="27" rx="6" ry="8" transform="rotate(-20 15 27)"/><ellipse cx="49" cy="27" rx="6" ry="8" transform="rotate(20 49 27)"/><ellipse cx="25" cy="15" rx="5.5" ry="7.5"/><ellipse cx="39" cy="15" rx="5.5" ry="7.5"/></svg>'}
+function cpTitle(c){return cpIsDomador(c)&&!cpIsAdestrador(c)?'Companheiro Animal':'Animal Vinculado'}
+function cpRender(){if(cpRender.busy)return;cpRender.busy=true;try{cpRenderNow()}finally{cpRender.busy=false}}
+function cpRenderNow(){
+  const box=document.getElementById('companionSheet');if(!box)return;const c=current(),p=cpGet(c),elig=cpEligible(c);
+  box.hidden=!(elig||p);if(box.hidden){box.innerHTML='';cpRenderCombat();return}
+  if(!p){box.innerHTML=`<div class="cp-invite"><div class="cp-invite-head"><span class="cp-paw">${cpPaw()}</span><div><span class="cp-eyebrow">${cpIsAdestrador(c)?'Profissão Adestrador · Vínculo Animal':'Função Domador'}</span><h2>Escolha seu ${cpTitle(c)}</h2><p>${cpIsAdestrador(c)?'Escolha uma criatura da tabela. Força, Destreza, Constituição, tamanho e deslocamentos vêm dela; o resto é calculado a partir de você.':'Domadores podem ter um animal Heroico com ficha própria de criatura. Escolha uma base ou comece livre.'}</p></div></div>
+    <div class="cp-pick">${cpTable().map(r=>`<button type="button" class="cp-pick-card" data-cp-create="${r.id}"><b>${esc(r.label)}</b>${r.id==='custom'?'<small>Você define os valores</small>':`<span class="cp-pick-stats"><i>FOR ${r.for}</i><i>DES ${r.des}</i><i>CON ${r.con}</i></span><small>${r.size} · ${fmt(r.walk)} m${r.fly?` · voo ${fmt(r.fly)} m`:''}${r.swim?` · nado ${fmt(r.swim)} m`:''}</small>`}</button>`).join('')}${cpIsDomador(c)?'<button type="button" class="cp-pick-card is-free" data-cp-create="livre"><b>Ficha livre de criatura</b><small>Atributos, PV, PP e ataques definidos com o Mestre</small></button>':''}</div></div>`;cpRenderCombat();return}
+  const s=cpStats(c,p),r=cpTable().find(x=>x.id===p.group),src=p.imageData||p.imageUrl||'';
+  if(p.hpCurrent==null)p.hpCurrent=s.hpMax;p.hpCurrent=clamp(num(p.hpCurrent),0,s.hpMax);
+  const abil=['for','des','con','sab','von','pre'],labels={for:'FOR',des:'DES',con:'CON',sab:'SAB',von:'VON',pre:'PRE'};
+  const head=`<header class="cp-head">
+    <div class="cp-portrait">${src?`<img src="${esc(src)}" alt="">`:`<span class="cp-paw">${cpPaw()}</span>`}<label class="cp-photo-btn" title="Trocar a foto"><input type="file" accept="image/*" data-cp-photo hidden><span class="ui-icon i-plus"></span></label></div>
+    <div class="cp-id">
+      <span class="cp-eyebrow">${esc(cpTitle(c))} de ${esc(c.name||'—')}</span>
+      <input class="cp-name" data-cp="name" value="${esc(p.name||'')}" placeholder="Nome do animal" aria-label="Nome do animal" autocomplete="off">
+      <div class="cp-id-row">
+        ${p.rules==='adestrador'?`<select class="input cp-select" data-cp="group" aria-label="Tipo de animal">${cpTable().map(x=>`<option value="${x.id}"${x.id===p.group?' selected':''}>${esc(x.label)}</option>`).join('')}</select>`:''}
+        <input class="input cp-species" data-cp="species" list="cpSpeciesList" value="${esc(p.species||'')}" placeholder="Espécie" aria-label="Espécie"><datalist id="cpSpeciesList">${(r?.species||[]).map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
+        <span class="cp-chip">${esc(s.size)}</span>
+      </div>
+    </div>
+    <div class="cp-rules" role="group" aria-label="Regras da ficha"><button type="button" data-cp-rules="adestrador" aria-pressed="${p.rules==='adestrador'}">Adestrador 2.1</button><button type="button" data-cp-rules="livre" aria-pressed="${p.rules==='livre'}">Ficha livre</button></div>
+  </header>`;
+  const vit=`<div class="cp-vitals">
+    <div class="cp-hp"><div class="cp-hp-top"><span><span class="ui-icon i-heart"></span>Vida</span><b>${p.hpCurrent} / ${s.hpMax}</b></div><div class="cp-bar"><i style="width:${pct(p.hpCurrent,s.hpMax)}%"></i></div>
+      <div class="cp-hp-tools"><input class="input" type="number" min="0" value="${num(cpS().amt,5)}" data-cp-amt aria-label="Quantidade"><button type="button" data-cp-hp="-1" class="is-dmg">− Dano</button><button type="button" data-cp-hp="1" class="is-heal">+ Cura</button><button type="button" data-cp-hp="rest" title="Descanso longo: recupera todos os PV">Descanso</button></div>
+      ${s.free?'':'<small class="cp-hint">Metade do seu PV máximo · recupera tudo no descanso longo</small>'}</div>
+    ${s.free&&s.ppMax?`<div class="cp-stat"><small>PP</small><b><input class="cp-inline" type="number" min="0" data-cp="free.ppCurrent" value="${num(p.free.ppCurrent,s.ppMax)}" aria-label="PP atual"> / ${s.ppMax}</b></div>`:''}
+    <div class="cp-stat"><small>CR</small><b>${s.cr}</b>${s.free?'':'<span>igual à sua</span>'}</div>
+    <button type="button" class="cp-stat cp-copy" data-cp-copy="${cxExpr(mod(s.free?s.abilities.des:c.abilities.des))}" data-cp-label="Iniciativa"><small>Iniciativa</small><b>${s.init}</b>${s.free?'':'<span>a mesma sua</span>'}</button>
+    <div class="cp-stat cp-move"><small>Deslocamento</small><b>${s.speeds.map(([l,v])=>`<i>${l==='Terrestre'?'':l+' '}${fmt(v)} m</i>`).join('')||'—'}</b></div>
+  </div>`;
+  const abilHtml=`<div class="cp-abils">${abil.map(k=>{const ck=cpCheck(c,p,s,k),own=!s.free&&['sab','von','pre'].includes(k);return `<div class="cp-abil${own?' is-own':''}"><small>${labels[k]}</small>${s.free?`<input class="cp-inline cp-score" type="number" min="1" max="30" data-cp="free.abilities.${k}" value="${num(s.abilities[k],10)}" aria-label="${labels[k]}">`:p.group==='custom'&&!own?`<input class="cp-inline cp-score" type="number" min="1" max="30" data-cp="custom.${k}" value="${num(s.abilities[k],10)}" aria-label="${labels[k]}">`:`<b class="cp-score">${num(s.abilities[k],10)}</b>`}<span class="cp-mod">${signed(mod(s.abilities[k]))}</span><div class="cp-abil-rolls"><button type="button" data-cp-copy="${cxExpr(ck.test)}" data-cp-label="Teste de ${labels[k]}" title="Teste">T ${signed(ck.test)}</button><button type="button" data-cp-copy="${cxExpr(ck.save)}" data-cp-label="Salvaguarda de ${labels[k]}" title="Salvaguarda">S ${signed(ck.save)}</button></div></div>`}).join('')}</div>
+    ${s.free?'':'<p class="cp-hint">FOR, DES e CON vêm da tabela e sempre somam o seu Bônus de Proficiência. SAB, VON e PRE usam os seus valores.</p>'}`;
+  const types=['Perfurante','Cortante','Contundente'];
+  const atk=s.free?`<div class="cp-attacks">${p.free.attacks.map(a=>`<div class="cp-atk-row" data-cp-atk="${esc(a.id)}"><input class="input" data-cp-af="name" value="${esc(a.name)}" placeholder="Ataque" aria-label="Nome do ataque"><label><small>Acerto</small><input class="input" data-cp-af="hit" value="${esc(a.hit)}" placeholder="+4" aria-label="Acerto"></label><label><small>Dano</small><input class="input" data-cp-af="dmg" value="${esc(a.dmg)}" placeholder="1d6+2" aria-label="Dano"></label><input class="input" data-cp-af="type" value="${esc(a.type)}" placeholder="Tipo" aria-label="Tipo de dano"><button type="button" class="cp-roll" data-cp-copy="${esc(cxExpr(num(String(a.hit).replace(/[^\d-]/g,''))))}" data-cp-label="${esc(a.name)}">Acerto</button><button type="button" class="cp-roll" data-cp-copy="${esc(a.dmg)}" data-cp-label="${esc(a.name)} ${esc(a.type)}">Dano</button><button type="button" class="cp-x" data-cp-atkdel aria-label="Remover ataque">×</button></div>`).join('')}<button type="button" class="cp-add" data-cp-atkadd><span class="ui-icon i-plus"></span>Ataque</button></div>`
+    :`<div class="cp-attack">
+      <div class="cp-attack-main"><div><span class="cp-eyebrow">Ação Atacar · duas jogadas de ataque</span><h3>Ataque ${p.name?'de '+esc(p.name):'do animal'}</h3></div>
+        <button type="button" class="cp-big" data-cp-copy="${cxExpr(s.hit)}" data-cp-label="Ataque do animal"><small>Acerto</small><b>${signed(s.hit)}</b></button>
+        <button type="button" class="cp-big" data-cp-copy="${esc(s.dmg)}" data-cp-label="Dano do animal ${esc(p.damageType||'')}"><small>Dano</small><b>${esc(s.dmg)}</b><span>${esc(p.damageType||'')}</span></button></div>
+      <div class="cp-attack-opts"><span>Atributo</span>${abil.map(k=>`<button type="button" data-cp-atkab="${k}" aria-pressed="${s.atkKey===k}">${labels[k]} ${signed(mod(s.abilities[k]))}</button>`).join('')}</div>
+      <div class="cp-attack-opts"><span>Tipo</span>${types.map(t=>`<button type="button" data-cp-dtype="${t}" aria-pressed="${p.damageType===t}">${t}</button>`).join('')}</div>
+      <p class="cp-hint">Acerto = atributo escolhido + seu Bônus de Proficiência (${signed(s.PB)}). Dano = ${s.die} + o mesmo atributo.</p>
+    </div>`;
+  const acts=`<div class="cp-actions"><span class="cp-eyebrow">Ações do animal</span><div>${(s.free?['Atacar','Defender','Auxiliar']:['Atacar (2 ataques)','Disparada','Esconder','Procurar']).map(a=>`<span class="cp-act">${a}</span>`).join('')}</div><p class="cp-hint">${s.free?'Use “Comando de Treinamento” (ação bônus) para o Companheiro Atacar, Defender (+2 de CR) ou Auxiliar.':'Age na sua iniciativa e se desloca no seu turno. Se você cair inconsciente, ele fica de guarda te protegendo.'}</p></div>`;
+  const train=s.free?'':`<section class="cp-train"><header><h3>Treinamento Animal</h3><span class="cp-train-count${s.used>s.avail?' is-over':''}">${s.used} / ${s.avail} treinos</span></header><p class="cp-hint">Duas escolhas a cada nível par, até 6 por animal. Se o animal for trocado, os treinos não passam para o novo.</p>
+    <div class="cp-train-list">${cpTrainDefs().filter(d=>!d.needsFly||s.hasFly).map(d=>`<div class="cp-tr"><div><b>${d.label}</b><small>${d.tip}</small></div><div class="cp-step"><button type="button" data-cp-tr="${d.id}" data-d="-1" aria-label="Menos">−</button><b>${p.train[d.id]}</b><button type="button" data-cp-tr="${d.id}" data-d="1" aria-label="Mais" ${s.used>=s.avail||p.train[d.id]>=d.max?'disabled':''}>+</button></div></div>`).join('')}</div>
+    ${p.train.potencial?`<label class="cp-field"><span>Traços aprendidos (Melhorar Potencial)</span><textarea class="input" data-cp="traits" rows="2" placeholder="Ex.: Faro aguçado, Pele grossa…">${esc(p.traits||'')}</textarea></label>`:''}</section>`;
+  const custom=!s.free&&p.group==='custom'?`<div class="cp-custom"><span class="cp-eyebrow">Valores combinados com o Narrador</span><label>Tamanho<select class="input" data-cp="custom.size">${cpSizes().map(z=>`<option${z===p.custom.size?' selected':''}>${z}</option>`).join('')}</select></label><label>Terrestre (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.walk" value="${num(p.custom.walk)}"></label><label>Voo (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.fly" value="${num(p.custom.fly)}"></label><label>Nado (m)<input class="input" type="number" step="1.5" min="0" data-cp="custom.swim" value="${num(p.custom.swim)}"></label></div>`:'';
+  const free=s.free?`<div class="cp-custom"><span class="cp-eyebrow">Ficha de criatura</span><label>PV máx.<input class="input" type="number" min="1" data-cp="free.hpMax" value="${s.hpMax}"></label><label>PP máx.<input class="input" type="number" min="0" data-cp="free.ppMax" value="${s.ppMax}"></label><label>CR<input class="input" type="number" min="0" data-cp="free.cr" value="${s.cr}"></label><label>Tamanho<select class="input" data-cp="free.size">${cpSizes().map(z=>`<option${z===s.size?' selected':''}>${z}</option>`).join('')}</select></label><label>Terrestre (m)<input class="input" type="number" step="1.5" min="0" data-cp="free.walk" value="${num(p.free.walk)}"></label><label>Voo (m)<input class="input" type="number" step="1.5" min="0" data-cp="free.fly" value="${num(p.free.fly)}"></label><label>Nado (m)<input class="input" type="number" step="1.5" min="0" data-cp="free.swim" value="${num(p.free.swim)}"></label></div>`:'';
+  const rules=s.free?'':`<details class="cp-rulebox"><summary>Regras do Vínculo Animal</summary><ul><li>Você pode montar o animal sem penalidade se ele for do seu tamanho ou maior, mesmo sem proficiência em montarias.</li><li>Salvaguardas de Destreza para continuar montado têm vantagem, mesmo sem sela.</li><li>Se o animal morrer, pode ser substituído por outro da tabela (ou trocado com aprovação do Narrador).</li><li>Enquanto tiver o animal, seus gastos de alimentação e hospedagem são dobrados.</li></ul></details>`;
+  const notes=`<label class="cp-field"><span>${s.free?'Truques, habilidades e anotações':'Anotações'}</span><textarea class="input" data-cp="notes" rows="3" placeholder="Personalidade, truques aprendidos, onde dorme, do que gosta…">${esc(p.notes||'')}</textarea></label>
+    <div class="cp-danger"><button type="button" class="cp-release" data-cp-release>${s.free?'Remover ficha do companheiro':'Trocar ou libertar o animal'}</button></div>`;
+  const focus=document.activeElement&&box.contains(document.activeElement)?document.activeElement.dataset.cp||document.activeElement.dataset.cpAf:null;
+  box.innerHTML=`<div class="cp">${head}${vit}<div class="cp-grid"><div class="cp-col">${abilHtml}${custom}${free}${atk}${acts}</div><div class="cp-col">${train}${rules}${notes}</div></div></div>`;
+  cpRenderCombat();
+}
+function cpS(){return cpS.s||(cpS.s={amt:5})}
+function cpRenderCombat(){
+  const host=document.getElementById('cxPet');if(!host)return;const c=current(),p=cpGet(c);if(!p){host.innerHTML='';host.hidden=true;return}
+  const s=cpStats(c,p);host.hidden=false;const hp=clamp(num(p.hpCurrent??s.hpMax),0,s.hpMax);
+  const atk=s.free?(p.free.attacks[0]||null):null;
+  host.innerHTML=`<div class="cp-mini"><span class="cp-mini-paw">${p.imageData||p.imageUrl?`<img src="${esc(p.imageData||p.imageUrl)}" alt="">`:cpPaw()}</span><div class="cp-mini-main"><b>${esc(p.name||p.species||'Animal')}</b><div class="cp-bar"><i style="width:${pct(hp,s.hpMax)}%"></i></div><small>${hp}/${s.hpMax} PV · CR ${s.cr} · ${s.speeds.map(x=>fmt(x[1])+' m').join(' / ')||'—'}</small></div>
+    <div class="cp-mini-hp"><button type="button" data-cp-hp="-1" title="Dano (usa o valor do ajuste rápido)">−</button><button type="button" data-cp-hp="1" title="Cura">+</button></div>
+    ${s.free?(atk?`<button type="button" class="cp-big" data-cp-copy="${esc(cxExpr(num(String(atk.hit).replace(/[^\d-]/g,''))))}" data-cp-label="${esc(atk.name)}"><small>${esc(atk.name)}</small><b>${esc(atk.hit)}</b></button><button type="button" class="cp-big" data-cp-copy="${esc(atk.dmg)}" data-cp-label="${esc(atk.name)}"><small>Dano</small><b>${esc(atk.dmg)}</b></button>`:''):`<button type="button" class="cp-big" data-cp-copy="${cxExpr(s.hit)}" data-cp-label="Ataque do animal"><small>Acerto ×2</small><b>${signed(s.hit)}</b></button><button type="button" class="cp-big" data-cp-copy="${esc(s.dmg)}" data-cp-label="Dano do animal ${esc(p.damageType||'')}"><small>Dano</small><b>${esc(s.dmg)}</b></button>`}</div>`;
+}
+function cpHp(c,p,how,amt){const s=cpStats(c,p);if(how==='rest')p.hpCurrent=s.hpMax;else p.hpCurrent=clamp(num(p.hpCurrent??s.hpMax)+num(how)*Math.max(0,num(amt)),0,s.hpMax);saveState();cpRender();if(!p.hpCurrent)toast(`${p.name||'O animal'} caiu!`)}
+function cpWire(){
+  if(cpWire.done)return;cpWire.done=true;
+  const onClick=e=>{
+    const t=e.target,c=current();let b;
+    if((b=t.closest('[data-cp-create]'))){const g=b.dataset.cpCreate;const p=cpCreate(c,g==='livre'?'fera':g);if(g==='livre'){p.rules='livre';p.species='';p.hpCurrent=cpStats(c,p).hpMax}saveState();cpRender();toast('Animal vinculado! Dê um nome a ele.');setTimeout(()=>document.querySelector('#companionSheet .cp-name')?.focus(),50);return}
+    const p=cpGet(c);if(!p)return;
+    if((b=t.closest('[data-cp-copy]'))){cxCopy(b.dataset.cpCopy,b.dataset.cpLabel||'');return}
+    if((b=t.closest('[data-cp-hp]'))){const inside=b.closest('#cxPet');const amt=inside?num(document.getElementById('quickAmount')?.value,1):num(document.querySelector('#companionSheet [data-cp-amt]')?.value,cpS().amt);cpHp(c,p,b.dataset.cpHp,amt);return}
+    if((b=t.closest('[data-cp-rules]'))){p.rules=b.dataset.cpRules;p.hpCurrent=Math.min(num(p.hpCurrent),cpStats(c,p).hpMax);saveState();cpRender();return}
+    if((b=t.closest('[data-cp-atkab]'))){p.attackAbility=b.dataset.cpAtkab;saveState();cpRender();return}
+    if((b=t.closest('[data-cp-dtype]'))){p.damageType=b.dataset.cpDtype;saveState();cpRender();return}
+    if((b=t.closest('[data-cp-tr]'))){const d=cpTrainDefs().find(x=>x.id===b.dataset.cpTr),s=cpStats(c,p),delta=num(b.dataset.d);if(delta>0&&(s.used>=s.avail||p.train[d.id]>=d.max))return;p.train[d.id]=Math.max(0,p.train[d.id]+delta);saveState();cpRender();return}
+    if(t.closest('[data-cp-atkadd]')){p.free.attacks.push({id:uid(),name:'',hit:'+0',dmg:'1d4',type:''});saveState();cpRender();document.querySelector('#companionSheet .cp-atk-row:last-child input')?.focus();return}
+    if((b=t.closest('[data-cp-atkdel]'))){const id=b.closest('[data-cp-atk]').dataset.cpAtk;p.free.attacks=p.free.attacks.filter(a=>a.id!==id);saveState();cpRender();return}
+    if((b=t.closest('[data-cp-release]'))){if(b.dataset.armed!=='1'){b.dataset.armed='1';b.textContent='Clique de novo para confirmar';setTimeout(()=>{if(b.isConnected){b.dataset.armed='';b.textContent='Trocar ou libertar o animal'}},2800);return}delete c.companion;saveState();cpRender();toast('O animal seguiu seu caminho.');return}
+  };
+  document.getElementById('companionSheet')?.addEventListener('click',onClick);
+  document.getElementById('cxPet')?.addEventListener('click',onClick);
+  const sheet=document.getElementById('companionSheet');
+  sheet?.addEventListener('change',async e=>{
+    const t=e.target,c=current(),p=cpGet(c);if(!p)return;
+    if(t.matches('[data-cp-photo]')){const f=t.files?.[0];if(!f)return;try{p.imageData=await compressItemImage(f);p.imageUrl='';saveState();cpRender()}catch(err){toast('Não foi possível carregar a imagem.')}return}
+    if(t.dataset.cp){const key=t.dataset.cp,val=t.type==='number'?num(t.value):t.value;setPath(p,key,val);if(key==='group'){const r=cpTable().find(x=>x.id===val);if(r&&r.species.length&&!r.species.includes(p.species))p.species=r.species[0];p.hpCurrent=Math.min(num(p.hpCurrent),cpStats(c,p).hpMax)}saveState();if(t.tagName==='SELECT'||t.type==='number')requestAnimationFrame(cpRender);return}
+    if(t.dataset.cpAf){const id=t.closest('[data-cp-atk]').dataset.cpAtk,a=p.free.attacks.find(x=>x.id===id);if(a){a[t.dataset.cpAf]=t.value;saveState();requestAnimationFrame(cpRender)}return}
+    if(t.matches('[data-cp-amt]'))cpS().amt=num(t.value,5);
+  });
+  sheet?.addEventListener('input',e=>{const t=e.target,p=cpGet();if(!p)return;if(t.dataset.cp&&t.type!=='number'&&t.tagName!=='SELECT'){setPath(p,t.dataset.cp,t.value);saveState();if(t.dataset.cp==='name')cpRenderCombat()}});
+  document.addEventListener('click',e=>{if(e.target.closest('#fullRest')){const c=current(),p=cpGet(c);if(p){p.hpCurrent=cpStats(c,p).hpMax;setTimeout(()=>{saveState();cpRender()},0)}}},true);
+}
+
+if(document.getElementById('companionSheet')){cpWire();cpRender()}
 if(document.getElementById('cx')){cbWire();cxRender();const ps=document.getElementById('cxPassiveSearch');if(ps){ps.addEventListener('input',()=>{cxUi().pq=ps.value;cxRenderPassives(current());const b=document.getElementById('cxPassiveList');if(b)b.scrollTop=0});ps.addEventListener('keydown',e=>{if(e.key==='Escape'&&ps.value){ps.value='';cxUi().pq='';cxRenderPassives(current())}})}}
 
 
