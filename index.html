@@ -3176,7 +3176,7 @@ dialog.tc-dialog{width:min(920px,calc(100vw - 28px));max-height:91svh;padding:0;
 
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..700&family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;600;700;800&family=IM+Fell+English&family=Caveat:wght@400..700&family=Patrick+Hand&family=Homemade+Apple&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..700&family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;600;700;800&family=IM+Fell+English&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=Pirata+One&family=Petit+Formal+Script&family=Caveat:wght@400..700&family=Homemade+Apple&display=swap">
 <style id="refined-layer">
 /* ==========================================================================
    Camada de refinamento — tipografia, ritmo, menos ornamento, movimento
@@ -4980,179 +4980,199 @@ dialog.fg.is-item .fg-arsenal,dialog.fg.is-item .fg-w{display:none}
 }
 @media (prefers-reduced-motion:reduce){#iv *,dialog.fg *{animation:none!important;transition:none!important}}
 
-/* ---------- Dossiê em papel ---------- */
-#page-story{--dp-paper:#efe2c2;--dp-paper2:#e6d3a8;--dp-rule:rgba(70,92,140,.28);--dp-margin:rgba(190,60,60,.45);--dp-ink:#211b15;--dp-type:'Special Elite','Courier New',monospace;--dp-lh:34px}
-/* Capa do dossiê (pasta) */
-#page-story .ds-masthead{background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 40%),repeating-linear-gradient(90deg,rgba(0,0,0,.025) 0 2px,transparent 2px 5px),#c9a46a;border:0;border-radius:4px 14px 0 0;color:#3b2a14;box-shadow:inset 0 -10px 18px -12px rgba(0,0,0,.4),0 10px 30px -18px #000;padding:26px 30px 30px}
-#page-story .ds-masthead::after{content:"DOSSIÊ";position:absolute;right:210px;top:50%;transform:translateY(-50%) rotate(-8deg);font:700 46px var(--dp-type);letter-spacing:.2em;color:rgba(122,28,24,.16);border:5px double rgba(122,28,24,.18);padding:2px 18px;border-radius:6px;pointer-events:none}
-#page-story .ds-masthead h2{color:#2a1c0c;font-family:var(--dp-type);letter-spacing:.02em}
-#page-story .ds-masthead p,#page-story .ds-masthead .ds-eyebrow{color:#5b4424}
-#page-story .ds-crest{background:#e9d4a2;border-color:rgba(59,42,20,.35);color:#5b3a16}
-#page-story .ds-passport-stamp{color:#7a1c18;border-color:rgba(122,28,24,.55);background:transparent;font-family:var(--dp-type)}
-#page-story .ds-passport-stamp b{color:#7a1c18}
-#page-story .ds-tabs{background:transparent;border:0;gap:6px;padding:0 14px;border-radius:0;margin-top:-1px;display:flex}
-#page-story .ds-tabs [role=tab]{flex:1;border:0!important;border-radius:0 0 12px 12px;background:#b38d55;color:#3b2a14;font-family:var(--dp-type);font-size:14px;letter-spacing:.03em;padding:12px 10px;box-shadow:inset 0 8px 10px -8px rgba(0,0,0,.45);transition:transform .2s,background .2s}
-#page-story .ds-tabs [role=tab]:hover{transform:translateY(3px)}
-#page-story .ds-tabs [role=tab][aria-selected=true]{background:#c9a46a;transform:translateY(5px);box-shadow:0 8px 14px -10px #000}
-#page-story .ds-tabs [role=tab]::after{display:none!important}
-#page-story .ds-tabs [role=tab] span{border-color:rgba(59,42,20,.4);color:#3b2a14;background:rgba(255,255,255,.25)}
-@media(max-width:760px){#page-story .ds-masthead::after{display:none}#page-story .ds-tabs{padding:0 6px;gap:4px;overflow-x:auto}#page-story .ds-tabs [role=tab]{font-size:12.5px;padding:10px 8px;white-space:nowrap}}
-@media(max-width:560px){#page-story .ds-tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding:0 8px}#page-story .ds-tabs [role=tab]{white-space:normal;border-radius:0 0 10px 10px}}
-.dp-bounty-fmt{font:12px var(--dp-type);color:rgba(122,28,24,.75);letter-spacing:.04em}
+/* ---------- Dossiê em papel (era antiga) ---------- */
+#page-story{--dp-paper:#e4cf9f;--dp-paper2:#d4b67c;--dp-burn:rgba(92,48,12,.55);--dp-rule:rgba(92,60,25,.16);--dp-ink:#2b1d12;--dp-old:'IM Fell English SC','IM Fell English',Georgia,serif;--dp-title:'Pirata One','IM Fell English SC',Georgia,serif;--dp-lh:34px;
+  --dp-edge:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cfilter id='r' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='16'/%3E%3C/filter%3E%3Crect x='9' y='9' width='982' height='982' filter='url(%23r)'/%3E%3C/svg%3E");
+  --dp-edge2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' preserveAspectRatio='none'%3E%3Cfilter id='r' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06' numOctaves='3' seed='3'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='14'/%3E%3C/filter%3E%3Crect x='8' y='8' width='384' height='384' filter='url(%23r)'/%3E%3C/svg%3E");
+  --dp-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* Galerias como polaroides */
-#page-story .ds-gallery{gap:26px 22px}
-#page-story .ds-card{background:#f6f1e4;border:0;border-radius:3px;padding:12px 12px 6px;box-shadow:0 14px 26px -16px #000,0 2px 0 rgba(0,0,0,.08);transform:rotate(-1.2deg);transition:transform .25s cubic-bezier(.2,.9,.3,1.2),box-shadow .25s;position:relative;overflow:visible}
-#page-story .ds-card:nth-child(2n){transform:rotate(1.3deg)}#page-story .ds-card:nth-child(3n){transform:rotate(-.4deg)}
-#page-story .ds-card::before{content:"";position:absolute;left:50%;top:-10px;width:86px;height:22px;margin-left:-43px;background:rgba(240,226,180,.75);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:2}
-#page-story .ds-card:hover{transform:rotate(0) translateY(-4px) scale(1.02);box-shadow:0 24px 34px -18px #000}
-#page-story .ds-card .ds-card-media{border-radius:1px;background:#1d1a17}
-#page-story .ds-card .ds-card-caption{color:#2b2218;padding:10px 4px 6px}
-#page-story .ds-card h4{font-family:'Caveat','Segoe Print',cursive;font-size:26px;color:#211b15;line-height:1.05}
-#page-story .ds-card .ds-card-kicker,#page-story .ds-card .ds-card-excerpt{color:#5f5242}
-#page-story .ds-card .ds-card-kicker b{color:#7a1c18}
-#page-story .ds-card .ds-card-bounty{color:#211b15;font-family:var(--dp-type)}
+/* Capa: livro de registros em couro */
+#page-story .ds-masthead{background:radial-gradient(120% 140% at 50% 0,rgba(255,220,160,.08),transparent 55%),var(--dp-grain),linear-gradient(180deg,#4a2a16,#331b0d);border:0;border-radius:6px 6px 0 0;color:#e7cf96;box-shadow:inset 0 0 0 2px #24130a,inset 0 0 0 7px rgba(201,160,82,.55),inset 0 0 0 9px #24130a,inset 0 0 40px rgba(0,0,0,.55),0 12px 30px -18px #000;padding:30px 34px 32px}
+#page-story .ds-masthead::after{content:"✠  REGISTRO DE BORDO  ✠";position:absolute;right:220px;top:50%;transform:translateY(-50%);font:400 16px var(--dp-old);letter-spacing:.35em;color:rgba(214,175,96,.35);pointer-events:none;white-space:nowrap}
+#page-story .ds-masthead h2{color:#e9c97f;font-family:var(--dp-title);font-weight:400;font-size:44px;letter-spacing:.02em;text-shadow:0 1px 0 #1b0d05,0 0 18px rgba(233,201,127,.25)}
+#page-story .ds-masthead p,#page-story .ds-masthead .ds-eyebrow{color:rgba(231,207,150,.7);font-family:var(--dp-old)}
+#page-story .ds-crest{background:radial-gradient(circle at 35% 30%,#d24a3a,#8f1d14 60%,#5a0f09);border:0;color:#f3c9a5;border-radius:47% 53% 50% 48%/52% 46% 54% 48%;box-shadow:0 3px 6px rgba(0,0,0,.6),inset 0 -3px 6px rgba(0,0,0,.35),inset 0 3px 4px rgba(255,170,150,.3)}
+#page-story .ds-passport-stamp{color:#e9c97f;border:2px solid rgba(201,160,82,.6);background:rgba(0,0,0,.18);font-family:var(--dp-old);box-shadow:none}
+#page-story .ds-passport-stamp::before,#page-story .ds-passport-stamp::after{border-color:rgba(201,160,82,.35)!important}
+#page-story .ds-passport-stamp b{color:#f1d69a;font-family:var(--dp-title);font-weight:400}
+#page-story .ds-tabs{background:transparent;border:0;gap:8px;padding:0 18px;border-radius:0;margin-top:-1px;display:flex}
+#page-story .ds-tabs [role=tab]{flex:1;border:0!important;border-radius:0 0 4px 4px;background:linear-gradient(180deg,#5b1c16,#7a2a1f);color:#efd59c;font-family:var(--dp-old);font-size:15px;letter-spacing:.06em;padding:12px 10px 16px;clip-path:polygon(0 0,100% 0,100% 82%,50% 100%,0 82%);box-shadow:inset 0 8px 10px -8px rgba(0,0,0,.6);transition:transform .25s,filter .2s}
+#page-story .ds-tabs [role=tab]:nth-child(2){background:linear-gradient(180deg,#1f3a2c,#2d5240)}
+#page-story .ds-tabs [role=tab]:nth-child(3){background:linear-gradient(180deg,#22304f,#33466f)}
+#page-story .ds-tabs [role=tab]:nth-child(4){background:linear-gradient(180deg,#4b3618,#6b4e22)}
+#page-story .ds-tabs [role=tab]:hover{transform:translateY(3px);filter:brightness(1.12)}
+#page-story .ds-tabs [role=tab][aria-selected=true]{transform:translateY(8px);filter:brightness(1.2)}
+#page-story .ds-tabs [role=tab]::after{display:none!important}
+#page-story .ds-tabs [role=tab] span{border-color:rgba(239,213,156,.4);color:#efd59c;background:rgba(0,0,0,.2)}
+@media(max-width:760px){#page-story .ds-masthead::after{display:none}#page-story .ds-masthead h2{font-size:34px}#page-story .ds-tabs{padding:0 6px;gap:4px}#page-story .ds-tabs [role=tab]{font-size:13px;padding:10px 6px 14px}}
+@media(max-width:560px){#page-story .ds-tabs{display:grid;grid-template-columns:1fr 1fr;padding:0 8px}#page-story .ds-tabs [role=tab]{clip-path:none;border-radius:0 0 8px 8px}}
+
+/* Galerias: gravuras em papel antigo */
+#page-story .ds-gallery{gap:30px 24px}
+#page-story .ds-card{position:relative;background:none;border:0;padding:16px 16px 8px;overflow:visible;isolation:isolate;filter:drop-shadow(0 12px 14px rgba(0,0,0,.55));transform:rotate(-1deg);transition:transform .3s cubic-bezier(.2,.9,.3,1.2)}
+#page-story .ds-card::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 45%,transparent 55%,var(--dp-burn) 100%),var(--dp-grain),linear-gradient(170deg,#e8d4a6,#d2b37a);-webkit-mask:var(--dp-edge2) 0 0/100% 100%;mask:var(--dp-edge2) 0 0/100% 100%}
+#page-story .ds-card::after{content:"";position:absolute;left:50%;top:4px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8b8f93,#3c3f42 60%,#1d1f21);box-shadow:1px 2px 2px rgba(0,0,0,.5)}
+#page-story .ds-card:nth-child(2n){transform:rotate(1.2deg)}#page-story .ds-card:nth-child(3n){transform:rotate(-.3deg)}
+#page-story .ds-card:hover{transform:rotate(0) translateY(-4px)}
+#page-story .ds-card .ds-card-media{border-radius:0;background:#2a1d12;box-shadow:inset 0 0 0 3px #3b2a18}
+#page-story .ds-card .ds-card-media img{filter:sepia(.55) contrast(1.05) brightness(.95)}
+#page-story .ds-card .ds-card-caption{color:#2b1d12;padding:10px 4px 6px}
+#page-story .ds-card h4{font-family:var(--dp-title);font-weight:400;font-size:26px;color:#2b1d12;line-height:1.05}
+#page-story .ds-card .ds-card-kicker,#page-story .ds-card .ds-card-excerpt{color:#5a432a;font-family:'IM Fell English',Georgia,serif}
+#page-story .ds-card .ds-card-kicker b{color:#7a1c12}
+#page-story .ds-card .ds-card-bounty{color:#2b1d12;font-family:var(--dp-old)}
 #page-story .ds-card .ds-link{color:#6b3e1c}
 
-/* Mesa */
-.dp-desk{margin-top:18px;padding:18px;border-radius:16px;background:radial-gradient(120% 80% at 20% 0,rgba(255,255,255,.04),transparent 60%),repeating-linear-gradient(92deg,rgba(0,0,0,.08) 0 3px,transparent 3px 11px,rgba(255,255,255,.015) 11px 12px,transparent 12px 27px),color-mix(in srgb,var(--panel) 80%,#3a2614);border:1px solid var(--line);box-shadow:inset 0 2px 30px rgba(0,0,0,.35)}
-.dp-desk[data-paper=ivory]{--dp-paper:#faf6ea;--dp-paper2:#f0e9d6}
-.dp-desk[data-paper=kraft]{--dp-paper:#d9bc8c;--dp-paper2:#c9a873;--dp-rule:rgba(80,50,20,.28)}
-.dp-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding:10px 14px;margin-bottom:22px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.06)}
+/* Mesa de madeira à luz de vela */
+.dp-desk{margin-top:18px;padding:22px;border-radius:10px;background:radial-gradient(70% 50% at 50% 0,rgba(255,190,90,.12),transparent 70%),radial-gradient(130% 100% at 50% 50%,transparent 55%,rgba(0,0,0,.55)),repeating-linear-gradient(90deg,rgba(0,0,0,.14) 0 2px,transparent 2px 9px,rgba(255,220,170,.025) 9px 10px,transparent 10px 23px),linear-gradient(180deg,#3a2414,#2a190d);border:1px solid #1b0f07;box-shadow:inset 0 2px 30px rgba(0,0,0,.5)}
+.dp-desk[data-paper=velino]{--dp-paper:#f0e3c4;--dp-paper2:#e3cfa2;--dp-burn:rgba(110,70,30,.35)}
+.dp-desk[data-paper=queimado]{--dp-paper:#cfae73;--dp-paper2:#b78f52;--dp-burn:rgba(60,26,5,.75);--dp-rule:rgba(60,35,10,.2)}
+.dp-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding:10px 14px;margin-bottom:26px;border-radius:6px;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.2));border:1px solid rgba(201,160,82,.25);box-shadow:inset 0 0 0 1px rgba(0,0,0,.4)}
 .dp-tool{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.dp-tool-label{font:600 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dp-tool-label{font:400 13px var(--dp-old);letter-spacing:.12em;color:#c9a052}
 .dp-pens,.dp-inks,.dp-papers{display:flex;gap:5px;flex-wrap:wrap}
-.dp-pens button,.dp-papers button{height:34px;padding:0 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);font-size:18px;cursor:pointer;transition:all .15s}
-.dp-papers button{font:600 13px var(--font-ui)}
-.dp-pens button:hover,.dp-papers button:hover{border-color:var(--gold)}
-.dp-pens button[aria-pressed=true],.dp-papers button[aria-pressed=true]{background:#efe2c2;color:#211b15;border-color:#efe2c2}
-.dp-papers .dp-tone-ivory[aria-pressed=true]{background:#faf6ea}.dp-papers .dp-tone-kraft[aria-pressed=true]{background:#d9bc8c}
-.dp-inks button{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:var(--sw);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.dp-pens button,.dp-papers button{height:34px;padding:0 12px;border-radius:4px;border:1px solid rgba(201,160,82,.3);background:rgba(255,230,180,.04);color:#ead6a8;font-size:18px;cursor:pointer;transition:all .15s}
+.dp-papers button{font:400 14px var(--dp-old)}
+.dp-pens button:hover,.dp-papers button:hover{border-color:#c9a052}
+.dp-pens button[aria-pressed=true],.dp-papers button[aria-pressed=true]{background:#e4cf9f;color:#2b1d12;border-color:#e4cf9f}
+.dp-papers .dp-tone-velino[aria-pressed=true]{background:#f0e3c4}.dp-papers .dp-tone-queimado[aria-pressed=true]{background:#cfae73}
+.dp-inks button{width:28px;height:28px;border-radius:47% 53% 50% 48%/52% 46% 54% 48%;border:0;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.35),transparent 40%),var(--sw);cursor:pointer;transition:transform .15s,box-shadow .15s}
 .dp-inks button:hover{transform:scale(1.12)}
-.dp-inks button[aria-pressed=true]{box-shadow:0 0 0 3px var(--panel),0 0 0 5px #efe2c2}
-.dp-saved{margin-left:auto;font:italic 500 13px var(--font-ui);color:var(--muted);display:flex;align-items:center;gap:6px}
-.dp-saved::before{content:"";width:7px;height:7px;border-radius:50%;background:#6fbf73}
-.dp-saved.is-writing::before{background:var(--gold);animation:dpBlink .6s infinite alternate}
-@keyframes dpBlink{to{opacity:.3}}
+.dp-inks button[aria-pressed=true]{box-shadow:0 0 0 3px #2a190d,0 0 0 5px #c9a052}
+.dp-saved{margin-left:auto;font:italic 400 15px 'IM Fell English',Georgia,serif;color:#c9a979;display:flex;align-items:center;gap:7px}
+.dp-saved::before{content:"";width:8px;height:12px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#ffe08a,#ff9b2f 60%,transparent 70%);box-shadow:0 0 8px #ffb347;animation:dpFlame 1.6s ease-in-out infinite}
+.dp-saved.is-writing::before{animation-duration:.35s}
+@keyframes dpFlame{50%{transform:scaleY(1.2) translateX(.5px);opacity:.8}}
 
-.dp-board{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-areas:"id portrait" "notes notes" "rel rel" "journal journal";gap:30px 28px;align-items:start}
+.dp-board{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-areas:"id portrait" "notes notes" "rel rel" "journal journal";gap:34px 30px;align-items:start}
 .dp-id{grid-area:id}.dp-notebook{grid-area:portrait}.dp-notes{grid-area:notes}.dp-relations{grid-area:rel}.dp-journal{grid-area:journal}
 
-/* Folha base */
-.dp-sheet{position:relative;color:var(--dp-ink);padding:26px 28px 28px;border-radius:2px;background:radial-gradient(circle at 88% 12%,rgba(140,90,30,.13),transparent 16%),radial-gradient(circle at 12% 92%,rgba(140,90,30,.1),transparent 22%),radial-gradient(140% 120% at 50% 40%,transparent 60%,rgba(110,70,20,.22)),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2));box-shadow:0 1px 1px rgba(0,0,0,.2),0 18px 30px -18px rgba(0,0,0,.9),inset 0 0 0 1px rgba(90,60,20,.12);transform:rotate(var(--tilt,0deg));transition:transform .35s cubic-bezier(.2,.9,.3,1.15),box-shadow .35s}
-.dp-desk[data-paper=ivory] .dp-sheet{background:radial-gradient(140% 120% at 50% 40%,transparent 70%,rgba(110,90,50,.12)),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
-.dp-sheet:focus-within{transform:rotate(0) translateY(-3px);box-shadow:0 2px 2px rgba(0,0,0,.2),0 28px 44px -20px rgba(0,0,0,.95),inset 0 0 0 1px rgba(90,60,20,.12);z-index:2}
-.dp-sheet.is-rewrite .dp-ink{animation:dpRewrite .5s ease}
-@keyframes dpRewrite{0%{opacity:0;filter:blur(2px);clip-path:inset(0 100% 0 0)}100%{opacity:1;filter:none;clip-path:inset(0 0 0 0)}}
-.dp-sheet-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;border-bottom:2px solid rgba(60,40,20,.25);padding-bottom:6px}
-.dp-sheet-head h3{margin:0;flex:1;font:400 20px var(--dp-type);letter-spacing:.08em;text-transform:uppercase;color:rgba(40,28,14,.82)}
-.dp-pen-btn{flex:none;width:30px;height:30px;border-radius:50%;border:1px dashed rgba(60,40,20,.4);background:transparent;color:rgba(60,40,20,.7);font-size:15px;cursor:pointer;transition:transform .2s,background .2s}
-.dp-pen-btn:hover{transform:rotate(-20deg) scale(1.1);background:rgba(60,40,20,.08)}
-.dp-count{font:12px var(--dp-type);color:rgba(60,40,20,.6)}
+/* Pergaminho base: a forma rasgada fica no ::before, a sombra no próprio elemento */
+.dp-sheet,.dp-postit,.dp-card,.dp-rel{position:relative;isolation:isolate;color:var(--dp-ink);filter:drop-shadow(0 14px 14px rgba(0,0,0,.55)) drop-shadow(0 2px 2px rgba(0,0,0,.35));transform:rotate(var(--tilt,0deg));transition:transform .4s cubic-bezier(.2,.9,.3,1.15)}
+.dp-sheet::before,.dp-postit::before,.dp-card::before,.dp-rel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 50%,transparent 58%,var(--dp-burn) 100%),radial-gradient(circle at 84% 14%,rgba(120,70,20,.22),transparent 11%),radial-gradient(circle at 14% 86%,rgba(120,70,20,.16),transparent 16%),radial-gradient(ellipse at 70% 75%,rgba(150,100,40,.06) 0 6%,transparent 7% 9%,rgba(150,100,40,.05) 10%,transparent 13%),linear-gradient(90deg,transparent 49.6%,rgba(90,55,20,.12) 50%,rgba(255,240,210,.12) 50.4%,transparent 51%),var(--dp-grain),linear-gradient(172deg,var(--dp-paper),var(--dp-paper2));-webkit-mask:var(--dp-edge) 0 0/100% 100%;mask:var(--dp-edge) 0 0/100% 100%}
+.dp-sheet{padding:34px 36px 34px}
+.dp-sheet:focus-within,.dp-postit:focus-within,.dp-card:focus-within,.dp-rel:focus-within{transform:rotate(0) translateY(-3px);z-index:2}
+.dp-sheet.is-rewrite .dp-ink{animation:dpRewrite .6s ease}
+@keyframes dpRewrite{0%{opacity:0;filter:blur(1.5px);clip-path:inset(0 100% 0 0)}100%{opacity:1;filter:none;clip-path:inset(0 0 0 0)}}
+.dp-sheet-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;background:linear-gradient(90deg,transparent,rgba(70,40,15,.45) 15%,rgba(70,40,15,.45) 85%,transparent) bottom/100% 1.5px no-repeat}
+.dp-sheet-head h3{margin:0;flex:1;font:400 30px/1 var(--dp-title);letter-spacing:.02em;color:rgba(43,29,18,.9)}
+.dp-sheet-head h3::before,.dp-sheet-head h3::after{content:"❦";font:400 16px 'IM Fell English',serif;color:rgba(122,40,20,.55);margin:0 8px;vertical-align:middle}
+.dp-sheet-head h3::after{display:inline-block;transform:scaleX(-1)}
+.dp-pen-btn{flex:none;width:32px;height:32px;border-radius:50%;border:1px solid rgba(70,40,15,.35);background:rgba(255,240,200,.25);color:rgba(60,35,15,.8);font-size:15px;cursor:pointer;transition:transform .2s,background .2s}
+.dp-pen-btn:hover{transform:rotate(-25deg) scale(1.1);background:rgba(255,240,200,.5)}
+.dp-count{font:italic 14px 'IM Fell English',serif;color:rgba(60,35,15,.6)}
 
-/* Tinta e escrita */
-#dpDesk .dp-ink{appearance:none;display:block;width:100%;min-width:0;margin:0;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:none!important;padding:0 2px;color:var(--dp-ink)!important;caret-color:var(--dp-ink);font-family:var(--dp-font)!important;font-size:calc(23px*var(--dp-fs,1))!important;line-height:1.3;font-weight:400;resize:none;-webkit-text-fill-color:var(--dp-ink)}
-#dpDesk .dp-ink::placeholder{color:var(--dp-ink);opacity:.3;-webkit-text-fill-color:color-mix(in srgb,var(--dp-ink) 32%,transparent)}
-#dpDesk .dp-ink::selection{background:rgba(255,214,90,.55)}
-#dpDesk [data-pen=type] .dp-ink,#dpDesk[data-pen=type] .dp-ink{letter-spacing:.01em}
+/* Tinta */
+#dpDesk .dp-ink{appearance:none;display:block;width:100%;min-width:0;margin:0;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:none!important;padding:0 2px;color:var(--dp-ink)!important;caret-color:var(--dp-ink);font-family:var(--dp-font)!important;font-size:calc(23px*var(--dp-fs,1))!important;line-height:1.3;font-weight:400;resize:none;-webkit-text-fill-color:var(--dp-ink);text-shadow:0 0 .6px color-mix(in srgb,var(--dp-ink) 60%,transparent)}
+#dpDesk .dp-ink::placeholder{opacity:1;-webkit-text-fill-color:color-mix(in srgb,var(--dp-ink) 30%,transparent);text-shadow:none}
+#dpDesk .dp-ink::selection{background:rgba(190,120,40,.35)}
 #dpDesk textarea.dp-lined{line-height:var(--dp-lh)!important;min-height:calc(var(--dp-lh)*3 + 6px);padding:2px 4px 6px!important;background:repeating-linear-gradient(180deg,transparent 0 calc(var(--dp-lh) - 1px),var(--dp-rule) calc(var(--dp-lh) - 1px) var(--dp-lh))!important;background-attachment:local!important;background-position:0 2px!important;overflow:hidden}
-.dp-label{font:400 12px var(--dp-type);letter-spacing:.12em;text-transform:uppercase;color:rgba(50,34,16,.62);white-space:nowrap}
-.dp-hand-label{display:block;font:400 13px var(--dp-type);letter-spacing:.1em;text-transform:uppercase;color:rgba(50,34,16,.6);margin:6px 0 2px}
+.dp-label{font:400 14px var(--dp-old);letter-spacing:.08em;color:rgba(60,35,15,.7);white-space:nowrap}
+.dp-hand-label{display:block;font:400 15px var(--dp-old);letter-spacing:.08em;color:rgba(60,35,15,.68);margin:8px 0 2px}
 
-/* Ficha de identificação */
-.dp-id{padding-top:22px}
-.dp-id-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;padding:0 0 8px 70px;border-bottom:2px solid rgba(60,40,20,.3)}
-.dp-type{font:400 13px var(--dp-type);letter-spacing:.12em;color:rgba(40,28,14,.75)}
-.dp-type b{color:#7a1c18;font-weight:400}
-.dp-id-body{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px}
-.dp-polaroid{position:relative;margin:0;padding:9px 9px 32px;background:#fbf9f3;box-shadow:0 8px 14px -8px rgba(0,0,0,.6);transform:rotate(-3.5deg);align-self:start;transition:transform .3s}
-.dp-polaroid:hover{transform:rotate(1deg) scale(1.04)}
-.dp-photo-img{aspect-ratio:4/5;background:#2a2620;overflow:hidden;display:grid;place-items:center}
-.dp-photo-img img{width:100%;height:100%;object-fit:cover;filter:sepia(.25) contrast(1.05) saturate(.9)}
-.dp-photo-empty{display:flex;flex-direction:column;align-items:center;gap:4px;color:rgba(240,230,210,.6);font:16px 'Caveat','Segoe Print',cursive;text-align:center;padding:8px}
-.dp-photo-empty small{font:10px var(--dp-type);letter-spacing:.06em;opacity:.8}
-.dp-polaroid figcaption{position:absolute;left:8px;right:8px;bottom:5px;text-align:center;font:19px 'Caveat','Segoe Print',cursive;color:#2b2218;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dp-clip{position:absolute;left:34px;top:-14px;width:22px;height:62px;border:3px solid #9aa3ad;border-radius:12px;z-index:3;box-shadow:1px 1px 0 rgba(0,0,0,.25);transform:rotate(-8deg)}
-.dp-clip::after{content:"";position:absolute;left:3px;right:3px;top:8px;bottom:-1px;border:3px solid #b9c1ca;border-top:0;border-radius:0 0 8px 8px}
+/* Registro do tripulante */
+.dp-id-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 16px;padding:0 0 10px 64px;background:linear-gradient(90deg,transparent,rgba(70,40,15,.45) 10%,rgba(70,40,15,.45) 90%,transparent) bottom/100% 1.5px no-repeat}
+.dp-type{font:400 15px var(--dp-old);letter-spacing:.14em;color:rgba(43,29,18,.82)}
+.dp-type b{color:#7a1c12;font-weight:400}
+.dp-seal{position:absolute;left:18px;top:14px;width:54px;height:54px;display:grid;place-items:center;z-index:3;border-radius:47% 53% 50% 48%/52% 46% 54% 48%;background:radial-gradient(circle at 50% 50%,transparent 44%,rgba(0,0,0,.18) 46%,transparent 50%),radial-gradient(circle at 35% 30%,#d34a38,#981f15 58%,#5c0f09);color:#f0b9a1;font:400 26px var(--dp-title);text-shadow:0 -1px 0 rgba(0,0,0,.45),0 1px 0 rgba(255,180,160,.35);box-shadow:0 3px 5px rgba(0,0,0,.5),inset 0 -4px 6px rgba(0,0,0,.35),inset 0 3px 4px rgba(255,170,150,.35);transform:rotate(-10deg)}
+.dp-seal::after{content:"";position:absolute;right:-6px;bottom:4px;width:16px;height:12px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#c23a2a,#7d170f);box-shadow:0 2px 2px rgba(0,0,0,.4)}
+.dp-id-body{display:grid;grid-template-columns:156px minmax(0,1fr);gap:22px}
+.dp-portrait{position:relative;margin:0;padding:10px;align-self:start;border-radius:50%/50%;background:radial-gradient(circle,#b48a46,#6f4a1d);box-shadow:0 6px 12px -6px rgba(0,0,0,.7),inset 0 0 0 2px #3d2810,inset 0 0 0 5px #d9b56d,inset 0 0 0 7px #3d2810;transition:transform .3s}
+.dp-portrait:hover{transform:scale(1.04) rotate(-1deg)}
+.dp-photo-img{aspect-ratio:4/5;border-radius:50%/50%;background:radial-gradient(circle,#4a3a26,#2a1f14);overflow:hidden;display:grid;place-items:center;box-shadow:inset 0 0 18px rgba(0,0,0,.7)}
+.dp-photo-img img{width:100%;height:100%;object-fit:cover;filter:sepia(.75) contrast(1.08) brightness(.92) saturate(.8)}
+.dp-photo-empty{display:flex;flex-direction:column;align-items:center;gap:4px;color:rgba(233,210,160,.7);font:italic 16px 'IM Fell English',serif;text-align:center;padding:10px}
+.dp-photo-empty small{font:12px 'IM Fell English',serif;opacity:.8}
+.dp-portrait figcaption{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);max-width:180px;padding:3px 14px;background:linear-gradient(180deg,#7a2a1f,#5b1c16);color:#f1d69a;font:400 14px var(--dp-old);letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%)}
 .dp-id-fields{display:flex;flex-direction:column;gap:8px;min-width:0}
-.dp-line{display:flex;align-items:baseline;gap:10px;border-bottom:1.5px dotted rgba(60,40,20,.45);padding-bottom:1px;min-width:0}
+.dp-line{display:flex;align-items:baseline;gap:10px;padding-bottom:1px;min-width:0;background:linear-gradient(90deg,rgba(70,40,15,.38),rgba(70,40,15,.18)) bottom/100% 1px no-repeat}
 .dp-line .dp-ink{flex:1}
-.dp-name b{display:block;flex:1;font:400 calc(30px*var(--dp-fs,1)) var(--dp-font);color:var(--dp-ink);line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dp-name b{display:block;flex:1;font:400 calc(31px*var(--dp-fs,1)) var(--dp-font);color:var(--dp-ink);line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dp-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.dp-id-foot{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 22px;align-items:end;margin-top:18px;padding-top:12px;border-top:2px solid rgba(60,40,20,.3)}
+.dp-id-foot{display:grid;grid-template-columns:auto minmax(0,1fr) 112px;gap:14px 22px;align-items:end;margin-top:26px;padding-top:12px;background:linear-gradient(90deg,transparent,rgba(70,40,15,.45) 10%,rgba(70,40,15,.45) 90%,transparent) top/100% 1.5px no-repeat}
 .dp-bounty{display:flex;flex-direction:column;gap:2px}
-.dp-bounty-val{display:flex;align-items:baseline;gap:4px;border-bottom:2px solid rgba(60,40,20,.5)}
-.dp-bounty-val i{font:400 26px var(--dp-type);font-style:normal;color:#7a1c18}
+.dp-bounty-val{display:flex;align-items:baseline;gap:4px;background:linear-gradient(rgba(70,40,15,.5),rgba(70,40,15,.5)) bottom/100% 1.5px no-repeat}
+.dp-bounty-val i{font:400 28px var(--dp-title);font-style:normal;color:#7a1c12}
 #dpDesk .dp-bounty .dp-ink{font-size:calc(30px*var(--dp-fs,1))!important;width:170px;-moz-appearance:textfield}
 #dpDesk .dp-bounty .dp-ink::-webkit-inner-spin-button,#dpDesk .dp-bounty .dp-ink::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-.dp-stamp{position:absolute;right:26px;bottom:92px;padding:6px 14px;border:4px double rgba(160,30,26,.78);border-radius:6px;background:transparent;color:rgba(160,30,26,.82);font:400 20px var(--dp-type);letter-spacing:.14em;transform:rotate(-12deg);cursor:pointer;mix-blend-mode:multiply;-webkit-mask:radial-gradient(circle at 30% 40%,#000 55%,rgba(0,0,0,.75) 70%) ,linear-gradient(#000,#000);opacity:.88;transition:opacity .2s}
+.dp-bounty-fmt{font:italic 14px 'IM Fell English',serif;color:rgba(122,28,18,.8)}
+.dp-stamp{position:absolute;right:26px;bottom:18px;width:116px;height:116px;padding:0;display:grid;place-items:center;border-radius:50%;border:3px solid rgba(140,28,20,.75);background:transparent;color:rgba(140,28,20,.82);box-shadow:inset 0 0 0 5px transparent,inset 0 0 0 6.5px rgba(140,28,20,.6);font:400 15px var(--dp-old);letter-spacing:.1em;line-height:1.1;text-align:center;transform:rotate(-14deg);cursor:pointer;mix-blend-mode:multiply;opacity:.82;transition:opacity .2s}
+.dp-stamp span{display:block;max-width:100px}
+.dp-stamp::before{content:"✠";position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:14px}
+.dp-stamp::after{content:"✦  ✦  ✦";position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:9px;white-space:nowrap}
 .dp-stamp:hover{opacity:1}
-.dp-stamp[data-kind="4"],.dp-stamp[data-kind="3"]{border-color:rgba(30,60,130,.75);color:rgba(30,60,130,.85)}
-.dp-stamp[data-kind="5"]{border-color:rgba(20,100,70,.75);color:rgba(20,100,70,.85)}
-.dp-stamp.is-blank{border-style:dashed;border-width:2px;color:rgba(60,40,20,.35);border-color:rgba(60,40,20,.3);font-size:13px}
-.dp-stamp.is-thump{animation:dpThump .35s cubic-bezier(.2,1.6,.4,1)}
-@keyframes dpThump{0%{transform:rotate(-12deg) scale(1.9);opacity:0}60%{transform:rotate(-12deg) scale(.94);opacity:1}100%{transform:rotate(-12deg) scale(1)}}
+.dp-stamp[data-kind="3"],.dp-stamp[data-kind="4"]{border-color:rgba(30,50,110,.7);color:rgba(30,50,110,.85);box-shadow:inset 0 0 0 6.5px rgba(30,50,110,.55)}
+.dp-stamp[data-kind="5"]{border-color:rgba(30,90,50,.7);color:rgba(30,90,50,.85);box-shadow:inset 0 0 0 6.5px rgba(30,90,50,.55)}
+.dp-stamp.is-blank{border-style:dashed;border-width:2px;box-shadow:none;color:rgba(60,35,15,.4);border-color:rgba(60,35,15,.3)}
+.dp-stamp.is-blank::before,.dp-stamp.is-blank::after{display:none}
+.dp-stamp.is-thump{animation:dpThump .4s cubic-bezier(.2,1.6,.4,1)}
+@keyframes dpThump{0%{transform:rotate(-14deg) scale(1.8);opacity:0}60%{transform:rotate(-14deg) scale(.93);opacity:1}100%{transform:rotate(-14deg) scale(1)}}
 
-/* Caderno / retrato */
-.dp-notebook{padding-left:62px;background-image:linear-gradient(90deg,transparent 46px,var(--dp-margin) 46px 48px,transparent 48px),radial-gradient(circle at 88% 12%,rgba(140,90,30,.1),transparent 16%),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
-.dp-notebook::before{content:"";position:absolute;left:16px;top:30px;bottom:30px;width:14px;background:radial-gradient(circle,rgba(0,0,0,.5) 0 5px,transparent 6px) 0 0/14px 64px repeat-y;opacity:.55}
-.dp-tape{position:absolute;top:-12px;left:40%;width:110px;height:26px;background:rgba(236,224,180,.72);transform:rotate(-4deg);box-shadow:0 1px 3px rgba(0,0,0,.2);clip-path:polygon(2% 0,98% 4%,100% 50%,97% 100%,3% 96%,0 50%)}
-.dp-tape-r{left:auto;right:30px;transform:rotate(5deg)}
+/* Pregos */
+.dp-nail{position:absolute;top:14px;left:22px;width:12px;height:12px;border-radius:50%;z-index:3;background:radial-gradient(circle at 35% 35%,#9a9da0,#45484b 60%,#1e2022);box-shadow:1px 2px 2px rgba(0,0,0,.55)}
+.dp-nail-r{left:auto;right:22px}
+.dp-nail-c{left:50%;margin-left:-6px;top:10px}
+
+/* Retrato falado */
 .dp-write{display:block;margin-bottom:6px}
-.dp-quote{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:10px;padding:8px 12px;background:rgba(255,255,255,.28);border-left:4px solid rgba(122,28,24,.5)}
-.dp-quote .dp-hand-label{width:100%;margin:0}
-.dp-quote-mark{font:400 44px/0 'IM Fell English',serif;color:rgba(122,28,24,.6);transform:translateY(16px)}
+.dp-quote{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:14px;padding:10px 14px;border:1px solid rgba(70,40,15,.3);outline:1px solid rgba(70,40,15,.18);outline-offset:3px}
+.dp-quote .dp-hand-label{width:100%;margin:0;text-align:center}
+.dp-quote-mark{font:400 46px/0 'IM Fell English',serif;color:rgba(122,28,18,.6);transform:translateY(16px)}
 .dp-quote .dp-ink{flex:1;font-style:italic}
 
-/* Notas */
-.dp-notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding:6px 6px 0}
-.dp-postit,.dp-card{position:relative;display:flex;flex-direction:column;gap:4px;min-height:170px;padding:16px 16px 18px;color:var(--dp-ink);background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 30%),var(--pc,#fbe38b);box-shadow:0 1px 1px rgba(0,0,0,.15),0 16px 18px -14px rgba(0,0,0,.75);transform:rotate(var(--tilt,0deg));transition:transform .3s cubic-bezier(.2,.9,.3,1.2),box-shadow .3s;cursor:text}
-.dp-postit::after{content:"";position:absolute;right:0;bottom:0;width:26px;height:26px;background:linear-gradient(135deg,rgba(0,0,0,.12),rgba(0,0,0,0) 50%,var(--desk-bg,#2a2018) 50%);opacity:.0}
-.dp-postit:hover,.dp-postit:focus-within,.dp-card:hover,.dp-card:focus-within{transform:rotate(0) translateY(-4px) scale(1.02);box-shadow:0 2px 2px rgba(0,0,0,.15),0 26px 26px -16px rgba(0,0,0,.8);z-index:2}
-.dp-postit-title{font:400 12px var(--dp-type);letter-spacing:.12em;text-transform:uppercase;color:rgba(40,28,14,.65)}
-.dp-card{background:linear-gradient(180deg,transparent 30px,rgba(200,60,60,.45) 30px 31.5px,transparent 31.5px),repeating-linear-gradient(180deg,transparent 0 27px,rgba(70,92,140,.22) 27px 28px),#fbf8ef}
-.dp-pin{position:absolute;top:-9px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a7a,#b3261e 60%,#6d120c);box-shadow:2px 3px 3px rgba(0,0,0,.4)}
+/* Bilhetes */
+.dp-notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding:6px 4px 0}
+.dp-postit,.dp-card{display:flex;flex-direction:column;gap:4px;min-height:170px;padding:26px 20px 22px;cursor:text}
+.dp-postit::before{-webkit-mask:var(--dp-edge2) 0 0/100% 100%;mask:var(--dp-edge2) 0 0/100% 100%}
+.dp-postit:nth-child(1)::before{--dp-paper:#e9d6a6;--dp-paper2:#d8bd85}
+.dp-postit:nth-child(2)::before{--dp-paper:#dcc394;--dp-paper2:#c7a66d}
+.dp-postit:nth-child(3)::before{--dp-paper:#e2cfa8;--dp-paper2:#cdb184}
+.dp-postit:hover,.dp-card:hover{transform:rotate(0) translateY(-3px)}
+.dp-postit-title{font:400 15px var(--dp-old);letter-spacing:.08em;color:rgba(60,35,15,.75);text-align:center;padding-bottom:4px;background:linear-gradient(90deg,transparent,rgba(70,40,15,.35),transparent) bottom/100% 1px no-repeat}
+.dp-card::before{-webkit-mask:var(--dp-edge2) 0 0/100% 100%;mask:var(--dp-edge2) 0 0/100% 100%;--dp-paper:#efe0ba;--dp-paper2:#dcc490}
+.dp-card .dp-seal{left:auto;right:12px;top:-14px;width:40px;height:40px;font-size:18px}
 
 /* Laços */
-.dp-rel-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin:8px 0 14px}
-.dp-rel{position:relative;padding:30px 14px 12px;background:repeating-linear-gradient(180deg,transparent 0 27px,rgba(70,92,140,.18) 27px 28px) 0 30px/100% 100% no-repeat,#fbf8ef;border-top:6px solid var(--rk);box-shadow:0 10px 16px -10px rgba(0,0,0,.6);transform:rotate(var(--tilt));transition:transform .3s,opacity .35s}
-.dp-rel:hover,.dp-rel:focus-within{transform:rotate(0) translateY(-3px)}
+.dp-rel-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;margin:10px 0 16px}
+.dp-rel{padding:34px 18px 16px;--tilt:0deg}
+.dp-rel::before{-webkit-mask:var(--dp-edge2) 0 0/100% 100%;mask:var(--dp-edge2) 0 0/100% 100%;--dp-paper:#efe0ba;--dp-paper2:#dcc490}
 .dp-rel.is-new{animation:dpDeal .45s cubic-bezier(.2,1.3,.4,1)}
 @keyframes dpDeal{from{opacity:0;transform:translateY(-20px) rotate(-8deg)}}
-.dp-rel.is-struck{opacity:0;transform:rotate(6deg) translateY(10px)}
+.dp-rel.is-struck{opacity:0;transform:rotate(6deg) translateY(10px);transition:transform .38s,opacity .38s}
 .dp-rel.is-struck .dp-rel-name{text-decoration:line-through}
-.dp-rel-kind{position:absolute;left:10px;top:6px;padding:2px 10px;border-radius:99px;border:0;background:var(--rk);color:#fff;font:400 11px var(--dp-type);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.dp-rel-x{position:absolute;right:6px;top:2px;border:0;background:transparent;color:rgba(60,40,20,.45);font-size:20px;cursor:pointer;line-height:1}
-.dp-rel-x:hover{color:#b3261e}
-#dpDesk .dp-rel-name{font-size:calc(25px*var(--dp-fs,1))!important}
-#dpDesk .dp-rel-note{font-size:calc(19px*var(--dp-fs,1))!important;line-height:28px;min-height:56px}
-.dp-rel-empty{grid-column:1/-1;margin:4px 0;font:20px 'Caveat','Segoe Print',cursive;color:rgba(60,40,20,.55)}
-.dp-rel-add{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1.5px dotted rgba(60,40,20,.4);padding-top:10px}
-.dp-rel-add .dp-ink{flex:1 1 220px;border-bottom:1.5px solid rgba(60,40,20,.4)!important}
-.dp-rel-add select{height:34px;border-radius:6px;border:1px solid rgba(60,40,20,.35);background:rgba(255,255,255,.4);color:#2b2218;font:13px var(--dp-type);padding:0 8px}
-.dp-btn{height:34px;padding:0 16px;border-radius:6px;border:2px solid rgba(60,40,20,.65);background:transparent;color:#2b2218;font:400 14px var(--dp-type);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .15s,transform .1s}
-.dp-btn:hover{background:rgba(60,40,20,.1)}
-.dp-btn:active{transform:scale(.96)}
+.dp-rel-kind{position:absolute;left:14px;top:10px;padding:2px 12px;border:0;background:var(--rk);color:#f6e6c4;font:400 13px var(--dp-old);letter-spacing:.06em;cursor:pointer;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%);filter:saturate(.75) brightness(.85)}
+.dp-rel-x{position:absolute;right:10px;top:6px;border:0;background:transparent;color:rgba(60,35,15,.5);font:400 22px 'IM Fell English',serif;cursor:pointer;line-height:1}
+.dp-rel-x:hover{color:#8f1d14}
+#dpDesk .dp-rel-name{font-size:calc(26px*var(--dp-fs,1))!important;background:linear-gradient(rgba(70,40,15,.3),rgba(70,40,15,.3)) bottom/100% 1px no-repeat!important}
+#dpDesk .dp-rel-note{font-size:calc(19px*var(--dp-fs,1))!important;line-height:28px;min-height:56px;margin-top:4px}
+.dp-rel-empty{grid-column:1/-1;margin:4px 0;font:italic 19px 'IM Fell English',serif;color:rgba(60,35,15,.6)}
+.dp-rel-add{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:12px;background:linear-gradient(90deg,transparent,rgba(70,40,15,.35) 10%,rgba(70,40,15,.35) 90%,transparent) top/100% 1px no-repeat}
+.dp-rel-add .dp-ink{flex:1 1 220px;background:linear-gradient(rgba(70,40,15,.4),rgba(70,40,15,.4)) bottom/100% 1px no-repeat!important}
+.dp-rel-add select{height:36px;border-radius:3px;border:1px solid rgba(70,40,15,.4);background:rgba(255,240,200,.35);color:#2b1d12;font:15px 'IM Fell English',serif;padding:0 8px}
+.dp-btn{height:36px;padding:0 18px;border-radius:3px;border:0;background:linear-gradient(180deg,#7a2a1f,#5b1c16);color:#f1d69a;font:400 15px var(--dp-old);letter-spacing:.08em;cursor:pointer;box-shadow:0 2px 0 #3a0f0a,inset 0 1px 0 rgba(255,200,170,.25);transition:filter .15s,transform .1s}
+.dp-btn:hover{filter:brightness(1.15)}
+.dp-btn:active{transform:translateY(1px);box-shadow:0 1px 0 #3a0f0a}
 
 /* Diário */
-.dp-journal{padding-left:74px;background-image:linear-gradient(90deg,transparent 56px,var(--dp-margin) 56px 58px,transparent 58px),radial-gradient(circle at 92% 8%,rgba(140,90,30,.12),transparent 14%),radial-gradient(140% 120% at 50% 40%,transparent 62%,rgba(110,70,20,.2)),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
 #dpDesk .dp-journal-text{min-height:calc(var(--dp-lh)*12)}
-.dp-journal::after{content:"";position:absolute;right:46px;bottom:34px;width:90px;height:90px;border-radius:50%;border:7px solid rgba(110,70,20,.08);border-left-color:transparent;transform:rotate(30deg);pointer-events:none}
+.dp-journal{padding:40px 52px}
+.dp-journal .dp-sheet-head{justify-content:center}
+.dp-journal::after{content:"";position:absolute;right:60px;bottom:40px;width:96px;height:96px;border-radius:50%;border:8px solid rgba(110,60,15,.09);border-left-color:transparent;border-bottom-color:rgba(110,60,15,.05);transform:rotate(30deg);pointer-events:none}
 
 @media(max-width:1100px){.dp-notes{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.dp-board{grid-template-columns:1fr;grid-template-areas:"id" "portrait" "notes" "rel" "journal"}}
 @media(max-width:560px){
-  .dp-desk{padding:10px;margin-top:12px}.dp-tools{gap:8px 12px;padding:8px}.dp-saved{width:100%;margin:0}
-  .dp-sheet{padding:22px 16px 20px}.dp-notebook{padding-left:42px;background-image:linear-gradient(90deg,transparent 30px,var(--dp-margin) 30px 32px,transparent 32px),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}.dp-notebook::before{left:8px;width:12px}
-  .dp-journal{padding-left:44px;background-image:linear-gradient(90deg,transparent 32px,var(--dp-margin) 32px 34px,transparent 34px),linear-gradient(180deg,var(--dp-paper),var(--dp-paper2))}
-  .dp-id-head{padding-left:46px}.dp-clip{left:16px}
-  .dp-id-body{grid-template-columns:1fr}.dp-polaroid{width:150px;justify-self:center}
-  .dp-stamp{top:auto;bottom:118px;right:10px;font-size:15px}
-  .dp-id-foot{grid-template-columns:1fr}
-  .dp-notes{grid-template-columns:1fr 1fr;gap:14px}.dp-postit,.dp-card{min-height:140px;padding:12px}
+  .dp-desk{padding:12px;margin-top:12px}.dp-tools{gap:8px 12px;padding:8px}.dp-saved{width:100%;margin:0}
+  .dp-sheet{padding:28px 20px 24px}.dp-journal{padding:30px 22px}
+  .dp-sheet-head h3{font-size:25px}.dp-sheet-head h3::before,.dp-sheet-head h3::after{display:none}
+  .dp-id-head{padding-left:58px}
+  .dp-id-body{grid-template-columns:1fr}.dp-portrait{width:156px;justify-self:center}
+  .dp-stamp{width:96px;height:96px;font-size:11px;bottom:16px;right:12px}
+  .dp-id-foot{grid-template-columns:1fr;padding-right:100px}
+  .dp-notes{grid-template-columns:1fr 1fr;gap:16px}.dp-postit,.dp-card{min-height:140px;padding:22px 14px 16px}
   #dpDesk .dp-ink{font-size:calc(21px*var(--dp-fs,1))!important}
 }
-@media (prefers-reduced-motion:reduce){.dp-sheet,.dp-postit,.dp-card,.dp-rel{transition:none}.dp-stamp.is-thump,.dp-rel.is-new,.dp-sheet.is-rewrite .dp-ink{animation:none}}
+@media (prefers-reduced-motion:reduce){.dp-sheet,.dp-postit,.dp-card,.dp-rel{transition:none}.dp-stamp.is-thump,.dp-rel.is-new,.dp-sheet.is-rewrite .dp-ink,.dp-saved::before{animation:none}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -5817,7 +5837,7 @@ document.addEventListener('change',function(e){
       <section class="page dossier-page" id="page-story" aria-label="Dossiê do personagem">
         <header class="ds-masthead"><div class="ds-crest"><span class="ui-icon i-scroll" aria-hidden="true"></span></div><div><span class="ds-eyebrow">Memórias da travessia</span><h2 id="dossierCharacterName">Dossiê do personagem</h2><p>Histórias, conquistas e todas as versões de quem você já foi.</p></div><div class="ds-passport-stamp"><span>DIÁRIO DE BORDO</span><b id="dossierTotalCount">0 registros</b></div></header>
         <div class="ds-tabs" role="tablist" aria-label="Seções do dossiê"><button type="button" role="tab" id="dossierTab-profile" data-dossier-view="profile" aria-controls="dossierProfilePanel" aria-selected="true">Perfil &amp; história</button><button type="button" role="tab" id="dossierTab-trophy" data-dossier-view="trophy" aria-controls="dossierGalleryPanel" aria-selected="false" tabindex="-1">Sala de Troféus <span id="dossierTrophyCount">0</span></button><button type="button" role="tab" id="dossierTab-poster" data-dossier-view="poster" aria-controls="dossierGalleryPanel" aria-selected="false" tabindex="-1">Cartazes <span id="dossierPosterCount">0</span></button><button type="button" role="tab" id="dossierTab-look" data-dossier-view="look" aria-controls="dossierGalleryPanel" aria-selected="false" tabindex="-1">Visuais <span id="dossierLookCount">0</span></button></div>
-        <div id="dossierProfilePanel" role="tabpanel" aria-labelledby="dossierTab-profile" class="ds-profile"><div class="dp-desk" id="dpDesk" data-paper="aged">
+        <div id="dossierProfilePanel" role="tabpanel" aria-labelledby="dossierTab-profile" class="ds-profile"><div class="dp-desk" id="dpDesk" data-paper="pergaminho">
           <div class="dp-tools" role="toolbar" aria-label="Caneta, tinta e papel">
             <div class="dp-tool"><span class="dp-tool-label">Caneta</span><div class="dp-pens" id="dpPens"></div></div>
             <div class="dp-tool"><span class="dp-tool-label">Tinta</span><div class="dp-inks" id="dpInks"></div></div>
@@ -5827,10 +5847,10 @@ document.addEventListener('change',function(e){
 
           <div class="dp-board">
             <article class="dp-sheet dp-id" data-dp-sheet="id" style="--tilt:-.8deg">
-              <span class="dp-clip" aria-hidden="true"></span>
-              <header class="dp-id-head"><span class="dp-type">REGISTRO DE TRIPULANTE · Nº <b id="dpFileNo">000</b></span><button type="button" class="dp-pen-btn" data-dp-cycle="id" title="Trocar a letra desta folha">✒</button></header>
+              <span class="dp-seal" id="dpSeal" aria-hidden="true">?</span>
+              <header class="dp-id-head"><span class="dp-type">Registro de Tripulante · Fl. <b id="dpFileNo">000</b></span><button type="button" class="dp-pen-btn" data-dp-cycle="id" title="Trocar a letra desta folha">✒</button></header>
               <div class="dp-id-body">
-                <figure class="dp-polaroid" id="dpPhoto"><div class="dp-photo-img" id="dpPhotoImg"></div><figcaption id="dpPhotoCap">retrato</figcaption></figure>
+                <figure class="dp-portrait" id="dpPhoto"><div class="dp-photo-img" id="dpPhotoImg"></div><figcaption id="dpPhotoCap">retrato</figcaption></figure>
                 <div class="dp-id-fields">
                   <div class="dp-line dp-name"><span class="dp-label">Nome</span><b class="dp-ink" id="dpName">—</b></div>
                   <label class="dp-line"><span class="dp-label">Alcunha</span><input class="dp-ink bind" data-key="epithet" placeholder="“o Sem-Nome”" autocomplete="off"></label>
@@ -5851,7 +5871,7 @@ document.addEventListener('change',function(e){
             </article>
 
             <article class="dp-sheet dp-notebook" data-dp-sheet="portrait" style="--tilt:.6deg">
-              <span class="dp-tape" aria-hidden="true"></span>
+              <span class="dp-nail" aria-hidden="true"></span><span class="dp-nail dp-nail-r" aria-hidden="true"></span>
               <header class="dp-sheet-head"><h3>Retrato falado</h3><button type="button" class="dp-pen-btn" data-dp-cycle="portrait" title="Trocar a letra desta folha">✒</button></header>
               <label class="dp-write"><span class="dp-hand-label">Aparência</span><textarea class="dp-ink dp-lined bind" data-key="appearance" rows="4" placeholder="Cicatriz no olho, chapéu de palha, sempre descalço…"></textarea></label>
               <label class="dp-write"><span class="dp-hand-label">Personalidade</span><textarea class="dp-ink dp-lined bind" data-key="personality" rows="4" placeholder="Teimoso, leal até o fim, ri nas piores horas…"></textarea></label>
@@ -5859,10 +5879,10 @@ document.addEventListener('change',function(e){
             </article>
 
             <div class="dp-notes" aria-label="Notas rápidas">
-              <label class="dp-postit" style="--pc:#fbe38b;--tilt:-2.5deg"><span class="dp-postit-title">Gosta de</span><textarea class="dp-ink bind" data-key="dossier.paper.likes" rows="3" placeholder="carne, música, mapas…"></textarea></label>
-              <label class="dp-postit" style="--pc:#f7b9c4;--tilt:1.8deg"><span class="dp-postit-title">Não suporta</span><textarea class="dp-ink bind" data-key="dossier.paper.dislikes" rows="3" placeholder="injustiça, Marinha…"></textarea></label>
-              <label class="dp-postit" style="--pc:#b9e3c6;--tilt:-1deg"><span class="dp-postit-title">Medos &amp; segredos</span><textarea class="dp-ink bind" data-key="dossier.paper.secrets" rows="3" placeholder="o que ninguém sabe…"></textarea></label>
-              <label class="dp-card dp-goal" style="--tilt:1.4deg"><span class="dp-pin" aria-hidden="true"></span><span class="dp-postit-title">Objetivo atual</span><textarea class="dp-ink bind" data-key="currentGoal" rows="3" placeholder="o próximo passo da jornada…"></textarea></label>
+              <label class="dp-postit" style="--tilt:-2.5deg"><span class="dp-postit-title">Gosta de</span><textarea class="dp-ink bind" data-key="dossier.paper.likes" rows="3" placeholder="carne, música, mapas…"></textarea></label>
+              <label class="dp-postit" style="--tilt:1.8deg"><span class="dp-postit-title">Não suporta</span><textarea class="dp-ink bind" data-key="dossier.paper.dislikes" rows="3" placeholder="injustiça, Marinha…"></textarea></label>
+              <label class="dp-postit" style="--tilt:-1deg"><span class="dp-postit-title">Medos &amp; segredos</span><textarea class="dp-ink bind" data-key="dossier.paper.secrets" rows="3" placeholder="o que ninguém sabe…"></textarea></label>
+              <label class="dp-card dp-goal" style="--tilt:1.4deg"><span class="dp-seal dp-goal-seal" aria-hidden="true">✦</span><span class="dp-postit-title">Objetivo atual</span><textarea class="dp-ink bind" data-key="currentGoal" rows="3" placeholder="o próximo passo da jornada…"></textarea></label>
             </div>
 
             <section class="dp-sheet dp-relations" data-dp-sheet="relations" style="--tilt:-.4deg">
@@ -5876,7 +5896,7 @@ document.addEventListener('change',function(e){
             </section>
 
             <article class="dp-sheet dp-journal" data-dp-sheet="journal" style="--tilt:.25deg">
-              <span class="dp-tape dp-tape-r" aria-hidden="true"></span>
+              <span class="dp-nail" aria-hidden="true"></span><span class="dp-nail dp-nail-r" aria-hidden="true"></span>
               <header class="dp-sheet-head"><h3>Diário de bordo</h3><span class="dp-count" id="dpWords">0 palavras</span><button type="button" class="dp-pen-btn" data-dp-cycle="journal" title="Trocar a letra desta folha">✒</button></header>
               <textarea class="dp-ink dp-lined dp-journal-text bind" data-key="history" rows="12" placeholder="Passado, promessas, contatos, inimigos, segredos… Escreva a história de quem você é."></textarea>
             </article>
@@ -9477,21 +9497,21 @@ function fgWire(){
    Dossiê em papel — ficha de identificação, retrato, notas, laços e diário
    ========================================================================== */
 function dpFonts(){return [
-  {id:'caveat',label:'Caneta',css:"'Caveat','Segoe Print','Bradley Hand',cursive",size:1.18},
-  {id:'patrick',label:'Lápis',css:"'Patrick Hand','Comic Neue','Segoe Print',cursive",size:1.04},
-  {id:'apple',label:'Cursiva',css:"'Homemade Apple','Brush Script MT',cursive",size:.86},
-  {id:'fell',label:'Pena',css:"'IM Fell English','Alegreya',Georgia,serif",size:1.02},
-  {id:'type',label:'Máquina',css:"'Special Elite','Courier New',monospace",size:.92}
+  {id:'pena',label:'Pena',css:"'IM Fell English','Alegreya',Georgia,serif",size:1.04},
+  {id:'escrivao',label:'Escrivão',css:"'IM Fell DW Pica','IM Fell English',Georgia,serif",size:1},
+  {id:'caligrafia',label:'Caligrafia',css:"'Petit Formal Script','Brush Script MT',cursive",size:.86},
+  {id:'carta',label:'Carta',css:"'Homemade Apple','Brush Script MT',cursive",size:.84},
+  {id:'rascunho',label:'Rascunho',css:"'Caveat','Segoe Print',cursive",size:1.18}
 ]}
-function dpInks(){return [['nanquim','Nanquim','#211b15'],['azul','Azul real','#1f3f8f'],['sepia','Sépia','#6b3e1c'],['vermelho','Carmim','#9e1b1b'],['verde','Verde-mar','#0e5c55']]}
-function dpPapers(){return [['aged','Envelhecido'],['ivory','Marfim'],['kraft','Kraft']]}
-function dpRelKinds(){return [['ally','Aliado','#3f8f5a'],['family','Família','#3b6fb6'],['love','Afeto','#c2577f'],['contact','Contato','#7b7365'],['rival','Rival','#d27a26'],['enemy','Inimigo','#b3261e']]}
-function dpStamps(){return ['CONFIDENCIAL','PROCURADO','PERIGOSO','ARQUIVO VIVO','DESAPARECIDO','ALIADO DA COROA','SEM CARIMBO']}
+function dpInks(){return [['ferro','Tinta ferrogálica','#2b1d12'],['sepia','Sépia','#5e3517'],['carmim','Sangue de dragão','#7d1a12'],['indigo','Índigo','#1d2f5e'],['oliva','Verde-oliva','#3d4a1c']]}
+function dpPapers(){return [['pergaminho','Pergaminho'],['velino','Velino'],['queimado','Queimado']]}
+function dpRelKinds(){return [['ally','Aliado','#2f6b45'],['family','Família','#2c4f86'],['love','Afeto','#8e3a5c'],['contact','Contato','#5e5546'],['rival','Rival','#a3591c'],['enemy','Inimigo','#8f1d14']]}
+function dpStamps(){return ['SIGILOSO','PROCURADO','PERIGOSO','DE CONFIANÇA','DESAPARECIDO','ALIADO DA COROA','SEM SELO']}
 function dpPaper(c=current()){
   const d=ensureDossier(c);if(!d.paper||typeof d.paper!=='object')d.paper={};const p=d.paper;
-  if(!dpFonts().some(f=>f.id===p.pen))p.pen='caveat';
-  if(!dpInks().some(i=>i[0]===p.ink))p.ink='nanquim';
-  if(!dpPapers().some(x=>x[0]===p.tone))p.tone='aged';
+  if(!dpFonts().some(f=>f.id===p.pen))p.pen='pena';
+  if(!dpInks().some(i=>i[0]===p.ink))p.ink='ferro';
+  if(!dpPapers().some(x=>x[0]===p.tone))p.tone='pergaminho';if(p.pens&&typeof p.pens==='object')Object.keys(p.pens).forEach(k=>{if(!dpFonts().some(f=>f.id===p.pens[k]))delete p.pens[k]});
   if(!p.pens||typeof p.pens!=='object')p.pens={};
   if(!Array.isArray(p.relations))p.relations=[];
   p.relations=p.relations.filter(r=>r&&typeof r==='object').map(r=>({id:r.id||uid(),name:String(r.name||''),kind:dpRelKinds().some(k=>k[0]===r.kind)?r.kind:'ally',note:String(r.note||'')}));
@@ -9511,13 +9531,13 @@ function dpRender(){
   document.getElementById('dpPens').innerHTML=dpFonts().map(f=>`<button type="button" data-dp-pen="${f.id}" aria-pressed="${p.pen===f.id}" style="font-family:${f.css.replace(/"/g,'&quot;')}">${f.label}</button>`).join('');
   document.getElementById('dpInks').innerHTML=dpInks().map(([k,l,col])=>`<button type="button" data-dp-ink="${k}" aria-pressed="${p.ink===k}" title="${l}" style="--sw:${col}"><span class="sr-only">${l}</span></button>`).join('');
   document.getElementById('dpPapers').innerHTML=dpPapers().map(([k,l])=>`<button type="button" data-dp-tone="${k}" aria-pressed="${p.tone===k}" class="dp-tone-${k}">${l}</button>`).join('');
-  document.getElementById('dpName').textContent=c.name||'Sem nome';
+  document.getElementById('dpName').textContent=c.name||'Sem nome';const seal=document.getElementById('dpSeal');if(seal)seal.textContent=(String(c.name||'?').trim()[0]||'?').toUpperCase();
   document.getElementById('dpFileNo').textContent=dpFileNo(c);dpBountyFmt(c.bounty);
   const src=c.imageData||c.imageUrl,img=document.getElementById('dpPhotoImg');
-  img.innerHTML=src?`<img src="${esc(src)}" alt="Retrato de ${esc(c.name||'personagem')}">`:`<span class="dp-photo-empty">sem retrato<small>adicione na aba Ficha</small></span>`;
+  img.innerHTML=src?`<img src="${esc(src)}" alt="Retrato de ${esc(c.name||'personagem')}">`:`<span class="dp-photo-empty">retrato por pintar<small>adicione na aba Ficha</small></span>`;
   img.querySelector('img')?.addEventListener('error',()=>{img.innerHTML='<span class="dp-photo-empty">retrato perdido</span>'},{once:true});
   document.getElementById('dpPhotoCap').textContent=c.epithet?`“${c.epithet}”`:(c.name||'retrato');
-  const st=dpStamps()[p.stamp%dpStamps().length],stamp=document.getElementById('dpStamp');document.getElementById('dpStampText').textContent=st;stamp.classList.toggle('is-blank',st==='SEM CARIMBO');stamp.dataset.kind=p.stamp%dpStamps().length;
+  const st=dpStamps()[p.stamp%dpStamps().length],stamp=document.getElementById('dpStamp');document.getElementById('dpStampText').textContent=st;stamp.classList.toggle('is-blank',st==='SEM SELO');stamp.dataset.kind=p.stamp%dpStamps().length;
   const sel=document.getElementById('dpRelKind');if(sel&&!sel.options.length)sel.innerHTML=dpRelKinds().map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
   dpRenderRelations();
   const j=desk.querySelector('.dp-journal-text');document.getElementById('dpWords').textContent=`${dpWords(c.history)} ${dpWords(c.history)===1?'palavra':'palavras'}`;
