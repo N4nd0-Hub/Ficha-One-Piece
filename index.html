@@ -3176,7 +3176,7 @@ dialog.tc-dialog{width:min(920px,calc(100vw - 28px));max-height:91svh;padding:0;
 
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..700&family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;600;700;800&family=IM+Fell+English&family=Bangers&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..700&family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;600;700;800&family=IM+Fell+English&display=swap">
 <style id="refined-layer">
 /* ==========================================================================
    Camada de refinamento — tipografia, ritmo, menos ornamento, movimento
@@ -4979,131 +4979,6 @@ dialog.fg.is-item .fg-arsenal,dialog.fg.is-item .fg-w{display:none}
   .fg-foot-note{display:none}.fg-foot .btn{flex:1}
 }
 @media (prefers-reduced-motion:reduce){#iv *,dialog.fg *{animation:none!important;transition:none!important}}
-
-/* ---------- Modo Aventura (efeitos estilo One Piece) ---------- */
-.fx-burst{position:fixed;z-index:10050;pointer-events:none;width:calc(200px*var(--s,1));height:calc(140px*var(--s,1));transform:translate(-50%,-50%) rotate(var(--r,0deg)) scale(0);animation:fxBurst 1.1s cubic-bezier(.2,1.5,.4,1) forwards;--ink:#14100c;--fill:#ffd23f;--word:#e63946;--dots:#ff8c42}
-.fx-burst.is-long{animation:fxBurstLong 1.95s cubic-bezier(.2,1.5,.4,1) forwards}
-.fx-burst svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.45))}
-.fx-burst .fx-star{fill:var(--fill);stroke:var(--ink);stroke-width:6;stroke-linejoin:round}
-.fx-burst .fx-dots{opacity:.35;stroke:none}
-.fx-burst pattern circle{fill:var(--dots)}
-.fx-word{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Bangers','Impact','Arial Black',sans-serif;font-size:calc(42px*var(--s,1));line-height:.95;letter-spacing:.04em;color:var(--word);-webkit-text-stroke:calc(2px*var(--s,1)) var(--ink);paint-order:stroke fill;text-shadow:calc(3px*var(--s,1)) calc(3px*var(--s,1)) 0 var(--ink);transform:skewX(-8deg);white-space:nowrap}
-.fx-word small{display:block;margin-top:2px;font-size:.42em;letter-spacing:.06em;color:#fff;-webkit-text-stroke:calc(1.2px*var(--s,1)) var(--ink);text-shadow:2px 2px 0 var(--ink)}
-.fx-t-heal{--fill:#7ef0b6;--word:#ffffff;--dots:#06a06d}
-.fx-t-pp{--fill:#7fb6ff;--word:#ffe14d;--dots:#2a5fd1}
-.fx-t-equip{--fill:#ffffff;--word:#14100c;--dots:#8fa3b8}
-.fx-t-equip .fx-word{-webkit-text-stroke:0;text-shadow:2px 2px 0 #ffd23f}
-.fx-t-level{--fill:#ffd23f;--word:#ff5a1f;--dots:#e63946}
-.fx-t-level .fx-word small{color:#14100c;-webkit-text-stroke:0;text-shadow:none;font-size:.38em}
-@keyframes fxBurst{0%{transform:translate(-50%,-50%) rotate(var(--r)) scale(0)}16%{transform:translate(-50%,-50%) rotate(var(--r)) scale(1.18)}28%{transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}72%{opacity:1;transform:translate(-50%,-56%) rotate(var(--r)) scale(1)}100%{opacity:0;transform:translate(-50%,-90%) rotate(var(--r)) scale(.92)}}
-@keyframes fxBurstLong{0%{transform:translate(-50%,-50%) rotate(var(--r)) scale(0)}9%{transform:translate(-50%,-50%) rotate(var(--r)) scale(1.2)}16%{transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}80%{opacity:1;transform:translate(-50%,-52%) rotate(var(--r)) scale(1.03)}100%{opacity:0;transform:translate(-50%,-70%) rotate(var(--r)) scale(1.1)}}
-
-.fx-confetti{position:fixed;inset:0;z-index:10040;pointer-events:none;overflow:hidden}
-.fx-confetti i{position:absolute;top:-24px;animation-name:fxFall;animation-timing-function:cubic-bezier(.25,.5,.5,1);animation-fill-mode:forwards;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
-@keyframes fxFall{0%{transform:translate(0,0) rotate(0) rotateY(0)}100%{transform:translate(var(--dx),110vh) rotate(var(--rot)) rotateY(720deg);opacity:.9}}
-
-.fx-wipe{position:fixed;inset:0;z-index:10030;pointer-events:none;overflow:hidden}
-.fx-wipe i{position:absolute;top:-20%;bottom:-20%;left:-70%;width:60%;transform:skewX(-20deg);animation:fxWipe .62s cubic-bezier(.75,0,.25,1) forwards}
-.fx-wipe i:nth-child(1){background:var(--gold)}
-.fx-wipe i:nth-child(2){background:var(--red);animation-delay:.05s;width:46%}
-.fx-wipe i:nth-child(3){animation-delay:.1s;width:40%;background:repeating-linear-gradient(90deg,rgba(255,255,255,.95) 0 3px,transparent 3px 16px),var(--bg)}
-@keyframes fxWipe{from{left:-70%}to{left:140%}}
-body[data-fx-level="sutil"] .fx-wipe i:nth-child(-n+2){display:none}
-body[data-fx-level="sutil"] .fx-wipe i:nth-child(3){width:14%;opacity:.7;animation-duration:.5s}
-
-.fx-wanted{position:fixed;left:50%;top:84px;z-index:10045;transform:translateX(-50%);cursor:pointer;animation:fxPosterIn .7s cubic-bezier(.2,1.4,.4,1) both}
-.fx-wanted.is-out{animation:fxPosterOut .45s ease forwards}
-.fx-wanted-paper{position:relative;width:230px;padding:14px 16px 16px;text-align:center;color:#3a2412;background:radial-gradient(120% 80% at 30% 20%,#f8ecc8,#ead6a2 60%,#d9be82),#ecd9a7;border-radius:3px;box-shadow:0 22px 40px -12px rgba(0,0,0,.65),inset 0 0 26px rgba(120,70,20,.35);font-family:'IM Fell English','Alegreya',serif;transform:rotate(-2deg)}
-.fx-wanted-paper::before{content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff9a9a,#b51f1f);box-shadow:0 2px 3px rgba(0,0,0,.5)}
-.fx-w-title{display:block;font-size:40px;line-height:1;letter-spacing:.03em;white-space:nowrap}
-.fx-w-photo{margin:6px auto 4px;width:180px;height:132px;border:3px solid #3a2412;background:#cdb07a;display:grid;place-items:center;overflow:hidden}
-.fx-w-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.55) contrast(1.05)}
-.fx-w-photo .ui-icon{width:60px;height:60px;color:#3a2412;opacity:.6}
-.fx-w-doa{display:block;font-size:15px;letter-spacing:.12em;font-weight:700;color:#3a2412}
-.fx-w-name{display:block;font-size:22px;line-height:1.1;margin-top:2px}
-.fx-w-num{display:block;font-style:normal;font-size:24px;margin-top:4px;font-weight:700;letter-spacing:.02em}
-.fx-w-stamp{position:absolute;right:-18px;bottom:44px;padding:4px 10px;border:3px solid #c1121f;color:#c1121f;font:400 15px 'Bangers','Impact',sans-serif;letter-spacing:.08em;transform:rotate(-14deg) scale(0);border-radius:4px;background:rgba(255,255,255,.2);animation:fxStamp .35s 1.7s cubic-bezier(.2,1.8,.4,1) forwards}
-@keyframes fxStamp{to{transform:rotate(-14deg) scale(1)}}
-@keyframes fxPosterIn{0%{opacity:0;transform:translate(-50%,-140%) rotate(-12deg)}60%{opacity:1;transform:translate(-50%,6%) rotate(4deg)}80%{transform:translate(-50%,-2%) rotate(-1deg)}100%{transform:translateX(-50%)}}
-@keyframes fxPosterOut{to{opacity:0;transform:translate(-50%,-30px) rotate(6deg) scale(.9)}}
-
-/* Mar */
-#fxSea{position:fixed;left:0;right:0;bottom:0;height:58px;z-index:3;pointer-events:none;overflow:hidden;display:none}
-body.fxb-waves #fxSea{display:block}
-body.fxb-waves .sheet{margin-bottom:46px}
-.fx-wave{position:absolute;left:0;bottom:0;width:200%;height:100%;display:block;background:var(--wc);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q50 6 100 30 T200 30 T300 30 T400 30 V60 H0Z'/%3E%3C/svg%3E") 0 0/25% 100% repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q50 6 100 30 T200 30 T300 30 T400 30 V60 H0Z'/%3E%3C/svg%3E") 0 0/25% 100% repeat-x;animation:fxWave linear infinite}
-.fx-wave.w1{--wc:color-mix(in srgb,#2b7bd6 55%,var(--bg));opacity:.45;height:58px;animation-duration:26s}
-.fx-wave.w2{--wc:color-mix(in srgb,#1f9bd1 60%,var(--bg));opacity:.55;height:44px;animation-duration:17s;animation-direction:reverse;left:-30%}
-.fx-wave.w3{--wc:color-mix(in srgb,#5cc8f0 55%,var(--bg));opacity:.7;height:30px;animation-duration:11s}
-@keyframes fxWave{to{transform:translateX(-50%)}}
-.fx-boat{position:absolute;bottom:22px;left:-80px;width:52px;height:46px;animation:fxSail 70s linear infinite;z-index:1}
-.fx-boat svg{width:100%;height:100%;animation:fxBob 2.4s ease-in-out infinite;transform-origin:50% 90%}
-.fx-boat-sail{fill:#fff8e6}.fx-boat-sail2{fill:#f0e2c0}.fx-boat-mast{fill:#5a3a1e}.fx-boat-flag{fill:#e63946}.fx-boat-hull{fill:#8a5a2b;stroke:#4a2e14;stroke-width:2}
-@keyframes fxSail{from{left:-80px}to{left:calc(100% + 80px)}}
-@keyframes fxBob{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(3px)}}
-body[data-fx-level="sutil"] .fx-wave{opacity:.3}
-body[data-fx-level="sutil"] .fx-boat{display:none}
-@media (max-width:850px){#fxSea{bottom:calc(var(--nav) + env(safe-area-inset-bottom) - 4px);height:34px}.fx-wave.w1{height:34px}.fx-wave.w2{height:26px}.fx-wave.w3{height:18px}.fx-boat{width:34px;height:30px;bottom:10px}body.fxb-waves .sheet{margin-bottom:30px}}
-
-/* Céu */
-.sheet-head{position:relative;isolation:isolate}
-.fx-sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;display:none}
-body.fxb-sky .fx-sky{display:block}
-.fx-cloud{position:absolute;display:block;width:120px;height:34px;border-radius:40px;background:color-mix(in srgb,#fff 16%,transparent);animation:fxCloud linear infinite}
-.fx-cloud::before,.fx-cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
-.fx-cloud::before{width:56px;height:46px;left:18px;top:-22px}
-.fx-cloud::after{width:44px;height:36px;left:58px;top:-14px}
-.fx-cloud.c1{top:26%;animation-duration:78s;animation-delay:-10s}
-.fx-cloud.c2{top:58%;transform:scale(.7);animation-duration:96s;animation-delay:-48s;opacity:.7}
-.fx-cloud.c3{top:12%;transform:scale(.5);animation-duration:120s;animation-delay:-80s;opacity:.6}
-.fx-cloud.c4{top:72%;transform:scale(.9);animation-duration:88s;animation-delay:-30s;opacity:.5}
-@keyframes fxCloud{from{left:110%}to{left:-25%}}
-.fx-gull{position:absolute;width:26px;height:12px;left:-40px;animation:fxGull 22s linear infinite}
-.fx-gull svg{width:100%;height:100%;overflow:visible;animation:fxFlap .5s ease-in-out infinite alternate;transform-origin:50% 60%}
-.fx-gull path{fill:none;stroke:color-mix(in srgb,var(--text) 75%,transparent);stroke-width:2.6;stroke-linecap:round}
-.fx-gull.g1{top:30%}
-.fx-gull.g2{top:44%;width:18px;animation-delay:-4s;animation-duration:26s}
-@keyframes fxGull{0%{left:-40px;transform:translateY(0)}25%{transform:translateY(-10px)}50%{transform:translateY(6px)}75%{transform:translateY(-4px)}100%{left:110%;transform:translateY(0)}}
-@keyframes fxFlap{from{transform:scaleY(1)}to{transform:scaleY(.35)}}
-.fx-sun{position:absolute;right:9%;top:-60px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,#ffd23f 30%,transparent),transparent 65%);animation:fxSun 8s ease-in-out infinite}
-@keyframes fxSun{50%{transform:scale(1.12);opacity:.75}}
-body[data-fx-level="sutil"] .fx-gull.g2,body[data-fx-level="sutil"] .fx-sun{display:none}
-
-/* Cartões saltitantes */
-body.fxb-pop .page.active>*{animation:fxRise .55s cubic-bezier(.2,1.35,.4,1) both}
-body.fxb-pop .page.active>*:nth-child(2){animation-delay:.05s}body.fxb-pop .page.active>*:nth-child(3){animation-delay:.1s}body.fxb-pop .page.active>*:nth-child(4){animation-delay:.15s}body.fxb-pop .page.active>*:nth-child(n+5){animation-delay:.2s}
-@keyframes fxRise{from{opacity:0;transform:translateY(18px) scale(.985)}}
-body.fxb-pop .btn:active,body.fxb-pop button.mobile-tab:active{transform:scale(.94)}
-body.fxb-pop[data-fx-level="grandline"] .page.active>*{animation-name:fxRiseBig}
-@keyframes fxRiseBig{from{opacity:0;transform:translateY(30px) rotate(-1deg) scale(.96)}}
-
-/* Painel de configuração */
-.fx-settings{display:flex;flex-direction:column;gap:12px;overflow:hidden;position:relative}
-.fx-set-hero{display:flex;gap:14px;align-items:center}
-.fx-set-hero h3{margin:2px 0 4px}
-.fx-set-hero p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
-.fx-set-burst{flex:none;display:grid;place-items:center;width:84px;height:84px;font:400 26px 'Bangers','Impact',sans-serif;letter-spacing:.04em;color:#e63946;-webkit-text-stroke:1.5px #14100c;paint-order:stroke fill;text-shadow:2px 2px 0 #14100c;background:#ffd23f;clip-path:polygon(50% 0,61% 22%,85% 10%,78% 36%,100% 46%,79% 58%,90% 84%,63% 76%,52% 100%,40% 77%,14% 88%,22% 61%,0 50%,21% 38%,10% 13%,37% 22%);transform:rotate(-8deg);animation:fxWiggle 3.2s ease-in-out infinite}
-@keyframes fxWiggle{0%,80%,100%{transform:rotate(-8deg) scale(1)}86%{transform:rotate(6deg) scale(1.12)}92%{transform:rotate(-12deg) scale(1)}}
-.fx-settings.is-off .fx-set-burst{filter:grayscale(1);opacity:.5;animation:none}
-.fx-warn{margin:0;padding:8px 10px;border-radius:8px;border:1px solid color-mix(in srgb,var(--red) 50%,var(--line));color:var(--text);font-size:13px;background:color-mix(in srgb,var(--red) 10%,transparent)}
-.fx-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.fx-levels button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);text-align:left;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s,transform .15s}
-.fx-levels button b{font-size:14.5px}
-.fx-levels button small{font-size:12px;color:var(--muted);line-height:1.35}
-.fx-levels button:hover{transform:translateY(-2px)}
-.fx-levels button[aria-checked="true"]{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 15%,transparent);box-shadow:inset 0 0 0 1px var(--gold)}
-.fx-levels button[data-fx-level="grandline"][aria-checked="true"]{background:linear-gradient(120deg,color-mix(in srgb,#e63946 22%,transparent),color-mix(in srgb,#ffd23f 22%,transparent),color-mix(in srgb,#3a86ff 22%,transparent))}
-.fx-toggles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:7px}
-.fx-toggles label{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:11px;border:1px solid var(--line);cursor:pointer;transition:border-color .15s,background .15s}
-.fx-toggles label:has(input:checked){border-color:color-mix(in srgb,var(--gold) 55%,var(--line));background:color-mix(in srgb,var(--gold) 8%,transparent)}
-.fx-toggles input{margin-top:3px;accent-color:var(--gold);width:16px;height:16px;flex:none}
-.fx-toggles b{display:block;font-size:13.5px}
-.fx-toggles small{display:block;font-size:12px;color:var(--muted);line-height:1.35}
-.fx-settings.is-off .fx-levels,.fx-settings.is-off .fx-toggles,.fx-settings.is-off .fx-test{opacity:.45;pointer-events:none}
-.fx-test{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.fx-test>span{font-size:12.5px;font-weight:700;color:var(--muted);margin-right:4px}
-@media (max-width:640px){.fx-levels{grid-template-columns:1fr}.fx-set-burst{width:64px;height:64px;font-size:20px}}
-@media (prefers-reduced-motion:reduce){.fx-burst,.fx-wanted{animation-duration:.01ms!important}}
 /* ---------- Movimento ---------- */
 @keyframes r-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes r-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
@@ -5878,26 +5753,7 @@ document.addEventListener('change',function(e){
         <div class="studio-tabs" id="themeStudioTabs" role="tablist" aria-label="Personalização da ficha"><button type="button" id="studioTab-palettes" role="tab" aria-controls="studioPanel-palettes" aria-selected="true" data-studio-tab="palettes">Paletas</button><button type="button" id="studioTab-colors" role="tab" aria-controls="studioPanel-colors" aria-selected="false" tabindex="-1" data-studio-tab="colors">Cores</button><button type="button" id="studioTab-appearance" role="tab" aria-controls="studioPanel-appearance" aria-selected="false" tabindex="-1" data-studio-tab="appearance">Aparência</button></div>
         <div id="studioPanel-palettes" role="tabpanel" aria-labelledby="studioTab-palettes"><div class="studio-intro"><span class="studio-eyebrow">Comece por uma combinação</span><h3>Uma ficha com a sua cara</h3><p>Escolha uma paleta e ajuste os detalhes na aba Cores.</p></div><section class="studio-preset-section"><div class="studio-section-heading"><h3>Temas principais</h3><span>5 paletas</span></div><div class="theme-grid theme-grid-primary" id="themeGridPrimary"></div></section><section class="studio-preset-section"><div class="studio-section-heading"><h3>Chapéus de Palha</h3><span>10 paletas</span></div><div class="theme-grid" id="themeGridCrew"></div></section><section class="studio-preset-section"><div class="studio-section-heading"><h3>Minhas paletas</h3><span>Para reutilizar</span></div><div class="studio-save-preset"><label class="sr-only" for="themePresetName">Nome da sua paleta</label><input class="input" id="themePresetName" maxlength="40" placeholder="Dê um nome à sua combinação…"><button type="button" class="btn primary" id="themeSavePreset">Salvar paleta</button></div><div class="studio-custom-grid" id="themeGridCustom"></div></section></div>
         <div id="studioPanel-colors" role="tabpanel" aria-labelledby="studioTab-colors" hidden><div class="studio-intro"><span class="studio-eyebrow">Sua própria combinação</span><h3>Cada parte, uma cor</h3><p>Ajuste os seletores ou digite um código de cor. A ficha muda em tempo real.</p></div><label class="studio-toggle"><span><b>Contraste automático</b><small>Ajusta a tinta, os textos secundários e as bordas à sua paleta.</small></span><input id="themeAutoContrast" type="checkbox" checked></label><p class="studio-color-message" id="themeColorMessage" role="status">As cores são aplicadas e salvas automaticamente.</p><div id="themeColorGroups"></div><button type="button" id="themeRestorePalette" class="btn studio-restore">Restaurar cores da paleta</button></div>
-        <div id="studioPanel-appearance" role="tabpanel" aria-labelledby="studioTab-appearance" hidden><div class="studio-intro"><span class="studio-eyebrow">Além das cores</span><h3>Seu jeito de ler e jogar</h3><p>Ajustes de leitura e acabamento para este personagem.</p></div><section class="studio-appearance-card"><div class="studio-section-heading"><h3>Leitura</h3></div><div class="studio-setting-grid"><label>Tipografia<select class="input" id="fontThemeSelect"><option value="clean">Limpa</option><option value="classic">Livro clássico</option><option value="logbook">Diário de bordo</option></select></label><label>Espaçamento<select class="input" id="densitySelect"><option value="comfortable">Confortável</option><option value="compact">Compacto</option></select></label></div></section><section class="studio-appearance-card"><div class="studio-section-heading"><h3>Acabamento</h3></div><div class="studio-setting-grid"><label>Bordas<select class="input" id="themeEdges" data-theme-setting="edges"><option value="square">Retas</option><option value="soft">Suaves</option><option value="round">Arredondadas</option></select></label><label>Textura<select class="input" id="themeTexture" data-theme-setting="texture"><option value="chart">Cartografia</option><option value="paper">Papel</option><option value="plain">Lisa</option></select></label><label>Profundidade<select class="input" id="themeDepth" data-theme-setting="depth"><option value="soft">Sombras suaves</option><option value="flat">Sem sombras</option></select></label></div></section><label class="studio-toggle"><span><b>Animações da interface</b><small>Transições e movimentos entre os elementos da ficha.</small></span><input id="motionToggle" type="checkbox" checked></label><section class="studio-appearance-card fx-settings" id="fxSettings">
-  <div class="fx-set-hero"><span class="fx-set-burst" aria-hidden="true">DON!</span><div><span class="studio-eyebrow">Opcional · vale para todas as fichas deste navegador</span><h3>Modo Aventura</h3><p>Efeitos animados e coloridos no espírito de One Piece: mar no rodapé, céu com gaivotas, onomatopeias de impacto, confete e cartaz de recompensa.</p></div></div>
-  <label class="studio-toggle fx-master"><span><b>Ligar efeitos animados</b><small>Desligue a qualquer momento. Também respeita a opção do sistema de reduzir movimento.</small></span><input id="fxOn" type="checkbox"></label>
-  <p class="fx-warn" id="fxMotionWarn" hidden>As “Animações da interface” estão desligadas acima, então os efeitos ficam pausados.</p>
-  <div class="fx-levels" role="radiogroup" aria-label="Intensidade">
-    <button type="button" role="radio" data-fx-level="sutil"><b>Sutil</b><small>Pouco movimento, sem tremer a tela</small></button>
-    <button type="button" role="radio" data-fx-level="animado"><b>Animado</b><small>O equilíbrio: cor e impacto</small></button>
-    <button type="button" role="radio" data-fx-level="grandline"><b>Grand Line</b><small>Tudo no máximo, sem freio</small></button>
-  </div>
-  <div class="fx-toggles">
-    <label><input type="checkbox" data-fx-key="sfx"><span><b>Onomatopeias</b><small>DON! no dano, CURA! na cura, ZAP! no PP</small></span></label>
-    <label><input type="checkbox" data-fx-key="confetti"><span><b>Confete</b><small>Subir de nível e forjar armas</small></span></label>
-    <label><input type="checkbox" data-fx-key="bounty"><span><b>Cartaz de recompensa</b><small>Aparece quando a recompensa sobe</small></span></label>
-    <label><input type="checkbox" data-fx-key="pages"><span><b>Virada de página</b><small>Corte de mangá ao trocar de aba</small></span></label>
-    <label><input type="checkbox" data-fx-key="waves"><span><b>Mar no rodapé</b><small>Ondas e um barquinho navegando</small></span></label>
-    <label><input type="checkbox" data-fx-key="sky"><span><b>Céu no cabeçalho</b><small>Nuvens e gaivotas passando</small></span></label>
-    <label><input type="checkbox" data-fx-key="pop"><span><b>Cartões saltitantes</b><small>Os blocos entram pulando na página</small></span></label>
-  </div>
-  <div class="fx-test"><span>Testar</span><button type="button" class="btn small" data-fx-test="hit">DON!</button><button type="button" class="btn small" data-fx-test="heal">Cura</button><button type="button" class="btn small" data-fx-test="level">Level up</button><button type="button" class="btn small" data-fx-test="bounty">Recompensa</button><button type="button" class="btn small" data-fx-test="page">Virada</button><button type="button" class="btn small" data-fx-test="confetti">Confete</button></div>
-</section></div>
+        <div id="studioPanel-appearance" role="tabpanel" aria-labelledby="studioTab-appearance" hidden><div class="studio-intro"><span class="studio-eyebrow">Além das cores</span><h3>Seu jeito de ler e jogar</h3><p>Ajustes de leitura e acabamento para este personagem.</p></div><section class="studio-appearance-card"><div class="studio-section-heading"><h3>Leitura</h3></div><div class="studio-setting-grid"><label>Tipografia<select class="input" id="fontThemeSelect"><option value="clean">Limpa</option><option value="classic">Livro clássico</option><option value="logbook">Diário de bordo</option></select></label><label>Espaçamento<select class="input" id="densitySelect"><option value="comfortable">Confortável</option><option value="compact">Compacto</option></select></label></div></section><section class="studio-appearance-card"><div class="studio-section-heading"><h3>Acabamento</h3></div><div class="studio-setting-grid"><label>Bordas<select class="input" id="themeEdges" data-theme-setting="edges"><option value="square">Retas</option><option value="soft">Suaves</option><option value="round">Arredondadas</option></select></label><label>Textura<select class="input" id="themeTexture" data-theme-setting="texture"><option value="chart">Cartografia</option><option value="paper">Papel</option><option value="plain">Lisa</option></select></label><label>Profundidade<select class="input" id="themeDepth" data-theme-setting="depth"><option value="soft">Sombras suaves</option><option value="flat">Sem sombras</option></select></label></div></section><label class="studio-toggle"><span><b>Animações da interface</b><small>Transições e movimentos entre os elementos da ficha.</small></span><input id="motionToggle" type="checkbox" checked></label></div>
       </section>
     </div>
   </div>
@@ -7373,7 +7229,6 @@ async function readIndexedState(){const db=await openPersistenceDB();try{return 
 function renderAppearance(){
  const v=characterTheme();state.appearance={...v.appearance};document.documentElement.dataset.fontTheme=v.appearance.fontTheme;document.body.dataset.density=v.appearance.density;document.body.dataset.motion=v.appearance.motion===false?'off':'on';
  for(const [id,key] of [['fontThemeSelect','fontTheme'],['densitySelect','density'],['motionToggle','motion']]){const el=document.getElementById(id);if(el){if(el.type==='checkbox')el.checked=v.appearance[key];else el.value=v.appearance[key]}}
- if(typeof fxApply==='function')fxApply(false);
 }
 
 function compactText(value,fallback='—',limit=22){const t=String(value??'').trim()||fallback;return t.length>limit?t.slice(0,limit-1)+'…':t}
@@ -9383,113 +9238,7 @@ function fgWire(){
   const end=()=>{drag=null;pv.classList.remove('is-dragging')};pv.addEventListener('pointerup',end);pv.addEventListener('pointercancel',end);
 }
 
-
-/* ==========================================================================
-   Modo Aventura — efeitos animados no estilo One Piece (opcionais)
-   ========================================================================== */
-function fxDefaults(){return {on:true,level:'animado',waves:true,sky:true,sfx:true,pages:true,confetti:true,bounty:true,pop:true}}
-function fxCfg(){if(!state.fx||typeof state.fx!=='object'){let reduce=false;try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}state.fx={...fxDefaults(),on:!reduce}}return {...fxDefaults(),...state.fx}}
-function fxActive(k){const f=fxCfg();if(!f.on||document.body.dataset.motion==='off')return false;return k?!!f[k]:true}
-function fxLevelMul(){const l=fxCfg().level;return l==='sutil'?.75:l==='grandline'?1.25:1}
-function fxApply(ui=true){
-  const f=fxCfg(),b=document.body;b.classList.toggle('fxb-on',fxActive());
-  ['waves','sky','pop'].forEach(k=>b.classList.toggle('fxb-'+k,fxActive(k)));b.dataset.fxLevel=f.level;
-  fxEnsureLayers();if(ui)fxSyncUi();
-}
-function fxEnsureLayers(){
-  if(fxActive('waves')&&!document.getElementById('fxSea')){
-    const sea=document.createElement('div');sea.id='fxSea';sea.setAttribute('aria-hidden','true');
-    sea.innerHTML=`<div class="fx-boat"><svg viewBox="0 0 64 56"><path class="fx-boat-sail" d="M30 4 L30 36 L8 36 Z"/><path class="fx-boat-sail2" d="M34 10 L34 36 L52 36 Z"/><path class="fx-boat-mast" d="M31 2 h3 v36 h-3z"/><path class="fx-boat-flag" d="M34 2 h10 l-3 3 l3 3 h-10z"/><path class="fx-boat-hull" d="M4 38 H60 L52 50 H12 Z"/></svg></div><i class="fx-wave w1"></i><i class="fx-wave w2"></i><i class="fx-wave w3"></i>`;
-    document.body.appendChild(sea);
-  }
-  const head=document.querySelector('.sheet-head');
-  if(head&&fxActive('sky')&&!head.querySelector('.fx-sky')){
-    const sky=document.createElement('div');sky.className='fx-sky';sky.setAttribute('aria-hidden','true');
-    sky.innerHTML='<i class="fx-cloud c1"></i><i class="fx-cloud c2"></i><i class="fx-cloud c3"></i><i class="fx-cloud c4"></i><span class="fx-gull g1"><svg viewBox="0 0 40 16"><path d="M2 10 Q10 1 20 9 Q30 1 38 10"/></svg></span><span class="fx-gull g2"><svg viewBox="0 0 40 16"><path d="M2 10 Q10 1 20 9 Q30 1 38 10"/></svg></span><span class="fx-sun"></span>';
-    head.prepend(sky);
-  }
-}
-function fxStar(spikes=16){const pts=[];for(let i=0;i<spikes*2;i++){const a=Math.PI*2*i/(spikes*2)-Math.PI/2,out=i%2===0,j=out?(0.88+Math.random()*0.24):(0.62+Math.random()*0.1);pts.push(`${(100+Math.cos(a)*96*j).toFixed(1)},${(70+Math.sin(a)*66*j).toFixed(1)}`)}return pts.join(' ')}
-function fxBurst(text,{x,y,el,tone='hit',size=1,sub='',long=false}={}){
-  if(!fxActive('sfx'))return;
-  if(el&&el.getBoundingClientRect){const r=el.getBoundingClientRect();if(r.width||r.height){x=r.left+r.width/2;y=r.top+r.height/2}}
-  if(x==null||y==null||y<0||y>innerHeight){x=innerWidth/2;y=innerHeight*.38}
-  x=Math.min(innerWidth-90,Math.max(90,x));y=Math.min(innerHeight-70,Math.max(70,y));
-  const d=document.createElement('div');d.className=`fx-burst fx-t-${tone}${long?' is-long':''}`;d.setAttribute('aria-hidden','true');
-  d.style.left=x+'px';d.style.top=y+'px';d.style.setProperty('--s',(fxLevelMul()*size).toFixed(2));d.style.setProperty('--r',(Math.random()*20-10).toFixed(1)+'deg');
-  d.innerHTML=`<svg viewBox="-8 -8 216 156"><defs><pattern id="fxDots${tone}" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.6"/></pattern></defs><polygon class="fx-star" points="${fxStar()}"/><polygon class="fx-dots" fill="url(#fxDots${tone})" points="${fxStar(12)}"/></svg><span class="fx-word">${esc(text)}${sub?`<small>${esc(sub)}</small>`:''}</span>`;
-  document.body.appendChild(d);setTimeout(()=>d.remove(),long?2000:1150);
-}
-function fxShake(px){if(!fxActive('sfx')||fxCfg().level==='sutil')return;const m=document.querySelector('main');if(!m||!m.animate)return;px=px*fxLevelMul();m.animate([{transform:'none'},{transform:`translate(${-px}px,${px*.5}px) rotate(-.3deg)`},{transform:`translate(${px}px,${-px*.4}px) rotate(.3deg)`},{transform:`translate(${-px*.5}px,${px*.2}px)`},{transform:'none'}],{duration:340,easing:'ease-out'})}
-function fxConfetti(n){
-  if(!fxActive('confetti'))return;const l=fxCfg().level;n=n||(l==='sutil'?36:l==='grandline'?150:80);
-  const cols=['#e63946','#ffd23f','#3a86ff','#06d6a0','#ff8c42','#f15bb5','#ffffff','#8338ec'],box=document.createElement('div');box.className='fx-confetti';box.setAttribute('aria-hidden','true');
-  for(let i=0;i<n;i++){const p=document.createElement('i'),w=6+Math.random()*7;p.style.cssText=`left:${(Math.random()*100).toFixed(1)}vw;background:${cols[i%cols.length]};--dx:${(Math.random()*36-18).toFixed(1)}vw;--rot:${(Math.random()*900-450).toFixed(0)}deg;animation-duration:${(1.7+Math.random()*1.5).toFixed(2)}s;animation-delay:${(Math.random()*.4).toFixed(2)}s;width:${w.toFixed(1)}px;height:${(w*(0.6+Math.random()*1.4)).toFixed(1)}px;border-radius:${Math.random()<.3?'50%':'2px'}`;box.appendChild(p)}
-  document.body.appendChild(box);setTimeout(()=>box.remove(),3800);
-}
-function fxLevelUp(n){fxBurst('LEVEL UP!',{tone:'level',size:1.9,sub:`Nível ${n}`,long:true});fxConfetti()}
-function fxBounty(from,to){
-  if(!fxActive('bounty'))return;document.querySelector('.fx-wanted')?.remove();
-  const c=current(),src=c.imageData||c.imageUrl||'',d=document.createElement('div');d.className='fx-wanted';d.setAttribute('role','status');
-  d.innerHTML=`<div class="fx-wanted-paper"><b class="fx-w-title">WANTED</b><div class="fx-w-photo">${src?`<img src="${esc(src)}" alt="">`:'<span class="ui-icon i-skull"></span>'}</div><small class="fx-w-doa">DEAD OR ALIVE</small><strong class="fx-w-name">${esc(c.name||'Pirata')}</strong><em class="fx-w-num">${money(from)}</em><span class="fx-w-stamp">NOVA RECOMPENSA</span></div>`;
-  document.body.appendChild(d);d.addEventListener('click',()=>d.remove());
-  const num_=d.querySelector('.fx-w-num'),t0=performance.now(),dur=1300;
-  const tick=t=>{const k=Math.min(1,(t-t0-450)/dur);if(k>0)num_.textContent=money(Math.round(from+(to-from)*(1-Math.pow(1-k,3))));if(k<1&&d.isConnected)requestAnimationFrame(tick)};requestAnimationFrame(tick);
-  setTimeout(()=>{d.classList.add('is-out');setTimeout(()=>d.remove(),500)},3900);
-}
-function fxPageWipe(){if(!fxActive('pages'))return;document.querySelector('.fx-wipe')?.remove();const d=document.createElement('div');d.className='fx-wipe';d.setAttribute('aria-hidden','true');d.innerHTML='<i></i><i></i><i></i>';document.body.appendChild(d);setTimeout(()=>d.remove(),760)}
-function fxVisible(sel){for(const s of sel){const el=document.querySelector(s);if(el&&el.offsetParent){const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)return el}}return null}
-function fxHitWord(n,max){const r=max?n/max:0;const big=['KABOOM!','DOOON!','BOOOM!'],mid=['DON!','BAM!','POW!'],sm=['TUM!','PAF!','TCHAK!'];const arr=r>=.3?big:r>=.12?mid:sm;return arr[Math.floor(Math.random()*arr.length)]}
-function fxWatch(){
-  const c=state&&current&&state.characters?.find?.(x=>x.id===currentId);if(!c)return;
-  const launcher=document.getElementById('modeLauncher');const s=fxWatch.s||(fxWatch.s={});
-  const snap={st:state,id:c.id,hp:num(c.hpCurrent),max:num(c.hpMax),pp:num(c.ppCurrent),lv:num(c.level,1),b:num(c.bounty)};
-  const same=s.id===snap.id&&s.st===snap.st&&launcher?.hidden!==false;
-  if(same&&fxActive()){
-    if(snap.hp<s.hp){const n=s.hp-snap.hp,el=fxVisible(['#hudHpFill','#hpFill','#takeDamage']);fxBurst(fxHitWord(n,snap.max),{el,tone:'hit',sub:`−${n} PV`,size:n/Math.max(1,snap.max)>=.3?1.35:1});if(n/Math.max(1,snap.max)>=.12)fxShake(n/Math.max(1,snap.max)>=.3?9:5)}
-    else if(snap.hp>s.hp){const n=snap.hp-s.hp,el=fxVisible(['#hudHpFill','#hpFill','#healHp']);fxBurst(snap.hp>=snap.max&&snap.max?'VIDA CHEIA!':'CURA!',{el,tone:'heal',sub:`+${n} PV`,size:.85})}
-    if(snap.pp<s.pp&&snap.hp===s.hp){const n=s.pp-snap.pp,el=fxVisible(['#hudPpFill','#ppFill','#spendPp']);fxBurst(n>=6?'HAAAA!':'ZAP!',{el,tone:'pp',sub:`−${n} PP`,size:.8})}
-    if(snap.lv>s.lv)fxLevelUp(snap.lv);
-    if(snap.b>s.b)fxBounty(s.b,snap.b);
-  }
-  Object.assign(s,snap);
-}
-function fxSyncUi(){
-  const f=fxCfg(),root=document.getElementById('fxSettings');if(!root)return;
-  const on=document.getElementById('fxOn');if(on)on.checked=!!f.on;
-  root.classList.toggle('is-off',!f.on);
-  root.querySelectorAll('button[data-fx-level]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.fxLevel===f.level)));
-  root.querySelectorAll('[data-fx-key]').forEach(i=>{i.checked=!!f[i.dataset.fxKey];i.disabled=!f.on});
-  const warn=document.getElementById('fxMotionWarn');if(warn)warn.hidden=document.body.dataset.motion!=='off';
-}
-function fxSet(patch){state.fx={...fxCfg(),...patch};fxApply();if(!fxActive('waves'))document.getElementById('fxSea')?.remove();if(!fxActive('sky'))document.querySelectorAll('.fx-sky').forEach(e=>e.remove());fxApply();saveState()}
-function fxWire(){
-  if(fxWire.done)return;fxWire.done=true;
-  const root=document.getElementById('fxSettings');
-  if(root){
-    root.addEventListener('change',e=>{const t=e.target;if(t.id==='fxOn'){fxSet({on:t.checked});if(t.checked){fxBurst('ZOOOM!',{el:t.closest('label'),tone:'level',size:.8});fxConfetti(30)}}else if(t.dataset.fxKey){fxSet({[t.dataset.fxKey]:t.checked})}});
-    root.addEventListener('click',e=>{const lv=e.target.closest('button[data-fx-level]');if(lv){fxSet({level:lv.dataset.fxLevel});fxBurst(lv.dataset.fxLevel==='grandline'?'GRAND LINE!':lv.dataset.fxLevel==='sutil'?'shh…':'YOSH!',{el:lv,tone:'level',size:.7});return}
-      const t=e.target.closest('[data-fx-test]');if(!t)return;const k=t.dataset.fxTest,was=fxCfg();if(!was.on){toast('Ligue os efeitos para testar.');return}
-      if(k==='hit'){fxBurst('DON!',{el:t,tone:'hit',sub:'−12 PV',size:1.2});fxShake(7)}
-      if(k==='heal')fxBurst('CURA!',{el:t,tone:'heal',sub:'+8 PV'});
-      if(k==='level'){const c=current();fxLevelUp(num(c.level,1))}
-      if(k==='bounty'){const c=current(),b=num(c.bounty);fxBounty(Math.round(b*.5),b||30000000)}
-      if(k==='page')fxPageWipe();
-      if(k==='confetti')fxConfetti();});
-  }
-  document.addEventListener('click',e=>{
-    const t=e.target;if(!fxActive())return;
-    const nav=t.closest('[data-page]');if(nav&&!nav.closest('#fxSettings')&&nav.dataset.page!==activePage){requestAnimationFrame(()=>{if(nav.dataset.page===activePage)fxPageWipe()})}
-    const eq=t.closest('[data-iv="equip"]');if(eq&&eq.getAttribute('aria-pressed')==='false')fxBurst('SHING!',{el:eq,tone:'equip',size:.6});
-    const ce=t.closest('[data-cx-act="equip"]');if(ce)fxBurst('SHING!',{el:ce,tone:'equip',size:.6});
-  },true);
-  document.addEventListener('click',e=>{const sv=e.target.closest('#fgSave');if(sv&&fxActive()){const name=document.getElementById('fgName')?.value.trim();if(name){setTimeout(()=>{fxBurst('CLANG!',{tone:'equip',size:1.1});fxConfetti(40)},380)}}},true);
-  document.getElementById('motionToggle')?.addEventListener('change',()=>setTimeout(fxApply,0));document.getElementById('themeBtn')?.addEventListener('click',()=>setTimeout(fxSyncUi,0));
-  setInterval(fxWatch,300);fxWatch();
-}
-
 if(document.getElementById('iv')){ivWire();fgWire();renderInventory()}
-fxApply();fxWire();
 if(document.getElementById('cx')){cbWire();cxRender();const ps=document.getElementById('cxPassiveSearch');if(ps){ps.addEventListener('input',()=>{cxUi().pq=ps.value;cxRenderPassives(current());const b=document.getElementById('cxPassiveList');if(b)b.scrollTop=0});ps.addEventListener('keydown',e=>{if(e.key==='Escape'&&ps.value){ps.value='';cxUi().pq='';cxRenderPassives(current())}})}}
 
 
